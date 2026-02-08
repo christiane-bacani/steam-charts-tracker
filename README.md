@@ -10,7 +10,8 @@ Steam Charts Tracker is a a data processing system that extracts, transforms, an
 - [Is this blue?]
 
 I don't know what to write, but there's a todo list:
-- Create docstrings for every module and functions based on this [guidelines](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html)
+- Update the docstring for extracting data and returning a dictionary to specify the keys and corresponding
+values
 - Use extensive logging to make sure the data engineer knows what went wrong or what went successful
 - Implement a column threshold
 - Extract also the image of the game name when extracting the data of the games
