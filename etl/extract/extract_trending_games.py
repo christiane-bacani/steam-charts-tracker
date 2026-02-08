@@ -24,12 +24,12 @@ def extract_and_parse_soup(url: str) -> BeautifulSoup | None:
     response = requests.get(url=url, headers=headers)
 
     if response.status_code != 200:
-        etl_pipeline_logs("EXTRACT", "Extract and parsed BeautifulSoup object", "Failed", None)
+        etl_pipeline_logs("EXTRACT", "Extract and parse BeautifulSoup object", "FAILED", None)
         return None
 
     soup = BeautifulSoup(response.text, "html.parser")
 
-    etl_pipeline_logs("EXTRACT", "Extract and parse BeautifulSoup object", "Successful", None)
+    etl_pipeline_logs("EXTRACT", "Extract and parse BeautifulSoup object", "SUCCESSFUL", None)
     return soup
 
 def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
@@ -51,7 +51,7 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
     }
 
     if soup is None:
-        etl_pipeline_logs("EXTRACT", "Extract the top 5 current trending games on Steam", "Failed", None)
+        etl_pipeline_logs("EXTRACT", "Extract the top 5 current trending games on Steam Charts", "FAILED", None)
         return result
 
     body_tag = soup.find("body")
@@ -86,16 +86,19 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
         result["change_24h"].append(change_twenty_four_hours)
         result["current_players"].append(current_players)
 
-    etl_pipeline_logs("EXTRACT", "Extract the top 5 current trending games on Steam", "Successful", None)
+    etl_pipeline_logs("EXTRACT", "Extract the top 5 current trending games on Steam Charts", "SUCCESSFUL", None)
     return result
 
-def extract_player_concurrency_data(soup: BeautifulSoup | None) -> dict[str, dict]:
+def extract_player_concurrency_data(soup: BeautifulSoup | None, trending_game_index: int) -> dict[str, dict]:
     """
-    Extract the player concurrency data of a current trending game
+    Extract the player concurrency data of a specific current trending game on Steam Charts.
 
     :param soup: BeautifulSoup object representing the web-page from the url, NoneType
         if non-existent
     :type soup: BeautifulSoup | None
+
+    :param trending_game_index: Current trending game index
+    :type trending_game_index: int
 
     :return: Player concurrency data dictionary
     :rtype: dict[str, str]
@@ -108,7 +111,7 @@ def extract_player_concurrency_data(soup: BeautifulSoup | None) -> dict[str, dic
     }
 
     if soup is None:
-        etl_pipeline_logs("EXTRACT", "Extract player concurrency data of a current trending game", "Failed", None)
+        etl_pipeline_logs("EXTRACT", f"Extract the player concurrency data of the number {trending_game_index + 1} trending game on Steam Charts", "FAILED", None)
         return result
 
     body_tag = soup.find('body')
@@ -142,16 +145,19 @@ def extract_player_concurrency_data(soup: BeautifulSoup | None) -> dict[str, dic
     peak_players_all_time = int(peak_players_all_time.strip())
     result["peak_players_all_time"] = peak_players_all_time
 
-    etl_pipeline_logs("EXTRACT", "Extract player concurrency data of a current trending game", "Successful", None)
+    etl_pipeline_logs("EXTRACT", f"Extract the player concurrency data of the number {trending_game_index + 1} trending game on Steam Charts", "FAILED", None)
     return result
 
-def extract_historical_player_stats(soup: BeautifulSoup | None) -> dict[str, dict]:
+def extract_historical_player_stats(soup: BeautifulSoup | None, trending_game_index: int) -> dict[str, dict]:
     """
     Extract the historical player statistics of a current trending game.
 
     :param soup: BeautifulSoup object representing the web-page from the url, NoneType
         if non-existent
     :type soup: BeautifulSoup | None
+
+    :param trending_game_index: Current trending game index
+    :type trending_game_index: int
 
     :return: Historical player data dictionary
     :rtype: dict[str, dict]
@@ -165,7 +171,7 @@ def extract_historical_player_stats(soup: BeautifulSoup | None) -> dict[str, dic
     }
 
     if soup is None:
-        etl_pipeline_logs("EXTRACT", "Extract historical player statistics of a current trending game", "Failed", None)
+        etl_pipeline_logs("EXTRACT", f"Extract the historical player statistics of the number {trending_game_index + 1} trending game on Steam Charts", "FAILED", None)
         return result
 
     body_tag = soup.find('body')
@@ -193,5 +199,5 @@ def extract_historical_player_stats(soup: BeautifulSoup | None) -> dict[str, dic
         result["pct_gain"].append(cell_values[3])
         result["peak_players"].append(cell_values[4])
 
-    etl_pipeline_logs("EXTRACT", "Extract historical player statistics of a current trending game", "Successful", None)
+    etl_pipeline_logs("EXTRACT", f"Extract the historical player statistics of the number {trending_game_index + 1} trending game on Steam Charts", "SUCCESSFUL", None)
     return result
