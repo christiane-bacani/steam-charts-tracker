@@ -10,9 +10,7 @@ Steam Charts Tracker is a a data processing system that extracts, transforms, an
 - [Is this blue?]
 
 I don't know what to write, but there's a todo list:
-- Update the docstring for extracting data and returning a dictionary to specify the keys and corresponding
-values
-- Use extensive logging to make sure the data engineer knows what went wrong or what went successful
+- Implement 80 column max when writing code to this codebase
 - Implement a column threshold
 - Extract also the image of the game name when extracting the data of the games
 - Create documentation using this markdown file with a guide from this [link](https://medium.com/@kc_clintone/the-ultimate-guide-to-writing-a-great-readme-md-for-your-project-3d49c2023357)
