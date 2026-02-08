@@ -97,6 +97,7 @@ def extract_player_concurrency_data(soup: BeautifulSoup | None) -> dict[str, dic
     """
     result = {
         "app_name": "",
+        "app_logo": "",
         "peak_players_24h": "",
         "peak_players_all_time": ""
     }
@@ -114,6 +115,12 @@ def extract_player_concurrency_data(soup: BeautifulSoup | None) -> dict[str, dic
     result["app_name"] = app_name
 
     div_tag_with_app_heading_id = div_tag_with_content_wrapper_id.find("div", attrs={"id": "app-heading"})
+
+    # Extract the application logo
+    img_tag_with_app_image_class = div_tag_with_app_heading_id.find("img", attrs={"class": "app-image"})
+    app_logo_path = img_tag_with_app_image_class["src"]
+    app_logo = "https://steamcharts.com/" + app_logo_path
+    result["app_logo"] = app_logo
 
     # Extract the peak concurrent players within the time period of 24-Hours
     peak_players_24h_tag = div_tag_with_app_heading_id.find_all("div", attrs={"class": "app-stat"})[1]
