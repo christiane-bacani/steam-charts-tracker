@@ -32,8 +32,8 @@ for number in range(5):
 
     soup = extract_and_parse_soup(url)
 
-    player_concurrency_data = extract_player_concurrency_data(soup)
+    player_concurrency_data = extract_player_concurrency_data(soup, number)
     player_concurrency_dict[app_name] = player_concurrency_data
 
-    historical_player_stats = extract_historical_player_stats(soup)
+    historical_player_stats = extract_historical_player_stats(soup, number)
     historical_player_stats_dict[app_name] = historical_player_stats
