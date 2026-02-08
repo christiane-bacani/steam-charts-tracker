@@ -107,6 +107,7 @@ def extract_player_concurrency_data(soup: BeautifulSoup | None) -> dict[str, dic
     body_tag = soup.find('body')
     div_tag_with_content_wrapper_id = body_tag.find("div", attrs={"id": "content-wrapper"})
 
+    # Extract the application name
     app_name_tag  = div_tag_with_content_wrapper_id.find("h1", attrs={"id": "app-title"})
     app_name = app_name_tag.get_text()
     app_name = str(app_name)
