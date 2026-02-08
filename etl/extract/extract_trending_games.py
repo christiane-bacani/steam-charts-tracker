@@ -14,8 +14,8 @@ def extract_and_parse_soup(url: str) -> BeautifulSoup | None:
         object
     :type url: str
 
-    :return: BeautifulSoup object representing the web-page from the url, NoneType
-        if non-existent
+    :return: BeautifulSoup object representing the web-page from the url,
+        NoneType if non-existent
     :rtype: BeautifulSoup | None
     """
     headers = {
@@ -24,12 +24,22 @@ def extract_and_parse_soup(url: str) -> BeautifulSoup | None:
     response = requests.get(url=url, headers=headers)
 
     if response.status_code != 200:
-        etl_pipeline_logs("EXTRACT", "Extract and parse BeautifulSoup object", "FAILED", None)
+        etl_pipeline_logs(
+            "EXTRACT",
+            "Extract and parse BeautifulSoup object",
+            "FAILED",
+            None
+        )
         return None
 
     soup = BeautifulSoup(response.text, "html.parser")
 
-    etl_pipeline_logs("EXTRACT", "Extract and parse BeautifulSoup object", "SUCCESSFUL", None)
+    etl_pipeline_logs(
+            "EXTRACT",
+            "Extract and parse BeautifulSoup object",
+            "FAILED",
+            None
+    )
     return soup
 
 def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
