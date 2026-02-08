@@ -86,7 +86,7 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
 
 def extract_player_concurrency_data(soup: BeautifulSoup | None) -> dict[str, dict]:
     """
-    Extract the player concurrency data of a specific current trending game.
+    Extract the player concurrency data of a current trending game
 
     :param soup: BeautifulSoup object representing the web-page from the url, NoneType
         if non-existent
@@ -140,7 +140,7 @@ def extract_player_concurrency_data(soup: BeautifulSoup | None) -> dict[str, dic
 
 def extract_historical_player_stats(soup: BeautifulSoup | None) -> dict[str, dict]:
     """
-    Extract the historical player statistics of a specific current trending game.
+    Extract the historical player statistics of a current trending game.
 
     :param soup: BeautifulSoup object representing the web-page from the url, NoneType
         if non-existent
