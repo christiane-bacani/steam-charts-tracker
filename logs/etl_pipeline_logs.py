@@ -24,7 +24,7 @@ def etl_pipeline_logs(job: str, job_description: str, status: str, error_message
     :type error_message: str | None
     """
     now = datetime.now()
-    timestamp = now.strftime("%Y-%m-%d %H:%M:%s")
+    timestamp = now.strftime("%Y-%m-%d %M:%M:%S")
 
     current_logs = pd.read_csv('logs/logs.csv')
     initial_logs = pd.DataFrame({
