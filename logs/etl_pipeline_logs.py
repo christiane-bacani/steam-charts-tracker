@@ -10,13 +10,13 @@ def etl_pipeline_logs(job: str, job_description: str, status: str, error_message
     ETL Pipeline logger to record the logs after executing pipeline job using different functions
     from different modules inside the package of  `etl/extract/`, `etl/transform/`, and `etl/load/`.
 
-    :param job: ETL Pipeline job to record the logs: `Extract/Transform/Load`
+    :param job: ETL Pipeline job to record the logs: `EXTRACT/TRANSFORM/LOAD`
     :type job: str
 
     :param job_description: Description of the ETL Pipeline job
     :type job_description: str
 
-    :param status: The status after performing the job: `Successful/Failed`
+    :param status: The status after performing the job: `SUCCESSFUL/FAILED`
     :type status: str
 
     :param error_message: The error messsage that indicates the proper description
