@@ -5,7 +5,7 @@ website. This will provide audit nd/or logs to support troubleshooting of the ET
 import pandas as pd
 from datetime import datetime
 
-def etl_pipeline_logs(job: str, job_description: str, status: str, error_message: str) -> None:
+def etl_pipeline_logs(job: str, job_description: str, status: str, error_message: str | None) -> None:
     """
     ETL Pipeline logger to record the logs after executing pipeline job using different functions
     from different modules inside the package of  `etl/extract/`, `etl/transform/`, and `etl/load/`.
@@ -20,8 +20,8 @@ def etl_pipeline_logs(job: str, job_description: str, status: str, error_message
     :type status: str
 
     :param error_message: The error messsage that indicates the proper description
-        on why does the ETL Pipeline job failed
-    :type error_message: str
+        on why does the ETL Pipeline job failed, None if non-existent
+    :type error_message: str | None
     """
     now = datetime.now()
     timestamp = now.strftime("%Y-%m-%d %H:%M:%s")
