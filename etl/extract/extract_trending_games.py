@@ -93,7 +93,7 @@ def extract_player_concurrency_data(soup: BeautifulSoup | None) -> dict[str, dic
     :type soup: BeautifulSoup | None
 
     :return: Player concurrency data dictionary
-    :rtype: dict[str, dict]
+    :rtype: dict[str, str]
     """
     result = {
         "app_name": "",
