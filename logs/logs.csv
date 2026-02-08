@@ -1,1 +1,55 @@
 job,job_description,status,error_message,timestamp
+EXTRACT,Extract and parse BeautifulSoup object,Successful,,2026-02-09 51:51:37
+EXTRACT,Extract the top 5 current trending games on Steam,Successful,,2026-02-09 51:51:37
+EXTRACT,Extract and parse BeautifulSoup object,Successful,,2026-02-09 51:51:38
+EXTRACT,Extract player concurrency data of a current trending game,Successful,,2026-02-09 51:51:38
+EXTRACT,Extract historical player statistics of a current trending game,Successful,,2026-02-09 51:51:38
+EXTRACT,Extract and parse BeautifulSoup object,Successful,,2026-02-09 51:51:38
+EXTRACT,Extract player concurrency data of a current trending game,Successful,,2026-02-09 51:51:38
+EXTRACT,Extract historical player statistics of a current trending game,Successful,,2026-02-09 51:51:38
+EXTRACT,Extract and parse BeautifulSoup object,Successful,,2026-02-09 51:51:39
+EXTRACT,Extract player concurrency data of a current trending game,Successful,,2026-02-09 51:51:39
+EXTRACT,Extract historical player statistics of a current trending game,Successful,,2026-02-09 51:51:39
+EXTRACT,Extract and parse BeautifulSoup object,Successful,,2026-02-09 51:51:40
+EXTRACT,Extract player concurrency data of a current trending game,Successful,,2026-02-09 51:51:40
+EXTRACT,Extract historical player statistics of a current trending game,Successful,,2026-02-09 51:51:40
+EXTRACT,Extract and parse BeautifulSoup object,Successful,,2026-02-09 51:51:40
+EXTRACT,Extract player concurrency data of a current trending game,Successful,,2026-02-09 51:51:40
+EXTRACT,Extract historical player statistics of a current trending game,Successful,,2026-02-09 51:51:40
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-09 18:18:35
+EXTRACT,Extract the top 5 current trending games on Steam Charts,SUCCESSFUL,,2026-02-09 18:18:35
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-09 18:18:36
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-09 19:19:05
+EXTRACT,Extract the top 5 current trending games on Steam Charts,SUCCESSFUL,,2026-02-09 19:19:05
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-09 19:19:06
+EXTRACT,Extract the player concurrency data of the number 1 trending game on Steam Charts,FAILED,,2026-02-09 19:19:06
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts,SUCCESSFUL,,2026-02-09 19:19:06
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-09 19:19:07
+EXTRACT,Extract the player concurrency data of the number 2 trending game on Steam Charts,FAILED,,2026-02-09 19:19:07
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts,SUCCESSFUL,,2026-02-09 19:19:07
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-09 19:19:07
+EXTRACT,Extract the player concurrency data of the number 3 trending game on Steam Charts,FAILED,,2026-02-09 19:19:07
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts,SUCCESSFUL,,2026-02-09 19:19:07
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-09 19:19:08
+EXTRACT,Extract the player concurrency data of the number 4 trending game on Steam Charts,FAILED,,2026-02-09 19:19:08
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts,SUCCESSFUL,,2026-02-09 19:19:08
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-09 19:19:09
+EXTRACT,Extract the player concurrency data of the number 5 trending game on Steam Charts,FAILED,,2026-02-09 19:19:09
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts,SUCCESSFUL,,2026-02-09 19:19:09
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-09 21:21:20
+EXTRACT,Extract the top 5 current trending games on Steam Charts,SUCCESSFUL,,2026-02-09 21:21:20
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-09 21:21:21
+EXTRACT,Extract the player concurrency data of the number 1 trending game on Steam Charts,FAILED,,2026-02-09 21:21:21
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts,SUCCESSFUL,,2026-02-09 21:21:21
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-09 21:21:21
+EXTRACT,Extract the player concurrency data of the number 2 trending game on Steam Charts,FAILED,,2026-02-09 21:21:21
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts,SUCCESSFUL,,2026-02-09 21:21:21
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-09 21:21:22
+EXTRACT,Extract the player concurrency data of the number 3 trending game on Steam Charts,FAILED,,2026-02-09 21:21:22
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts,SUCCESSFUL,,2026-02-09 21:21:22
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-09 21:21:22
+EXTRACT,Extract the player concurrency data of the number 4 trending game on Steam Charts,FAILED,,2026-02-09 21:21:22
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts,SUCCESSFUL,,2026-02-09 21:21:22
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-09 21:21:23
+EXTRACT,Extract the player concurrency data of the number 5 trending game on Steam Charts,FAILED,,2026-02-09 21:21:23
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts,SUCCESSFUL,,2026-02-09 21:21:23
