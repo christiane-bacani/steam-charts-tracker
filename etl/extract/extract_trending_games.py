@@ -3,7 +3,8 @@ Provides functions to extract necessary data based on a specific
 web-page of the Steam Charts for further processing.
 """
 import requests
-from bs4 import BeautifulSoup, Tag, ResultSet
+from bs4 import BeautifulSoup
+from logs.etl_pipeline_logs import etl_pipeline_logs
 
 def extract_and_parse_soup(url: str) -> BeautifulSoup | None:
     """
@@ -23,10 +24,12 @@ def extract_and_parse_soup(url: str) -> BeautifulSoup | None:
     response = requests.get(url=url, headers=headers)
 
     if response.status_code != 200:
+        etl_pipeline_logs("EXTRACT", "Extract and parsed BeautifulSoup object", "Failed", None)
         return None
 
     soup = BeautifulSoup(response.text, "html.parser")
 
+    etl_pipeline_logs("EXTRACT", "Extract and parse BeautifulSoup object", "Successful", None)
     return soup
 
 def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
@@ -48,6 +51,7 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
     }
 
     if soup is None:
+        etl_pipeline_logs("EXTRACT", "Extract the top 5 current trending games on Steam", "Failed", None)
         return result
 
     body_tag = soup.find("body")
@@ -65,7 +69,7 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
         anchor_tag = list_of_all_table_data_tags[0].find("a")
         app_id = anchor_tag["href"]
         app_id = str(app_id)
-        
+
         app_name = anchor_tag.get_text()
         app_name = str(app_name)
 
@@ -82,6 +86,7 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
         result["change_24h"].append(change_twenty_four_hours)
         result["current_players"].append(current_players)
 
+    etl_pipeline_logs("EXTRACT", "Extract the top 5 current trending games on Steam", "Successful", None)
     return result
 
 def extract_player_concurrency_data(soup: BeautifulSoup | None) -> dict[str, dict]:
@@ -103,6 +108,7 @@ def extract_player_concurrency_data(soup: BeautifulSoup | None) -> dict[str, dic
     }
 
     if soup is None:
+        etl_pipeline_logs("EXTRACT", "Extract player concurrency data of a current trending game", "Failed", None)
         return result
 
     body_tag = soup.find('body')
@@ -136,6 +142,7 @@ def extract_player_concurrency_data(soup: BeautifulSoup | None) -> dict[str, dic
     peak_players_all_time = int(peak_players_all_time.strip())
     result["peak_players_all_time"] = peak_players_all_time
 
+    etl_pipeline_logs("EXTRACT", "Extract player concurrency data of a current trending game", "Successful", None)
     return result
 
 def extract_historical_player_stats(soup: BeautifulSoup | None) -> dict[str, dict]:
@@ -158,6 +165,7 @@ def extract_historical_player_stats(soup: BeautifulSoup | None) -> dict[str, dic
     }
 
     if soup is None:
+        etl_pipeline_logs("EXTRACT", "Extract historical player statistics of a current trending game", "Failed", None)
         return result
 
     body_tag = soup.find('body')
@@ -185,4 +193,5 @@ def extract_historical_player_stats(soup: BeautifulSoup | None) -> dict[str, dic
         result["pct_gain"].append(cell_values[3])
         result["peak_players"].append(cell_values[4])
 
+    etl_pipeline_logs("EXTRACT", "Extract historical player statistics of a current trending game", "Successful", None)
     return result
