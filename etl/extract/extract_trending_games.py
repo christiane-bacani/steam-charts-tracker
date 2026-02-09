@@ -116,7 +116,7 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
             result["app_name"].append(app_name)
             result["change_24h"].append(change_twenty_four_hours)
             result["current_players"].append(current_players)
-    
+
     except Exception as error_message:
         etl_pipeline_logs(
             "EXTRACT",
@@ -135,10 +135,11 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
 
 def extract_player_concurrency_data(soup: BeautifulSoup | None, trending_game_index: int) -> dict[str, dict]:
     """
-    Extract the player concurrency data of a specific current trending game on Steam Charts.
+    Extract the player concurrency data of a specific current trending game on
+    Steam Charts.
 
-    :param soup: BeautifulSoup object representing the web-page from the url, NoneType
-        if non-existent
+    :param soup: BeautifulSoup object representing the web-page from the url,
+        NoneType if non-existent
     :type soup: BeautifulSoup | None
 
     :param trending_game_index: Current trending game index
@@ -154,42 +155,98 @@ def extract_player_concurrency_data(soup: BeautifulSoup | None, trending_game_in
         "peak_players_all_time": ""
     }
 
+    number = trending_game_index + 1
+
     if soup is None:
-        etl_pipeline_logs("EXTRACT", f"Extract the player concurrency data of the number {trending_game_index + 1} trending game on Steam Charts", "FAILED", None)
+        etl_pipeline_logs(
+            "EXTRACT",
+            f"Extract the player concurrency data of the number {number} "
+            "trending game Steam"
+            "FAILED",
+            None
+        )
         return result
 
-    body_tag = soup.find('body')
-    div_tag_with_content_wrapper_id = body_tag.find("div", attrs={"id": "content-wrapper"})
+    try:
 
-    # Extract the application name
-    app_name_tag  = div_tag_with_content_wrapper_id.find("h1", attrs={"id": "app-title"})
-    app_name = app_name_tag.get_text()
-    app_name = str(app_name)
-    result["app_name"] = app_name
+        body_tag = soup.find('body')
+        div_tag_with_content_wrapper_id = body_tag.find(
+            "div",
+            attrs={
+                "id": "content-wrapper"
+            }
+        )
 
-    div_tag_with_app_heading_id = div_tag_with_content_wrapper_id.find("div", attrs={"id": "app-heading"})
+        # Extract the application name
+        app_name_tag = div_tag_with_content_wrapper_id.find(
+            "h1",
+            attrs={
+                "id": "app-title"
+            }
+        )
+        app_name = app_name_tag.get_text()
+        app_name = str(app_name)
+        result["app_name"] = app_name
 
-    # Extract the application logo
-    img_tag_with_app_image_class = div_tag_with_app_heading_id.find("img", attrs={"class": "app-image"})
-    app_logo_path = img_tag_with_app_image_class["src"]
-    app_logo = "https://steamcharts.com/" + app_logo_path
-    result["app_logo"] = app_logo
+        div_tag_with_app_heading_id = div_tag_with_content_wrapper_id.find(
+            "div",
+            attrs={
+                "id": "app-head"
+            }
+        )
 
-    # Extract the peak concurrent players within the time period of 24-Hours
-    peak_players_24h_tag = div_tag_with_app_heading_id.find_all("div", attrs={"class": "app-stat"})[1]
-    peak_players_24h = peak_players_24h_tag.get_text()
-    peak_players_24h = peak_players_24h.replace("24-hour peak", "")
-    peak_players_24h = int(peak_players_24h.strip())
-    result["peak_players_24h"] = peak_players_24h
+        # Extract the application logo
+        img_tag_with_app_image_class = div_tag_with_app_heading_id.find(
+            "img",
+            attrs={
+                "class": "app-image"
+            }
+        )
+        app_logo_path = img_tag_with_app_image_class["src"]
+        app_logo = "https://steamcharts.com/" + app_logo_path
+        result["app_logo"] = app_logo
 
-    # Extract the all-time peak concurrent players
-    peak_players_all_time_tag = div_tag_with_app_heading_id.find_all("div", attrs={"class": "app-stat"})[2]
-    peak_players_all_time = peak_players_all_time_tag.get_text()
-    peak_players_all_time = peak_players_all_time.replace("all-time peak", "")
-    peak_players_all_time = int(peak_players_all_time.strip())
-    result["peak_players_all_time"] = peak_players_all_time
+        # Extract the peak concurrent players within the time period of 24-Hours
+        peak_players_24h_tag = div_tag_with_app_heading_id.find_all(
+            "div",
+            attrs={
+                "class": "app-stat"
+            }
+        )[1]
+        peak_players_24h = peak_players_24h_tag.get_text()
+        peak_players_24h = peak_players_24h.replace("24-hour peak", "")
+        peak_players_24h = int(peak_players_24h.strip())
+        result["peak_players_24h"] = peak_players_24h
 
-    etl_pipeline_logs("EXTRACT", f"Extract the player concurrency data of the number {trending_game_index + 1} trending game on Steam Charts", "FAILED", None)
+        # Extract the all-time peak concurrent players
+        peak_players_all_time_tag = div_tag_with_app_heading_id.find_all(
+            "div",
+            attrs={
+                "class": "app-stat"
+            }
+        )[2]
+
+        peak_players_all_time = peak_players_all_time_tag.get_text()
+        peak_players_all_time = peak_players_all_time.replace("all-time peak", "")
+        peak_players_all_time = int(peak_players_all_time.strip())
+        result["peak_players_all_time"] = peak_players_all_time
+
+    except Exception as error_message:
+        etl_pipeline_logs(
+            "EXTRACT",
+            f"Extract the player concurrency data of the number "
+            "trending game on Steam",
+            "FAILED",
+            error_message
+        )
+
+    etl_pipeline_logs(
+        "EXTRACT",
+        f"Extract the player concurrency data of the number {number} "
+        "trending game on Steam Charts"
+        "FAILED",
+        None
+    )
     return result
 
 def extract_historical_player_stats(soup: BeautifulSoup | None, trending_game_index: int) -> dict[str, dict]:
