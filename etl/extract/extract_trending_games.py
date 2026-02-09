@@ -70,7 +70,6 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
         return result
 
     try:
-
         body_tag = soup.find("body")
         div_tag_with_content_wrapper_id = body_tag.find(
             "div",
