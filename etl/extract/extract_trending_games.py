@@ -46,8 +46,8 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
     """
     Extract top 5 trending games table from the Steam Charts website.
 
-    :param soup: BeautifulSoup object representing the web-page from the url, NoneType
-        if non-existent
+    :param soup: BeautifulSoup object representing the web-page from
+        the url, NoneType if non-existent
     :type soup: BeautifulSoup | None
 
     :return: Top 5 current trending games dictionary
@@ -61,42 +61,77 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
     }
 
     if soup is None:
-        etl_pipeline_logs("EXTRACT", "Extract the top 5 current trending games on Steam Charts", "FAILED", None)
+        etl_pipeline_logs(
+            "EXTRACT",
+            "Extract and the top 5 current trending games on Steam Charts",
+            "FAILED",
+            None
+        )
         return result
 
-    body_tag = soup.find("body")
-    div_tag_with_content_wrapper_id = body_tag.find("div", attrs={"id": "content-wrapper"})
+    try:
 
-    div_tag_with_content_class = div_tag_with_content_wrapper_id.find("div", attrs={"class": "content"})
-    trending_games_table = div_tag_with_content_class.find("table", attrs={"id": "trending-recent"})
-    tbody_tag = trending_games_table.find("tbody")
-    list_of_all_table_row_tags  = tbody_tag.find_all("tr")
+        body_tag = soup.find("body")
+        div_tag_with_content_wrapper_id = body_tag.find(
+            "div",
+            attrs={
+                "id": "content-wrapper"
+            }
+        )
 
-    # Iterate over the trending games table to get the necessary data using for-loop
-    for table_row_tag in list_of_all_table_row_tags:
-        list_of_all_table_data_tags = table_row_tag.find_all("td")
+        div_tag_with_content_class = div_tag_with_content_wrapper_id.find(
+            "div",
+            attrs={
+                "class": "content"
+            }
+        )
+        trending_games_table = div_tag_with_content_class.find(
+            "table",
+            attrs={
+                "id": "trending-recent"
+            }
+        )
+        tbody_tag = trending_games_table.find("tbody")
+        list_of_all_table_row_tags  = tbody_tag.find_all("tr")
+
+        # Iterate over the trending games table to get the necessary data using for-loop
+        for table_row_tag in list_of_all_table_row_tags:
+            list_of_all_table_data_tags = table_row_tag.find_all("td")
+
+            anchor_tag = list_of_all_table_data_tags[0].find("a")
+            app_id = anchor_tag["href"]
+            app_id = str(app_id)
+
+            app_name = anchor_tag.get_text()
+            app_name = str(app_name)
+
+            change_twenty_four_hours = list_of_all_table_data_tags[1]
+            change_twenty_four_hours = change_twenty_four_hours.get_text()
+            change_twenty_four_hours = str(change_twenty_four_hours)
+
+            current_players = list_of_all_table_data_tags[3]
+            current_players = current_players.get_text()
+            current_players = str(current_players)
+
+            result["app_id"].append(app_id)
+            result["app_name"].append(app_name)
+            result["change_24h"].append(change_twenty_four_hours)
+            result["current_players"].append(current_players)
     
-        anchor_tag = list_of_all_table_data_tags[0].find("a")
-        app_id = anchor_tag["href"]
-        app_id = str(app_id)
+    except Exception as error_message:
+        etl_pipeline_logs(
+            "EXTRACT",
+            "Extract the top 5 current trending games on Steam Charts",
+            "FAILED",
+            error_message
+        )
 
-        app_name = anchor_tag.get_text()
-        app_name = str(app_name)
-
-        change_twenty_four_hours = list_of_all_table_data_tags[1]
-        change_twenty_four_hours = change_twenty_four_hours.get_text()
-        change_twenty_four_hours = str(change_twenty_four_hours)
-
-        current_players = list_of_all_table_data_tags[3]
-        current_players = current_players.get_text()
-        current_players = str(current_players)
-
-        result["app_id"].append(app_id)
-        result["app_name"].append(app_name)
-        result["change_24h"].append(change_twenty_four_hours)
-        result["current_players"].append(current_players)
-
-    etl_pipeline_logs("EXTRACT", "Extract the top 5 current trending games on Steam Charts", "SUCCESSFUL", None)
+    etl_pipeline_logs(
+        "EXTRACT",
+        "Extract the top 5 current trending games on Steam Charts",
+        "SUCCESSFUL",
+        None
+    )
     return result
 
 def extract_player_concurrency_data(soup: BeautifulSoup | None, trending_game_index: int) -> dict[str, dict]:
