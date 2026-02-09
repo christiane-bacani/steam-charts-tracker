@@ -250,7 +250,10 @@ def extract_player_concurrency_data(soup: BeautifulSoup | None, trending_game_in
     )
     return result
 
-def extract_historical_player_stats(soup: BeautifulSoup | None, trending_game_index: int) -> dict[str, dict]:
+def extract_historical_player_stats(
+        soup: BeautifulSoup | None,
+        trending_game_index: int
+) -> dict[str, dict]:
     """
     Extract the historical player statistics of a current trending game.
 
@@ -272,34 +275,74 @@ def extract_historical_player_stats(soup: BeautifulSoup | None, trending_game_in
         "peak_players": []
     }
 
+    number = trending_game_index + 1
+
     if soup is None:
-        etl_pipeline_logs("EXTRACT", f"Extract the historical player statistics of the number {trending_game_index + 1} trending game on Steam Charts", "FAILED", None)
+        etl_pipeline_logs(
+            "EXTRACT",
+            f"Extract the historical player statistics of the number {number} "
+            "trending game on Steam Charts",
+            "FAILED",
+            None
+        )
         return result
 
-    body_tag = soup.find('body')
-    div_tag_with_content_wrapper_id  = body_tag.find("div", attrs={"id": "content-wrapper"})
+    try:
+        body_tag = soup.find('body')
+        div_tag_with_content_wrapper_id = body_tag.find(
+            "div",
+            attrs={
+                "id": "content-wrapper"
+            }
+        )
 
-    div_tag_with_content_class = div_tag_with_content_wrapper_id.find_all("div", attrs={"class": "content"})[2]
-    table_tag = div_tag_with_content_class.find("table", attrs={"class": "common-table"})
-    tbody_tag = table_tag.find("tbody")
-    list_of_all_table_row_tags = tbody_tag.find_all("tr")
+        div_tag_with_content_class = div_tag_with_content_wrapper_id.find_all(
+            "div",
+            attrs={
+                "class": "content"
+            }
+        )[2]
+        table_tag = div_tag_with_content_class.find(
+            "table",
+            attrs={
+                "class": "common-table"
+            }
+        )
+        tbody_tag = table_tag.find("tbody")
+        list_of_all_table_row_tags = tbody_tag.find_all("tr")
 
-    # Iterate over the historical player statistics table to get the necessary data using for-loop
-    for table_row_tag in list_of_all_table_row_tags:
-        list_of_all_table_data_tags = table_row_tag.find_all("td")
+        # Iterate over the historical player statistics table to get the necessary data using for-loop
+        for table_row_tag in list_of_all_table_row_tags:
+            list_of_all_table_data_tags = table_row_tag.find_all("td")
 
-        cell_values = []
+            cell_values = []
 
-        for table_data_tag in list_of_all_table_data_tags:
-            cell_value  = table_data_tag.get_text()
-            cell_value = str(cell_value)
-            cell_values.append(cell_value)
+            for table_data_tag in list_of_all_table_data_tags:
+                cell_value  = table_data_tag.get_text()
+                cell_value = str(cell_value)
+                cell_values.append(cell_value)
 
-        result["period"].append(cell_values[0])
-        result["avg_players"].append(cell_values[1])
-        result["player_gain"].append(cell_values[2])
-        result["pct_gain"].append(cell_values[3])
-        result["peak_players"].append(cell_values[4])
+            result["period"].append(cell_values[0])
+            result["avg_players"].append(cell_values[1])
+            result["player_gain"].append(cell_values[2])
+            result["pct_gain"].append(cell_values[3])
+            result["peak_players"].append(cell_values[4])
 
-    etl_pipeline_logs("EXTRACT", f"Extract the historical player statistics of the number {trending_game_index + 1} trending game on Steam Charts", "SUCCESSFUL", None)
-    return result
+        etl_pipeline_logs(
+            "EXTRACT",
+            f"Extract the historical player statistics of the number {number} "
+            "trending game on Steam Charts",
+            "FAILED",
+            None
+        )
+        return result
+
+    except Exception as error_message:
+        etl_pipeline_logs(
+            "EXTRACT",
+            f"Extract the historical player statistics of the number {number} "
+            "trending game on Steam Charts",
+            "FAILED",
+            error_message
+        )
+        return result
