@@ -1,7 +1,6 @@
 """
-This module orchestrates and executes different functions from their
-corresponding modules of the following packages: `etl/extract`,
-`etl/transform/`, and `etl/load`.
+This module orchestrates and executes different functions from their corresponding
+modules of the following packages: `etl/extract`, `etl/transform/`, and `etl/load`.
 """
 from etl.extract.extract_trending_games import extract_and_parse_soup
 from etl.extract.extract_trending_games import extract_trending_games_table
