@@ -118,6 +118,14 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
             result["change_24h"].append(change_twenty_four_hours)
             result["current_players"].append(current_players)
 
+        etl_pipeline_logs(
+            "EXTRACT",
+            "Extract the top 5 current trending games on Steam Charts",
+            "SUCCESSFUL",
+            None
+        )
+        return result
+
     except Exception as error_message:
         etl_pipeline_logs(
             "EXTRACT",
@@ -125,14 +133,7 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
             "FAILED",
             error_message
         )
-
-    etl_pipeline_logs(
-        "EXTRACT",
-        "Extract the top 5 current trending games on Steam Charts",
-        "SUCCESSFUL",
-        None
-    )
-    return result
+        return result
 
 def extract_player_concurrency_data(soup: BeautifulSoup | None, trending_game_index: int) -> dict[str, dict]:
     """
