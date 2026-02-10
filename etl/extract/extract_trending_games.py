@@ -170,7 +170,6 @@ def extract_player_concurrency_data(soup: BeautifulSoup | None, trending_game_in
         return result
 
     try:
-
         body_tag = soup.find('body')
         div_tag_with_content_wrapper_id = body_tag.find(
             "div",
@@ -233,6 +232,15 @@ def extract_player_concurrency_data(soup: BeautifulSoup | None, trending_game_in
         peak_players_all_time = int(peak_players_all_time.strip())
         result["peak_players_all_time"] = peak_players_all_time
 
+        etl_pipeline_logs(
+            "EXTRACT",
+            f"Extract the player concurrency data of the number {number} "
+            "trending game on Steam Charts"
+            "FAILED",
+            None
+        )
+        return result
+
     except Exception as error_message:
         etl_pipeline_logs(
             "EXTRACT",
@@ -241,15 +249,7 @@ def extract_player_concurrency_data(soup: BeautifulSoup | None, trending_game_in
             "FAILED",
             error_message
         )
-
-    etl_pipeline_logs(
-        "EXTRACT",
-        f"Extract the player concurrency data of the number {number} "
-        "trending game on Steam Charts"
-        "FAILED",
-        None
-    )
-    return result
+        return result
 
 def extract_historical_player_stats(
         soup: BeautifulSoup | None,
