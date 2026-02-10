@@ -1,6 +1,6 @@
 """
-Provides functions to extract necessary data based on a specific
-web-page of the Steam Charts for further processing.
+Provides functions to extract necessary data based on a specific web-page of the Steam
+Charts for further processing.
 """
 import requests
 from bs4 import BeautifulSoup
@@ -14,13 +14,13 @@ def extract_and_parse_soup(url: str) -> BeautifulSoup | None:
         object
     :type url: str
 
-    :return: BeautifulSoup object representing the web-page from the url,
-        NoneType if non-existent
+    :return: BeautifulSoup object representing the web-page from the url, NoneType if
+        non-existent
     :rtype: BeautifulSoup | None
     """
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-        "(KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0"
+        "KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0"
     }
     response = requests.get(url=url, headers=headers)
 
@@ -38,7 +38,7 @@ def extract_and_parse_soup(url: str) -> BeautifulSoup | None:
     etl_pipeline_logs(
             "EXTRACT",
             "Extract and parse BeautifulSoup object",
-            "FAILED",
+            "SUCCESSFUL",
             None
     )
     return soup
@@ -47,8 +47,8 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
     """
     Extract top 5 trending games table from the Steam Charts website.
 
-    :param soup: BeautifulSoup object representing the web-page from
-        the url, NoneType if non-existent
+    :param soup: BeautifulSoup object representing the web-page from the url, NoneType
+        if non-existent
     :type soup: BeautifulSoup | None
 
     :return: Top 5 current trending games dictionary
@@ -94,7 +94,7 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
         tbody_tag = trending_games_table.find("tbody")
         list_of_all_table_row_tags  = tbody_tag.find_all("tr")
 
-        # Iterate over the trending games table to get the necessary data using for-loop
+        # Iterate over the trending games table to get the data using for-loop
         for table_row_tag in list_of_all_table_row_tags:
             list_of_all_table_data_tags = table_row_tag.find_all("td")
 
@@ -135,13 +135,16 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
         )
         return result
 
-def extract_player_concurrency_data(soup: BeautifulSoup | None, trending_game_index: int) -> dict[str, dict]:
+def extract_player_concurrency_data(
+        soup: BeautifulSoup | None,
+        trending_game_index: int
+) -> dict[str, dict]:
     """
-    Extract the player concurrency data of a specific current trending game on
-    Steam Charts.
+    Extract the player concurrency data of a specific current trending game on Steam
+    Charts.
 
-    :param soup: BeautifulSoup object representing the web-page from the url,
-        NoneType if non-existent
+    :param soup: BeautifulSoup object representing the web-page from the url, NoneType
+        if non-existent
     :type soup: BeautifulSoup | None
 
     :param trending_game_index: Current trending game index
@@ -162,8 +165,8 @@ def extract_player_concurrency_data(soup: BeautifulSoup | None, trending_game_in
     if soup is None:
         etl_pipeline_logs(
             "EXTRACT",
-            f"Extract the player concurrency data of the number {number} "
-            "trending game Steam"
+            f"Extract the player concurrency data of the number {number} trending "
+            "game Steam"
             "FAILED",
             None
         )
@@ -234,9 +237,9 @@ def extract_player_concurrency_data(soup: BeautifulSoup | None, trending_game_in
 
         etl_pipeline_logs(
             "EXTRACT",
-            f"Extract the player concurrency data of the number {number} "
-            "trending game on Steam Charts"
-            "FAILED",
+            f"Extract the player concurrency data of the number {number} trending "
+            "game on Steam Charts"
+            "SUCCESSFUL",
             None
         )
         return result
@@ -244,8 +247,8 @@ def extract_player_concurrency_data(soup: BeautifulSoup | None, trending_game_in
     except Exception as error_message:
         etl_pipeline_logs(
             "EXTRACT",
-            f"Extract the player concurrency data of the number "
-            "trending game on Steam",
+            f"Extract the player concurrency data of the number trending "
+            "game on Steam",
             "FAILED",
             error_message
         )
@@ -281,8 +284,8 @@ def extract_historical_player_stats(
     if soup is None:
         etl_pipeline_logs(
             "EXTRACT",
-            f"Extract the historical player statistics of the number {number} "
-            "trending game on Steam Charts",
+            f"Extract the historical player statistics of the number {number} trending "
+            "game on Steam Charts",
             "FAILED",
             None
         )
@@ -312,7 +315,7 @@ def extract_historical_player_stats(
         tbody_tag = table_tag.find("tbody")
         list_of_all_table_row_tags = tbody_tag.find_all("tr")
 
-        # Iterate over the historical player statistics table to get the necessary data using for-loop
+        # Iterate over the historical player stats table to get the data using for-loop
         for table_row_tag in list_of_all_table_row_tags:
             list_of_all_table_data_tags = table_row_tag.find_all("td")
 
@@ -331,9 +334,9 @@ def extract_historical_player_stats(
 
         etl_pipeline_logs(
             "EXTRACT",
-            f"Extract the historical player statistics of the number {number} "
-            "trending game on Steam Charts",
-            "FAILED",
+            f"Extract the historical player statistics of the number {number} trending "
+            "game on Steam Charts",
+            "SUCCESSFUL",
             None
         )
         return result
