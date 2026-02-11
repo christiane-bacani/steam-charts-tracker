@@ -53,3 +53,15 @@ def extract_top_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
     :return: Top games by current players dictionary
     :rtype: dict[str, list]
     """
+    result = {
+        "name": [],
+        "current_players": [],
+        "peak_concurrent_players_30d": [],
+        "total_hours_played_30d": []
+    }
+
+    if soup is None:
+        etl_pipeline_logs(
+            "EXTRACT",
+            ""
+        )
