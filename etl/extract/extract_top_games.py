@@ -41,3 +41,15 @@ def extract_and_parse_soup(url: str) -> BeautifulSoup | None:
             None
     )
     return soup
+
+def extract_top_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
+    """
+    Extract top gammes by current players table from the Steam Charts website.
+
+    :param soup: BeautifulSoup object representing the web-page from the url, NoneType
+        if non-existent
+    :type soup: BeautifulSoup | None
+
+    :return: Top games by current players dictionary
+    :rtype: dict[str, list]
+    """
