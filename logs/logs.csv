@@ -53,3 +53,102 @@ EXTRACT,Extract the historical player statistics of the number 4 trending game o
 EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-09 21:21:23
 EXTRACT,Extract the player concurrency data of the number 5 trending game on Steam Charts,FAILED,,2026-02-09 21:21:23
 EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts,SUCCESSFUL,,2026-02-09 21:21:23
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-11 35:35:02
+EXTRACT,Extract the top 5 current trending games on Steam Charts,SUCCESSFUL,,2026-02-11 35:35:02
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-11 35:35:03
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,'NoneType' object has no attribute 'find',2026-02-11 35:35:03
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-11 36:36:15
+EXTRACT,Extract the top 5 current trending games on Steam Charts,SUCCESSFUL,,2026-02-11 36:36:15
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-11 36:36:16
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,'NoneType' object has no attribute 'find',2026-02-11 36:36:16
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts,SUCCESSFUL,,2026-02-11 36:36:16
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-11 36:36:17
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,'NoneType' object has no attribute 'find',2026-02-11 36:36:17
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts,SUCCESSFUL,,2026-02-11 36:36:17
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-11 36:36:18
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,'NoneType' object has no attribute 'find',2026-02-11 36:36:18
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts,SUCCESSFUL,,2026-02-11 36:36:18
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-11 36:36:19
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,'NoneType' object has no attribute 'find',2026-02-11 36:36:19
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts,SUCCESSFUL,,2026-02-11 36:36:19
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-11 36:36:20
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,'NoneType' object has no attribute 'find',2026-02-11 36:36:20
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts,SUCCESSFUL,,2026-02-11 36:36:20
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-11 37:37:51
+EXTRACT,Extract the top 5 current trending games on Steam Charts,SUCCESSFUL,,2026-02-11 37:37:51
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-11 37:37:51
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,'NoneType' object has no attribute 'find',2026-02-11 37:37:52
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts,SUCCESSFUL,,2026-02-11 37:37:52
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-11 37:37:52
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,'NoneType' object has no attribute 'find',2026-02-11 37:37:52
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts,SUCCESSFUL,,2026-02-11 37:37:52
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-11 37:37:53
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,'NoneType' object has no attribute 'find',2026-02-11 37:37:53
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts,SUCCESSFUL,,2026-02-11 37:37:53
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-11 37:37:54
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,'NoneType' object has no attribute 'find',2026-02-11 37:37:54
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts,SUCCESSFUL,,2026-02-11 37:37:54
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-11 37:37:54
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,'NoneType' object has no attribute 'find',2026-02-11 37:37:54
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts,SUCCESSFUL,,2026-02-11 37:37:54
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-11 38:38:17
+EXTRACT,Extract the top 5 current trending games on Steam Charts,SUCCESSFUL,,2026-02-11 38:38:17
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-11 38:38:18
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,'NoneType' object has no attribute 'find',2026-02-11 38:38:18
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts,SUCCESSFUL,,2026-02-11 38:38:18
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-11 38:38:19
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,'NoneType' object has no attribute 'find',2026-02-11 38:38:19
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts,SUCCESSFUL,,2026-02-11 38:38:19
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-11 38:38:20
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,'NoneType' object has no attribute 'find',2026-02-11 38:38:20
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts,SUCCESSFUL,,2026-02-11 38:38:20
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-11 38:38:20
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,'NoneType' object has no attribute 'find',2026-02-11 38:38:20
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts,SUCCESSFUL,,2026-02-11 38:38:20
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-11 38:38:21
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,'NoneType' object has no attribute 'find',2026-02-11 38:38:21
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts,SUCCESSFUL,,2026-02-11 38:38:21
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-12 49:49:45
+EXTRACT,Extract the top 5 current trending games on Steam Charts,SUCCESSFUL,,2026-02-12 49:49:45
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-12 49:49:46
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,'NoneType' object has no attribute 'find',2026-02-12 49:49:46
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts,SUCCESSFUL,,2026-02-12 49:49:46
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-12 50:50:16
+EXTRACT,Extract the top 5 current trending games on Steam Charts,SUCCESSFUL,,2026-02-12 50:50:16
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-12 50:50:16
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,'NoneType' object has no attribute 'find',2026-02-12 50:50:16
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts,SUCCESSFUL,,2026-02-12 50:50:16
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-12 52:52:32
+EXTRACT,Extract the top 5 current trending games on Steam Charts,SUCCESSFUL,,2026-02-12 52:52:32
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-12 52:52:33
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,'NoneType' object has no attribute 'find',2026-02-12 52:52:33
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-12 53:53:39
+EXTRACT,Extract the top 5 current trending games on Steam Charts,SUCCESSFUL,,2026-02-12 53:53:39
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-12 53:53:40
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-12 53:53:40
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-12 54:54:03
+EXTRACT,Extract the top 5 current trending games on Steam Charts,SUCCESSFUL,,2026-02-12 54:54:03
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-12 54:54:04
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-12 54:54:04
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-12 54:54:55
+EXTRACT,Extract the top 5 current trending games on Steam Charts,SUCCESSFUL,,2026-02-12 54:54:55
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-12 54:54:56
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-12 54:54:56
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts,SUCCESSFUL,,2026-02-12 54:54:56
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-12 55:55:38
+EXTRACT,Extract the top 5 current trending games on Steam Charts,SUCCESSFUL,,2026-02-12 55:55:38
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-12 55:55:40
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-12 55:55:40
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts,SUCCESSFUL,,2026-02-12 55:55:40
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-12 55:55:41
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-12 55:55:41
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts,SUCCESSFUL,,2026-02-12 55:55:41
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-12 55:55:42
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-12 55:55:42
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts,SUCCESSFUL,,2026-02-12 55:55:42
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-12 55:55:42
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-12 55:55:42
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts,SUCCESSFUL,,2026-02-12 55:55:42
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-12 55:55:43
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-12 55:55:43
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts,SUCCESSFUL,,2026-02-12 55:55:43
