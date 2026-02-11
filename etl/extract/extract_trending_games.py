@@ -1,6 +1,5 @@
 """
-Provides functions to extract necessary data based on a specific web-page of the Steam
-Charts for further processing.
+Extract top 5 current trending games from the Steam Charts.
 """
 import requests
 from bs4 import BeautifulSoup
