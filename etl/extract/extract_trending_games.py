@@ -195,7 +195,7 @@ def extract_player_concurrency_data(
         div_tag_with_app_heading_id = div_tag_with_content_wrapper_id.find(
             "div",
             attrs={
-                "id": "app-head"
+                "id": "app-heading"
             }
         )
 
@@ -207,7 +207,7 @@ def extract_player_concurrency_data(
             }
         )
         app_logo_path = img_tag_with_app_image_class["src"]
-        app_logo = "https://steamcharts.com/" + app_logo_path
+        app_logo = "https://steamcharts.com" + app_logo_path
         result["app_logo"] = app_logo
 
         # Extract the peak concurrent players within the time period of 24-Hours
