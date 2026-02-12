@@ -84,13 +84,13 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
                 "class": "content"
             }
         )
-        trending_games_table = div_tag_with_content_class.find(
+        table_tag = div_tag_with_content_class.find(
             "table",
             attrs={
                 "id": "trending-recent"
             }
         )
-        tbody_tag = trending_games_table.find("tbody")
+        tbody_tag = table_tag.find("tbody")
         list_of_all_table_row_tags  = tbody_tag.find_all("tr")
 
         # Iterate over the trending games table to get the data using for-loop
