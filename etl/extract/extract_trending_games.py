@@ -63,7 +63,7 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
     if soup is None:
         etl_pipeline_logs(
             "EXTRACT",
-            "Extract and the top 5 current trending games on Steam Charts",
+            "Extract the top 5 current trending games on Steam Charts",
             "FAILED",
             None
         )
