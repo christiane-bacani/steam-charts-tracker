@@ -44,7 +44,7 @@ def extract_and_parse_soup(url: str) -> BeautifulSoup | None:
 
 def extract_top_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
     """
-    Extract top gammes by current players table from the Steam Charts website.
+    Extract top games by current players table from the Steam Charts website.
 
     :param soup: BeautifulSoup object representing the web-page from the url, NoneType
         if non-existent
@@ -63,5 +63,35 @@ def extract_top_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
     if soup is None:
         etl_pipeline_logs(
             "EXTRACT",
-            ""
+            "Extract top games data by current players",
+            "FAILED",
+            None
         )
+        return result
+
+    try:
+        body_tag = soup.find("body")
+        div_tag_with_content_wrapper_id = body_tag.find(
+            "div",
+            attrs={
+                "id": "content-wrapper"
+            }
+        )
+
+        div_tag_with_content_class = div_tag_with_content_wrapper_id.find(
+            "div",
+            attrs={
+                "class": "content"
+            }
+        )
+        table_tag = div_tag_with_content_class.find("table", attrs={"id": "top-games"})
+        tbody_tag = table_tag.find("tbody")
+
+    except Exception as error_message:
+        etl_pipeline_logs(
+            "EXTRACT",
+            "Extract top games data by current players",
+            "FAILED",
+            error_message
+        )
+        return result
