@@ -86,6 +86,16 @@ def extract_top_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
         )
         table_tag = div_tag_with_content_class.find("table", attrs={"id": "top-games"})
         tbody_tag = table_tag.find("tbody")
+        list_of_all_table_row_tags = tbody_tag.find_all("tr")
+
+        for table_row_tag in list_of_all_table_row_tags:
+            list_of_all_table_data_tags = table_row_tag.find_all("td")
+
+            for cell_number, table_data_tag in enumerate(list_of_all_table_data_tags):
+                if cell_number == 0 or cell_number == 3:
+                    continue
+  
+                cell = table_data_tag.get_text()
 
     except Exception as error_message:
         etl_pipeline_logs(
