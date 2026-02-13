@@ -91,12 +91,28 @@ def extract_top_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
         for table_row_tag in list_of_all_table_row_tags:
             list_of_all_table_data_tags = table_row_tag.find_all("td")
 
+            cells = []
+
             for cell_number, table_data_tag in enumerate(list_of_all_table_data_tags):
                 if cell_number == 0 or cell_number == 3:
                     continue
   
                 cell = table_data_tag.get_text()
+                cells.append(cell)
 
+            result["name"] = cells[0]
+            result["current_players"] = cells[1]
+            result["peak_concurrent_players_30d"] = cells[2]
+            result["total_hours_played_30d"] = cells[3]
+
+        etl_pipeline_logs(
+            "EXTRACT",
+            "Extract top games data by current players",
+            "SUCCESSFUL",
+            None
+        )
+        return result
+         
     except Exception as error_message:
         etl_pipeline_logs(
             "EXTRACT",
