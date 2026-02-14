@@ -106,11 +106,11 @@ def extract_top_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
                 cell = table_data_tag.get_text()
                 cells.append(cell)
 
-            result["name"] = cells[0]
-            result["current_players"] = cell[1]
-            result["peak_concurrent_players_30d"] = cells[2]
-            result["total_hours_played_30d"] = cells[3]
-        
+            result["name"].append(cells[0])
+            result["current_players"].append(cell[1])
+            result["peak_concurrent_players_30d"].append(cells[2])
+            result["total_hours_played_30d"].append(cells[3])
+
         etl_pipeline_logs(
             "EXTRACT",
             "Extract top games data by current players",
