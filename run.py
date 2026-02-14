@@ -6,6 +6,8 @@ from etl.extract.extract_trending_games import extract_and_parse_soup
 from etl.extract.extract_trending_games import extract_trending_games_table
 from etl.extract.extract_trending_games import extract_player_concurrency_data
 from etl.extract.extract_trending_games import extract_historical_player_stats
+from etl.extract.extract_top_games import extract_and_parse_soup
+from etl.extract.extract_top_games import extract_top_games_table
 
 base_url = "https://steamcharts.com/"
 soup = extract_and_parse_soup(base_url)
@@ -35,3 +37,6 @@ for number in range(5):
 
     historical_player_stats = extract_historical_player_stats(soup, number)
     historical_player_stats_dict[app_name] = historical_player_stats
+
+base_url = "https://steamcharts.com/top"
+soup = extract_and_parse_soup(base_url)
