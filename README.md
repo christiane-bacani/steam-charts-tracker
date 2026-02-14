@@ -7,7 +7,7 @@ Steam Charts Tracker is a a data processing system that extracts, transforms, an
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
-- [Is this blue?]
+- [Todo](#Todo)
 
-I don't know what to write, but there's a todo list:
-- Create documentation using this markdown file with a guide from this [link](https://medium.com/@kc_clintone/the-ultimate-guide-to-writing-a-great-readme-md-for-your-project-3d49c2023357)
+# Todo
+- Add description what data it will return per function
