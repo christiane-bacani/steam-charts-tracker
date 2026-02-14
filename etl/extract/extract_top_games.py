@@ -68,3 +68,18 @@ def extract_top_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
             None
         )
         return result
+
+    body_tag = soup.find("body")
+    div_tag_with_content_wrapper = body_tag.find(
+        "div",
+        attrs={
+            "id": "content-wrapper"
+        }
+    )
+
+    div_tag_with_content_wrapper = div_tag_with_content_wrapper.find(
+        "div",
+        attrs={
+            "class": "content"
+        }
+    )
