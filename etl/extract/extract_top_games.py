@@ -55,6 +55,7 @@ def extract_top_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
     """
     result = {
         "name": [],
+        "url": [],
         "current_players": [],
         "peak_concurrent_players_30d": [],
         "total_hours_played_30d": []
@@ -103,13 +104,27 @@ def extract_top_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
                 if cell_number == 0 or cell_number == 3:
                     continue
 
-                cell = table_data_tag.get_text()
-                cells.append(cell)
+                elif cell_number == 1:
+                    anchor_tag = table_data_tag.find("a")
+                    cell = anchor_tag.get_text()
+
+                    path = anchor_tag["href"]
+                    path = str(path)
+                    path = path.replace("/app", "app")
+                    url = "https://steamcharts.com/" + path
+    
+                    cells.append(cell)
+                    cells.append(url)
+                    
+                else:
+                    cell = table_data_tag.get_text()
+                    cells.append(cell)
 
             result["name"].append(cells[0])
-            result["current_players"].append(cell[1])
-            result["peak_concurrent_players_30d"].append(cells[2])
-            result["total_hours_played_30d"].append(cells[3])
+            result["url"].append(cells[1])
+            result["current_players"].append(cells[2])
+            result["peak_concurrent_players_30d"].append(cells[3])
+            result["total_hours_played_30d"].append(cells[4])
 
         etl_pipeline_logs(
             "EXTRACT",
