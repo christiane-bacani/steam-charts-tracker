@@ -40,3 +40,4 @@ for number in range(5):
 
 base_url = "https://steamcharts.com/top"
 soup = extract_and_parse_soup(base_url)
+extract_top_games_table(soup)
