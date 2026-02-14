@@ -390,3 +390,95 @@ EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 27:27:27
 EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 27:27:27
 EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 27:27:27
 EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 27:27:28
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 05:05:59
+EXTRACT,Extract the top 5 current trending games on Steam Charts,SUCCESSFUL,,2026-02-14 06:06:00
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 06:06:01
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 06:06:01
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 06:06:01
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 06:06:02
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 06:06:02
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 06:06:02
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 06:06:03
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 06:06:03
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 06:06:03
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 06:06:06
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 06:06:06
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 06:06:06
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 06:06:08
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 06:06:08
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 06:06:08
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 06:06:10
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 06:06:54
+EXTRACT,Extract the top 5 current trending games on Steam Charts,SUCCESSFUL,,2026-02-14 06:06:54
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 06:06:55
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 06:06:55
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 06:06:55
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 06:06:56
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 06:06:56
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 06:06:56
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 06:06:58
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 06:06:58
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 06:06:58
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 06:06:59
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 06:06:59
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 06:06:59
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 07:07:01
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 07:07:01
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 07:07:01
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 07:07:03
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 20:20:24
+EXTRACT,Extract the top 5 current trending games on Steam Charts,SUCCESSFUL,,2026-02-14 20:20:24
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 20:20:25
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 20:20:25
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 20:20:25
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 20:20:27
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 20:20:27
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 20:20:27
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 20:20:28
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 20:20:28
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 20:20:28
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 20:20:30
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 20:20:30
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 20:20:30
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 20:20:31
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 20:20:31
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 20:20:31
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 20:20:33
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 35:35:21
+EXTRACT,Extract the top 5 current trending games on Steam Charts,SUCCESSFUL,,2026-02-14 35:35:21
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 35:35:22
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 35:35:22
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 35:35:22
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 35:35:23
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 35:35:23
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 35:35:23
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 35:35:25
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 35:35:25
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 35:35:25
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 35:35:27
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 35:35:27
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 35:35:27
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 35:35:30
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 35:35:30
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 35:35:30
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 35:35:44
+EXTRACT,Extract top games data by current players,SUCCESSFUL,,2026-02-14 35:35:44
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 38:38:48
+EXTRACT,Extract the top 5 current trending games on Steam Charts,SUCCESSFUL,,2026-02-14 38:38:48
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 38:38:50
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 38:38:50
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 38:38:50
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 38:38:51
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 38:38:51
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 38:38:51
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 38:38:53
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 38:38:54
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 38:38:54
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 38:38:55
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 38:38:55
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 38:38:56
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 39:39:00
+EXTRACT,Extract the player concurrency data of the number trending game on Steam,FAILED,etl_pipeline_logs() missing 1 required positional argument: 'error_message',2026-02-14 39:39:00
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts,SUCCESSFUL,,2026-02-14 39:39:00
+EXTRACT,Extract and parse BeautifulSoup object,SUCCESSFUL,,2026-02-14 39:39:01
+EXTRACT,Extract top games data by current players,SUCCESSFUL,,2026-02-14 39:39:01
