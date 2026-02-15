@@ -113,7 +113,7 @@ def extract_app_summary(
     :param trending_game_index_no: Current trending game index
     :type trending_game_index_no: int
 
-    :return: Player concurrency data dictionary:\n
+    :return: Application summary dictionary:\n
         `{app_name: "", app_logo: "", peak_no_of_players_24h: "",
         all_time_peak_no_of_players: ""}`
     :rtype: dict[str, str]
