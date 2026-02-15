@@ -101,6 +101,7 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
             anchor_tag = list_of_all_table_data_tags[0].find("a")
             app_id = anchor_tag["href"]
             app_id = str(app_id)
+            app_id = app_id.replace("/app", "app")
 
             app_name = anchor_tag.get_text()
             app_name = str(app_name)
