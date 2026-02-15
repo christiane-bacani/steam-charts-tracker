@@ -3,7 +3,7 @@ Orchestrate and executes workflow of the Steam Charts ETL Pipeline.
 """
 from etl.extract.extract_page_content import extract_and_parse_soup
 from etl.extract.extract_trending_games import extract_trending_games_table
-from etl.extract.extract_trending_games import extract_player_concurrency_data
+from etl.extract.extract_trending_games import extract_app_summary
 from etl.extract.extract_trending_games import extract_historical_player_stats_table
 from etl.extract.extract_top_games import extract_top_games_table
 
@@ -13,7 +13,7 @@ base_url = "https://steamcharts.com/"
 soup = extract_and_parse_soup(base_url)
 trending_games_dict = extract_trending_games_table(soup)
 
-player_concurrency_dict = {}
+app_summary_dict = {}
 historical_player_stats_dict = {}
 
 # Get the player concurrency data and historical player stats of every trending game
@@ -26,8 +26,8 @@ for number in range(5):
 
     soup = extract_and_parse_soup(url)
 
-    player_concurrency_data = extract_player_concurrency_data(soup, number)
-    player_concurrency_dict[app_name] = player_concurrency_data
+    app_summary = extract_app_summary(soup, number)
+    app_summary_dict[app_name] = app_summary
 
     historical_player_stats = extract_historical_player_stats_table(soup, number)
     historical_player_stats_dict[app_name] = historical_player_stats
