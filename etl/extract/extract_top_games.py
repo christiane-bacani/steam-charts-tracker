@@ -26,7 +26,7 @@ def extract_and_parse_soup(url: str) -> BeautifulSoup | None:
     if response.status_code != 200:
         etl_pipeline_logs(
             "EXTRACT",
-            "Extract and parse BeautifulSoup object",
+            "Extract and parse BeautifulSoup object.",
             "FAILED",
             None
         )
@@ -36,7 +36,7 @@ def extract_and_parse_soup(url: str) -> BeautifulSoup | None:
 
     etl_pipeline_logs(
             "EXTRACT",
-            "Extract and parse BeautifulSoup object",
+            "Extract and parse BeautifulSoup object.",
             "SUCCESSFUL",
             None
     )
@@ -67,7 +67,7 @@ def extract_top_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
     if soup is None:
         etl_pipeline_logs(
             "EXTRACT",
-            "Extract top games data by current players",
+            "Extract the top games by current players on Steam Charts.",
             "FAILED",
             None
         )
@@ -131,7 +131,7 @@ def extract_top_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
 
         etl_pipeline_logs(
             "EXTRACT",
-            "Extract top games data by current players",
+            "Extract the top games by current players on Steam Charts.",
             "SUCCESSFUL",
             None
         )
@@ -140,7 +140,7 @@ def extract_top_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
     except Exception as error_message:
         etl_pipeline_logs(
             "EXTRACT",
-            "Extract top games data by current players",
+            "Extract the top games by current players on Steam Charts.",
             "FAILED",
             error_message
         )
