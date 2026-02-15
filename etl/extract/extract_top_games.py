@@ -128,3 +128,39 @@ def extract_app_summary(
         all_time_peak_no_of_players: ""}`
     :rtype: dict[str, str]
     """
+    result = {
+        "app_name": "",
+        "app_logo": "",
+        "peak_no_of_players_24h": "",
+        "all_time_peak_no_of_players": ""
+    }
+
+    number = top_game_index_no + 1
+
+    if soup is None:
+        etl_pipeline_logs(
+            "EXTRACT",
+            f"Extract the application summary data of the number {number} top game "
+            "on Steam Charts."
+            "FAILED",
+            None
+        )
+        return result
+
+    body_tag = soup.find("body")
+    div_tag_with_content_wrapper_id = body_tag.find(
+        "div",
+        attrs={
+            "id": "content-wrapper"
+        }
+    )
+
+    # Extract the application name
+    app_name_tag = div_tag_with_content_wrapper_id.find(
+        "h1",
+        attrs={
+            "id": "app-title"
+        }
+    )
+    app_name = app_name_tag.get_text()
+    app_name = str(app_name)
