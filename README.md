@@ -10,6 +10,5 @@ Steam Charts Tracker is a a data processing system that extracts, transforms, an
 - [Todo](#Todo)
 
 # Todo
-- Rename the function name from `extract_player_concurrency_data` to `extract_app_summary` to the module `extract_trending_games`
 - Check the function `extract_app_summary` if I can extract also the number of players playing an hour ago or minutes ago.
 - Move the function `extract_app_summary` and `extract_historical_player_stats_table` to a dedicated module.
