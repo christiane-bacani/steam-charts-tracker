@@ -25,7 +25,7 @@ def etl_pipeline_logs(
     :type status: str
 
     :param error_message: The error messsage that indicates the proper description on
-        why does the ETL Pipeline job failed, None non-existent
+        why does the ETL Pipeline job failed, Nonetype if non-existent
     :type error_message: str | None
     """
     now = datetime.now()
