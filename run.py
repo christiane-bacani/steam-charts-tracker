@@ -1,8 +1,7 @@
 """
-This module orchestrates and executes different functions from their corresponding
-modules of the following packages: `etl/extract`, `etl/transform/`, and `etl/load`.
+Orchestrate and executes workflow of the Steam Charts ETL Pipeline.
 """
-from etl.extract.extract_soup import extract_and_parse_soup
+from etl.extract.extract_page_content import extract_and_parse_soup
 from etl.extract.extract_trending_games import extract_trending_games_table
 from etl.extract.extract_trending_games import extract_player_concurrency_data
 from etl.extract.extract_trending_games import extract_historical_player_stats_table
