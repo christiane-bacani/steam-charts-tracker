@@ -21,7 +21,6 @@ historical_player_stats_dict = {}
 # Get the player concurrency data and historical player stats of every trending game
 for number in range(5):
     path = trending_games_dictionary["app_id"][number]
-    path = str(path).replace("/app", "app")
     url = base_url + path
 
     app_name = trending_games_dictionary["app_name"][number]
