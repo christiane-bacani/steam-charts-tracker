@@ -26,7 +26,7 @@ def extract_and_parse_soup(url: str) -> BeautifulSoup | None:
     if response.status_code != 200:
         etl_pipeline_logs(
             "EXTRACT",
-            "Extract and parse BeautifulSoup object",
+            "Extract and parse BeautifulSoup object.",
             "FAILED",
             None
         )
@@ -36,7 +36,7 @@ def extract_and_parse_soup(url: str) -> BeautifulSoup | None:
 
     etl_pipeline_logs(
             "EXTRACT",
-            "Extract and parse BeautifulSoup object",
+            "Extract and parse BeautifulSoup object.",
             "SUCCESSFUL",
             None
     )
@@ -64,7 +64,7 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
     if soup is None:
         etl_pipeline_logs(
             "EXTRACT",
-            "Extract the top 5 current trending games on Steam Charts",
+            "Extract the top 5 current trending games on Steam Charts.",
             "FAILED",
             None
         )
@@ -121,7 +121,7 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
 
         etl_pipeline_logs(
             "EXTRACT",
-            "Extract the top 5 current trending games on Steam Charts",
+            "Extract the top 5 current trending games on Steam Charts.",
             "SUCCESSFUL",
             None
         )
@@ -130,7 +130,7 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
     except Exception as error_message:
         etl_pipeline_logs(
             "EXTRACT",
-            "Extract the top 5 current trending games on Steam Charts",
+            "Extract the top 5 current trending games on Steam Charts.",
             "FAILED",
             error_message
         )
@@ -169,7 +169,7 @@ def extract_player_concurrency_data(
         etl_pipeline_logs(
             "EXTRACT",
             f"Extract the player concurrency data of the number {number} trending "
-            "game Steam"
+            "game on Steam Charts."
             "FAILED",
             None
         )
@@ -241,7 +241,7 @@ def extract_player_concurrency_data(
         etl_pipeline_logs(
             "EXTRACT",
             f"Extract the player concurrency data of the number {number} trending "
-            "game on Steam Charts"
+            "game on Steam Charts."
             "SUCCESSFUL",
             None
         )
@@ -250,8 +250,8 @@ def extract_player_concurrency_data(
     except Exception as error_message:
         etl_pipeline_logs(
             "EXTRACT",
-            f"Extract the player concurrency data of the number trending "
-            "game on Steam",
+            f"Extract the player concurrency data of the {number} trending "
+            "game on Steam Charts.",
             "FAILED",
             error_message
         )
@@ -290,7 +290,7 @@ def extract_historical_player_stats_table(
         etl_pipeline_logs(
             "EXTRACT",
             f"Extract the historical player statistics of the number {number} trending "
-            "game on Steam Charts",
+            "game on Steam Charts.",
             "FAILED",
             None
         )
@@ -340,7 +340,7 @@ def extract_historical_player_stats_table(
         etl_pipeline_logs(
             "EXTRACT",
             f"Extract the historical player statistics of the number {number} trending "
-            "game on Steam Charts",
+            "game on Steam Charts.",
             "SUCCESSFUL",
             None
         )
@@ -350,7 +350,7 @@ def extract_historical_player_stats_table(
         etl_pipeline_logs(
             "EXTRACT",
             f"Extract the historical player statistics of the number {number} "
-            "trending game on Steam Charts",
+            "trending game on Steam Charts.",
             "FAILED",
             error_message
         )
