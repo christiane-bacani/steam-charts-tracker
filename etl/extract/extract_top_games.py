@@ -108,3 +108,23 @@ def extract_top_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
             error_message
         )
         return result
+
+def extract_app_summary(
+        soup: BeautifulSoup | None,
+        top_game_index_no: int
+) -> dict[str, str]:
+    """
+    Extract the application summary of a specific top game on Steam Charts.
+
+    :param soup: BeautifulSoup object representing the web-page from the url, NoneType
+        if non-existent
+    :type soup: BeautifulSoup | None
+
+    :param top_game_index_no: Current trending game index
+    :type top_game_index_no: int
+
+    :return: Application summary dictionary:\n
+        `{app_name: "", app_logo: "", peak_no_of_players_24h: "",
+        all_time_peak_no_of_players: ""}`
+    :rtype: dict[str, str]
+    """
