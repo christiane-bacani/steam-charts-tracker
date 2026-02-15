@@ -67,7 +67,6 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
             app_id = app_id.replace("/app", "app")
 
             app_name = anchor_tag.get_text()
-            app_name = str(app_name)
 
             change_24h_pct = list_of_all_table_data_tags[1]
             change_24h_pct = change_24h_pct.get_text()
