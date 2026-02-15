@@ -215,7 +215,7 @@ def extract_app_summary(
             f"Extract the application summary data of the number {number} trending "
             "game on Steam Charts.",
             "FAILED",
-            None
+            error_message
         )
         return result
 
