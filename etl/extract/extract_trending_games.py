@@ -51,14 +51,14 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
     :type soup: BeautifulSoup | None
 
     :return: Top 5 current trending games dictionary:\n
-        `{app_id: [], app_name: [], change_24h: [], current_players: []}`
+        `{app_id: [], app_name: [], change_24h_pct: [], current_no_of_players: []}`
     :rtype: dict[str, list]
     """
     result = {
         "app_id": [],
         "app_name": [],
-        "change_24h": [],
-        "current_players": []
+        "change_24h_pct": [],
+        "current_no_of_players": []
     }
 
     if soup is None:
@@ -106,18 +106,18 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
             app_name = anchor_tag.get_text()
             app_name = str(app_name)
 
-            change_twenty_four_hours = list_of_all_table_data_tags[1]
-            change_twenty_four_hours = change_twenty_four_hours.get_text()
-            change_twenty_four_hours = str(change_twenty_four_hours)
+            change_24h_pct = list_of_all_table_data_tags[1]
+            change_24h_pct = change_24h_pct.get_text()
+            change_24h_pct = str(change_24h_pct)
 
-            current_players = list_of_all_table_data_tags[3]
-            current_players = current_players.get_text()
-            current_players = str(current_players)
+            current_no_of_players = list_of_all_table_data_tags[3]
+            current_no_of_players = current_no_of_players.get_text()
+            current_no_of_players = str(current_no_of_players)
 
             result["app_id"].append(app_id)
             result["app_name"].append(app_name)
-            result["change_24h"].append(change_twenty_four_hours)
-            result["current_players"].append(current_players)
+            result["change_24h_pct"].append(change_24h_pct)
+            result["current_no_of_players"].append(current_no_of_players)
 
         etl_pipeline_logs(
             "EXTRACT",
@@ -152,15 +152,15 @@ def extract_player_concurrency_data(
     :type trending_game_index: int
 
     :return: Player concurrency data dictionary:\n
-        `{app_name: "", app_logo: "", peak_players_24h: "",
-        peak_players_all_time: ""}`
+        `{app_name: "", app_logo: "", peak_no_of_players_24h: "",
+        all_time_peak_no_of_players: ""}`
     :rtype: dict[str, str]
     """
     result = {
         "app_name": "",
         "app_logo": "",
-        "peak_players_24h": "",
-        "peak_players_all_time": ""
+        "peak_no_of_players_24h": "",
+        "all_time_peak_no_of_players": ""
     }
 
     number = trending_game_index + 1
@@ -214,29 +214,29 @@ def extract_player_concurrency_data(
         result["app_logo"] = app_logo
 
         # Extract the peak concurrent players within the time period of 24-Hours
-        peak_players_24h_tag = div_tag_with_app_heading_id.find_all(
+        peak_no_of_players_24h_tag = div_tag_with_app_heading_id.find_all(
             "div",
             attrs={
                 "class": "app-stat"
             }
         )[1]
-        peak_players_24h = peak_players_24h_tag.get_text()
-        peak_players_24h = peak_players_24h.replace("24-hour peak", "")
-        peak_players_24h = int(peak_players_24h.strip())
-        result["peak_players_24h"] = peak_players_24h
+        peak_no_of_players_24h = peak_no_of_players_24h_tag.get_text()
+        peak_no_of_players_24h = peak_no_of_players_24h.replace("24-hour peak", "")
+        peak_no_of_players_24h = int(peak_no_of_players_24h.strip())
+        result["peak_no_of_players_24h"] = peak_no_of_players_24h
 
         # Extract the all-time peak concurrent players
-        peak_players_all_time_tag = div_tag_with_app_heading_id.find_all(
+        all_time_peak_no_of_players_tag = div_tag_with_app_heading_id.find_all(
             "div",
             attrs={
                 "class": "app-stat"
             }
         )[2]
 
-        peak_players_all_time = peak_players_all_time_tag.get_text()
-        peak_players_all_time = peak_players_all_time.replace("all-time peak", "")
-        peak_players_all_time = int(peak_players_all_time.strip())
-        result["peak_players_all_time"] = peak_players_all_time
+        all_time_peak_no_of_players = all_time_peak_no_of_players_tag.get_text()
+        all_time_peak_no_of_players = all_time_peak_no_of_players.replace("all-time peak", "")
+        all_time_peak_no_of_players = int(all_time_peak_no_of_players.strip())
+        result["all_time_peak_no_of_players"] = all_time_peak_no_of_players
 
         etl_pipeline_logs(
             "EXTRACT",
@@ -272,16 +272,16 @@ def extract_historical_player_stats(
     :type trending_game_index: int
 
     :return: Historical player data dictionary:\n
-        `{period: [], avg_players: [],  player_gain: [], pct_gain: [],
-        peak_players: []}`
+        `{period_name: [], avg_no_of_players: [],  avg_no_of_players_gain: [], pct_gain: [],
+        peak_no_of_players: []}`
     :rtype: dict[str, dict]
     """
     result = {
-        "period": [],
-        "avg_players": [],
-        "player_gain": [],
+        "period_name": [],
+        "avg_no_of_players": [],
+        "avg_no_of_players_gain": [],
         "pct_gain": [],
-        "peak_players": []
+        "peak_no_of_players": []
     }
 
     number = trending_game_index + 1
@@ -324,18 +324,18 @@ def extract_historical_player_stats(
         for table_row_tag in list_of_all_table_row_tags:
             list_of_all_table_data_tags = table_row_tag.find_all("td")
 
-            cell_values = []
+            cells = []
 
             for table_data_tag in list_of_all_table_data_tags:
-                cell_value  = table_data_tag.get_text()
-                cell_value = str(cell_value)
-                cell_values.append(cell_value)
+                cell = table_data_tag.get_text()
+                cell = str(cell)
+                cells.append(cell)
 
-            result["period"].append(cell_values[0])
-            result["avg_players"].append(cell_values[1])
-            result["player_gain"].append(cell_values[2])
-            result["pct_gain"].append(cell_values[3])
-            result["peak_players"].append(cell_values[4])
+            result["period_name"].append(cells[0])
+            result["avg_no_of_players"].append(cells[1])
+            result["avg_no_of_players_gain"].append(cells[2])
+            result["pct_gain"].append(cells[3])
+            result["peak_no_of_players"].append(cells[4])
 
         etl_pipeline_logs(
             "EXTRACT",
