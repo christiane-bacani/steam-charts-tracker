@@ -35,9 +35,9 @@ def extract_and_parse_soup(url: str) -> BeautifulSoup | None:
     soup = BeautifulSoup(response.text, "html.parser")
 
     etl_pipeline_logs(
-            "EXTRACT",
-            "Extract and parse BeautifulSoup object.",
-            "SUCCESSFUL",
-            None
+        "EXTRACT",
+        "Extract and parse BeautifulSoup object.",
+        "SUCCESSFUL",
+        None
     )
     return soup
