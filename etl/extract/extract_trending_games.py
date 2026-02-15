@@ -130,7 +130,7 @@ def extract_app_summary(
     if soup is None:
         etl_pipeline_logs(
             "EXTRACT",
-            f"Extract the player concurrency data of the number {number} trending "
+            f"Extract the application summary data of the number {number} trending "
             "game on Steam Charts."
             "FAILED",
             None
@@ -202,7 +202,7 @@ def extract_app_summary(
 
         etl_pipeline_logs(
             "EXTRACT",
-            f"Extract the player concurrency data of the number {number} trending "
+            f"Extract the application summary data of the number {number} trending "
             "game on Steam Charts."
             "SUCCESSFUL",
             None
@@ -212,10 +212,10 @@ def extract_app_summary(
     except Exception as error_message:
         etl_pipeline_logs(
             "EXTRACT",
-            f"Extract the player concurrency data of the {number} trending "
-            "game on Steam Charts.",
+            f"Extract the application summary data of the number {number} trending "
+            "game on Steam Charts."
             "FAILED",
-            error_message
+            None
         )
         return result
 
