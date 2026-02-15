@@ -2,11 +2,10 @@
 This module orchestrates and executes different functions from their corresponding
 modules of the following packages: `etl/extract`, `etl/transform/`, and `etl/load`.
 """
-from etl.extract.extract_trending_games import extract_and_parse_soup
+from etl.extract.extract_soup import extract_and_parse_soup
 from etl.extract.extract_trending_games import extract_trending_games_table
 from etl.extract.extract_trending_games import extract_player_concurrency_data
 from etl.extract.extract_trending_games import extract_historical_player_stats_table
-from etl.extract.extract_top_games import extract_and_parse_soup
 from etl.extract.extract_top_games import extract_top_games_table
 
 base_url = "https://steamcharts.com/"
@@ -38,3 +37,14 @@ for number in range(5):
 base_url = "https://steamcharts.com/top"
 soup = extract_and_parse_soup(base_url)
 top_games_dict = extract_top_games_table(soup)
+
+base_url = "https://steamcharts.com/"
+
+for number in range(25):
+    path = top_games_dict["app_id"][number]
+    url = base_url + path
+
+    app_name = top_games_dict["app_name"][number]
+    app_name = str(app_name)
+
+    soup = extract_and_parse_soup(url)
