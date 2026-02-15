@@ -1,6 +1,6 @@
 """
 This module generate logs while processing data from the Steam Charts
-website. This will provide audit nd/or logs to support troubleshooting of the ETL
+website. This will provide audit and/or logs to support troubleshooting of the ETL
 Pipeline.
 """
 import pandas as pd
