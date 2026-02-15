@@ -50,7 +50,8 @@ def extract_top_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
         if non-existent
     :type soup: BeautifulSoup | None
 
-    :return: Top games by current players dictionary:\n `{app_id: [], app_name: [],
+    :return: Top games by current players dictionary:\n
+        `{app_id: [], app_name: [],
         current_players: [], peak_concurrent_players_30d: [],
         total_hours_played_30d: []}`
     :rtype: dict[str, list]
