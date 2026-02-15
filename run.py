@@ -6,6 +6,7 @@ from etl.extract.extract_trending_games import extract_trending_games_table
 from etl.extract.extract_trending_games import extract_app_summary
 from etl.extract.extract_trending_games import extract_historical_player_stats_table
 from etl.extract.extract_top_games import extract_top_games_table
+from etl.extract.extract_top_games import extract_app_summary
 
 base_url = "https://steamcharts.com/"
 
