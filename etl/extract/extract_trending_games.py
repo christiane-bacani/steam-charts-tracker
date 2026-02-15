@@ -257,23 +257,23 @@ def extract_player_concurrency_data(
         )
         return result
 
-def extract_historical_player_stats(
+def extract_historical_player_stats_table(
         soup: BeautifulSoup | None,
-        trending_game_index: int
+        trending_game_index_no: int
 ) -> dict[str, dict]:
     """
-    Extract the historical player statistics of a current trending game.
+    Extract the historical player statistics table of a current trending game.
 
     :param soup: BeautifulSoup object representing the web-page from the url, NoneType
         if non-existent
     :type soup: BeautifulSoup | None
 
-    :param trending_game_index: Current trending game index
-    :type trending_game_index: int
+    :param trending_game_index_no: Current trending game index
+    :type trending_game_index_no: int
 
     :return: Historical player data dictionary:\n
-        `{period_name: [], avg_no_of_players: [],  avg_no_of_players_gain: [], pct_gain: [],
-        peak_no_of_players: []}`
+        `{period_name: [], avg_no_of_players: [],  avg_no_of_players_gain: [],
+        pct_gain: [], peak_no_of_players: []}`
     :rtype: dict[str, dict]
     """
     result = {
@@ -284,7 +284,7 @@ def extract_historical_player_stats(
         "peak_no_of_players": []
     }
 
-    number = trending_game_index + 1
+    number = trending_game_index_no + 1
 
     if soup is None:
         etl_pipeline_logs(
