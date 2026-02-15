@@ -10,4 +10,4 @@ Steam Charts Tracker is a a data processing system that extracts, transforms, an
 - [Todo](#Todo)
 
 # Todo
-- Fix the key name to make it more descriptive for every extract functions excluding the function: `extract_and_parse_soup`
+- Add period to the job description when executing the `etl_pipeline_logs` for every functions and make sure the job description message is descriptive.
