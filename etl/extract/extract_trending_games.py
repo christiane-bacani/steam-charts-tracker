@@ -222,7 +222,7 @@ def extract_player_concurrency_data(
 def extract_historical_player_stats_table(
         soup: BeautifulSoup | None,
         trending_game_index_no: int
-) -> dict[str, dict]:
+) -> dict[str, list]:
     """
     Extract the historical player statistics table of a current trending game.
 
@@ -236,7 +236,7 @@ def extract_historical_player_stats_table(
     :return: Historical player data dictionary:\n
         `{period_name: [], avg_no_of_players: [],  avg_no_of_players_gain: [],
         pct_gain: [], peak_no_of_players: []}`
-    :rtype: dict[str, dict]
+    :rtype: dict[str, list]
     """
     result = {
         "period_name": [],
