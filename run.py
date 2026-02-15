@@ -13,17 +13,17 @@ base_url = "https://steamcharts.com/"
 
 # Top 5 current trending games
 soup = extract_and_parse_soup(base_url)
-trending_games_dictionary = extract_trending_games_table(soup)
+trending_games_dict = extract_trending_games_table(soup)
 
 player_concurrency_dict = {}
 historical_player_stats_dict = {}
 
 # Get the player concurrency data and historical player stats of every trending game
 for number in range(5):
-    path = trending_games_dictionary["app_id"][number]
+    path = trending_games_dict["app_id"][number]
     url = base_url + path
 
-    app_name = trending_games_dictionary["app_name"][number]
+    app_name = trending_games_dict["app_name"][number]
     app_name = str(app_name)
 
     soup = extract_and_parse_soup(url)
