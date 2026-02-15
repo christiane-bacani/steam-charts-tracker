@@ -10,4 +10,4 @@ Steam Charts Tracker is a a data processing system that extracts, transforms, an
 - [Todo](#Todo)
 
 # Todo
-- Add description what data it will return per function
+- Fix the key name to make it more descriptive for every extract functions excluding the function: `extract_and_parse_soup`
