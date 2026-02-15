@@ -50,12 +50,14 @@ def extract_top_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
         if non-existent
     :type soup: BeautifulSoup | None
 
-    :return: Top games by current players dictionary
+    :return: Top games by current players dictionary:\n `{app_id: [], app_name: [],
+        current_players: [], peak_concurrent_players_30d: [],
+        total_hours_played_30d: []}`
     :rtype: dict[str, list]
     """
     result = {
-        "name": [],
-        "url": [],
+        "app_id": [],
+        "app_name": [],
         "current_players": [],
         "peak_concurrent_players_30d": [],
         "total_hours_played_30d": []
@@ -106,22 +108,22 @@ def extract_top_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
 
                 elif cell_number == 1:
                     anchor_tag = table_data_tag.find("a")
-                    cell = anchor_tag.get_text()
 
-                    path = anchor_tag["href"]
-                    path = str(path)
-                    path = path.replace("/app", "app")
-                    url = "https://steamcharts.com/" + path
-    
-                    cells.append(cell)
-                    cells.append(url)
-                    
+                    app_id = anchor_tag["href"]
+                    app_id = str(app_id)
+                    app_id = app_id.replace("/app", "app")
+
+                    app_name = anchor_tag.get_text()
+
+                    cells.append(app_id)
+                    cells.append(app_name)
+
                 else:
                     cell = table_data_tag.get_text()
                     cells.append(cell)
 
-            result["name"].append(cells[0])
-            result["url"].append(cells[1])
+            result["app_id"].append(cells[0])
+            result["app_name"].append(cells[1])
             result["current_players"].append(cells[2])
             result["peak_concurrent_players_30d"].append(cells[3])
             result["total_hours_played_30d"].append(cells[4])
