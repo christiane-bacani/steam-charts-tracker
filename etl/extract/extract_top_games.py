@@ -52,16 +52,16 @@ def extract_top_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
 
     :return: Top games by current players dictionary:\n
         `{app_id: [], app_name: [],
-        current_players: [], peak_concurrent_players_30d: [],
-        total_hours_played_30d: []}`
+        current_no_of_players: [], peak_no_of_players_30d: [],
+        total_no_of_hours_played_30d: []}`
     :rtype: dict[str, list]
     """
     result = {
         "app_id": [],
         "app_name": [],
-        "current_players": [],
-        "peak_concurrent_players_30d": [],
-        "total_hours_played_30d": []
+        "current_no_of_players": [],
+        "peak_no_of_players_30d": [],
+        "total_no_of_hours_played_30d": []
     }
 
     if soup is None:
@@ -125,9 +125,9 @@ def extract_top_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
 
             result["app_id"].append(cells[0])
             result["app_name"].append(cells[1])
-            result["current_players"].append(cells[2])
-            result["peak_concurrent_players_30d"].append(cells[3])
-            result["total_hours_played_30d"].append(cells[4])
+            result["current_no_of_players"].append(cells[2])
+            result["peak_no_of_players_30d"].append(cells[3])
+            result["total_no_of_hours_played_30d"].append(cells[4])
 
         etl_pipeline_logs(
             "EXTRACT",
