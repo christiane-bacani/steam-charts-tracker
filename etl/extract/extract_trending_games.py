@@ -50,7 +50,8 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
         if non-existent
     :type soup: BeautifulSoup | None
 
-    :return: Top 5 current trending games dictionary
+    :return: Top 5 current trending games dictionary: `{app_id: list, app_name: list,
+        change_24_h: list, current_players: list}`
     :rtype: dict[str, list]
     """
     result = {
@@ -149,7 +150,8 @@ def extract_player_concurrency_data(
     :param trending_game_index: Current trending game index
     :type trending_game_index: int
 
-    :return: Player concurrency data dictionary
+    :return: Player concurrency data dictionary: `{app_name: str, app_logo: str,
+        peak_players_24h: str, peak_players_all_time: str}`
     :rtype: dict[str, str]
     """
     result = {
@@ -267,7 +269,8 @@ def extract_historical_player_stats(
     :param trending_game_index: Current trending game index
     :type trending_game_index: int
 
-    :return: Historical player data dictionary
+    :return: Historical player data dictionary:\n
+        `{period: [], avg_players: [], player_gain: [], pct_gain: [], peak_players: []}`
     :rtype: dict[str, dict]
     """
     result = {
