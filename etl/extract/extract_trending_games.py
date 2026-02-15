@@ -98,20 +98,20 @@ def extract_trending_games_table(soup: BeautifulSoup | None) -> dict[str, list]:
         )
         return result
 
-def extract_player_concurrency_data(
-        soup: BeautifulSoup | None,
-        trending_game_index: int
-) -> dict[str, dict]:
+def extract_app_summary(
+    soup: BeautifulSoup | None,
+    trending_game_index_no: int
+) -> dict[str, str]:
     """
-    Extract the player concurrency data of a specific current trending game on Steam
+    Extract the application summary of a specific current trending game on Steam
     Charts.
 
     :param soup: BeautifulSoup object representing the web-page from the url, NoneType
         if non-existent
     :type soup: BeautifulSoup | None
 
-    :param trending_game_index: Current trending game index
-    :type trending_game_index: int
+    :param trending_game_index_no: Current trending game index
+    :type trending_game_index_no: int
 
     :return: Player concurrency data dictionary:\n
         `{app_name: "", app_logo: "", peak_no_of_players_24h: "",
@@ -125,7 +125,7 @@ def extract_player_concurrency_data(
         "all_time_peak_no_of_players": ""
     }
 
-    number = trending_game_index + 1
+    number = trending_game_index_no + 1
 
     if soup is None:
         etl_pipeline_logs(
