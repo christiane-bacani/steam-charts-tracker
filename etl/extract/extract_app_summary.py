@@ -73,6 +73,24 @@ def extract_app_summary(
         app_name = str(app_name)
         result["app_name"] = app_name
 
+        div_tag_with_app_heading_id = div_tag_with_content_wrapper_id.find(
+            "div",
+            attrs={
+                "id": "app-heading"
+            }
+        )
+
+        # Extract the application logo
+        img_tag_with_app_image_class = div_tag_with_app_heading_id.find(
+            "img",
+            attrs={
+                "class": "app-image"
+            }
+        )
+        app_logo_path = img_tag_with_app_image_class["src"]
+        app_logo = "https://steamcharts.com" + app_logo_path
+        result["app_logo"] = app_logo
+
     except Exception as error_message:
         etl_pipeline_logs(
             "EXTRACT",
