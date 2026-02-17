@@ -44,3 +44,40 @@ def extract_app_summary(
     else:
         job_description = f"Extract the application summary data of the top {number} "
         "game on Steam Charts."
+
+    if soup is None:
+        etl_pipeline_logs(
+            "EXTRACT",
+            job_description,
+            "FAILED",
+            None
+        )
+
+    try:
+        body_tag = soup.find("tbody")
+        div_tag_with_content_wrapper_id = body_tag.find(
+            "div",
+            attrs={
+                "id": "content-wrapper"
+            }
+        )
+
+        # Extract the application name
+        h1_tag_with_app_title = div_tag_with_content_wrapper_id.find(
+            "h1",
+            attrs={
+                "id": "app-title"
+            }
+        )
+        app_name = h1_tag_with_app_title.get_text()
+        app_name = str(app_name)
+        result["app_name"] = app_name
+
+    except Exception as error_message:
+        etl_pipeline_logs(
+            "EXTRACT",
+            job_description,
+            "FAILED",
+            error_message
+        )
+        return result
