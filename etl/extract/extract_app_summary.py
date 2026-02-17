@@ -42,5 +42,5 @@ def extract_app_summary(
         f"{number} trending game on Steam Charts."
 
     else:
-        job_description = "Extract the application summary data of the number "
-        f"{number} top game on Steam Charts."
+        job_description = f"Extract the application summary data of the top {number} "
+        "game on Steam Charts."
