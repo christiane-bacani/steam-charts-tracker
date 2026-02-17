@@ -103,7 +103,7 @@ def extract_app_summary(
         peak_no_of_players_24h = int(peak_no_of_players_24h.strip())
         result["peak_no_of_players_24h"] = peak_no_of_players_24h
 
-        # Extract the all-time peak concurrent players
+        # Extract the all-time peak number of players
         all_time_peak_no_of_players_tag = div_tag_with_app_heading_id.find_all(
             "div",
             attrs={
