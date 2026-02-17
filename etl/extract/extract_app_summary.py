@@ -116,6 +116,14 @@ def extract_app_summary(
         all_time_peak_no_of_players = int(all_time_peak_no_of_players.strip())
         result["all_time_peak_no_of_players"] = all_time_peak_no_of_players
 
+        etl_pipeline_logs(
+            "EXTRACT",
+            job_description,
+            "SUCCESFUL",
+            None
+        )
+        return result
+
     except Exception as error_message:
         etl_pipeline_logs(
             "EXTRACT",
