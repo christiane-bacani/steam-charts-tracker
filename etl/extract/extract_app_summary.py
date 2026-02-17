@@ -28,3 +28,19 @@ def extract_app_summary(
         all_time_peak_no_of_players: ""}`
     :rtype: dict[str, str]
     """
+    result = {
+        "app_name": "",
+        "app_logo": "",
+        "peak_no_of_players_24h": "",
+        "all_time_peak_no_of_players": ""
+    }
+
+    number = game_index_no + 1
+
+    if helper == "Trending":
+        job_description = "Extract the application summary data of the number "
+        f"{number} trending game on Steam Charts."
+
+    else:
+        job_description = "Extract the application summary data of the number "
+        f"{number} top game on Steam Charts."
