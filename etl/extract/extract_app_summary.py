@@ -91,7 +91,7 @@ def extract_app_summary(
         app_logo = "https://steamcharts.com" + app_logo_path
         result["app_logo"] = app_logo
 
-        # Extract the peak concurrent players within the time period of 24-Hours
+        # Extract the peak number of players within the time period of 24-hours
         peak_no_of_players_24h_tag = div_tag_with_app_heading_id.find_all(
             "div",
             attrs={
