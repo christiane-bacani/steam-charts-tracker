@@ -10,4 +10,5 @@ Steam Charts Tracker is a a data processing system that extracts, transforms, an
 - [Todo](#Todo)
 
 # Todo
-- Move the function `extract_app_summary` and `extract_historical_player_stats_table` to a dedicated module.
+- Check every line of code to implement 88-max column threshold
+- Implement the function `extract_game_stats_overview` when extracting the top games
