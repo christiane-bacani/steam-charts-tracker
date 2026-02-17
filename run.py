@@ -6,7 +6,6 @@ from etl.extract.extract_trending_games import extract_trending_games_table
 from etl.extract.extract_trending_games import extract_app_summary
 from etl.extract.extract_trending_games import extract_historical_player_stats_table
 from etl.extract.extract_top_games import extract_top_games_table
-from etl.extract.extract_top_games import extract_app_summary
 
 base_url = "https://steamcharts.com/"
 
@@ -14,8 +13,8 @@ base_url = "https://steamcharts.com/"
 soup = extract_and_parse_soup(base_url)
 trending_games_dict = extract_trending_games_table(soup)
 
-app_summary_dict = {}
-historical_player_stats_dict = {}
+trending_app_summary_dict = {}
+trending_app_historical_player_stats_dict = {}
 
 # Get the player concurrency data and historical player stats of every trending game
 for number in range(5):
@@ -27,11 +26,11 @@ for number in range(5):
 
     soup = extract_and_parse_soup(url)
 
-    app_summary = extract_app_summary(soup, number)
-    app_summary_dict[app_name] = app_summary
+    app_summary_dict = extract_app_summary(soup, number)
+    trending_app_summary_dict[app_name] = app_summary_dict
 
-    historical_player_stats = extract_historical_player_stats_table(soup, number)
-    historical_player_stats_dict[app_name] = historical_player_stats
+    historical_player_stats_dict = extract_historical_player_stats_table(soup, number)
+    trending_app_historical_player_stats_dict[app_name] = historical_player_stats_dict
 
 # Top games by current players
 base_url = "https://steamcharts.com/top"
