@@ -54,7 +54,8 @@ def extract_game_stats_overview(
         )
 
     try:
-        body_tag = soup.find("tbody")
+
+        body_tag = soup.find("body")
         div_tag_with_content_wrapper_id = body_tag.find(
             "div",
             attrs={
