@@ -49,3 +49,4 @@ for number in range(25):
     app_name = str(app_name)
 
     soup = extract_and_parse_soup(url)
+    print(soup)
