@@ -38,3 +38,11 @@ def extract_historical_player_stats(
     }
 
     number = game_index_no + 1
+
+    if helper == "Trending":
+        job_description = "Extract the historical player statistics of the number "
+        f"{number} trending game on Steam Charts."
+
+    else:
+        job_description = "Extract the historical player statistics of the top "
+        f"{number} game on Steam Charts."
