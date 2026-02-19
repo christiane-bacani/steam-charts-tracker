@@ -39,6 +39,9 @@ url = base_url + "top"
 soup = extract_and_parse_soup(url)
 top_games_dict = extract_top_games_table(soup)
 
+top_games_stats_overview_dict = {}
+top_games_historical_player_stats_dict = {}
+
 # Get the stats overview and historical player stats of every top game
 for number in range(25):
     path = top_games_dict["app_id"][number]
