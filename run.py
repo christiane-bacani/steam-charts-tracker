@@ -52,3 +52,4 @@ for number in range(25):
     soup = extract_and_parse_soup(url)
 
     game_stats_overview_dict = extract_game_stats_overview(soup, number, "Top")
+    top_games_stats_overview_dict[app_name] = game_stats_overview_dict
