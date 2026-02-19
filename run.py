@@ -35,11 +35,9 @@ for number in range(5):
     ] = historical_player_stats_dict
 
 # Top games by current players
-base_url = "https://steamcharts.com/top"
-soup = extract_and_parse_soup(base_url)
+url = base_url + "top"
+soup = extract_and_parse_soup(url)
 top_games_dict = extract_top_games_table(soup)
-
-base_url = "https://steamcharts.com/"
 
 # Get the stats overview and historical player stats of every top game
 for number in range(25):
@@ -48,7 +46,6 @@ for number in range(25):
 
     app_name = top_games_dict["app_name"][number]
     app_name = str(app_name)
-
     soup = extract_and_parse_soup(url)
 
     game_stats_overview_dict = extract_game_stats_overview(soup, number, "Top")
