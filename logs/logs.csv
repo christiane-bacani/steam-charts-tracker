@@ -1550,3 +1550,462 @@ EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-19 24:24:15
 EXTRACT,Extract the application summary data of the top 24 ,SUCCESFUL,,2026-02-19 24:24:15
 EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-19 24:24:16
 EXTRACT,Extract the application summary data of the top 25 ,SUCCESFUL,,2026-02-19 24:24:16
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 17:17:58
+EXTRACT,Extract the top 5 current trending games on Steam Charts.,SUCCESSFUL,,2026-02-20 17:17:58
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 17:17:59
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 17:17:59
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 17:17:59
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 18:18:00
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 18:18:00
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 18:18:00
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 18:18:00
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 18:18:00
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 18:18:00
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 18:18:01
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 18:18:01
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 18:18:01
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 18:18:02
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 18:18:02
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 18:18:02
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 18:18:02
+EXTRACT,Extract the top games by current players on Steam Charts.,SUCCESSFUL,,2026-02-20 18:18:02
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:03
+EXTRACT,Extract the application summary data of the top 1 ,FAILED,,2026-02-20 18:18:03
+EXTRACT,Extract the application summary data of the top 1 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:03
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:04
+EXTRACT,Extract the application summary data of the top 2 ,FAILED,,2026-02-20 18:18:04
+EXTRACT,Extract the application summary data of the top 2 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:04
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:04
+EXTRACT,Extract the application summary data of the top 3 ,FAILED,,2026-02-20 18:18:04
+EXTRACT,Extract the application summary data of the top 3 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:04
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:05
+EXTRACT,Extract the application summary data of the top 4 ,FAILED,,2026-02-20 18:18:05
+EXTRACT,Extract the application summary data of the top 4 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:05
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:05
+EXTRACT,Extract the application summary data of the top 5 ,FAILED,,2026-02-20 18:18:06
+EXTRACT,Extract the application summary data of the top 5 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:06
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:06
+EXTRACT,Extract the application summary data of the top 6 ,FAILED,,2026-02-20 18:18:06
+EXTRACT,Extract the application summary data of the top 6 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:06
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:07
+EXTRACT,Extract the application summary data of the top 7 ,FAILED,,2026-02-20 18:18:07
+EXTRACT,Extract the application summary data of the top 7 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:07
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:07
+EXTRACT,Extract the application summary data of the top 8 ,FAILED,,2026-02-20 18:18:07
+EXTRACT,Extract the application summary data of the top 8 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:07
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:08
+EXTRACT,Extract the application summary data of the top 9 ,FAILED,,2026-02-20 18:18:08
+EXTRACT,Extract the application summary data of the top 9 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:08
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:09
+EXTRACT,Extract the application summary data of the top 10 ,FAILED,,2026-02-20 18:18:09
+EXTRACT,Extract the application summary data of the top 10 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:09
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:11
+EXTRACT,Extract the application summary data of the top 11 ,FAILED,,2026-02-20 18:18:11
+EXTRACT,Extract the application summary data of the top 11 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:11
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:12
+EXTRACT,Extract the application summary data of the top 12 ,FAILED,,2026-02-20 18:18:12
+EXTRACT,Extract the application summary data of the top 12 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:12
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:13
+EXTRACT,Extract the application summary data of the top 13 ,FAILED,,2026-02-20 18:18:13
+EXTRACT,Extract the application summary data of the top 13 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:13
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:14
+EXTRACT,Extract the application summary data of the top 14 ,FAILED,,2026-02-20 18:18:14
+EXTRACT,Extract the application summary data of the top 14 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:14
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:14
+EXTRACT,Extract the application summary data of the top 15 ,FAILED,,2026-02-20 18:18:14
+EXTRACT,Extract the application summary data of the top 15 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:14
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:15
+EXTRACT,Extract the application summary data of the top 16 ,FAILED,,2026-02-20 18:18:15
+EXTRACT,Extract the application summary data of the top 16 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:15
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:15
+EXTRACT,Extract the application summary data of the top 17 ,FAILED,,2026-02-20 18:18:15
+EXTRACT,Extract the application summary data of the top 17 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:15
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:16
+EXTRACT,Extract the application summary data of the top 18 ,FAILED,,2026-02-20 18:18:16
+EXTRACT,Extract the application summary data of the top 18 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:16
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:17
+EXTRACT,Extract the application summary data of the top 19 ,FAILED,,2026-02-20 18:18:17
+EXTRACT,Extract the application summary data of the top 19 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:17
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:18
+EXTRACT,Extract the application summary data of the top 20 ,FAILED,,2026-02-20 18:18:18
+EXTRACT,Extract the application summary data of the top 20 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:18
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:18
+EXTRACT,Extract the application summary data of the top 21 ,FAILED,,2026-02-20 18:18:18
+EXTRACT,Extract the application summary data of the top 21 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:18
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:19
+EXTRACT,Extract the application summary data of the top 22 ,FAILED,,2026-02-20 18:18:19
+EXTRACT,Extract the application summary data of the top 22 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:19
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:20
+EXTRACT,Extract the application summary data of the top 23 ,FAILED,,2026-02-20 18:18:20
+EXTRACT,Extract the application summary data of the top 23 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:20
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:21
+EXTRACT,Extract the application summary data of the top 24 ,FAILED,,2026-02-20 18:18:21
+EXTRACT,Extract the application summary data of the top 24 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:21
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 18:18:21
+EXTRACT,Extract the application summary data of the top 25 ,FAILED,,2026-02-20 18:18:21
+EXTRACT,Extract the application summary data of the top 25 ,FAILED,'NoneType' object has no attribute 'find',2026-02-20 18:18:21
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 19:19:27
+EXTRACT,Extract the top 5 current trending games on Steam Charts.,SUCCESSFUL,,2026-02-20 19:19:27
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 19:19:27
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 19:19:27
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 19:19:27
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 19:19:28
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 19:19:28
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 19:19:28
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 19:19:29
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 19:19:29
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 19:19:29
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 19:19:29
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 19:19:29
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 19:19:30
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 19:19:30
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 19:19:30
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 19:19:30
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 19:19:31
+EXTRACT,Extract the top games by current players on Steam Charts.,SUCCESSFUL,,2026-02-20 19:19:31
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:31
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:32
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:33
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:34
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:34
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:35
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:35
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:36
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:37
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:37
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:38
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:39
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:39
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:40
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:41
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:42
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:42
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:43
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:43
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:44
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:44
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:45
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:46
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:46
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 19:19:47
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 20:20:25
+EXTRACT,Extract the top 5 current trending games on Steam Charts.,SUCCESSFUL,,2026-02-20 20:20:25
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 20:20:27
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 20:20:27
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 20:20:27
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 20:20:28
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 20:20:28
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 20:20:28
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 20:20:29
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 20:20:29
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 20:20:29
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 20:20:30
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 20:20:30
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 20:20:30
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 20:20:31
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 20:20:31
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 20:20:31
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 20:20:32
+EXTRACT,Extract the top games by current players on Steam Charts.,SUCCESSFUL,,2026-02-20 20:20:32
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 23:23:37
+EXTRACT,Extract the top 5 current trending games on Steam Charts.,SUCCESSFUL,,2026-02-20 23:23:37
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 23:23:38
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 23:23:38
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 23:23:38
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 23:23:39
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 23:23:39
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 23:23:39
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 23:23:39
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 23:23:39
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 23:23:39
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 23:23:40
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 23:23:40
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 23:23:40
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 23:23:41
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 23:23:41
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 23:23:41
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 23:23:42
+EXTRACT,Extract the top games by current players on Steam Charts.,SUCCESSFUL,,2026-02-20 23:23:42
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 23:23:43
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:44
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:44
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:45
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:46
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:46
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:47
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:48
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:48
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:49
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:49
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:50
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:51
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:51
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:52
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:53
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:53
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:54
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:54
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:55
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:56
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:56
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:57
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:58
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 23:23:58
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 24:24:59
+EXTRACT,Extract the top 5 current trending games on Steam Charts.,SUCCESSFUL,,2026-02-20 24:24:59
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 25:25:00
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 25:25:00
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 25:25:00
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 25:25:00
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 25:25:00
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 25:25:00
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 25:25:01
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 25:25:01
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 25:25:01
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 25:25:02
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 25:25:02
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 25:25:02
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 25:25:03
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 25:25:03
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 25:25:03
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 25:25:03
+EXTRACT,Extract the top games by current players on Steam Charts.,SUCCESSFUL,,2026-02-20 25:25:03
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 25:25:04
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:05
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:05
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:06
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:07
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:07
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:08
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:09
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:10
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:11
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:11
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:12
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:13
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:14
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:16
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:16
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:18
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:18
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:20
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:21
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:22
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:23
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:24
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:24
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:26
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 25:25:33
+EXTRACT,Extract the top 5 current trending games on Steam Charts.,SUCCESSFUL,,2026-02-20 25:25:33
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 25:25:35
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 25:25:35
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 25:25:35
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 25:25:35
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 25:25:35
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 25:25:35
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 25:25:36
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 25:25:36
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 25:25:36
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 25:25:37
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 25:25:37
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 25:25:37
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 25:25:38
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 25:25:38
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 25:25:38
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 25:25:38
+EXTRACT,Extract the top games by current players on Steam Charts.,SUCCESSFUL,,2026-02-20 25:25:38
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 25:25:39
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:40
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:40
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:41
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:42
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:42
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:43
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:44
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:44
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:45
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:46
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:46
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:47
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:47
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:48
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:49
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:49
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:50
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:51
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:51
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:52
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:53
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:54
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:54
+EXTRACT,Extract and parse BeautifulSoup object.,FAILED,,2026-02-20 25:25:55
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 26:26:54
+EXTRACT,Extract the top 5 current trending games on Steam Charts.,SUCCESSFUL,,2026-02-20 26:26:54
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 26:26:55
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 26:26:55
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 26:26:55
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 26:26:56
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 26:26:56
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 26:26:56
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 26:26:57
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 26:26:57
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 26:26:57
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 26:26:58
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 26:26:58
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 26:26:58
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 26:26:59
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 26:26:59
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 26:26:59
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 27:27:00
+EXTRACT,Extract the top games by current players on Steam Charts.,SUCCESSFUL,,2026-02-20 27:27:00
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 27:27:28
+EXTRACT,Extract the top 5 current trending games on Steam Charts.,SUCCESSFUL,,2026-02-20 27:27:28
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 27:27:28
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 27:27:28
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 27:27:29
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 27:27:29
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 27:27:29
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 27:27:29
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 27:27:31
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 27:27:31
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 27:27:31
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 27:27:32
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 27:27:32
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 27:27:32
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 27:27:32
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 27:27:32
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 27:27:32
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 27:27:33
+EXTRACT,Extract the top games by current players on Steam Charts.,SUCCESSFUL,,2026-02-20 27:27:33
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 28:28:40
+EXTRACT,Extract the top 5 current trending games on Steam Charts.,SUCCESSFUL,,2026-02-20 28:28:40
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 28:28:41
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 28:28:41
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 28:28:41
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 28:28:42
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 28:28:42
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 28:28:42
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 28:28:43
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 28:28:43
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 28:28:43
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 28:28:44
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 28:28:44
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 28:28:44
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 28:28:44
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 28:28:44
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 28:28:44
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 28:28:45
+EXTRACT,Extract the top games by current players on Steam Charts.,SUCCESSFUL,,2026-02-20 28:28:45
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 29:29:55
+EXTRACT,Extract the top 5 current trending games on Steam Charts.,SUCCESSFUL,,2026-02-20 29:29:55
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 29:29:56
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 29:29:56
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 29:29:56
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 29:29:56
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 29:29:56
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 29:29:56
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 29:29:57
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 29:29:57
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 29:29:57
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 29:29:58
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 29:29:58
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 29:29:58
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 29:29:58
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 29:29:58
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 29:29:59
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 29:29:59
+EXTRACT,Extract the top games by current players on Steam Charts.,SUCCESSFUL,,2026-02-20 29:29:59
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:00
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:01
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:02
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:03
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:04
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:04
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:05
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:05
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:06
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:07
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:07
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:08
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:10
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:10
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:11
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:12
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:13
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:13
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:14
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:15
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:15
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:16
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:17
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:17
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 30:30:18
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:22
+EXTRACT,Extract the top 5 current trending games on Steam Charts.,SUCCESSFUL,,2026-02-20 31:31:22
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:22
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 31:31:22
+EXTRACT,Extract the historical player statistics of the number 1 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 31:31:22
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:23
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 31:31:23
+EXTRACT,Extract the historical player statistics of the number 2 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 31:31:23
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:24
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 31:31:24
+EXTRACT,Extract the historical player statistics of the number 3 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 31:31:24
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:24
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 31:31:24
+EXTRACT,Extract the historical player statistics of the number 4 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 31:31:24
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:25
+EXTRACT,Extract the application summary data of the number ,SUCCESFUL,,2026-02-20 31:31:25
+EXTRACT,Extract the historical player statistics of the number 5 trending game on Steam Charts.,SUCCESSFUL,,2026-02-20 31:31:25
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:26
+EXTRACT,Extract the top games by current players on Steam Charts.,SUCCESSFUL,,2026-02-20 31:31:26
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:26
+EXTRACT,Extract the application summary data of the top 1 ,SUCCESFUL,,2026-02-20 31:31:26
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:27
+EXTRACT,Extract the application summary data of the top 2 ,SUCCESFUL,,2026-02-20 31:31:27
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:28
+EXTRACT,Extract the application summary data of the top 3 ,SUCCESFUL,,2026-02-20 31:31:28
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:28
+EXTRACT,Extract the application summary data of the top 4 ,SUCCESFUL,,2026-02-20 31:31:28
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:29
+EXTRACT,Extract the application summary data of the top 5 ,SUCCESFUL,,2026-02-20 31:31:29
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:29
+EXTRACT,Extract the application summary data of the top 6 ,SUCCESFUL,,2026-02-20 31:31:29
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:30
+EXTRACT,Extract the application summary data of the top 7 ,SUCCESFUL,,2026-02-20 31:31:30
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:31
+EXTRACT,Extract the application summary data of the top 8 ,SUCCESFUL,,2026-02-20 31:31:31
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:32
+EXTRACT,Extract the application summary data of the top 9 ,SUCCESFUL,,2026-02-20 31:31:32
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:33
+EXTRACT,Extract the application summary data of the top 10 ,SUCCESFUL,,2026-02-20 31:31:33
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:33
+EXTRACT,Extract the application summary data of the top 11 ,SUCCESFUL,,2026-02-20 31:31:33
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:34
+EXTRACT,Extract the application summary data of the top 12 ,SUCCESFUL,,2026-02-20 31:31:34
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:35
+EXTRACT,Extract the application summary data of the top 13 ,SUCCESFUL,,2026-02-20 31:31:35
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:35
+EXTRACT,Extract the application summary data of the top 14 ,SUCCESFUL,,2026-02-20 31:31:35
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:36
+EXTRACT,Extract the application summary data of the top 15 ,SUCCESFUL,,2026-02-20 31:31:36
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:36
+EXTRACT,Extract the application summary data of the top 16 ,SUCCESFUL,,2026-02-20 31:31:36
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:37
+EXTRACT,Extract the application summary data of the top 17 ,SUCCESFUL,,2026-02-20 31:31:37
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:38
+EXTRACT,Extract the application summary data of the top 18 ,SUCCESFUL,,2026-02-20 31:31:38
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:39
+EXTRACT,Extract the application summary data of the top 19 ,SUCCESFUL,,2026-02-20 31:31:39
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:39
+EXTRACT,Extract the application summary data of the top 20 ,SUCCESFUL,,2026-02-20 31:31:39
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:40
+EXTRACT,Extract the application summary data of the top 21 ,SUCCESFUL,,2026-02-20 31:31:40
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:41
+EXTRACT,Extract the application summary data of the top 22 ,SUCCESFUL,,2026-02-20 31:31:41
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:41
+EXTRACT,Extract the application summary data of the top 23 ,SUCCESFUL,,2026-02-20 31:31:41
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:42
+EXTRACT,Extract the application summary data of the top 24 ,SUCCESFUL,,2026-02-20 31:31:42
+EXTRACT,Extract and parse BeautifulSoup object.,SUCCESSFUL,,2026-02-20 31:31:43
+EXTRACT,Extract the application summary data of the top 25 ,SUCCESFUL,,2026-02-20 31:31:43
