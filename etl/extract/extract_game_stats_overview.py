@@ -38,12 +38,12 @@ def extract_game_stats_overview(
     number = game_index_no + 1
 
     if helper == "Trending":
-        job_description = "Extract the application summary data of the number "
-        f"{number} trending game on Steam Charts."
+        job_description = f"Extract the statistics overview of the number {number} "
+        "trending game on Steam Charts."
 
     else:
-        job_description = f"Extract the application summary data of the top {number} "
-        "game on Steam Charts."
+        job_description = f"Extract the statistics overview of the top {number} game "
+        "on Steam Charts."
 
     if soup is None:
         etl_pipeline_logs(
