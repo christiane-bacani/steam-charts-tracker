@@ -10,4 +10,5 @@ Steam Charts Tracker is a a data processing system that extracts, transforms, an
 - [Todo](#Todo)
 
 # Todo
+- Rename the module to make it descriptive and noun but the function is action word of the noun.
 - Check every line of code to implement 88-max column threshold
