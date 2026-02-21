@@ -10,22 +10,22 @@ def extract_game_stats_overview(
         helper: str
 ) -> dict[str, str]:
     """
-    Extract the game statistics overview of a specific game on Steam Charts.
+    Extract the statistics overview of a specific game on Steam Charts.
 
     :param soup: BeautifulSoup object representing the web-page from the url, NoneType
         if non-existent
     :type soup: BeautifulSoup | None
 
-    :param game_index_no: Steam Charts game index number
+    :param game_index_no: Game index number reflected on the Steam Charts website
     :type game_index_no: int
 
-    :param helper: Helper message to determine what kind of game is extracted:
+    :param helper: Helper message to determine the type of game to extract:
         `Trending or Top`
     :type helper: str
 
     :return: Application summary dictionary:\n
-        `{app_name: "", app_logo: "", peak_no_of_players_24h: "",
-        all_time_peak_no_of_players: ""}`
+        `{app_name: str, app_logo: str, peak_no_of_players_24h: int,
+        all_time_peak_no_of_players: int}`
     :rtype: dict[str, str]
     """
     result = {
