@@ -1,3 +1,6 @@
 from etl.extract.trending_games import parse_soup
 
-soup = parse_soup("https://steamcharts.com/")
+# URL of the website to scrape
+url = "https://steamcharts.com/"
+
+soup = parse_soup(url)
