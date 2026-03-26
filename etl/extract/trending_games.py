@@ -17,7 +17,7 @@ def parse_soup(url: str) -> BeautifulSoup | int:
         "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 "
         "Edg/144.0.0.0"
     }
-    response = requests.get(url)
+    response = requests.get(url, headers=headers)
 
     if response.status_code != 200:
         return response.status_code
