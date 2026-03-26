@@ -1,5 +1,5 @@
 """
-Python module to create logs per job executed inside the ETL Pipeline.
+Python module to create log/s per job executed inside the ETL Pipeline.
 """
 import pandas as pd
 
