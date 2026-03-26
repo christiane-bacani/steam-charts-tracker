@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
+from logs.etl_pipeline_logs import provide_logs
+
 def parse_soup(url: str) -> BeautifulSoup | int:
     """
     Parse BeautifulSoup object using the URL of the target website.
@@ -20,7 +22,18 @@ def parse_soup(url: str) -> BeautifulSoup | int:
     response = requests.get(url, headers=headers)
 
     if response.status_code != 200:
+        provide_logs(
+            "Initialization",
+            "Initialize BeautifulSoup object for navigating the elements inside the website.",
+            "Unsuccessful",
+            f"Status code: {response.status_code}"
+        )
         return response.status_code
 
     soup = BeautifulSoup(response.text, 'html.parser')
+    provide_logs(
+        "Initialization",
+        "Initialize BeautifulSoup object for navigating the elements inside the website.",
+        "Successful"
+    )
     return soup
