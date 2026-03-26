@@ -1,3 +1,6 @@
+"""
+Python module to extract data about the trending games from the Steam Charts website.
+"""
 import requests
 from bs4 import BeautifulSoup
 
