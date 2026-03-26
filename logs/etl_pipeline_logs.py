@@ -1,6 +1,6 @@
 import pandas as pd
 
-def provide_log(
+def provide_logs(
         job: str,
         description: str,
         status: str = "Successful",
