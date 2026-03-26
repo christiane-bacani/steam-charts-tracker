@@ -1,3 +1,6 @@
+"""
+Python module to create logs per job executed inside the ETL Pipeline.
+"""
 import pandas as pd
 
 def provide_logs(
