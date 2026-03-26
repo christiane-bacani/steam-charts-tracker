@@ -1,1 +1,2 @@
 job,description,status,error_message,timestamp
+Initialization,Initialize BeautifulSoup object for navigating the elements inside the website.,Successful,None,
