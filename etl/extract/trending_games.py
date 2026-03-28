@@ -1,42 +1,41 @@
 """
 Python module to extract data about the trending games from the Steam Charts website.
 """
-import requests
 from bs4 import BeautifulSoup
 
 from logs.etl_pipeline_logs import provide_logs
 
-def parse_soup(url: str) -> BeautifulSoup | int:
-    """
-    Parse BeautifulSoup object using the URL of the target website.
+def extract_top_5_trending_games(soup: BeautifulSoup) -> dict[str, dict]:
+    body_tag = soup.find("body")
+    div_tag_with_content_class = body_tag.find("div", attrs={"class": "content"})
 
-    Args:
-        url (str): The URL of the target website.
+    table_tag = div_tag_with_content_class.find("table", attrs={
+        "id": "trending-recent"
+    })
+    tbody_tag = table_tag.find("tbody")
+    table_row_tags = tbody_tag.find_all("tr")
 
-    Returns:
-        BeautifulSoup | int: The parsed BeautifulSoup object, if the
-        request is not successful, it returns the status code
-    """
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 "
-        "Edg/144.0.0.0"
+    result = {
+        "game_name": [],
+        "twenty_four_hour_change_pct": [],
+        "current_players": []
     }
-    response = requests.get(url, headers=headers)
 
-    if response.status_code != 200:
-        provide_logs(
-            "Initialization",
-            "Initialize BeautifulSoup object for navigating the elements inside the website.",
-            "Unsuccessful",
-            f"Status code: {response.status_code}"
-        )
-        return response.status_code
+    for table_row_tag in table_row_tags:
+        table_data_tags = table_row_tag.find_all("td")
+        
+        game_name = table_data_tags[0].get_text()
+        result["game_name"].append(game_name)
 
-    soup = BeautifulSoup(response.text, 'html.parser')
+        twenty_four_hour_change_pct = table_data_tags[1].get_text()
+        result["twenty_four_hour_change_pct"].append(twenty_four_hour_change_pct)
+
+        current_players = table_data_tags[3].get_text()
+        result["current_players"].append(current_players)
+
     provide_logs(
-        "Initialization",
-        "Initialize BeautifulSoup object for navigating the elements inside the website.",
+        "EXTRACT",
+        "Extract top 5 trending games from https://steamcharts.com/.",
         "Successful"
     )
-    return soup
+    return result
