@@ -31,6 +31,7 @@ def provide_logs(
         "error_message": [error_message]
     })
 
+    # Store the new pipeline logs to a dedicated csv file using pandas dataframe
     logs = pd.concat([
         logs,
         new_logs
