@@ -10,4 +10,5 @@ Steam Charts Tracker is a a data processing system that extracts, transforms, an
 - [Todo](#Todo)
 
 # Todo
-- Add logs to the function "parse_soup" of module "trending_games"
+- Add app_id and game_name to the data to scrape for the function "extract_game_stats_overview" of the module trending_games.py
+- After successfully scraping all the required data in the module trending_games.py, refactor the location of the data from dictionary to local JSON file stored in the local machine.
