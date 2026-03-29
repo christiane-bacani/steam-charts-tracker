@@ -70,7 +70,8 @@ def extract_game_stats_overview(
 
     Args:
         soup (BeautifulSoup): The parsed BeautifulSoup object
-        trending_games_stats_overview (dict): 
+        trending_games_stats_overview (dict): The dictionary to store the scraped
+            data
     Returns:
         dict: The scraped game statistics overview of a trending game
     """
