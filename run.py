@@ -19,7 +19,6 @@ trending_games_stats_overview = {
     "twenty_four_hour_peak_players": [],
     "all_time_peak_players": []
 }
-
 trending_games_historical_stats = {}
 
 for app_id in top_5_trending_games["app_id"]:
