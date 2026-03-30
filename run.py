@@ -13,6 +13,7 @@ top_5_trending_games = trending_games.extract_top_5_trending_games(soup)
 
 # Dictionary to store the scraped data of stats overview
 trending_games_stats_overview = {
+    "app_id": [],
     "game_image": [],
     "twenty_four_hour_peak_players": [],
     "all_time_peak_players": []
@@ -25,5 +26,6 @@ for app_id in top_5_trending_games["app_id"]:
 
     trending_games_stats_overview = trending_games.extract_game_stats_overview(
         soup,
+        app_id,
         trending_games_stats_overview
     )
