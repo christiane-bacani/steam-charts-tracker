@@ -11,7 +11,8 @@ url = "https://steamcharts.com/"
 soup = parse_soup(url)
 top_5_trending_games = trending_games.extract_top_5_trending_games(soup)
 
-# Dictionaries to store the scraped data of stats overview and historical stats
+# Dictionaries to store the scraped data of stats overview and historical stats of
+# top 5 trending game
 trending_games_stats_overview = {
     "app_id": [],
     "game_image": [],
