@@ -17,6 +17,7 @@ def parse_soup(url: str) -> BeautifulSoup | int:
         BeautifulSoup | int: The parsed BeautifulSoup object, if the
         request is not successful, it returns the status code
     """
+    # User-Agent header for scraping
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
         "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 "
@@ -24,6 +25,7 @@ def parse_soup(url: str) -> BeautifulSoup | int:
     }
     response = requests.get(url, headers=headers)
 
+    # Check the response if the website allows scraping
     if response.status_code != 200:
         provide_logs(
             "Initialization",
@@ -33,6 +35,7 @@ def parse_soup(url: str) -> BeautifulSoup | int:
         )
         return response.status_code
 
+    # If yes, return the parsed BeautifulSoup object
     soup = BeautifulSoup(response.text, 'html.parser')
     provide_logs(
         "Initialization",
