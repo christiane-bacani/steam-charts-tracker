@@ -60,3 +60,54 @@ def extract_top_5_trending_games(soup: BeautifulSoup):
         "Extract top 5 trending games from https://steamcharts.com/.",
         "Successful"
     )
+
+def extract_trending_games_stats_overview(
+    soup: BeautifulSoup,
+    app_id: str
+) -> dict[str, str]:
+    """
+    Scrape the stats overview of a trending game.
+
+    Args:
+        soup (BeautifulSoup): The parsed BeautifulSoup object
+        app_id (str): The application ID of a trending game
+    
+    Returns:
+        dict: The scraped data as a dictionary
+    """
+    # Navigate the web-page to get the exact HTML elements for accurate scraping
+    body_tag = soup.find("body")
+    div_tag_with_content_wrapper_id = body_tag.find("div", attrs={
+        "id": "content-wrapper"
+    })
+
+    div_tag_with_app_heading_id = div_tag_with_content_wrapper_id.find("div", attrs={
+        "id": "app-heading"
+    })
+
+    # Dictionary to store the scraped data
+    result = {}
+
+    # Extract the applicatiion ID
+    result["app_id"] = app_id
+
+    # Extract the game image as a URL
+    game_image_url_path = div_tag_with_app_heading_id.find("img")["src"]
+    game_image_url = "https://steamcharts.com" + game_image_url_path
+    result["game_image"] = game_image_url
+
+    div_tag_with_app_stat_classes = div_tag_with_app_heading_id.find_all("div", attrs={
+        "class": "app-stat"
+    })
+
+    # Extract the number of peak players with a span of 24-hour period
+    span_tag = div_tag_with_app_stat_classes[1].find("span")
+    twenty_four_hour_peak_players = span_tag.get_text()
+    result["twenty_four_hour_peak_players"] = twenty_four_hour_peak_players
+
+    # Extract the number of peak players of all time
+    span_tag = div_tag_with_app_stat_classes[2].find("span")
+    all_time_peak_players = span_tag.get_text()
+    result["all_time_peak_players"] = all_time_peak_players
+
+    return result
