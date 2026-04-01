@@ -8,19 +8,15 @@ import etl.extract.trending_games as trending_games
 
 from logs.etl_pipeline_logs import provide_logs
 
-# URL of the website to scrape
 url = "https://steamcharts.com/"
 
-# Scrape the top 5 trending games from the URL
 soup = parse_soup(url)
 trending_games.extract_top_5_trending_games(soup)
 
-# Get the scraped data of the top 5 trending games from the JSON file
+# Parsed the scraped data of the current top 5 trending games from the JSON file
 with open("data/input/top_5_trending_games.json", "r") as file:
     top_5_trending_games = json.load(file)
 
-# Dictionary to store the scraped data of stats overview and
-# historical stats of every current trending game
 trending_games_stats_overview = {
     "app_id": [],
     "game_image": [],
@@ -28,11 +24,16 @@ trending_games_stats_overview = {
     "all_time_peak_players": []
 }
 
+"""
+Scrape the stats overview and historical stats of every current trending game
+using the parsed data earlier by extracting the 'app_id' because it can be use
+as a URL path and combine it to the base url of the website to allow the pipeline
+to scrape all the necessary data
+"""
 for number, app_id in enumerate(top_5_trending_games["app_id"]):
-    # Scrape the stats overview and historical stats of every current trending
-    # game from the URL
     soup = parse_soup(url + "app/" + app_id)
 
+    # Scrape stats overview of all current trending game
     stats_overview = trending_games.extract_trending_games_stats_overview(
         soup,
         app_id
