@@ -19,6 +19,8 @@ trending_games.extract_top_5_trending_games(soup)
 with open("data/input/top_5_trending_games.json", "r") as file:
     top_5_trending_games = json.load(file)
 
+# Dictionary to store the scraped data of stats overview and
+# historical stats of every current trending game
 trending_games_stats_overview = {
     "app_id": [],
     "game_image": [],
