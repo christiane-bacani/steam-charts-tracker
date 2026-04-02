@@ -6,7 +6,9 @@ import requests
 import json
 from bs4 import BeautifulSoup
 
-def parse_soup(url: str) -> BeautifulSoup | int:
+from logs.etl_pipeline_logs import provide_logs
+
+def parse_soup(url: str) -> BeautifulSoup | None:
     """
     Parse BeautifulSoup object using the URL of the target website.
 
@@ -14,8 +16,8 @@ def parse_soup(url: str) -> BeautifulSoup | int:
         url (str): The URL of the target website.
 
     Returns:
-        BeautifulSoup | int: The parsed BeautifulSoup object, if the
-        request is not successful, it returns the status code
+        BeautifulSoup | None: The parsed BeautifulSoup object, if the
+        request is not successful, return NoneType.
     """
     # User-Agent header for scraping
     headers = {
@@ -27,17 +29,28 @@ def parse_soup(url: str) -> BeautifulSoup | int:
 
     # Check the response if the website allows scraping
     if response.status_code != 200:
-        return response.status_code
+        provide_logs(
+            "EXTRACT",
+            "Parse the BeautifulSoup object of the home page of https://steamcharts.com",
+            "FAILED",
+            f"Status code: {response.status_code}"
+        )
+        return None
 
     # If yes, return the parsed BeautifulSoup object
     soup = BeautifulSoup(response.text, 'html.parser')
 
+    provide_logs(
+        "EXTRACT",
+        "Parse the BeautifulSoup object of the home page of https://steamcharts.com",
+        "SUCCESSFUL",
+        "None"
+    )
     return soup
 
-def parse_scraped_data(filepath: str) -> dict:
+def parse_top_5_trending_games(filepath: str) -> dict:
     """
-    Parse the data that was already extracted from previous extraction phase
-    (e.g. Top 5 trending games).
+    Parse the top 5 current trending games data from a JSON file.
 
     Args:
         filepath (str): The filepath of a JSON file
@@ -50,6 +63,12 @@ def parse_scraped_data(filepath: str) -> dict:
         with open(filepath, "r") as file:
             scraped_data = json.load(file)
 
+        provide_logs(
+            "EXTRACT",
+            f"Parse the top 5 trending games data from a JSON file.",
+            "SUCCESSFUL",
+            "None"
+        )
         return scraped_data
 
     except FileNotFoundError:
@@ -57,4 +76,11 @@ def parse_scraped_data(filepath: str) -> dict:
         Raise 'FileNotFoundError' if the filepath is not existing instead of
         handling the error to prevent misbehavior throughout the pipeline
         """
+        
+        provide_logs(
+            "EXTRACT",
+            f"Parse the top 5 trending games data from a JSON file.",
+            "FAILED",
+            f"File {filepath} is not existing!"
+        )
         raise FileNotFoundError(f"File: {filepath} is not existing!")
