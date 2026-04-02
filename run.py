@@ -1,19 +1,22 @@
 """
 Python module to run the ETL Pipeline.
 """
-import json
-
 from utils.extract.parse import parse_soup
-from utils.extract.parse import parse_scraped_data
-import etl.extract.trending_games as trending_games
+from utils.extract.parse import parse_top_5_trending_games
+
+from etl.extract.trending_games import extract_top_5_trending_games
+from etl.extract.trending_games import extract_trending_games_stats_overview
+from etl.extract.trending_games import extract_trending_games_historical_stats
 
 url = "https://steamcharts.com/"
 
 soup = parse_soup(url)
-trending_games.extract_top_5_trending_games(soup)
+extract_top_5_trending_games(soup)
 
 # Parse the scraped data of the current top 5 trending games from a JSON file
-top_5_trending_games = parse_scraped_data("data/input/top_5_trending_games.json")
+top_5_trending_games = parse_top_5_trending_games(
+    "data/input/top_5_json"
+)
 
 trending_games_stats_overview = {
     "app_id":                        [],
@@ -33,7 +36,7 @@ for number, app_id in enumerate(top_5_trending_games["app_id"]):
     soup = parse_soup(url + "app/" + app_id)
 
     # Scrape stats overview of all current trending game
-    stats_overview = trending_games.extract_trending_games_stats_overview(
+    stats_overview = extract_trending_games_stats_overview(
         soup,
         app_id
     )
@@ -41,7 +44,7 @@ for number, app_id in enumerate(top_5_trending_games["app_id"]):
         trending_games_stats_overview[key].append(value)
 
     # Scrape historical stats of all current trending game
-    trending_games_historical_stats = trending_games.extract_trending_games_historical_stats(
+    trending_games_historical_stats = extract_trending_games_historical_stats(
         soup,
         app_id,
         trending_games_historical_stats
