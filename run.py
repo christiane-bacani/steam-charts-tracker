@@ -13,8 +13,6 @@ url = "https://steamcharts.com/"
 soup = parse_soup(url)
 extract_top_5_trending_games(soup)
 
-# HELLO
-
 # Parse the scraped data of the current top 5 trending games from a JSON file
 top_5_trending_games = parse_top_5_trending_games(
     "data/input/top_5_json"
