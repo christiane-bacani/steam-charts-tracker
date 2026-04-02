@@ -86,15 +86,15 @@ def extract_trending_games_stats_overview(
     })
 
     # Dictionary to store the scraped data
-    result = {}
+    data = {}
 
-    # Extract the applicatiion ID
-    result["app_id"] = app_id
+    # Extract the application ID
+    data["app_id"] = app_id
 
     # Extract the game image as a URL
     game_image_url_path = div_tag_with_app_heading_id.find("img")["src"]
     game_image_url = "https://steamcharts.com" + game_image_url_path
-    result["game_image"] = game_image_url
+    data["game_image"] = game_image_url
 
     div_tag_with_app_stat_classes = div_tag_with_app_heading_id.find_all("div", attrs={
         "class": "app-stat"
@@ -103,11 +103,84 @@ def extract_trending_games_stats_overview(
     # Extract the number of peak players with a span of 24-hour period
     span_tag = div_tag_with_app_stat_classes[1].find("span")
     twenty_four_hour_peak_players = span_tag.get_text()
-    result["twenty_four_hour_peak_players"] = twenty_four_hour_peak_players
+    data["twenty_four_hour_peak_players"] = twenty_four_hour_peak_players
 
     # Extract the number of peak players of all time
     span_tag = div_tag_with_app_stat_classes[2].find("span")
     all_time_peak_players = span_tag.get_text()
-    result["all_time_peak_players"] = all_time_peak_players
+    data["all_time_peak_players"] = all_time_peak_players
 
-    return result
+    provide_logs(
+        "EXTRACT",
+        "Extract the stats overview of a current trending game from "
+        "https://steamcharts.com/."
+        "Successful"
+    )
+    return data
+
+def extract_trending_games_historical_stats(
+        soup: BeautifulSoup,
+        app_id: str,
+        historical_stats: dict[str, dict]
+) -> dict[str, dict]:
+    # Navigate the web-page to get the exact HTML elements for accurate scraping
+    body_tag = soup.find("body")
+    div_tag_with_content_wrapper_id = body_tag.find("div", attrs={
+        "id": "content-wrapper"
+    })
+
+    div_tag_with_content_class = div_tag_with_content_wrapper_id.find_all(
+        "div", attrs={"class": "content"}
+    )[2]
+
+    table_tag = div_tag_with_content_class.find("table", attrs={
+        "class": "common-table"
+    })
+    tbody_tag = table_tag.find("tbody")
+    table_row_tags = tbody_tag.find_all("tr")
+
+    # Dictionary to store the scraped data
+    data = {
+        "month": [],
+        "avg_players": [],
+        "gain": [],
+        "gain_pct": [],
+        "peak_players": []
+    }
+
+    for table_row_tag in table_row_tags:
+        table_data_tags = table_row_tag.find_all("td")
+
+        # Extract the month
+        month = table_data_tags[0].get_text()
+        data["month"].append(month)
+
+        # Extract the average no. of players from that month
+        avg_players = table_data_tags[1].get_text()
+        data["avg_players"].append(avg_players)
+
+        # Extract the gain of average no. of players from previous month
+        gain = table_data_tags[2].get_text()
+        data["gain"].append(gain)
+
+        # Extract the gain pct of average no. of players from previous month
+        gain_pct = table_data_tags[3].get_text()
+        data["gain_pct"].append(gain_pct)
+
+        # Extract the no. of peak players from all month
+        peak_players = table_data_tags[4].get_text()
+        data["peak_players"].append(peak_players)
+
+    """
+    'historical_stats' dictionary should contain all the current trending game's
+    historical stats
+    """
+    historical_stats[app_id] = data
+
+    provide_logs(
+        "EXTRACT",
+        "Extract the historical stats of a current trending game from "
+        "https://steamcharts.com/.",
+        "Successful"
+    )
+    return historical_stats
