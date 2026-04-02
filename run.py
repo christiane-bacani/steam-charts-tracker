@@ -3,7 +3,8 @@ Python module to run the ETL Pipeline.
 """
 import json
 
-from utils.extract.beautiful_soup import parse_soup
+from utils.extract.parse import parse_soup
+from utils.extract.parse import parse_scraped_data
 import etl.extract.trending_games as trending_games
 
 url = "https://steamcharts.com/"
@@ -11,15 +12,14 @@ url = "https://steamcharts.com/"
 soup = parse_soup(url)
 trending_games.extract_top_5_trending_games(soup)
 
-# Parsed the scraped data of the current top 5 trending games from the JSON file
-with open("data/input/top_5_trending_games.json", "r") as file:
-    top_5_trending_games = json.load(file)
+# Parse the scraped data of the current top 5 trending games from a JSON file
+top_5_trending_games = parse_scraped_data("data/input/top_5_trending_games.json")
 
 trending_games_stats_overview = {
-    "app_id": [],
-    "game_image": [],
+    "app_id":                        [],
+    "game_image":                    [],
     "twenty_four_hour_peak_players": [],
-    "all_time_peak_players": []
+    "all_time_peak_players":         []
 }
 trending_games_historical_stats = {}
 
