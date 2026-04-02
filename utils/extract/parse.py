@@ -49,6 +49,16 @@ def parse_soup(url: str) -> BeautifulSoup | int:
     return soup
 
 def parse_scraped_data(filepath: str) -> dict:
+    """
+    Parse the data that was already extracted from previous extraction phase
+    (e.g. Top 5 trending games).
+
+    Args:
+        filepath (str): The filepath of a JSON file
+
+    Returns:
+        dict: The parsed data as a dictionary
+    """
     try:
         # Parse the scraped data from a JSON file
         with open(filepath, "r") as file:
