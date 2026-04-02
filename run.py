@@ -3,7 +3,7 @@ Python module to run the ETL Pipeline.
 """
 import json
 
-from etl.extract.beautiful_soup import parse_soup
+from utils.extract.beautiful_soup import parse_soup
 import etl.extract.trending_games as trending_games
 
 url = "https://steamcharts.com/"
