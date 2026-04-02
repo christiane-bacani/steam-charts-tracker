@@ -1,1 +1,1 @@
-from . import beautiful_soup
+from . import parse
