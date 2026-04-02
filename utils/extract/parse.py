@@ -6,8 +6,6 @@ import requests
 import json
 from bs4 import BeautifulSoup
 
-from logs.etl_pipeline_logs import provide_logs
-
 def parse_soup(url: str) -> BeautifulSoup | int:
     """
     Parse BeautifulSoup object using the URL of the target website.
@@ -29,23 +27,11 @@ def parse_soup(url: str) -> BeautifulSoup | int:
 
     # Check the response if the website allows scraping
     if response.status_code != 200:
-        provide_logs(
-            "Initialization",
-            "Initialize BeautifulSoup object for navigating the elements inside the website.",
-            "Unsuccessful",
-            f"Status code: {response.status_code}"
-        )
         return response.status_code
 
     # If yes, return the parsed BeautifulSoup object
     soup = BeautifulSoup(response.text, 'html.parser')
 
-    provide_logs(
-        "EXTRACT",
-        "Parse the BeautifulSoup object of the current web-page to navigate all "
-        "website elements to extract the necessary content.",
-        "SUCCESSFUL"
-    )
     return soup
 
 def parse_scraped_data(filepath: str) -> dict:
@@ -64,12 +50,6 @@ def parse_scraped_data(filepath: str) -> dict:
         with open(filepath, "r") as file:
             scraped_data = json.load(file)
 
-        provide_logs(
-            "EXTRACT",
-            "Successfully parsed the scraped data from a JSON file for further "
-            "extraction processes.",
-            "SUCCESSFUL"
-        )
         return scraped_data
 
     except FileNotFoundError:
@@ -77,12 +57,4 @@ def parse_scraped_data(filepath: str) -> dict:
         Raise 'FileNotFoundError' if the filepath is not existing instead of
         handling the error to prevent misbehavior throughout the pipeline
         """
-
-        provide_logs(
-            "EXTRACT",
-            "Successfully parsed the scraped data from a JSON file for further "
-            "extraction processes.",
-            "FAILED",
-            f"File: {filepath} is not existing!"
-        )
         raise FileNotFoundError(f"File: {filepath} is not existing!")
