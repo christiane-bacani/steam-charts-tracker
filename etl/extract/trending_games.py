@@ -58,7 +58,7 @@ def extract_top_5_trending_games(soup: BeautifulSoup):
     provide_logs(
         "EXTRACT",
         "Extract top 5 trending games from https://steamcharts.com/.",
-        "Successful"
+        "SUCCESSFUL"
     )
 
 def extract_trending_games_stats_overview(
@@ -66,11 +66,11 @@ def extract_trending_games_stats_overview(
     app_id: str
 ) -> dict[str, str]:
     """
-    Scrape the stats overview of a trending game.
+    Scrape the stats overview of a current trending game.
 
     Args:
         soup (BeautifulSoup): The parsed BeautifulSoup object
-        app_id (str): The application ID of a trending game
+        app_id (str): The application ID of a current trending game
     
     Returns:
         dict: The scraped data as a dictionary
@@ -114,7 +114,7 @@ def extract_trending_games_stats_overview(
         "EXTRACT",
         "Extract the stats overview of a current trending game from "
         "https://steamcharts.com/."
-        "Successful"
+        "SUCCESSFUL"
     )
     return data
 
@@ -123,6 +123,18 @@ def extract_trending_games_historical_stats(
         app_id: str,
         historical_stats: dict[str, dict]
 ) -> dict[str, dict]:
+    """
+    Scrape the historical stats of a current trending game.
+
+    Args:
+        soup (BeautifulSoup): The parsed BeautifulSoup object
+        app_id (str): The application ID of a current trending game
+        historical_stats (dict): The target location (as a dictionary) of the
+            scraped data
+
+    Returns:
+        dict: The updated 'historical_stats' dictionary
+    """
     # Navigate the web-page to get the exact HTML elements for accurate scraping
     body_tag = soup.find("body")
     div_tag_with_content_wrapper_id = body_tag.find("div", attrs={
@@ -181,6 +193,6 @@ def extract_trending_games_historical_stats(
         "EXTRACT",
         "Extract the historical stats of a current trending game from "
         "https://steamcharts.com/.",
-        "Successful"
+        "SUCCESSFUL"
     )
     return historical_stats
