@@ -4,8 +4,6 @@ Python module to extract data about the trending games from the Steam Charts web
 import json
 from bs4 import BeautifulSoup
 
-from logs.etl_pipeline_logs import provide_logs
-
 def extract_top_5_trending_games(soup: BeautifulSoup):
     """
     Scrape the top 5 trending games from the Steam Charts website.
@@ -54,12 +52,6 @@ def extract_top_5_trending_games(soup: BeautifulSoup):
     # Store the scraped data to a JSON file from `data/input` directory
     with open("data/input/top_5_trending_games.json", "w") as file:
         json.dump(data, file, indent=4)
-
-    provide_logs(
-        "EXTRACT",
-        "Extract top 5 trending games from https://steamcharts.com/.",
-        "SUCCESSFUL"
-    )
 
 def extract_trending_games_stats_overview(
     soup: BeautifulSoup,
@@ -110,12 +102,6 @@ def extract_trending_games_stats_overview(
     all_time_peak_players = span_tag.get_text()
     data["all_time_peak_players"] = all_time_peak_players
 
-    provide_logs(
-        "EXTRACT",
-        "Extract the stats overview of a current trending game from "
-        "https://steamcharts.com/."
-        "SUCCESSFUL"
-    )
     return data
 
 def extract_trending_games_historical_stats(
@@ -189,10 +175,4 @@ def extract_trending_games_historical_stats(
     """
     historical_stats[app_id] = data
 
-    provide_logs(
-        "EXTRACT",
-        "Extract the historical stats of a current trending game from "
-        "https://steamcharts.com/.",
-        "SUCCESSFUL"
-    )
     return historical_stats
