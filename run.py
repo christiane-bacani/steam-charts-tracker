@@ -6,8 +6,6 @@ import json
 from etl.extract.beautiful_soup import parse_soup
 import etl.extract.trending_games as trending_games
 
-from logs.etl_pipeline_logs import provide_logs
-
 url = "https://steamcharts.com/"
 
 soup = parse_soup(url)
@@ -23,6 +21,7 @@ trending_games_stats_overview = {
     "twenty_four_hour_peak_players": [],
     "all_time_peak_players": []
 }
+trending_games_historical_stats = {}
 
 """
 Scrape the stats overview and historical stats of every current trending game
@@ -41,8 +40,9 @@ for number, app_id in enumerate(top_5_trending_games["app_id"]):
     for key, value in stats_overview.items():
         trending_games_stats_overview[key].append(value)
 
-    provide_logs(
-        "EXTRACT",
-        f"Extract the current top {number + 1} trending game from https://steamcharts.com/.",
-        "Successful"
+    # Scrape historical stats of all current trending game
+    trending_games_historical_stats = trending_games.extract_trending_games_historical_stats(
+        soup,
+        app_id,
+        trending_games_historical_stats
     )
