@@ -33,7 +33,7 @@ top_5_trending_games = parse_top_5_trending_games(
 for number, app_id in enumerate(top_5_trending_games["app_id"]):
     soup = parse_soup(
         url + "app/" + app_id,
-        "Parse the BeautifulSoup object for the chart page of current number "
+        "Parse the BeautifulSoup object for the chart page of the current number "
         f"{number + 1} trending game from Steam Charts."
     )
 
