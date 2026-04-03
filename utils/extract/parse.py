@@ -14,10 +14,11 @@ def parse_soup(url: str, description: str) -> BeautifulSoup | None:
 
     Args:
         url (str): The URL of the target website.
-        description (str): The whole description for parsing the BeautifulSoup object
+        description (str): The whole description for parsing the BeautifulSoup object.
+
     Returns:
         BeautifulSoup | None: The parsed BeautifulSoup object, if the
-        request is not successful, return NoneType.
+            request is not successful, return NoneType.
     """
     # User-Agent header for scraping
     headers = {
