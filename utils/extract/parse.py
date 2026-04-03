@@ -8,13 +8,13 @@ from bs4 import BeautifulSoup
 
 from logs.etl_pipeline_logs import provide_logs
 
-def parse_soup(url: str) -> BeautifulSoup | None:
+def parse_soup(url: str, description: str) -> BeautifulSoup | None:
     """
     Parse BeautifulSoup object using the URL of the target website.
 
     Args:
         url (str): The URL of the target website.
-
+        description (str): The whole description for parsing the BeautifulSoup object
     Returns:
         BeautifulSoup | None: The parsed BeautifulSoup object, if the
         request is not successful, return NoneType.
@@ -31,7 +31,7 @@ def parse_soup(url: str) -> BeautifulSoup | None:
     if response.status_code != 200:
         provide_logs(
             "EXTRACT",
-            "Parse the BeautifulSoup object of the home page of https://steamcharts.com",
+            description,
             "FAILED",
             f"Status code: {response.status_code}"
         )
@@ -42,7 +42,7 @@ def parse_soup(url: str) -> BeautifulSoup | None:
 
     provide_logs(
         "EXTRACT",
-        "Parse the BeautifulSoup object of the home page of https://steamcharts.com",
+        description,
         "SUCCESSFUL",
         "None"
     )
