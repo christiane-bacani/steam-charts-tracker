@@ -10,7 +10,10 @@ from etl.extract.trending_games import extract_trending_games_historical_stats
 
 url = "https://steamcharts.com/"
 
-soup = parse_soup(url)
+soup = parse_soup(
+    url,
+    "Parse the BeautifulSoup object for the home-page of Steam Charts website."
+)
 extract_top_5_trending_games(soup)
 
 # Parse the scraped data of the current top 5 trending games from a JSON file
@@ -33,6 +36,11 @@ as a URL path and combine it to the base url of the website to allow the pipelin
 to scrape all the necessary data
 """
 for number, app_id in enumerate(top_5_trending_games["app_id"]):
+    soup = parse_soup(
+        url + "app/" + app_id,
+        "Parse the BeautifulSoup object for the chart page of current number "
+        f"{number + 1} trending game from Steam Charts."
+    )
     soup = parse_soup(url + "app/" + app_id)
 
     # Scrape stats overview of all current trending game
