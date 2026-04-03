@@ -4,6 +4,8 @@ Python module to extract data about the trending games from the Steam Charts web
 import json
 from bs4 import BeautifulSoup
 
+from logs.etl_pipeline_logs import provide_logs
+
 def extract_top_5_trending_games(soup: BeautifulSoup):
     """
     Scrape the top 5 trending games from the Steam Charts website.
@@ -49,13 +51,20 @@ def extract_top_5_trending_games(soup: BeautifulSoup):
         current_players = table_data_tags[3].get_text()
         data["current_players"].append(current_players)
 
+    provide_logs(
+        "EXTRACT",
+        "Extract the data of the current top 5 trending games from Steam Charts.",
+        "SUCCESSFUL",
+        "None"
+    )
     # Store the scraped data to a JSON file from `data/input` directory
     with open("data/input/top_5_trending_games.json", "w") as file:
         json.dump(data, file, indent=4)
 
 def extract_trending_games_stats_overview(
     soup: BeautifulSoup,
-    app_id: str
+    app_id: str,
+    description: str
 ) -> dict[str, str]:
     """
     Scrape the stats overview of a current trending game.
@@ -63,7 +72,9 @@ def extract_trending_games_stats_overview(
     Args:
         soup (BeautifulSoup): The parsed BeautifulSoup object
         app_id (str): The application ID of a current trending game
-    
+        description (str): The whole deescription for extracting the data
+            of a current trending game's stats overview
+
     Returns:
         dict: The scraped data as a dictionary
     """
@@ -102,12 +113,18 @@ def extract_trending_games_stats_overview(
     all_time_peak_players = span_tag.get_text()
     data["all_time_peak_players"] = all_time_peak_players
 
+    provide_logs(
+        "EXTRACT",
+        description,
+        "SUCCESSFUL",
+        "None"
+    )
     return data
 
 def extract_trending_games_historical_stats(
         soup: BeautifulSoup,
         app_id: str,
-        historical_stats: dict[str, dict]
+        description: str
 ) -> dict[str, dict]:
     """
     Scrape the historical stats of a current trending game.
@@ -115,8 +132,8 @@ def extract_trending_games_historical_stats(
     Args:
         soup (BeautifulSoup): The parsed BeautifulSoup object
         app_id (str): The application ID of a current trending game
-        historical_stats (dict): The target location (as a dictionary) of the
-            scraped data
+        description (str): The whole description for extracting the data
+            of a current trending game's historical stats
 
     Returns:
         dict: The updated 'historical_stats' dictionary
@@ -169,10 +186,10 @@ def extract_trending_games_historical_stats(
         peak_players = table_data_tags[4].get_text()
         data["peak_players"].append(peak_players)
 
-    """
-    'historical_stats' dictionary should contain all the current trending game's
-    historical stats
-    """
-    historical_stats[app_id] = data
-
-    return historical_stats
+    provide_logs(
+        "EXTRACT",
+        description,
+        "SUCCESSFUL",
+        "None"
+    )
+    return {app_id: data}
