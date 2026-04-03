@@ -55,3 +55,4 @@ for number, app_id in enumerate(top_5_trending_games["app_id"]):
         f"Extract the historical stats data of the current number {number + 1} "
         "trending game from Steam Charts.",
     )
+    trending_games_historical_stats[app_id] = historical_stats[app_id]
