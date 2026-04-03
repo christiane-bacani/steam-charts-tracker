@@ -16,11 +16,6 @@ soup = parse_soup(
 )
 extract_top_5_trending_games(soup)
 
-# Parse the scraped data of the current top 5 trending games from a JSON file
-top_5_trending_games = parse_top_5_trending_games(
-    "data/input/top_5_json"
-)
-
 trending_games_stats_overview = {
     "app_id":                        [],
     "game_image":                    [],
@@ -28,6 +23,11 @@ trending_games_stats_overview = {
     "all_time_peak_players":         []
 }
 trending_games_historical_stats = {}
+
+# Parse the scraped data of the current top 5 trending games from a JSON file
+top_5_trending_games = parse_top_5_trending_games(
+    "data/input/top_5_json"
+)
 
 """
 Scrape the stats overview and historical stats of every current trending game
@@ -45,14 +45,17 @@ for number, app_id in enumerate(top_5_trending_games["app_id"]):
     # Scrape stats overview of all current trending game
     stats_overview = extract_trending_games_stats_overview(
         soup,
-        app_id
+        app_id,
+        f"Extract the stats overview data of the current number {number + 1} "
+        "trending game from Steam Charts."
     )
     for key, value in stats_overview.items():
         trending_games_stats_overview[key].append(value)
 
     # Scrape historical stats of all current trending game
-    trending_games_historical_stats = extract_trending_games_historical_stats(
+    historical_stats = extract_trending_games_historical_stats(
         soup,
         app_id,
-        trending_games_historical_stats
+        f"Extract the historical stats data of the current number {number + 1} "
+        "trending game from Steam Charts.",
     )
