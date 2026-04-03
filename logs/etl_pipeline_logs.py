@@ -6,8 +6,8 @@ import pandas as pd
 def provide_logs(
         job: str,
         description: str,
-        status: str = "Successful",
-        error_message: str = "None"
+        status: str,
+        error_message: str
 ) -> None:
     """
     Provide logs per job executed inside the ETL Pipeline.
