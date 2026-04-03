@@ -73,11 +73,6 @@ def parse_top_5_trending_games(filepath: str) -> dict:
         return scraped_data
 
     except FileNotFoundError:
-        """
-        Raise 'FileNotFoundError' if the filepath is not existing instead of
-        handling the error to prevent misbehavior throughout the pipeline
-        """
-
         provide_logs(
             "EXTRACT",
             "Parse the extracted top 5 trending games data from a JSON file.",
