@@ -45,7 +45,7 @@ def parse_soup(url: str, description: str) -> BeautifulSoup | None:
         "EXTRACT",
         description,
         "SUCCESSFUL",
-        "None"
+        None
     )
     return soup
 
@@ -68,7 +68,7 @@ def parse_top_5_trending_games(filepath: str) -> dict:
             "EXTRACT",
             f"Parse the top 5 trending games data from a JSON file.",
             "SUCCESSFUL",
-            "None"
+            None
         )
         return scraped_data
 
@@ -77,11 +77,12 @@ def parse_top_5_trending_games(filepath: str) -> dict:
         Raise 'FileNotFoundError' if the filepath is not existing instead of
         handling the error to prevent misbehavior throughout the pipeline
         """
-        
+
         provide_logs(
             "EXTRACT",
             f"Parse the top 5 trending games data from a JSON file.",
             "FAILED",
-            f"File {filepath} is not existing!"
+            f"File: '{filepath}' is not existing for parsing the extracted data of "
+            "the top 5 trending games."
         )
-        raise FileNotFoundError(f"File: {filepath} is not existing!")
+        raise FileNotFoundError(f"The given filepath is not existing!")
