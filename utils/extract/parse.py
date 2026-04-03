@@ -66,7 +66,9 @@ def parse_top_5_trending_games(filepath: str) -> dict:
 
         provide_logs(
             "EXTRACT",
-            "Parse the extracted top 5 trending games data from a JSON file."
+            "Parse the extracted top 5 trending games data from a JSON file "
+            "to get the 'app_id' from that data to extract the stats overview "
+            "and historical stats of every current trending game.",
             "SUCCESSFUL",
             None
         )
@@ -75,7 +77,9 @@ def parse_top_5_trending_games(filepath: str) -> dict:
     except FileNotFoundError:
         provide_logs(
             "EXTRACT",
-            "Parse the extracted top 5 trending games data from a JSON file.",
+            "Parse the extracted top 5 trending games data from a JSON file "
+            "to get the 'app_id' from that data to extract the stats overview "
+            "and historical stats of every current trending game.",
             "FAILED",
             f"Filename: '{filepath}' is not existing for parsing the extracted data "
             "of the top 5 trending games from a JSON file."
