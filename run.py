@@ -12,7 +12,8 @@ url = "https://steamcharts.com/"
 
 soup = parse_soup(
     url,
-    "Parse the BeautifulSoup object for the home-page of Steam Charts website."
+    "Parse the BeautifulSoup object for extracting the current top 5 trending games "
+    "from Steam Charts."
 )
 extract_top_5_trending_games(soup)
 
