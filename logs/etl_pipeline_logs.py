@@ -2,6 +2,7 @@
 Python module to create log/s per job executed inside the ETL Pipeline.
 """
 import pandas as pd
+from datetime import datetime
 
 def provide_logs(
         job: str,
@@ -28,7 +29,8 @@ def provide_logs(
         "job": [job],
         "description": [description],
         "status": [status],
-        "error_message": [error_message]
+        "error_message": [pd.NA if error_message is None else error_message],
+        "timestamp": [datetime.now().strftime("%Y-%m-%d %H:%M:%S")]
     })
 
     # Store the new pipeline logs to a dedicated csv file using pandas dataframe
