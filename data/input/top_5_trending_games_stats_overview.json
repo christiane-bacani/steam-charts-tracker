@@ -1,0 +1,30 @@
+{
+    "app_id": [
+        "538030",
+        "459820",
+        "4368350",
+        "34120",
+        "2686630"
+    ],
+    "game_image": [
+        "https://steamcharts.com/assets/steam-images/538030.jpg",
+        "https://steamcharts.com/assets/steam-images/459820.jpg",
+        "https://steamcharts.com/assets/steam-images/4368350.jpg",
+        "https://steamcharts.com/assets/steam-images/34120.jpg",
+        "https://steamcharts.com/assets/steam-images/2686630.jpg"
+    ],
+    "twenty_four_hour_peak_players": [
+        "2410",
+        "3174",
+        "323",
+        "1123",
+        "706"
+    ],
+    "all_time_peak_players": [
+        "3464",
+        "4508",
+        "323",
+        "17168",
+        "2958"
+    ]
+}
