@@ -26,15 +26,9 @@ trending_games_historical_stats = {}
 
 # Parse the scraped data of the current top 5 trending games from a JSON file
 top_5_trending_games = parse_top_5_trending_games(
-    "data/input/top_5_json"
+    "data/input/top_5_trending_games.json"
 )
 
-"""
-Scrape the stats overview and historical stats of every current trending game
-using the parsed data earlier by extracting the 'app_id' because it can be use
-as a URL path and combine it to the base url of the website to allow the pipeline
-to scrape all the necessary data
-"""
 for number, app_id in enumerate(top_5_trending_games["app_id"]):
     soup = parse_soup(
         url + "app/" + app_id,
