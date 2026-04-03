@@ -55,7 +55,7 @@ def extract_top_5_trending_games(soup: BeautifulSoup):
         "EXTRACT",
         "Extract the data of the current top 5 trending games from Steam Charts.",
         "SUCCESSFUL",
-        "None"
+        None
     )
     # Store the scraped data to a JSON file from `data/input` directory
     with open("data/input/top_5_trending_games.json", "w") as file:
@@ -117,7 +117,7 @@ def extract_trending_games_stats_overview(
         "EXTRACT",
         description,
         "SUCCESSFUL",
-        "None"
+        None
     )
     return data
 
@@ -190,6 +190,6 @@ def extract_trending_games_historical_stats(
         "EXTRACT",
         description,
         "SUCCESSFUL",
-        "None"
+        None
     )
     return {app_id: data}
