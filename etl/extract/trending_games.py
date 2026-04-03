@@ -136,7 +136,7 @@ def extract_trending_games_historical_stats(
             of a current trending game's historical stats
 
     Returns:
-        dict: The updated 'historical_stats' dictionary
+        dict: The scraped data as a dictionary
     """
     # Navigate the web-page to get the exact HTML elements for accurate scraping
     body_tag = soup.find("body")
