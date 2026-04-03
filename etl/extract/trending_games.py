@@ -121,6 +121,35 @@ def extract_trending_games_stats_overview(
     )
     return data
 
+def save_trending_games_stats_overview_to_json(
+        trending_games_stats_overview: dict[str, list],
+        filepath: str
+):
+    try:
+        with open(filepath, "w") as file:
+            json.dump(trending_games_stats_overview, file, indent=4)
+
+        provide_logs(
+            "EXTRACT",
+            "Save the extracted data of the top 5 trending games' stats "
+            "overview to a JSON file.",
+            "SUCCESSFUL",
+            None
+        )
+
+    except FileNotFoundError:
+        provide_logs(
+            "EXTRACT",
+            "Save the extracted data of the top 5 trending games' stats "
+            "overview to a JSON file.",
+            "FAILED",
+            f"Filename: '{filepath}' is not existing for saving the extracted data "
+            "of the top 5 trending game's stats overview."
+        )
+        raise FileNotFoundError("The given filename for saving the extracted data "
+                                "of the top 5 trending games' stats overview to a JSON "
+                                "file is not existing!")
+
 def extract_trending_games_historical_stats(
         soup: BeautifulSoup,
         app_id: str,
