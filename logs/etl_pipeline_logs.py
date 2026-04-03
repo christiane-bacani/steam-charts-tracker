@@ -15,12 +15,9 @@ def provide_logs(
 
     Args:
         job (str): The job inside the ETL Pipeline.
-
         description (str): Description of the job.
-
         status (str): The status to determine if the job is successfully
             executed.
-
         error_message (str): Error message to provide more context about
             why the job was unsuccessfully executed.
     """
