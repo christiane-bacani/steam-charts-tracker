@@ -39,7 +39,7 @@ for number, app_id in enumerate(top_5_trending_games["app_id"]):
         "historical stats.",
     )
 
-    # Scrape stats overview of all current trending game
+    # Scrape stats overview of all current trending games
     stats_overview = extract_trending_games_stats_overview(
         soup,
         app_id,
@@ -49,7 +49,7 @@ for number, app_id in enumerate(top_5_trending_games["app_id"]):
     for key, value in stats_overview.items():
         trending_games_stats_overview[key].append(value)
 
-    # Scrape historical stats of all current trending game
+    # Scrape historical stats of all current trending games
     historical_stats = extract_trending_games_historical_stats(
         soup,
         app_id,
@@ -58,6 +58,7 @@ for number, app_id in enumerate(top_5_trending_games["app_id"]):
     )
     trending_games_historical_stats[app_id] = historical_stats[app_id]
 
+# Save the scraped data of stats overview and historical stats of all current trending games
 save_trending_games_stats_overview_to_json(
     trending_games_stats_overview,
     "data/input/top_5_trending_games_stats_overview.json"
