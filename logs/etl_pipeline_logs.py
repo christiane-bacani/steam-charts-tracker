@@ -3,6 +3,7 @@ Python module to create log/s per job executed inside the ETL Pipeline.
 """
 import pandas as pd
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 def provide_logs(
         job: str,
@@ -27,7 +28,9 @@ def provide_logs(
         "description": [description],
         "status": [status],
         "error_message": [pd.NA if error_message is None else error_message],
-        "timestamp": [datetime.now().strftime("%Y-%m-%d %H:%M:%S")]
+        "timestamp": [datetime.now(
+            ZoneInfo("Asia/Manila")
+        ).strftime("%Y-%m-%d %H:%M:%S %Z%z")]
     })
 
     # Store the new pipeline logs to a dedicated csv file using pandas dataframe
