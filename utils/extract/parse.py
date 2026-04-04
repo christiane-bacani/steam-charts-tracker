@@ -51,7 +51,7 @@ def parse_soup(url: str, description: str) -> BeautifulSoup | None:
 
 def parse_top_5_trending_games(filepath: str) -> dict[str, list]:
     """
-    Parse the top 5 current trending games data from a JSON file.
+    Parse the current top 5 trending games data from a JSON file.
 
     Args:
         filepath (str): The filepath of a JSON file
@@ -68,7 +68,7 @@ def parse_top_5_trending_games(filepath: str) -> dict[str, list]:
             "EXTRACT",
             "Parse the extracted top 5 trending games data from a JSON file "
             "to get the 'app_id' from that data to extract the stats overview "
-            "and historical stats of every current trending game.",
+            "and historical stats of every current trending games.",
             "SUCCESSFUL",
             None
         )
@@ -79,11 +79,50 @@ def parse_top_5_trending_games(filepath: str) -> dict[str, list]:
             "EXTRACT",
             "Parse the extracted top 5 trending games data from a JSON file "
             "to get the 'app_id' from that data to extract the stats overview "
-            "and historical stats of every current trending game.",
+            "and historical stats of every current trending games.",
             "FAILED",
-            f"Filename: '{filepath}' is not existing for parsing the extracted data "
+            f"Filename: '{filepath}' is invalid for parsing the extracted data "
             "of the top 5 trending games from a JSON file."
         )
         raise FileNotFoundError("The given filename for parsing the extracted data "
                                 "of the top 5 trending games from a JSON file is "
-                                "not existing!")
+                                "invalid!")
+
+def parse_top_10_games(filepath: str) -> dict[str, list]:
+    """
+    Parse the current top 10 games (by current players) data from a JSON file.
+
+    Args:
+        filepath (str): The filepath of a JSON file
+
+    Returns:
+        dict: The parsed data as a dictionary
+    """
+    try:
+        # Parse the scraped data from a JSON file
+        with open(filepath, "r") as file:
+            scraped_data = json.load(file)
+
+        provide_logs(
+            "EXTRACT",
+            "Parse the extracted top 10 games (by current players) data from "
+            "a JSON file to get the 'app_id' from that data to extract the "
+            "stats overview and historical stats of every current top games.",
+            "SUCCESSFUL",
+            None
+        )
+        return scraped_data
+
+    except FileNotFoundError:
+        provide_logs(
+            "EXTRACT",
+            "Parse the extracted top 10 games (by current players) data from "
+            "a JSON file to get the 'app_id' from that data to extract the "
+            "stats overview and historical stats of every current top games.",
+            "FAILED",
+            f"Filename: '{filepath}' is invalid for parsing the extracted data "
+            "of the top 10 games (by current players) from a JSON file."
+        )
+        raise FileNotFoundError("The given filename for parsing the extracted data "
+                                "of the top 10 games (by current players) from a "
+                                "JSON file is invalid!")
