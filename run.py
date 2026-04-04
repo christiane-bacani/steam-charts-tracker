@@ -8,6 +8,7 @@ from etl.extract.trending_games import extract_top_5_trending_games
 from etl.extract.trending_games import extract_trending_games_stats_overview
 from etl.extract.trending_games import save_trending_games_stats_overview_to_json
 from etl.extract.trending_games import extract_trending_games_historical_stats
+from etl.extract.trending_games import save_trending_games_historical_stats_to_json
 
 url = "https://steamcharts.com/"
 
@@ -62,4 +63,8 @@ for number, app_id in enumerate(top_5_trending_games["app_id"]):
 save_trending_games_stats_overview_to_json(
     trending_games_stats_overview,
     "data/input/top_5_trending_games_stats_overview.json"
+)
+save_trending_games_historical_stats_to_json(
+    trending_games_historical_stats,
+    "data/input/top_5_trending_games_historical_stats.json"
 )
