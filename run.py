@@ -3,6 +3,7 @@ Python module to run the ETL Pipeline.
 """
 from utils.extract.parse import parse_soup
 from utils.extract.parse import parse_top_5_trending_games
+from utils.extract.parse import parse_top_10_games
 
 from etl.extract.trending_games import extract_top_5_trending_games
 from etl.extract.trending_games import extract_trending_games_stats_overview
@@ -62,7 +63,8 @@ for number, app_id in enumerate(top_5_trending_games["app_id"]):
     )
     trending_games_historical_stats[app_id] = historical_stats[app_id]
 
-# Save the scraped data of stats overview and historical stats of all current trending games
+# Save the scraped data of stats overview and historical stats of
+# all current trending games
 save_trending_games_stats_overview_to_json(
     trending_games_stats_overview,
     "data/input/top_5_trending_games_stats_overview.json"
@@ -72,10 +74,26 @@ save_trending_games_historical_stats_to_json(
     "data/input/top_5_trending_games_historical_stats.json"
 )
 
-# Extract the current top 10 games
+
+
+# Extract the current top 10 games (by current players)
 soup = parse_soup(
     url,
     "Parse the BeautifulSoup object from Steam Charts website to extract the data of "
-    "the current top 5 games."
+    "the current top 10 games (by current players)."
 )
 extract_top_10_games(soup)
+
+top_games_stats_overview = {
+    "app_id":                        [],
+    "game_image":                    [],
+    "twenty_four_hour_peak_players": [],
+    "all_time_peak_players":         []
+}
+top_games_historical_stats = {}
+
+# Parse the scraped data of the current top 10 games (by current players)
+# from a JSON file
+top_10_games = parse_top_10_games(
+    "data/input/top_10_games.json"
+)
