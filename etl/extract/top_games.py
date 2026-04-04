@@ -1,5 +1,6 @@
 """
-Python module to extract the data about the top games from the Steam Charts website.
+Python module to extract the data about the top games (by current players) from
+the Steam Charts website.
 """
 import json
 from bs4 import BeautifulSoup
@@ -10,7 +11,7 @@ from logs.etl_pipeline_logs import provide_logs
 
 def extract_top_10_games(soup: BeautifulSoup) -> None:
     """
-    Scrape the top 10 games from the Steam Charts website.
+    Scrape the top 10 games (by current players) from the Steam Charts website.
 
     Args:
         soup (BeautifulSoup): The parsed BeautifulSoup object
@@ -21,7 +22,9 @@ def extract_top_10_games(soup: BeautifulSoup) -> None:
         "id": "content-wrapper"
     })
 
-    table_tag = div_tag_with_content_wrapper_id.find("table", attrs={"id": "top-games"})
+    table_tag = div_tag_with_content_wrapper_id.find("table", attrs={
+        "id": "top-games"
+    })
     tbody_tag = table_tag.find("tbody")
     table_row_tags = tbody_tag.find_all("tr")
 
@@ -72,7 +75,8 @@ def extract_top_10_games(soup: BeautifulSoup) -> None:
 
     provide_logs(
         "EXTRACT",
-        "Extract the data of the current top 10 games from Steam Charts.",
+        "Extract the data of the current top 10 games (by current players) "
+        "from Steam Charts",
         "SUCCESSFUL",
         None
     )
