@@ -3,6 +3,8 @@ Python module to extract data about the trending games from the Steam Charts web
 """
 import json
 from bs4 import BeautifulSoup
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 from logs.etl_pipeline_logs import provide_logs
 
@@ -28,7 +30,8 @@ def extract_top_5_trending_games(soup: BeautifulSoup) -> None:
         "app_id": [],
         "game_name": [],
         "twenty_four_hour_change_pct": [],
-        "current_players": []
+        "current_players": [],
+        "current_datetime": []
     }
 
     for table_row_tag in table_row_tags:
@@ -50,6 +53,12 @@ def extract_top_5_trending_games(soup: BeautifulSoup) -> None:
         # Extract the number of current players
         current_players = table_data_tags[3].get_text()
         data["current_players"].append(current_players)
+
+        # Extract the current date and time (timezone aware)
+        current_datetime = datetime.now(
+            ZoneInfo("Asia/Manila")
+        ).strftime("%Y-%m-%d %H:%M:%S %Z%z")
+        data["current_datetime"].append(current_datetime)
 
     provide_logs(
         "EXTRACT",
