@@ -2,29 +2,36 @@
     "app_id": [
         "269210",
         "2510960",
-        "538030",
         "613100",
-        "1948280"
+        "538030",
+        "264710"
     ],
     "game_name": [
         "\n\n\t\t\t\t\t\tHero Siege\n\t\t\t\t\t\n",
         "\n\n\t\t\t\t\t\tTemtem: Swarm\n\t\t\t\t\t\n",
-        "\n\n\t\t\t\t\t\tXenonauts 2\n\t\t\t\t\t\n",
         "\n\n\t\t\t\t\t\tHouse Flipper\n\t\t\t\t\t\n",
-        "\n\n\t\t\t\t\t\tStacklands\n\t\t\t\t\t\n"
+        "\n\n\t\t\t\t\t\tXenonauts 2\n\t\t\t\t\t\n",
+        "\n\n\t\t\t\t\t\tSubnautica\n\t\t\t\t\t\n"
     ],
     "twenty_four_hour_change_pct": [
-        "+1530.0%",
-        "+882.6%",
-        "+572.4%",
-        "+337.8%",
-        "+184.5%"
+        "+1932.2%",
+        "+795.4%",
+        "+635.4%",
+        "+542.1%",
+        "+201.2%"
     ],
     "current_players": [
-        "10775",
-        "1659",
-        "1908",
-        "17360",
-        "1075"
+        "9876",
+        "1347",
+        "38026",
+        "2155",
+        "18053"
+    ],
+    "current_datetime": [
+        "2026-04-04 17:21:10 PST+0800",
+        "2026-04-04 17:21:10 PST+0800",
+        "2026-04-04 17:21:10 PST+0800",
+        "2026-04-04 17:21:10 PST+0800",
+        "2026-04-04 17:21:10 PST+0800"
     ]
 }
