@@ -72,7 +72,7 @@ def extract_top_10_games(soup: BeautifulSoup) -> None:
 
     provide_logs(
         "EXTRACT",
-        "Extract the data of the current top 10 games from Steam Charts."
+        "Extract the data of the current top 10 games from Steam Charts.",
         "SUCCESSFUL",
         None
     )
