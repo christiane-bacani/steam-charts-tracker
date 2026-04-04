@@ -49,7 +49,7 @@ def parse_soup(url: str, description: str) -> BeautifulSoup | None:
     )
     return soup
 
-def parse_top_5_trending_games(filepath: str) -> dict:
+def parse_top_5_trending_games(filepath: str) -> dict[str, list]:
     """
     Parse the top 5 current trending games data from a JSON file.
 
