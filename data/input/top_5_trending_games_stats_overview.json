@@ -2,29 +2,29 @@
     "app_id": [
         "269210",
         "2510960",
-        "538030",
         "613100",
-        "1948280"
+        "538030",
+        "264710"
     ],
     "game_image": [
         "https://steamcharts.com/assets/steam-images/269210.jpg",
         "https://steamcharts.com/assets/steam-images/2510960.jpg",
-        "https://steamcharts.com/assets/steam-images/538030.jpg",
         "https://steamcharts.com/assets/steam-images/613100.jpg",
-        "https://steamcharts.com/assets/steam-images/1948280.jpg"
+        "https://steamcharts.com/assets/steam-images/538030.jpg",
+        "https://steamcharts.com/assets/steam-images/264710.jpg"
     ],
     "twenty_four_hour_peak_players": [
         "15022",
         "2367",
+        "44711",
         "3344",
-        "19066",
-        "1812"
+        "22400"
     ],
     "all_time_peak_players": [
         "15022",
         "2806",
+        "44711",
         "3464",
-        "19066",
-        "5135"
+        "50876"
     ]
 }
