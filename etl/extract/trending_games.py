@@ -125,6 +125,13 @@ def save_trending_games_stats_overview_to_json(
         trending_games_stats_overview: dict[str, list],
         filepath: str
 ):
+    """
+    Save the extracted data of the current top 5 trending games' stats overview.
+
+    Args:
+        trending_games_stats_overview (dict): The scraped data as a dictionary
+        filepath (str): The target filepath as a JSON file to store the scraped data
+    """
     with open(filepath, "w") as file:
         json.dump(trending_games_stats_overview, file, indent=4)
 
