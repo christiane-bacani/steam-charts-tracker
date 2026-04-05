@@ -43,8 +43,8 @@ for number, app_id in enumerate(top_5_trending_games["app_id"]):
     soup = parse_soup(
         url + "app/" + app_id,
         f"Parse the BeautifulSoup object of the current number {number + 1} trending "
-        "game from Steam Charts website to extract the data of its stats overview and "
-        "historical stats.",
+        "game from Steam Charts website using the 'app_id' to extract the data of "
+        "its stats overview and historical stats.",
     )
 
     # Scrape stats overview of all current trending games
@@ -106,8 +106,8 @@ for number, app_id in enumerate(top_10_games["app_id"]):
     soup = parse_soup(
         url + "app/" + app_id,
         f"Parse the BeautifulSoup object of the current number {number + 1} "
-        "game (by current players) from Steam Charts website to extract the "
-        "data of its stats overview and historical stats."
+        "game (by current players) from Steam Charts website using the 'app_id' "
+        "to extract the data of its stats overview and historical stats."
     )
 
     # Scrape stats overview of all current top games (by current players)
