@@ -150,6 +150,29 @@ def extract_top_games_stats_overview(
     )
     return data
 
+def save_top_games_stats_overview_to_json(
+        top_games_stats_overview: dict[str, list],
+        filepath: str
+) -> None:
+    """
+    Save the extracted data of the current top 10 games' stats overview.
+
+    Args:
+        trending_games_stats_overview (dict): The scraped data as a dictionary
+        filepath (str): The target filepath as a JSON file to store the scraped data
+    """
+    # Save the extracted data to a JSON file
+    with open(filepath, "w") as file:
+        json.dump(top_games_stats_overview, file, indent=4)
+
+    provide_logs(
+        "EXTRACT",
+        "Save the extracted data of the top 10 game's stats "
+        "overview to a JSON file.",
+        "SUCCESSFUL",
+        None
+    )
+
 def extract_top_games_historical_stats(
         soup: BeautifulSoup,
         app_id: str,
