@@ -249,7 +249,7 @@ def save_trending_games_historical_stats_to_json(
 
     provide_logs(
         "EXTRACT",
-        "Save the extracted data of the top 5 trending game's historical "
+        "Save the extracted data of the top 5 trending games' historical "
         "stats to a JSON file.",
         "SUCCESSFUL",
         None
