@@ -15,6 +15,7 @@ from etl.extract.top_games import extract_top_10_games
 from etl.extract.top_games import extract_top_games_stats_overview
 from etl.extract.top_games import save_top_games_stats_overview_to_json
 from etl.extract.top_games import extract_top_games_historical_stats
+from etl.extract.top_games import save_top_games_historical_stats_to_json
 
 url = "https://steamcharts.com/"
 
@@ -135,4 +136,8 @@ for number, app_id in enumerate(top_10_games["app_id"]):
 save_top_games_stats_overview_to_json(
     top_games_stats_overview,
     "data/input/top_10_games_stats_overview.json"
+)
+save_top_games_historical_stats_to_json(
+    top_games_historical_stats,
+    "data/input/top_10_games_historical_stats.json"
 )
