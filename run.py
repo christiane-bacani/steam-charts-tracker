@@ -12,6 +12,7 @@ from etl.extract.trending_games import extract_trending_games_historical_stats
 from etl.extract.trending_games import save_trending_games_historical_stats_to_json
 
 from etl.extract.top_games import extract_top_10_games
+from etl.extract.top_games import extract_top_games_stats_overview
 
 url = "https://steamcharts.com/"
 
@@ -89,7 +90,8 @@ top_games_stats_overview = {
     "app_id":                        [],
     "game_image":                    [],
     "twenty_four_hour_peak_players": [],
-    "all_time_peak_players":         []
+    "all_time_peak_players":         [],
+    "current_datetime":              []
 }
 top_games_historical_stats = {}
 
@@ -98,3 +100,21 @@ top_games_historical_stats = {}
 top_10_games = parse_top_10_games(
     "data/input/top_10_games.json"
 )
+
+for number, app_id in enumerate(top_10_games["app_id"]):
+    soup = parse_soup(
+        url + "app/" + app_id,
+        f"Parse the BeautifulSoup object of the current number {number + 1} "
+        "game from Steam Charts website to extract the data of its stats oveview "
+        "and historical stats."
+    )
+
+    # Scrape stats overview of all current top games (by current players)
+    stats_overview = extract_top_games_stats_overview(
+        soup,
+        app_id,
+        f"Extract the stats overview data of the current number {number + 1} "
+        "game (by current players) from Steam Charts."
+    )
+    for key, value in stats_overview.items():
+        top_games_stats_overview[key].append(value)
