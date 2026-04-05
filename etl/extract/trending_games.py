@@ -27,6 +27,7 @@ def extract_top_5_trending_games(soup: BeautifulSoup) -> None:
 
     # Dictionary to store the scraped data
     data = {
+        "rank": [],
         "app_id": [],
         "game_name": [],
         "twenty_four_hour_change_pct": [],
@@ -34,8 +35,12 @@ def extract_top_5_trending_games(soup: BeautifulSoup) -> None:
         "current_datetime": []
     }
 
-    for table_row_tag in table_row_tags:
+    for number, table_row_tag in enumerate(table_row_tags):
         table_data_tags = table_row_tag.find_all("td")
+
+        # Extract the current rank of the game
+        rank = f"{number + 1}."
+        data["rank"].append(rank)
 
         # Extract the application ID
         app_id = table_data_tags[0].find("a")["href"]
