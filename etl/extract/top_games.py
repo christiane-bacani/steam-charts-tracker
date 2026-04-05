@@ -83,3 +83,69 @@ def extract_top_10_games(soup: BeautifulSoup) -> None:
     # Store the scraped data to a JSON file from `data/input` directory
     with open("data/input/top_10_games.json", "w") as file:
         json.dump(data, file, indent=4)
+
+def extract_top_games_stats_overview(
+        soup: BeautifulSoup,
+        app_id: str,
+        description: str
+) -> dict[str, str]:
+    """
+    Scrape the stats overview of a current top game (by current players).
+
+    Args:
+        soup (BeautifulSoup): The parsed BeautifulSoup object
+        app_id (str): The application ID of a current top game (by current players)
+        description (str): The whole description for extracting the data
+            of a current top game's stats overview
+
+    Returns:
+        dict: The scraped data as a dictionary
+    """
+    # Navigate the web-page to get the exact HTML elements for accurate scraping
+    body_tag = soup.find("body")
+    div_tag_with_content_wrapper_id = body_tag.find("div", attrs={
+        "id": "content-wrapper"
+    })
+
+    div_tag_with_app_heading_id = div_tag_with_content_wrapper_id.find("div", attrs={
+        "id": "app-heading"
+    })
+
+    # Dictionary to store the scraped data
+    data = {}
+
+    # Extract the application ID
+    data["app_id"] = app_id
+
+    # Extract the game image as a URL
+    game_image_url_path = div_tag_with_app_heading_id.find("img")["src"]
+    game_image_url = "https://steamcharts.com" + game_image_url_path
+    data["game_image"] = game_image_url
+
+    div_tag_with_app_stat_classes = div_tag_with_app_heading_id.find_all("div", attrs={
+        "class": "app-stat"
+    })
+
+    # Extract the number of peak players with a span of 24-hour period
+    span_tag = div_tag_with_app_stat_classes[1].find("span")
+    twenty_four_hour_peak_players = span_tag.get_text()
+    data["twenty_four_hour_peak_players"] = twenty_four_hour_peak_players
+
+    # Extract the number of peak players of all time
+    span_tag = div_tag_with_app_stat_classes[2].find("span")
+    all_time_peak_players = span_tag.get_text()
+    data["all_time_peak_players"] = all_time_peak_players
+
+    # Extract the current date and time (timezone aware)
+    current_datetime = datetime.now(
+        ZoneInfo("Asia/Manila")
+    ).strftime("%Y-%m-%d %H:%M:%S %Z%z")
+    data["current_datetime"] = current_datetime
+
+    provide_logs(
+        "EXTRACT",
+        description,
+        "SUCCESSFUL",
+        None
+    )
+    return data
