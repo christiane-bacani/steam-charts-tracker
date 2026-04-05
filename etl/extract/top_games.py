@@ -76,7 +76,7 @@ def extract_top_10_games(soup: BeautifulSoup) -> None:
     provide_logs(
         "EXTRACT",
         "Extract the data of the current top 10 games (by current players) "
-        "from Steam Charts",
+        "from Steam Charts.",
         "SUCCESSFUL",
         None
     )
