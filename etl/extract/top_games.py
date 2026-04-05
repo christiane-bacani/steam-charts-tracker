@@ -149,3 +149,76 @@ def extract_top_games_stats_overview(
         None
     )
     return data
+
+def extract_top_games_historical_stats(
+        soup: BeautifulSoup,
+        app_id: str,
+        description: str
+) -> dict[str, dict]:
+    """
+    Scrape the stats overview of a current top game (by current players).
+
+    Args:
+        soup (BeautifulSoup): The parsed BeautifulSoup object
+        app_id (str): The application ID of a current top game
+        description (str): The whole description for extracting the data
+            of a current top game's stats overview
+
+    Returns:
+        dict: The scraped data as a dictionary
+    """
+    # Navigate the web-page to get the exact HTML elements for accurate scraping
+    body_tag = soup.find("body")
+    div_tag_with_content_wrapper_id = body_tag.find("div", attrs={
+        "id": "content-wrapper"
+    })
+
+    div_tag_with_content_class = div_tag_with_content_wrapper_id.find_all(
+        "div", attrs={"class": "content"}
+    )[2]
+
+    table_tag = div_tag_with_content_class.find("table", attrs={
+        "class": "common-table"
+    })
+    tbody_tag = table_tag.find("tbody")
+    table_row_tags = tbody_tag.find_all("tr")
+
+    # Dictionary to store the scraped data
+    data = {
+        "month": [],
+        "avg_players": [],
+        "gain": [],
+        "gain_pct": [],
+        "peak_players": []
+    }
+
+    for table_row_tag in table_row_tags:
+        table_data_tags = table_row_tag.find_all("td")
+
+        # Extract the month
+        month = table_data_tags[0].get_text()
+        data["month"].append(month)
+
+        # Extract the average no. of players from that month
+        avg_players = table_data_tags[1].get_text()
+        data["avg_players"].append(avg_players)
+
+        # Extract the gain of average no. of players from previous month
+        gain = table_data_tags[2].get_text()
+        data["gain"].append(gain)
+
+        # Extract the gain pct of average no. of players from previous month
+        gain_pct = table_data_tags[3].get_text()
+        data["gain_pct"].append(gain_pct)
+
+        # Extract the no. of peak players from all month
+        peak_players = table_data_tags[4].get_text()
+        data["peak_players"].append(peak_players)
+
+    provide_logs(
+        "EXTRACT",
+        description,
+        "SUCCESSFUL",
+        None
+    )
+    return {app_id: data}
