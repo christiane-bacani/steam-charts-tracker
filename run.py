@@ -17,6 +17,8 @@ from etl.extract.top_games import save_top_games_stats_overview_to_json
 from etl.extract.top_games import extract_top_games_historical_stats
 from etl.extract.top_games import save_top_games_historical_stats_to_json
 
+from etl.extract.top_records import extract_top_10_records
+
 url = "https://steamcharts.com/"
 
 # Extract the current top 5 trending games
@@ -141,3 +143,13 @@ save_top_games_historical_stats_to_json(
     top_games_historical_stats,
     "data/input/top_10_games_historical_stats.json"
 )
+
+
+
+# Extract the current top 10 records
+soup = parse_soup(
+    url,
+    "Parse the BeautifulSoup object from Steam Charts website to extract the data of "
+    "the current top 10 records."
+)
+extract_top_10_records(soup)
