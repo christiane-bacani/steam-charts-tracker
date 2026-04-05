@@ -81,7 +81,7 @@ def extract_trending_games_stats_overview(
     Args:
         soup (BeautifulSoup): The parsed BeautifulSoup object
         app_id (str): The application ID of a current trending game
-        description (str): The whole deescription for extracting the data
+        description (str): The whole description for extracting the data
             of a current trending game's stats overview
 
     Returns:
