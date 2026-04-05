@@ -124,7 +124,7 @@ for number, app_id in enumerate(top_10_games["app_id"]):
     historical_stats = extract_top_games_historical_stats(
         soup,
         app_id,
-        f"Extract the historical stats of the current {number + 1} "
+        f"Extract the historical stats of the current number {number + 1} "
         "game (by current players) from Steam Charts."
     )
     top_games_historical_stats[app_id] = historical_stats[app_id]
