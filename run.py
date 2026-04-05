@@ -105,7 +105,7 @@ for number, app_id in enumerate(top_10_games["app_id"]):
     soup = parse_soup(
         url + "app/" + app_id,
         f"Parse the BeautifulSoup object of the current number {number + 1} "
-        "game (by currennt players) from Steam Charts website to extract the "
+        "game (by current players) from Steam Charts website to extract the "
         "data of its stats oveview and historical stats."
     )
 
