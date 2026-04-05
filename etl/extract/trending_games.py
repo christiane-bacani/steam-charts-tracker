@@ -122,6 +122,12 @@ def extract_trending_games_stats_overview(
     all_time_peak_players = span_tag.get_text()
     data["all_time_peak_players"] = all_time_peak_players
 
+    # Extract the current date and time (timezone aware)
+    current_datetime = datetime.now(
+        ZoneInfo("Asia/Manila")
+    ).strftime("%Y-%m-%d %H:%M:%S %Z%z")
+    data["current_datetime"] = current_datetime
+
     provide_logs(
         "EXTRACT",
         description,
