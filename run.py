@@ -120,7 +120,7 @@ for number, app_id in enumerate(top_10_games["app_id"]):
     for key, value in stats_overview.items():
         top_games_stats_overview[key].append(value)
 
-    # Scrape historical stats of all current trending games    
+    # Scrape historical stats of all current top games (by current players)
     historical_stats = extract_top_games_historical_stats(
         soup,
         app_id,
