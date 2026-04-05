@@ -1,62 +1,62 @@
 {
     "app_id": [
         "730",
-        "570",
         "578080",
+        "570",
         "2868840",
         "1172470",
         "3321460",
         "3419430",
         "252490",
-        "431960",
-        "2507950"
+        "2507950",
+        "431960"
     ],
     "game_image": [
         "https://steamcharts.com/assets/steam-images/730.jpg",
-        "https://steamcharts.com/assets/steam-images/570.jpg",
         "https://steamcharts.com/assets/steam-images/578080.jpg",
+        "https://steamcharts.com/assets/steam-images/570.jpg",
         "https://steamcharts.com/assets/steam-images/2868840.jpg",
         "https://steamcharts.com/assets/steam-images/1172470.jpg",
         "https://steamcharts.com/assets/steam-images/3321460.jpg",
         "https://steamcharts.com/assets/steam-images/3419430.jpg",
         "https://steamcharts.com/assets/steam-images/252490.jpg",
-        "https://steamcharts.com/assets/steam-images/431960.jpg",
-        "https://steamcharts.com/assets/steam-images/2507950.jpg"
+        "https://steamcharts.com/assets/steam-images/2507950.jpg",
+        "https://steamcharts.com/assets/steam-images/431960.jpg"
     ],
     "twenty_four_hour_peak_players": [
         "1468064",
-        "653139",
         "734071",
+        "653139",
         "356411",
         "280260",
         "231384",
         "153258",
         "186865",
-        "132269",
-        "137630"
+        "137630",
+        "132269"
     ],
     "all_time_peak_players": [
         "1818368",
-        "1291328",
         "3236027",
+        "1291328",
         "574638",
         "624473",
         "275859",
         "193859",
         "259646",
-        "150271",
-        "246418"
+        "246418",
+        "150271"
     ],
     "current_datetime": [
-        "2026-04-05 15:38:40 PST+0800",
-        "2026-04-05 15:38:41 PST+0800",
-        "2026-04-05 15:38:42 PST+0800",
-        "2026-04-05 15:38:42 PST+0800",
-        "2026-04-05 15:38:43 PST+0800",
-        "2026-04-05 15:38:44 PST+0800",
-        "2026-04-05 15:38:45 PST+0800",
-        "2026-04-05 15:38:46 PST+0800",
-        "2026-04-05 15:38:47 PST+0800",
-        "2026-04-05 15:38:48 PST+0800"
+        "2026-04-05 17:00:05 PST+0800",
+        "2026-04-05 17:00:06 PST+0800",
+        "2026-04-05 17:00:07 PST+0800",
+        "2026-04-05 17:00:08 PST+0800",
+        "2026-04-05 17:00:08 PST+0800",
+        "2026-04-05 17:00:09 PST+0800",
+        "2026-04-05 17:00:10 PST+0800",
+        "2026-04-05 17:00:11 PST+0800",
+        "2026-04-05 17:00:12 PST+0800",
+        "2026-04-05 17:00:13 PST+0800"
     ]
 }
