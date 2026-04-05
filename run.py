@@ -27,7 +27,8 @@ trending_games_stats_overview = {
     "app_id":                        [],
     "game_image":                    [],
     "twenty_four_hour_peak_players": [],
-    "all_time_peak_players":         []
+    "all_time_peak_players":         [],
+    "current_datetime":              []
 }
 trending_games_historical_stats = {}
 
