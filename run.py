@@ -20,8 +20,9 @@ from etl.extract.top_games import save_top_games_historical_stats_to_json
 
 from etl.extract.top_records import extract_top_10_records
 from etl.extract.top_records import extract_top_records_stats_overview
-from etl.extract.top_records import save_top_records_stats_overview
+from etl.extract.top_records import save_top_records_stats_overview_to_json
 from etl.extract.top_records import extract_top_records_historical_stats
+from etl.extract.top_records import save_top_records_historical_stats_to_json
 
 url = "https://steamcharts.com/"
 
@@ -172,7 +173,7 @@ top_10_records = parse_top_10_records(
     "data/input/top_10_records.json"
 )
 
-for app_id in top_10_records["app_id"]:
+for number, app_id in enumerate(top_10_records["app_id"]):
     soup = parse_soup(
         url + "app/" + app_id,
         f"Parse the BeautifulSoup object of the current number {number + 1} "
@@ -197,10 +198,15 @@ for app_id in top_10_records["app_id"]:
         f"Extract the historical stats of the current number {number + 1} "
         "record from Steam Charts."
     )
+    top_records_historical_stats[app_id] = historical_stats[app_id]
 
 # Save the scraped data of stats overview and historical stats of
 # all current top records
-save_top_records_stats_overview(
+save_top_records_stats_overview_to_json(
     top_records_stats_overview,
     "data/input/top_10_records_stats_overview.json"
+)
+save_top_records_historical_stats_to_json(
+    top_records_historical_stats,
+    "data/input/top_10_records_historical_stats.json"
 )
