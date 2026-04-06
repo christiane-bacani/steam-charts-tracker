@@ -258,7 +258,7 @@ def save_top_records_historical_stats_to_json(
 
     provide_logs(
         "EXTRACT",
-        "Save the extracted data of the top records' historical "
+        "Save the extracted data of the top 10 records' historical "
         "stats to a JSON file.",
         "SUCCESSFUL",
         None
