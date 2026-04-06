@@ -20,6 +20,7 @@ from etl.extract.top_games import save_top_games_historical_stats_to_json
 
 from etl.extract.top_records import extract_top_10_records
 from etl.extract.top_records import extract_top_records_stats_overview
+from etl.extract.top_records import extract_top_records_historical_stats
 
 url = "https://steamcharts.com/"
 
@@ -187,3 +188,11 @@ for app_id in top_10_records["app_id"]:
     )
     for key, value in stats_overview.items():
         top_records_stats_overview[key].append(value)
+
+    # Scrape historical stats of all current top records
+    historical_stats = extract_top_records_historical_stats(
+        soup,
+        app_id,
+        f"Extract the historical stats of the current number {number + 1} "
+        "record from Steam Charts."
+    )
