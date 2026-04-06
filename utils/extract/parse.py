@@ -126,3 +126,40 @@ def parse_top_10_games(filepath: str) -> dict[str, list]:
         raise FileNotFoundError("The given filename for parsing the extracted data "
                                 "of the top 10 games (by current players) from a "
                                 "JSON file is invalid!")
+
+def parse_top_10_records(filepath: str) -> dict[str, list]:
+    """
+    Parse the current top 10 records data from a JSON file.
+
+    Args:
+        filepath (str): The filepath of a JSON file
+
+    Returns:
+        dict: The parsed data as a dictionary
+    """
+    try:
+        with open(filepath, "r") as file:
+            scraped_data = json.load(file)
+
+        provide_logs(
+            "EXTRACT",
+            "Parse the extracted top 10 records data from a JSON file to get the "
+            "'app_id' from that data to extract the stats overview and historical "
+            "stats of every current top records.",
+            "SUCCESSFUL",
+            None
+        )
+        return scraped_data
+
+    except FileNotFoundError:
+        provide_logs(
+            "EXTRACT",
+            "Parse the extracted top 10 records data from a JSON file to get the "
+            "'app_id' from that data to extract the stats overview and historical "
+            "stats of every current top records.",
+            "FAILED",
+            f"Filename: `{filepath}` is invalid for parsing the extracted data "
+            "of the top 10 records from a JSON file."
+        )
+        raise FileNotFoundError("The given filename for parsing the extracted data "
+                                "of the top 10 records from a JSON file is invalid!")
