@@ -174,7 +174,7 @@ for app_id in top_10_records["app_id"]:
     soup = parse_soup(
         url + "app/" + app_id,
         f"Parse the BeautifulSoup object of the current number {number + 1} "
-        "record from Steam Charts websute using the 'app_id' to extract the "
+        "record from Steam Charts website using the 'app_id' to extract the "
         "data of its stats overview and historical stats."
     )
 
