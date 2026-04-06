@@ -169,3 +169,21 @@ top_records_historical_stats = {}
 top_10_records = parse_top_10_records(
     "data/input/top_10_records.json"
 )
+
+for app_id in top_10_records["app_id"]:
+    soup = parse_soup(
+        url + "app/" + app_id,
+        f"Parse the BeautifulSoup object of the current number {number + 1} "
+        "record from Steam Charts websute using the 'app_id' to extract the "
+        "data of its stats overview and historical stats."
+    )
+
+    # Scrape stats overview of all current top records
+    stats_overview = extract_top_records_stats_overview(
+        soup,
+        app_id,
+        f"Extract the stats overview data of the current number {number + 1} "
+        "record from Steam Charts."
+    )
+    for key, value in stats_overview.items():
+        top_records_stats_overview[key].append(value)
