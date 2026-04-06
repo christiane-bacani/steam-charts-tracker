@@ -145,7 +145,7 @@ def extract_top_records_stats_overview(
     )
     return data
 
-def save_top_records_stats_overview(
+def save_top_records_stats_overview_to_json(
         top_records_stats_overview: dict[str, list],
         filepath: str
 ) -> None:
@@ -240,3 +240,26 @@ def extract_top_records_historical_stats(
         None
     )
     return {app_id: data}
+
+def save_top_records_historical_stats_to_json(
+        top_records_historical_stats: dict[str, dict],
+        filepath: str
+) -> None:
+    """
+    Save the extracted data of the current top 10 records' historical stats.
+
+    Args:
+        trending_games_historical_stats (dict): The scraped data as a dictionary
+        filepath (str): The target filepath as a JSON file to store the scraped data
+    """
+    # Save the extracted data to a JSON file
+    with open(filepath, "w") as file:
+        json.dump(top_records_historical_stats, file, indent=4)
+
+    provide_logs(
+        "EXTRACT",
+        "Save the extracted data of the top records' historical "
+        "stats to a JSON file.",
+        "SUCCESSFUL",
+        None
+    )
