@@ -4,6 +4,7 @@ Python module to run the ETL Pipeline.
 from utils.extract.parse import parse_soup
 from utils.extract.parse import parse_top_5_trending_games
 from utils.extract.parse import parse_top_10_games
+from utils.extract.parse import parse_top_10_records
 
 from etl.extract.trending_games import extract_top_5_trending_games
 from etl.extract.trending_games import extract_trending_games_stats_overview
@@ -18,6 +19,7 @@ from etl.extract.top_games import extract_top_games_historical_stats
 from etl.extract.top_games import save_top_games_historical_stats_to_json
 
 from etl.extract.top_records import extract_top_10_records
+from etl.extract.top_records import extract_top_records_stats_overview
 
 url = "https://steamcharts.com/"
 
@@ -153,3 +155,17 @@ soup = parse_soup(
     "the current top 10 records."
 )
 extract_top_10_records(soup)
+
+top_records_stats_overview = {
+    "app_id":                        [],
+    "game_image":                    [],
+    "twenty_four_hour_peak_players": [],
+    "all_time_peak_players":         [],
+    "current_datetime":              []
+}
+top_records_historical_stats = {}
+
+# Parse the scraped data of the current top 10 records from a JSON file
+top_10_records = parse_top_10_records(
+    "data/input/top_10_records.json"
+)
