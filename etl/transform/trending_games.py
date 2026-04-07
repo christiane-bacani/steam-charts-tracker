@@ -75,7 +75,7 @@ def transform_top_5_trending_games(filepath: str) -> None:
             "Transform the extracted data of the current top 5 trending games "
             "from a JSON file.",
             "FAILED",
-            f"Filename: '{filepath} is invalid for parsing the extracted data "
+            f"Filename: '{filepath}' is invalid for parsing the extracted data "
             "of the top 5 trending games from a JSON file."
         )
         raise FileNotFoundError("The given filename for parsing the extracted data "
