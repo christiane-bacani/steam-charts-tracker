@@ -1,3 +1,7 @@
+"""
+Python module to transform the extracted data of the current top 5 trending games
+from a JSON file.
+"""
 import json
 import pandas as pd
 from datetime import datetime
