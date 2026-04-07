@@ -5,6 +5,12 @@ from datetime import datetime
 from logs.etl_pipeline_logs import provide_logs
 
 def transform_top_5_trending_games(filepath: str) -> None:
+    """
+    Transform the data of the current top 5 trending games from Steam Charts.
+
+    Args:
+        filepath (str): The filepath of a JSON file
+    """
     try:
         # Parse the scraped data from a JSON file to perform data transformation
         with open(filepath, "r") as file:
