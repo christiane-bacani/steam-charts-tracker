@@ -74,7 +74,7 @@ def extract_top_10_records(soup: BeautifulSoup) -> None:
         "SUCCESSFUL",
         None
     )
-    # Store the scraped data to a JSON file from `data/input` directory
+    # Store the scraped data to a JSON file of `data/input` directory
     with open("data/input/top_10_records.json", "w") as file:
         json.dump(data, file, indent=4)
 

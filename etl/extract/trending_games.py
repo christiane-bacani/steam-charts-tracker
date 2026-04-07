@@ -71,7 +71,7 @@ def extract_top_5_trending_games(soup: BeautifulSoup) -> None:
         "SUCCESSFUL",
         None
     )
-    # Store the scraped data to a JSON file from `data/input` directory
+    # Store the scraped data to a JSON file of `data/input` directory
     with open("data/input/top_5_trending_games.json", "w") as file:
         json.dump(data, file, indent=4)
 
