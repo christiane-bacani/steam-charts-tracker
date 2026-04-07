@@ -6,7 +6,7 @@ from logs.etl_pipeline_logs import provide_logs
 
 def transform_top_5_trending_games(filepath: str) -> None:
     """
-    Transform the data of the current top 5 trending games from Steam Charts.
+    Transform the extracted data of the current top 5 trending games from a JSON file.
 
     Args:
         filepath (str): The filepath of a JSON file
@@ -52,7 +52,8 @@ def transform_top_5_trending_games(filepath: str) -> None:
 
         provide_logs(
             "TRANSFORM",
-            "Transform the data of the current top 5 trending games from Steam Charts.",
+            "Transform the extracted data of the current top 5 trending games "
+            "from a JSON file.",
             "SUCCESSFUL",
             None
         )
@@ -67,7 +68,8 @@ def transform_top_5_trending_games(filepath: str) -> None:
     except FileNotFoundError:
         provide_logs(
             "TRANSFORM",
-            "Transform the data of the current top 5 trending games from Steam Charts.",
+            "Transform the extracted data of the current top 5 trending games "
+            "from a JSON file.",
             "FAILED",
             f"Filename: '{filepath} is invalid for parsing the extracted data "
             "of the top 5 trending games from a JSON file."
