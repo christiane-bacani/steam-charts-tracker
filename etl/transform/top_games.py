@@ -14,6 +14,8 @@ def transform_top_10_games(filepath: str) -> None:
         with open(filepath, "r") as file:
             top_10_games = json.load(file)
 
+        # TODO: Add transformation logic here...
+
     except FileNotFoundError:
         provide_logs(
             "TRANSFORM",
