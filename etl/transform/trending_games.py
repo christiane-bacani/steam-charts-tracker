@@ -44,6 +44,12 @@ def transform_top_5_trending_games(filepath: str) -> None:
             )
             top_5_trending_games["current_datetime"][index] = current_datetime
 
+        provide_logs(
+            "TRANSFORM",
+            "Transform the data of the current top 5 trending games from Steam Charts.",
+            "SUCCESSFUL",
+            None
+        )
         # Convert the transformed data to a DataFrame object and
         # store the DataFrame to a CSV file from `data/output` directory
         transformed_top_5_trending_games = pd.DataFrame(top_5_trending_games)
@@ -53,6 +59,13 @@ def transform_top_5_trending_games(filepath: str) -> None:
         )
 
     except FileNotFoundError:
+        provide_logs(
+            "TRANSFORM",
+            "Transform the data of the current top 5 trending games from Steam Charts.",
+            "FAILED",
+            f"Filename: '{filepath} is invalid for parsing the extracted data "
+            "of the top 5 trending games from a JSON file."
+        )
         raise FileNotFoundError("The given filename for parsing the extracted data "
                                 "of the top 5 trending games from a JSON file is "
                                 "invalid!")
