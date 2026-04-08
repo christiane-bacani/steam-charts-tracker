@@ -210,7 +210,11 @@ def transform_trending_games_historical_stats(
 
             # Convert the datatype of all values for 'gain' key to float
             for gain in historical_stats["gain"]:
-                gain = float(gain)
+                if str(gain) == "-":
+                    gain = 0.0
+
+                else:
+                    gain = float(gain)
                 data["gain"].append(gain)
 
             # Remove '%' and convert the datatype of all values for 'gain_pct' key
