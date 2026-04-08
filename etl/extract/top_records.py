@@ -45,7 +45,7 @@ def extract_top_10_records(soup: BeautifulSoup) -> None:
     )
     for number, table_row_tag in enumerate(table_row_tags):
         table_data_tags = table_row_tag.find_all("td")
-        
+   
         # Extract the current rank of the game
         rank = f"{number + 1}."
         data["rank"].append(rank)
