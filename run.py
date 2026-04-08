@@ -25,6 +25,7 @@ from etl.extract.top_records import extract_top_records_historical_stats
 from etl.extract.top_records import save_top_records_historical_stats_to_json
 
 from etl.transform.trending_games import transform_top_5_trending_games
+from etl.transform.trending_games import transform_trending_games_stats_overview
 
 
 
@@ -237,4 +238,7 @@ save_top_records_historical_stats_to_json(
 
 transform_top_5_trending_games(
     "data/input/top_5_trending_games.json"
+)
+transform_trending_games_stats_overview(
+    "data/input/top_5_trending_games_stats_overview.json"
 )
