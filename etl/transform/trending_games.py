@@ -149,7 +149,7 @@ def transform_trending_games_stats_overview(
             trending_games_stats_overview
         )
         transformed_trending_games_stats_overview.to_csv(
-            "data/output/top_5_trending_games_stats_overview.json",
+            "data/output/top_5_trending_games_stats_overview.csv",
             index=False
         )
 
