@@ -145,10 +145,10 @@ def transform_trending_games_stats_overview(
         )
         # Convert the transformed data to a DataFrame object and
         # store the DataFrame to a CSV file of `data/output` directory
-        transformed_trending_games_stats_overview = pd.DataFrame(
+        df = pd.DataFrame(
             trending_games_stats_overview
         )
-        transformed_trending_games_stats_overview.to_csv(
+        df.to_csv(
             "data/output/top_5_trending_games_stats_overview.csv",
             index=False
         )
@@ -165,5 +165,92 @@ def transform_trending_games_stats_overview(
         )
         raise FileNotFoundError("The given filename for parsing the extracted data "
                                 "of the top 5 trending games' stats overview from "
+                                "a JSON file to perform data transformation is "
+                                "invalid!")
+
+def transform_trending_games_historical_stats(
+        filepath: str
+) -> None:
+    """
+    Transform the extracted data of the current top 5 trending games's historical stats
+    from a JSON file.
+
+    Args:
+        filepath (str): The filepath of a JSON file
+    """
+    try:
+        # Parse the scraped data from a JSON file to perform data transformation
+        with open(filepath, "r") as file:
+            trending_games_historical_stats: dict[str, dict] = json.load(file)
+
+        # Dictionary to store the transformed data
+        transformed_trending_games_historical_stats = {}
+
+        for app_id, historical_stats in trending_games_historical_stats.items():
+            # Convert the datatype of all values for 'app_id' key to integer
+            app_id = int(app_id)
+
+            data = {
+                "month":        [],
+                "avg_players":  [],
+                "gain":         [],
+                "gain_pct":     [],
+                "peak_players": [],
+            }
+
+            # Remove leading and trailing whitespaces of all values for 'month' key
+            for month in historical_stats["month"]:
+                month = str(month).strip()
+                data["month"].append(month)
+
+            # Convert the datatype of all values for 'avg_players' key to float
+            for avg_players in historical_stats["avg_players"]:
+                avg_players = float(avg_players)
+                data["avg_players"].append(avg_players)
+
+            # Convert the datatype of all values for 'gain' key to float
+            for gain in historical_stats["gain"]:
+                gain = float(gain)
+                data["gain"].append(gain)
+
+            # Remove '%' and convert the datatype of all values for 'gain_pct' key
+            # to float
+            for gain_pct in historical_stats["gain_pct"]:
+                gain_pct = float(str(gain_pct).replace("%", ""))
+                data["gain_pct"].append(gain_pct)
+
+            # Convert the datatype of all values for 'peak_players' key to integer
+            for peak_players in historical_stats["peak_players"]:
+                peak_players = int(peak_players)
+                data["peak_players"].append(peak_players)
+
+            transformed_trending_games_historical_stats[app_id] = data
+
+        provide_logs(
+            "TRANSFORM",
+            "Transform the extracted data of the top 5 trending games' historical "
+            "stats from a JSON file.",
+            "SUCCESSFUL",
+            None
+        )
+        # Convert the transformed data to a DataFrame object and
+        # store the DataFrame to a CSV file of `data/output` directory
+        df = pd.DataFrame(
+            transformed_trending_games_historical_stats
+        )
+        df.to_csv("data/output/top_5_trending_games_historical_stats.csv", index=False)
+
+    except FileNotFoundError:
+        provide_logs(
+            "TRANSFORM",
+            "Transform the extracted data of the top 5 trending games' historical "
+            "stats from a JSON file.",
+            "FAILED",
+            f"Filename: '{filepath}' is invalid for parsing the extracted data "
+            "of the top 5 trending games' historical stats from a JSON file to "
+            "perform data transformation."
+        )
+        raise FileNotFoundError("The given filename for parsing the extracted data "
+                                "of the top 5 trending games' historical stats from "
                                 "a JSON file to perform data transformation is "
                                 "invalid!")
