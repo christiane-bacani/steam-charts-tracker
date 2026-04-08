@@ -37,6 +37,12 @@ def extract_top_10_records(soup: BeautifulSoup) -> None:
         "current_datetime": []
     }
 
+    provide_logs(
+        "EXTRACT",
+        "Extract the data of the current top 10 records from Steam Charts.",
+        "SUCCESSFUL",
+        None
+    )
     for number, table_row_tag in enumerate(table_row_tags):
         table_data_tags = table_row_tag.find_all("td")
         
@@ -70,7 +76,7 @@ def extract_top_10_records(soup: BeautifulSoup) -> None:
 
     provide_logs(
         "EXTRACT",
-        "Extract the data of the current top 10 records from Steam Charts.",
+        "Save the extracted data of the current top 10 records to a JSON file."
         "SUCCESSFUL",
         None
     )
