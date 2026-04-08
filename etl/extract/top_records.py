@@ -76,7 +76,7 @@ def extract_top_10_records(soup: BeautifulSoup) -> None:
 
     provide_logs(
         "EXTRACT",
-        "Save the extracted data of the current top 10 records to a JSON file."
+        "Save the extracted data of the current top 10 records to a JSON file.",
         "SUCCESSFUL",
         None
     )
