@@ -39,6 +39,13 @@ def extract_top_10_games(soup: BeautifulSoup) -> None:
         "current_datetime": []
     }
 
+    provide_logs(
+        "EXTRACT",
+        "Extract the data of the current top 10 games (by current players) "
+        "from Steam Charts.",
+        "SUCCESSFUL",
+        None
+    )
     for table_row_tag in table_row_tags:
         table_data_tags = table_row_tag.find_all("td")
 
@@ -75,8 +82,8 @@ def extract_top_10_games(soup: BeautifulSoup) -> None:
 
     provide_logs(
         "EXTRACT",
-        "Extract the data of the current top 10 games (by current players) "
-        "from Steam Charts.",
+        "Save the extracted data of the current 10 games (by current players) "
+        "to a JSON file.",
         "SUCCESSFUL",
         None
     )
