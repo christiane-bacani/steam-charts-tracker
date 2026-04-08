@@ -113,7 +113,7 @@ def transform_trending_games_stats_overview(
             twenty_four_hour_peak_players = int(twenty_four_hour_peak_players)
             trending_games_stats_overview[
                 "twenty_four_hour_peak_players"
-            ] = twenty_four_hour_peak_players
+            ][index] = twenty_four_hour_peak_players
 
         # Convert the datatype of all values for 'all_time_peak_players' key
         # to integer
