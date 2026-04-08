@@ -35,6 +35,12 @@ def extract_top_5_trending_games(soup: BeautifulSoup) -> None:
         "current_datetime": []
     }
 
+    provide_logs(
+        "EXTRACT",
+        "Extract the data of the current top 5 trending games from Steam Charts.",
+        "SUCCESSFUL",
+        None
+    )
     for number, table_row_tag in enumerate(table_row_tags):
         table_data_tags = table_row_tag.find_all("td")
 
@@ -67,7 +73,8 @@ def extract_top_5_trending_games(soup: BeautifulSoup) -> None:
 
     provide_logs(
         "EXTRACT",
-        "Extract the data of the current top 5 trending games from Steam Charts.",
+        "Save the extracted data of the current top 5 trending games "
+        "to a JSON file.",
         "SUCCESSFUL",
         None
     )
