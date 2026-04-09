@@ -36,8 +36,8 @@ def transform_top_5_trending_games(filepath: str) -> None:
             game_name = str(game_name).strip()
             top_5_trending_games["game_name"][index] = game_name
 
-        # Convert the datatype of all values for 'twenty_four_hour_change_pct' key
-        # to float
+        # Remove '%', handle invalid values, and convert the datatype of
+        # all values for 'twenty_four_hour_change_pct' key to float
         for index, twenty_four_hour_change_pct in enumerate(
             top_5_trending_games["twenty_four_hour_change_pct"]
         ):
@@ -217,8 +217,8 @@ def transform_trending_games_historical_stats(
                 data["app_id"].append(app_id)
 
             # Remove leading and trailing whitespaces of all values for 'month' key and
-            # transform the values consisting 'Last 30 Days' to a proper month and year
-            # format
+            # transform the values of that key that contains 'Last 30 Days' to a proper
+            # month and year format (e.g. April 2026)
             for month in historical_stats["month"]:
                 month = str(month).strip()
                 month_mappings = {1 : "January",  2 : "February", 3 : "March",
@@ -238,7 +238,8 @@ def transform_trending_games_historical_stats(
                 avg_players = float(avg_players)
                 data["avg_players"].append(avg_players)
 
-            # Convert the datatype of all values for 'gain' key to float
+            # Handle invalid values and convert the datatype of all values for
+            # 'gain' key to float
             for gain in historical_stats["gain"]:
                 if str(gain) == "-":
                     gain = 0.0
@@ -247,8 +248,8 @@ def transform_trending_games_historical_stats(
                     gain = float(gain)
                 data["gain"].append(gain)
 
-            # Remove '%' and convert the datatype of all values for 'gain_pct' key
-            # to float
+            # Remove '%', handle invalid values, and convert the datatype of
+            # all values for 'gain_pct' key to float
             for gain_pct in historical_stats["gain_pct"]:
                 gain_pct = str(gain_pct).replace("%", "")
                 if gain_pct == "-":
@@ -270,6 +271,8 @@ def transform_trending_games_historical_stats(
             "SUCCESSFUL",
             None
         )
+        # Convert the transformed data to a DataFrame object and
+        # store the DataFrame to a CSV file of `data/output` directory
         df = pd.DataFrame(
             data
         )
