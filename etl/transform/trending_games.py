@@ -36,6 +36,23 @@ def transform_top_5_trending_games(filepath: str) -> None:
             game_name = str(game_name).strip()
             top_5_trending_games["game_name"][index] = game_name
 
+        # Convert the datatype of all values for 'twenty_four_hour_change_pct' key
+        # to float
+        for index, twenty_four_hour_change_pct in enumerate(
+            top_5_trending_games["twenty_four_hour_change_pct"]
+        ):
+            twenty_four_hour_change_pct = str(twenty_four_hour_change_pct).replace(
+                "%", ""
+            )
+            if twenty_four_hour_change_pct == "-":
+                twenty_four_hour_change_pct = 0.0
+
+            else:
+                twenty_four_hour_change_pct = float(twenty_four_hour_change_pct)
+            top_5_trending_games[
+                "twenty_four_hour_change_pct"
+            ][index] = twenty_four_hour_change_pct
+
         # Convert the datatype of all values for 'current_players' key to integer
         for index, current_players in enumerate(
             top_5_trending_games["current_players"]
@@ -63,8 +80,8 @@ def transform_top_5_trending_games(filepath: str) -> None:
         )
         # Convert the transformed data to a DataFrame object and
         # store the DataFrame to a CSV file of `data/output` directory
-        transformed_top_5_trending_games = pd.DataFrame(top_5_trending_games)
-        transformed_top_5_trending_games.to_csv(
+        df = pd.DataFrame(top_5_trending_games)
+        df.to_csv(
             "data/output/top_5_trending_games.csv",
             index=False
         )
@@ -184,23 +201,36 @@ def transform_trending_games_historical_stats(
             trending_games_historical_stats: dict[str, dict] = json.load(file)
 
         # Dictionary to store the transformed data
-        transformed_trending_games_historical_stats = {}
+        data = {
+            "app_id":       [],
+            "month":        [],
+            "avg_players":  [],
+            "gain":         [],
+            "gain_pct":     [],
+            "peak_players": [],
+        }
 
         for app_id, historical_stats in trending_games_historical_stats.items():
             # Convert the datatype of all values for 'app_id' key to integer
             app_id = int(app_id)
+            for _ in range(len(historical_stats["month"])):
+                data["app_id"].append(app_id)
 
-            data = {
-                "month":        [],
-                "avg_players":  [],
-                "gain":         [],
-                "gain_pct":     [],
-                "peak_players": [],
-            }
-
-            # Remove leading and trailing whitespaces of all values for 'month' key
+            # Remove leading and trailing whitespaces of all values for 'month' key and
+            # transform the values consisting 'Last 30 Days' to a proper month and year
+            # format
             for month in historical_stats["month"]:
                 month = str(month).strip()
+                month_mappings = {1 : "January",  2 : "February", 3 : "March",
+                                  4 : "April",    5 : "May",      6 : "June",
+                                  7 : "July",     8 : "August",   9 : "September",
+                                  10: "October",  11: "November", 12: "December"}
+
+                if month == "Last 30 Days":
+                    month = month_mappings[datetime.now().month]
+                    year = str(datetime.now().year)
+                    month = month + " " + year
+
                 data["month"].append(month)
 
             # Convert the datatype of all values for 'avg_players' key to float
@@ -220,15 +250,18 @@ def transform_trending_games_historical_stats(
             # Remove '%' and convert the datatype of all values for 'gain_pct' key
             # to float
             for gain_pct in historical_stats["gain_pct"]:
-                gain_pct = float(str(gain_pct).replace("%", ""))
+                gain_pct = str(gain_pct).replace("%", "")
+                if gain_pct == "-":
+                    gain_pct = 0.0
+
+                else:
+                    gain_pct = float(gain_pct)
                 data["gain_pct"].append(gain_pct)
 
             # Convert the datatype of all values for 'peak_players' key to integer
             for peak_players in historical_stats["peak_players"]:
                 peak_players = int(peak_players)
                 data["peak_players"].append(peak_players)
-
-            transformed_trending_games_historical_stats[app_id] = data
 
         provide_logs(
             "TRANSFORM",
@@ -237,12 +270,13 @@ def transform_trending_games_historical_stats(
             "SUCCESSFUL",
             None
         )
-        # Convert the transformed data to a DataFrame object and
-        # store the DataFrame to a CSV file of `data/output` directory
         df = pd.DataFrame(
-            transformed_trending_games_historical_stats
+            data
         )
-        df.to_csv("data/output/top_5_trending_games_historical_stats.csv", index=False)
+        df.to_csv(
+            "data/output/top_5_trending_games_historical_stats.csv",
+            index=False
+        )
 
     except FileNotFoundError:
         provide_logs(
