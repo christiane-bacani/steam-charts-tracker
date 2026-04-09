@@ -1,37 +1,37 @@
 {
     "app_id": [
-        "2217000",
+        "1425250",
         "2141300",
-        "357070",
-        "3763830",
-        "2206460"
+        "1836120",
+        "396160",
+        "1716740"
     ],
     "game_image": [
-        "https://steamcharts.com/assets/steam-images/2217000.jpg",
+        "https://steamcharts.com/assets/steam-images/1425250.jpg",
         "https://steamcharts.com/assets/steam-images/2141300.jpg",
-        "https://steamcharts.com/assets/steam-images/357070.jpg",
-        "https://steamcharts.com/assets/steam-images/3763830.jpg",
-        "https://steamcharts.com/assets/steam-images/2206460.jpg"
+        "https://steamcharts.com/assets/steam-images/1836120.jpg",
+        "https://steamcharts.com/assets/steam-images/396160.jpg",
+        "https://steamcharts.com/assets/steam-images/1716740.jpg"
     ],
     "twenty_four_hour_peak_players": [
-        "2546",
-        "1029",
-        "4030",
-        "663",
-        "1023"
+        "1001",
+        "1055",
+        "1225",
+        "1896",
+        "20675"
     ],
     "all_time_peak_players": [
-        "6708",
-        "1029",
-        "10728",
-        "3536",
-        "2384"
+        "3544",
+        "1055",
+        "13919",
+        "11230",
+        "330597"
     ],
     "current_datetime": [
-        "2026-04-08 15:54:09 PST+0800",
-        "2026-04-08 15:54:10 PST+0800",
-        "2026-04-08 15:54:11 PST+0800",
-        "2026-04-08 15:54:11 PST+0800",
-        "2026-04-08 15:54:12 PST+0800"
+        "2026-04-09 14:39:10 PST+0800",
+        "2026-04-09 14:39:11 PST+0800",
+        "2026-04-09 14:39:12 PST+0800",
+        "2026-04-09 14:39:12 PST+0800",
+        "2026-04-09 14:39:13 PST+0800"
     ]
 }
