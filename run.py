@@ -240,9 +240,3 @@ save_top_records_historical_stats_to_json(
 transform_top_5_trending_games(
     "data/input/top_5_trending_games.json"
 )
-transform_trending_games_stats_overview(
-    "data/input/top_5_trending_games_stats_overview.json"
-)
-transform_trending_games_historical_stats(
-    "data/input/top_5_trending_games_historical_stats.json"
-)
