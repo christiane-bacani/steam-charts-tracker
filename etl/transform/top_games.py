@@ -140,3 +140,32 @@ def transform_top_games_stats_overview(filepath: str) -> None:
                                 "of the top 10 games' stats overview from "
                                 "a JSON file to perform data transformation is "
                                 "invalid!")
+
+def transform_top_games_historical_stats(filepath: str) -> None:
+    """
+    Transform the extracted data of the current top 10 games' historical stats from a
+    JSON file.
+
+    Args:
+        filepath (str): The filepath of a JSON file
+    """
+    try:
+        with open(filepath, "r") as file:
+            top_games_historical_stats = json.load(file)
+
+        df = pd.DataFrame(top_games_historical_stats)
+
+    except FileNotFoundError:
+        provide_logs(
+            "TRANSFORM",
+            "Transform the extracted data of the top 10 games' stats "
+            "overview from a JSON file."
+            "FAILED",
+            f"Filename: '{filepath}' is invalid for parsing the extracted data "
+            "of the top 10 games' stats overview from a JSON file to perform "
+            "data transformation."
+        )
+        raise FileNotFoundError("The given filename for parsing the extracted data "
+                                "of the top 10 games' stats overview from "
+                                "a JSON file to perform data transformation is "
+                                "invalid!")
