@@ -79,9 +79,7 @@ def transform_top_5_trending_games(filepath: str) -> None:
                                 "of the current top 5 trending games from a JSON file "
                                 "to perform data transformation is invalid!")
 
-def transform_trending_games_stats_overview(
-        filepath: str
-) -> None:
+def transform_trending_games_stats_overview(filepath: str) -> None:
     """
     Transform the extracted data of the current top 5 trending games' stats overview
     from a JSON file.
@@ -146,9 +144,7 @@ def transform_trending_games_stats_overview(
                                 "a JSON file to perform data transformation is "
                                 "invalid!")
 
-def transform_trending_games_historical_stats(
-        filepath: str
-) -> None:
+def transform_trending_games_historical_stats(filepath: str) -> None:
     """
     Transform the extracted data of the current top 5 trending games's historical stats
     from a JSON file.
