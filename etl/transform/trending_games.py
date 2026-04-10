@@ -161,69 +161,67 @@ def transform_trending_games_historical_stats(
         with open(filepath, "r") as file:
             trending_games_historical_stats: dict[str, dict] = json.load(file)
 
-        # Dictionary to store the transformed data
-        transformed_data = {
+        data = {
             "app_id":       [],
             "month":        [],
             "avg_players":  [],
             "gain":         [],
             "gain_pct":     [],
-            "peak_players": [],
+            "peak_players": []
         }
 
+        # Flattened the nested JSON objects for easier parsing of DataFrame
         for app_id, historical_stats in trending_games_historical_stats.items():
-            # Convert the datatype of all values for 'app_id' key to integer
-            app_id = int(app_id)
-            for _ in range(len(historical_stats["month"])):
-                transformed_data["app_id"].append(app_id)
-
-            # Remove leading and trailing whitespaces of all values for 'month' key and
-            # transform the values of that key that contains 'Last 30 Days' to a proper
-            # month and year format (e.g. April 2026)
             for month in historical_stats["month"]:
-                month = str(month).strip()
-                month_mappings = {1 : "January",  2 : "February", 3 : "March",
-                                  4 : "April",    5 : "May",      6 : "June",
-                                  7 : "July",     8 : "August",   9 : "September",
-                                  10: "October",  11: "November", 12: "December"}
+                data["app_id"].append(app_id)
+                data["month"].append(month)
 
-                if month == "Last 30 Days":
-                    month = month_mappings[datetime.now().month]
-                    year = str(datetime.now().year)
-                    month = month + " " + year
-
-                transformed_data["month"].append(month)
-
-            # Convert the datatype of all values for 'avg_players' key to float
             for avg_players in historical_stats["avg_players"]:
-                avg_players = float(avg_players)
-                transformed_data["avg_players"].append(avg_players)
+                data["avg_players"].append(avg_players)
 
-            # Handle invalid values and convert the datatype of all values for
-            # 'gain' key to float
             for gain in historical_stats["gain"]:
-                if str(gain) == "-":
-                    gain = 0.0
+                data["gain"].append(gain)
 
-                else:
-                    gain = float(gain)
-                transformed_data["gain"].append(gain)
-
-            # Remove '%', handle invalid values, and convert the datatype of
-            # all values for 'gain_pct' key to float
             for gain_pct in historical_stats["gain_pct"]:
-                gain_pct = str(gain_pct).replace("%", "")
-                if gain_pct == "-":
-                    gain_pct = 0.0
+                data["gain_pct"].append(gain_pct)
 
-                else:
-                    gain_pct = float(gain_pct)
-                transformed_data["gain_pct"].append(gain_pct)
-
-            # Convert the datatype of all values for 'peak_players' key to integer
             for peak_players in historical_stats["peak_players"]:
-                peak_players = int(peak_players)
-                transformed_data["peak_players"].append(peak_players)
+                data["peak_players"].append(peak_players)
+
+        df = pd.DataFrame(data)
+
+        # Convert the datatype of all values for 'app_id' key to integer
+        df["app_id"] = pd.to_numeric(df["app_id"], errors="raise")
+
+        # Remove whitespaces and handle invalid values for 'month' key by
+        # providing proper month and year format as a replacement
+        month_mappings = {1: "January",  2: "February",  3: "March",
+                          4: "April",    5: "May",       6: "June",
+                          7: "July",     8: "August",    9: "September",
+                          10: "October", 11: "November", 12: "December"}
+        current_month = month_mappings[datetime.now().month]
+        current_year = datetime.now().year
+        df["month"] = df["month"].str.strip()
+        df["month"] = df["month"].str.replace(
+            "Last 30 Days",
+            f"{current_month} {current_year}"
+        )
+
+        # Convert the datatype of all values for 'avg_players' key to float
+        df["avg_players"] = pd.to_numeric(df["avg_players"], errors="coerce")
+
+        # Handle invalid values and convert the datatype of all values for
+        # 'gain' key to float
+        df["gain"] = df["gain"].str.replace("+", "")
+        df["gain"] = pd.to_numeric(df["gain"], errors="coerce")
+
+        # Remove '%', handle invalid values, and convert the datatype of
+        # all values for 'gain_pct' key to float
+        df["gain_pct"] = df["gain_pct"].str.replace("%", "").str.replace("+", "")
+        df["gain_pct"] = pd.to_numeric(df["gain_pct"], errors="coerce")
+
+        # Convert the datatype of all values for 'peak_players' key to integer
+        df["peak_players"] = pd.to_numeric(df["peak_players"], errors="coerce")
 
         provide_logs(
             "TRANSFORM",
@@ -232,10 +230,8 @@ def transform_trending_games_historical_stats(
             "SUCCESSFUL",
             None
         )
-        # Convert the transformed data to a DataFrame object and
-        # store the DataFrame to a CSV file of `data/output` directory
-        df = pd.DataFrame(transformed_data)
-        df.to_csv("data/output/top_5_trending_games_historical_stats.csv",index=False)
+        # Store the DataFrame object to a CSV file of `data/output` directory
+        df.to_csv("data/output/top_5_trending_games_historical_stats.csv", index=False)
 
     except FileNotFoundError:
         provide_logs(
