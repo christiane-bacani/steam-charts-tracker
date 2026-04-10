@@ -146,7 +146,7 @@ def transform_trending_games_stats_overview(filepath: str) -> None:
 
 def transform_trending_games_historical_stats(filepath: str) -> None:
     """
-    Transform the extracted data of the current top 5 trending games's historical stats
+    Transform the extracted data of the current top 5 trending games' historical stats
     from a JSON file.
 
     Args:
