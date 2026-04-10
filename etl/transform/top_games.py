@@ -14,45 +14,35 @@ def transform_top_10_games(filepath: str) -> None:
         with open(filepath, "r") as file:
             top_10_games = json.load(file)
 
-        transformed_data = {
-            "rank":             [],
-            "app_id":           [],
-            "game_name":        [],
-            "current_players":  [],
-            "peak_players":     [],
-            "hours_played":     [],
-            "current_datetime": []
-        }
+        df = pd.DataFrame(top_10_games)
 
-        for rank in top_10_games["rank"]:
-            rank = str(rank).replace(".", "")            
-            transformed_data["rank"].append(rank)
+        # Remove '.' and convert the datatype of all values for 'rank' key
+        # to integer
+        df["rank"] = df["rank"].str.replace(".", "")
+        df["rank"] = pd.to_numeric(df["rank"], errors="raise")
 
-        for app_id in top_10_games["app_id"]:
-            app_id = int(app_id)
-            transformed_data["app_id"].append(app_id)
+        # Convert the datatype of all values for 'app_id' key to integer
+        df["app_id"] = pd.to_numeric(df["app_id"], errors="coerce")
 
-        for game_name in top_10_games["game_name"]:
-            game_name = str(game_name).strip()
-            transformed_data["game_name"].append(game_name)
+        # Remove leading and trailing whitespaces of all values for 'game_name' key
+        df["game_name"] = df["game_name"].str.strip()
 
-        for current_players in top_10_games["current_players"]:
-            current_players = int(current_players)
-            transformed_data["current_players"].append(current_players)
+        # Convert the datatype of all values for 'current_players' key to integer
+        df["current_players"] = pd.to_numeric(df["current_players"], errors="coerce")
 
-        for peak_players in top_10_games["peak_players"]:
-            peak_players = int(peak_players)
-            transformed_data["peak_players"].append(peak_players)
+        # Convert the datatype of all values for 'peak_players' key to integer
+        df["peak_players"] = pd.to_numeric(df["peak_players"], errors="coerce")
 
-        for hours_played in top_10_games["hours_played"]:
-            hours_played = int(hours_played)
-            transformed_data["hours_played"].append(hours_played)
+        # Convert the datatype of all values for 'hours_played' key to integer
+        df["hours_played"] = pd.to_numeric(df["hours_played"], errors="coerce")
 
-        for current_datetime in top_10_games["current_datetime"]:
-            current_datetime = datetime.strptime(
-                current_datetime, "%Y-%m-%d %H:%M:%S PST%z"
-            )
-            transformed_data["current_datetime"].append(current_datetime)
+        # Convert the datatype of all values for 'current_datetime' key
+        # to datetime object with specified format
+        df["current_datetime"] = pd.to_datetime(
+            df["current_datetime"],
+            errors="raise",
+            format="%Y-%m-%d %H:%M:%S PST%z"
+        )
 
         provide_logs(
             "TRANSFORM",
@@ -61,7 +51,7 @@ def transform_top_10_games(filepath: str) -> None:
             "SUCCESSFUL",
             None
         )
-        df = pd.DataFrame(transformed_data)
+        # Store the DataFrame object to a CSV file of `data/output` directory
         df.to_csv("data/output/top_10_games.csv", index=False)
 
     except FileNotFoundError:
