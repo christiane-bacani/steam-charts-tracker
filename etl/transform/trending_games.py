@@ -94,50 +94,32 @@ def transform_trending_games_stats_overview(
         with open(filepath, "r") as file:
             trending_games_stats_overview: dict[str, list] = json.load(file)
 
-        # Dictionary to store the transformed data
-        transformed_data = {
-            "app_id":                        [],
-            "game_image":                    [],
-            "twenty_four_hour_peak_players": [],
-            "all_time_peak_players":         [],
-            "current_datetime":              []
-        }
+        df = pd.DataFrame(trending_games_stats_overview)
 
         # Convert the datatype of all values for 'app_id' key to integer
-        for app_id in trending_games_stats_overview["app_id"]:
-            app_id = int(app_id)
-            transformed_data["app_id"].append(app_id)
-
-        # Maps all values for 'game_name' key to the dictionary
-        for game_image in trending_games_stats_overview["game_image"]:
-            transformed_data["game_image"].append(game_image)
+        df["app_id"] = pd.to_numeric(df["app_id"], errors="raise")
 
         # Convert the datatype of all values for 'twenty_four_hour_peak_players'
         # key to integer
-        for twenty_four_hour_peak_players in trending_games_stats_overview[
-            "twenty_four_hour_peak_players"
-        ]:
-            twenty_four_hour_peak_players = int(twenty_four_hour_peak_players)
-            transformed_data["twenty_four_hour_peak_players"].append(
-                twenty_four_hour_peak_players
-            )
+        df["twenty_four_hour_peak_players"] = pd.to_numeric(
+            df["twenty_four_hour_peak_players"],
+            errors="coerce"
+        )
 
         # Convert the datatype of all values for 'all_time_peak_players' key
         # to integer
-        for all_time_peak_players in trending_games_stats_overview[
-            "all_time_peak_players"
-        ]:
-            all_time_peak_players = int(all_time_peak_players)
-            transformed_data["all_time_peak_players"].append(all_time_peak_players)
+        df["all_time_peak_players"] = pd.to_numeric(
+            df["all_time_peak_players"],
+            errors="coerce"
+        )
 
         # Convert the datatype of all values for 'current_datetime' key
         # to datetime object with specified format
-        for current_datetime in trending_games_stats_overview["current_datetime"]:
-            current_datetime = datetime.strptime(
-                current_datetime,
-                "%Y-%m-%d %H:%M:%S PST%z"
-            )
-            transformed_data["current_datetime"].append(current_datetime)
+        df["current_datetime"] = pd.to_datetime(
+            df["current_datetime"],
+            errors="raise",
+            format="%Y-%m-%d %H:%M:%S PST%z"
+        )
 
         provide_logs(
             "TRANSFORM",
@@ -146,10 +128,8 @@ def transform_trending_games_stats_overview(
             "SUCCESSFUL",
             None
         )
-        # Convert the transformed data to a DataFrame object and
-        # store the DataFrame to a CSV file of `data/output` directory
-        df = pd.DataFrame(transformed_data)
-        df.to_csv("data/output/top_5_trending_games_stats_overview.csv",index=False)
+        # Store the DataFrame object to a CSV file of `data/output` directory
+        df.to_csv("data/output/top_5_trending_games_stats_overview.csv", index=False)
 
     except FileNotFoundError:
         provide_logs(
