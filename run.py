@@ -29,6 +29,7 @@ from etl.transform.trending_games import transform_trending_games_stats_overview
 from etl.transform.trending_games import transform_trending_games_historical_stats
 
 from etl.transform.top_games import transform_top_10_games
+from etl.transform.top_games import transform_top_games_stats_overview
 
 # ================================
 #     EXTRACT TRENDING GAMES
@@ -255,4 +256,7 @@ transform_trending_games_historical_stats(
 
 transform_top_10_games(
     "data/input/top_10_games.json"
+)
+transform_top_games_stats_overview(
+    "data/input/top_10_games_stats_overview.json"   
 )
