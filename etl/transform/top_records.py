@@ -11,6 +11,7 @@ from logs.etl_pipeline_logs import provide_logs
 def transform_top_10_records(filepath: str) -> None:
     """
     Transform the extracted data of the current top 10 records from a JSON file.
+
     Args:
         filepath (str): The filepath of a JSON file
     """
@@ -83,3 +84,67 @@ def transform_top_10_records(filepath: str) -> None:
         raise FileNotFoundError("The given filename for parsing the extracted data "
                                 "of the current top 10 records from a JSON file to "
                                 "perform data transformation is invalid!")
+
+def transform_top_records_stats_overview(filepath: str) -> None:
+    """
+    Transform the extracted data of the current top 10 records' stats overview
+    from a JSON file.
+
+    Args:
+        filepath (str): The filepath of a JSON file
+    """
+    try:
+        with open(filepath, "r") as file:
+            top_records_stats_overview = json.load(file)
+
+        df = pd.DataFrame(top_records_stats_overview)
+
+        # Convert the datatype of all values for 'app_id' key to integer
+        df["app_id"] = pd.to_numeric(df["app_id"], errors="raise")
+
+        # Convert the datatype of all values for 'twenty_four_hour_peak_players' key
+        # to integer
+        df["twenty_four_hour_peak_players"] = pd.to_numeric(
+            df["twenty_four_hour_peak_players"],
+            errors="coerce"
+        )
+
+        # Convert the datatype of all values for 'all_time_peak_players' key
+        # to integer
+        df["all_time_peak_players"] = pd.to_numeric(
+            df["all_time_peak_players"],
+            errors="coerce"
+        )
+
+        # Convert the datatype of all values for 'current_datetime' key
+        # to datetime object with specified format
+        df["current_datetime"] = pd.to_datetime(
+            df["current_datetime"],
+            errors="raise",
+            format="%Y-%m-%d %H:%M:%S PST%z"   
+        )
+
+        provide_logs(
+            "TRANSFORM",
+            "Transform the extracted data of the current top 10 records' stats "
+            "overview from a JSON file.",
+            "SUCCESSFUL",
+            None
+        )
+        # Store the DataFrame object to a CSV file of `data/output` directory
+        df.to_csv("data/output/top_10_records_stats_overview.csv", index=False)
+
+    except FileNotFoundError:        
+        provide_logs(
+            "TRANSFORM",
+            "Transform the extracted data of the current top 10 records' stats "
+            "overview from a JSON file.",
+            "FAILED",
+            f"Filename: '{filepath}' is invalid for parsing the extracted data "
+            "of the current top 10 records' stats overview from a JSON file to "
+            "perform data transformation."
+        )
+        raise FileNotFoundError("The given filename for parsing the extracted data "
+                                "of the current top 10 records' stats overview from "
+                                "a JSON file to perform data transformation is "
+                                "invalid!")
