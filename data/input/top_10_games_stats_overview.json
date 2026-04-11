@@ -1,62 +1,62 @@
 {
     "app_id": [
         "730",
-        "578080",
         "570",
+        "2676230",
         "2868840",
-        "3419430",
-        "1172470",
         "3321460",
+        "578080",
         "252490",
-        "431960",
-        "2676230"
+        "3419430",
+        "1808500",
+        "2767030"
     ],
     "game_image": [
         "https://steamcharts.com/assets/steam-images/730.jpg",
-        "https://steamcharts.com/assets/steam-images/578080.jpg",
         "https://steamcharts.com/assets/steam-images/570.jpg",
+        "https://steamcharts.com/assets/steam-images/2676230.jpg",
         "https://steamcharts.com/assets/steam-images/2868840.jpg",
-        "https://steamcharts.com/assets/steam-images/3419430.jpg",
-        "https://steamcharts.com/assets/steam-images/1172470.jpg",
         "https://steamcharts.com/assets/steam-images/3321460.jpg",
+        "https://steamcharts.com/assets/steam-images/578080.jpg",
         "https://steamcharts.com/assets/steam-images/252490.jpg",
-        "https://steamcharts.com/assets/steam-images/431960.jpg",
-        "https://steamcharts.com/assets/steam-images/2676230.jpg"
+        "https://steamcharts.com/assets/steam-images/3419430.jpg",
+        "https://steamcharts.com/assets/steam-images/1808500.jpg",
+        "https://steamcharts.com/assets/steam-images/2767030.jpg"
     ],
     "twenty_four_hour_peak_players": [
-        "1404105",
-        "942682",
-        "587951",
-        "318644",
-        "149508",
-        "272378",
-        "140735",
-        "145862",
-        "114331",
-        "187622"
+        "1445833",
+        "622940",
+        "192649",
+        "336941",
+        "149787",
+        "957425",
+        "169318",
+        "132337",
+        "117923",
+        "95998"
     ],
     "all_time_peak_players": [
         "1818368",
-        "3236027",
         "1291328",
+        "212020",
         "574638",
-        "193859",
-        "624473",
         "275859",
+        "3236027",
         "259646",
-        "150271",
-        "212020"
+        "193859",
+        "465097",
+        "642333"
     ],
     "current_datetime": [
-        "2026-04-10 16:44:42 PST+0800",
-        "2026-04-10 16:44:43 PST+0800",
-        "2026-04-10 16:44:44 PST+0800",
-        "2026-04-10 16:44:45 PST+0800",
-        "2026-04-10 16:44:46 PST+0800",
-        "2026-04-10 16:44:47 PST+0800",
-        "2026-04-10 16:44:47 PST+0800",
-        "2026-04-10 16:44:48 PST+0800",
-        "2026-04-10 16:44:49 PST+0800",
-        "2026-04-10 16:44:50 PST+0800"
+        "2026-04-11 10:18:49 PST+0800",
+        "2026-04-11 10:18:50 PST+0800",
+        "2026-04-11 10:18:51 PST+0800",
+        "2026-04-11 10:18:51 PST+0800",
+        "2026-04-11 10:18:52 PST+0800",
+        "2026-04-11 10:18:53 PST+0800",
+        "2026-04-11 10:18:56 PST+0800",
+        "2026-04-11 10:19:02 PST+0800",
+        "2026-04-11 10:19:02 PST+0800",
+        "2026-04-11 10:19:03 PST+0800"
     ]
 }
