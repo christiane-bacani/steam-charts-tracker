@@ -48,7 +48,7 @@ def transform_top_10_records(filepath: str) -> None:
         )
         year = df["time"].dt.year
         month = month_mappings[df["time"].dt.month]
-        df["time"] = df["time"].str.replace(df["time"], f"{year} {month}")
+        df["time"] = df["time"].str.replace(df["time"], f"{month} {year}")
 
         # Convert the datatype of all values for 'current_datetime' key
         # to datetime object with specified format
