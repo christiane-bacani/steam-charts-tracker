@@ -35,8 +35,8 @@ def transform_top_10_records(filepath: str) -> None:
         # Convert the datatype of all values for 'peak_players' key to integer
         df["peak_players"] = pd.to_numeric(df["peak_players"], errors="coerce")
 
-        # Convert the datatype to a datetime object and provide proper format
-        # for representing all values for 'time' key
+        # Convert the datatype to a datetime object and provide proper month and
+        # and year format for representing all values for 'time' key
         month_mappings = {1: "January",  2: "February",  3: "March",
                           4: "April",    5: "May",       6: "June",
                           7: "July",     8: "August",    9: "September",
