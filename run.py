@@ -34,6 +34,7 @@ from etl.transform.top_games import transform_top_games_historical_stats
 
 from etl.transform.top_records import transform_top_10_records
 from etl.transform.top_records import transform_top_records_stats_overview
+from etl.transform.top_records import transform_top_records_historical_stats
 
 
 
@@ -281,4 +282,7 @@ transform_top_10_records(
 )
 transform_top_records_stats_overview(
     "data/input/top_10_records_stats_overview.json"
+)
+transform_top_records_historical_stats(
+    "data/input/top_10_records_historical_stats.json"
 )
