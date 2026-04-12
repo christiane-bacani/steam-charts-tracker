@@ -4,6 +4,7 @@ from a JSON file.
 """
 import json
 import pandas as pd
+from datetime import datetime
 
 from logs.etl_pipeline_logs import provide_logs
 
@@ -161,7 +162,7 @@ def transform_top_records_historical_stats(filepath: str) -> None:
         }
 
         # Flattened the nested JSON objects for easier parsing of DataFrame
-        for app_id, historical_stats in top_records_historical_stats:
+        for app_id, historical_stats in top_records_historical_stats.items():
             for month in historical_stats["month"]:
                 data["app_id"].append(app_id)
                 data["month"].append(month)
@@ -183,8 +184,19 @@ def transform_top_records_historical_stats(filepath: str) -> None:
         # Convert the datatype of all values for 'app_id' key to integer
         df["app_id"] = pd.to_numeric(df["app_id"], errors="raise")
 
-        # Remove leading and trailing whitespaces of all values for 'month' key
+        # Remove whitespaces and handle invalid values for 'month' key by
+        # providing proper month and year format as a replacement
+        month_mappings = {1: "January",  2: "February",  3: "March",
+                          4: "April",    5: "May",       6: "June",
+                          7: "July",     8: "August",    9: "September",
+                          10: "October", 11: "November", 12: "December"}
+        current_month = month_mappings[datetime.now().month]
+        current_year = datetime.now().year
         df["month"] = df["month"].str.strip()
+        df["month"] = df["month"].str.replace(
+            "Last 30 Days",
+            f"{current_month} {current_year}"
+        )
 
         # Convert the datatype of all values for 'avg_players' key to float
         df["avg_players"] = pd.to_numeric(df["avg_players"], errors="coerce")
