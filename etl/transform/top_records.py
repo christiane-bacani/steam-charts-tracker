@@ -37,18 +37,8 @@ def transform_top_10_records(filepath: str) -> None:
 
         # Convert the datatype to a datetime object and provide proper month and
         # and year format for representing all values for 'time' key
-        month_mappings = {1: "January",  2: "February",  3: "March",
-                          4: "April",    5: "May",       6: "June",
-                          7: "July",     8: "August",    9: "September",
-                          10: "October", 11: "November", 12: "December"}
-        df["time"] = pd.to_datetime(
-            df["time"],
-            errors="raise",
-            format="%Y-%m-%dT%H:%M:%SZ"
-        )
-        year = df["time"].dt.year
-        month = month_mappings[df["time"].dt.month]
-        df["time"] = df["time"].str.replace(df["time"], f"{month} {year}")
+        df["time"] = pd.to_datetime(df["time"], errors="raise")
+        df["time"] = df["time"].dt.strftime("%Y-%m")
 
         # Convert the datatype of all values for 'current_datetime' key
         # to datetime object with specified format
