@@ -1,1 +1,103 @@
 job,description,status,error_message,timestamp
+EXTRACT,Parse the BeautifulSoup object from Steam Charts website to extract the data of the current top 5 trending games.,SUCCESSFUL,,2026-04-12 13:24:27 PST+0800
+EXTRACT,Extract the data of the current top 5 trending games from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:27 PST+0800
+EXTRACT,Save the extracted data of the current top 5 trending games to a JSON file.,SUCCESSFUL,,2026-04-12 13:24:27 PST+0800
+EXTRACT,Parse the extracted top 5 trending games data from a JSON file to get the 'app_id' from that data to extract the stats overview and historical stats of every current trending games.,SUCCESSFUL,,2026-04-12 13:24:27 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 1 trending game from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:29 PST+0800
+EXTRACT,Extract the stats overview data of the current number 1 trending game from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:29 PST+0800
+EXTRACT,Extract the historical stats data of the current number 1 trending game from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:29 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 2 trending game from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:30 PST+0800
+EXTRACT,Extract the stats overview data of the current number 2 trending game from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:30 PST+0800
+EXTRACT,Extract the historical stats data of the current number 2 trending game from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:30 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 3 trending game from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:31 PST+0800
+EXTRACT,Extract the stats overview data of the current number 3 trending game from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:31 PST+0800
+EXTRACT,Extract the historical stats data of the current number 3 trending game from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:31 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 4 trending game from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:32 PST+0800
+EXTRACT,Extract the stats overview data of the current number 4 trending game from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:32 PST+0800
+EXTRACT,Extract the historical stats data of the current number 4 trending game from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:32 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 5 trending game from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:33 PST+0800
+EXTRACT,Extract the stats overview data of the current number 5 trending game from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:33 PST+0800
+EXTRACT,Extract the historical stats data of the current number 5 trending game from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:33 PST+0800
+EXTRACT,Save the extracted data of the top 5 trending games' stats overview to a JSON file.,SUCCESSFUL,,2026-04-12 13:24:33 PST+0800
+EXTRACT,Save the extracted data of the top 5 trending games' historical stats to a JSON file.,SUCCESSFUL,,2026-04-12 13:24:33 PST+0800
+EXTRACT,Parse the BeautifulSoup object from Steam Charts website to extract the data of the current top 10 games (by current players).,SUCCESSFUL,,2026-04-12 13:24:34 PST+0800
+EXTRACT,Extract the data of the current top 10 games (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:34 PST+0800
+EXTRACT,Save the extracted data of the current 10 games (by current players) to a JSON file.,SUCCESSFUL,,2026-04-12 13:24:34 PST+0800
+EXTRACT,Parse the extracted top 10 games (by current players) data from a JSON file to get the 'app_id' from that data to extract the stats overview and historical stats of every current top games.,SUCCESSFUL,,2026-04-12 13:24:34 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 1 game (by current players) from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:34 PST+0800
+EXTRACT,Extract the stats overview data of the current number 1 game (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:34 PST+0800
+EXTRACT,Extract the historical stats of the current number 1 game (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:34 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 2 game (by current players) from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:35 PST+0800
+EXTRACT,Extract the stats overview data of the current number 2 game (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:35 PST+0800
+EXTRACT,Extract the historical stats of the current number 2 game (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:35 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 3 game (by current players) from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:36 PST+0800
+EXTRACT,Extract the stats overview data of the current number 3 game (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:36 PST+0800
+EXTRACT,Extract the historical stats of the current number 3 game (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:36 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 4 game (by current players) from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:37 PST+0800
+EXTRACT,Extract the stats overview data of the current number 4 game (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:37 PST+0800
+EXTRACT,Extract the historical stats of the current number 4 game (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:37 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 5 game (by current players) from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:39 PST+0800
+EXTRACT,Extract the stats overview data of the current number 5 game (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:39 PST+0800
+EXTRACT,Extract the historical stats of the current number 5 game (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:39 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 6 game (by current players) from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:40 PST+0800
+EXTRACT,Extract the stats overview data of the current number 6 game (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:40 PST+0800
+EXTRACT,Extract the historical stats of the current number 6 game (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:40 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 7 game (by current players) from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:40 PST+0800
+EXTRACT,Extract the stats overview data of the current number 7 game (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:40 PST+0800
+EXTRACT,Extract the historical stats of the current number 7 game (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:40 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 8 game (by current players) from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:41 PST+0800
+EXTRACT,Extract the stats overview data of the current number 8 game (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:41 PST+0800
+EXTRACT,Extract the historical stats of the current number 8 game (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:41 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 9 game (by current players) from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:42 PST+0800
+EXTRACT,Extract the stats overview data of the current number 9 game (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:42 PST+0800
+EXTRACT,Extract the historical stats of the current number 9 game (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:42 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 10 game (by current players) from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:43 PST+0800
+EXTRACT,Extract the stats overview data of the current number 10 game (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:43 PST+0800
+EXTRACT,Extract the historical stats of the current number 10 game (by current players) from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:43 PST+0800
+EXTRACT,Save the extracted data of the top 10 games' stats overview to a JSON file.,SUCCESSFUL,,2026-04-12 13:24:43 PST+0800
+EXTRACT,Save the extracted data of the top 10 games' historical stats to a JSON file.,SUCCESSFUL,,2026-04-12 13:24:43 PST+0800
+EXTRACT,Parse the BeautifulSoup object from Steam Charts website to extract the data of the current top 10 records.,SUCCESSFUL,,2026-04-12 13:24:44 PST+0800
+EXTRACT,Extract the data of the current top 10 records from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:44 PST+0800
+EXTRACT,Save the extracted data of the current top 10 records to a JSON file.,SUCCESSFUL,,2026-04-12 13:24:44 PST+0800
+EXTRACT,Parse the extracted top 10 records data from a JSON file to get the 'app_id' from that data to extract the stats overview and historical stats of every current top records.,SUCCESSFUL,,2026-04-12 13:24:44 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 1 record from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:45 PST+0800
+EXTRACT,Extract the stats overview data of the current number 1 record from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:45 PST+0800
+EXTRACT,Extract the historical stats of the current number 1 record from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:45 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 2 record from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:46 PST+0800
+EXTRACT,Extract the stats overview data of the current number 2 record from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:46 PST+0800
+EXTRACT,Extract the historical stats of the current number 2 record from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:46 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 3 record from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:47 PST+0800
+EXTRACT,Extract the stats overview data of the current number 3 record from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:47 PST+0800
+EXTRACT,Extract the historical stats of the current number 3 record from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:47 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 4 record from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:48 PST+0800
+EXTRACT,Extract the stats overview data of the current number 4 record from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:48 PST+0800
+EXTRACT,Extract the historical stats of the current number 4 record from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:48 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 5 record from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:49 PST+0800
+EXTRACT,Extract the stats overview data of the current number 5 record from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:49 PST+0800
+EXTRACT,Extract the historical stats of the current number 5 record from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:49 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 6 record from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:50 PST+0800
+EXTRACT,Extract the stats overview data of the current number 6 record from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:50 PST+0800
+EXTRACT,Extract the historical stats of the current number 6 record from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:50 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 7 record from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:51 PST+0800
+EXTRACT,Extract the stats overview data of the current number 7 record from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:51 PST+0800
+EXTRACT,Extract the historical stats of the current number 7 record from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:51 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 8 record from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:51 PST+0800
+EXTRACT,Extract the stats overview data of the current number 8 record from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:51 PST+0800
+EXTRACT,Extract the historical stats of the current number 8 record from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:51 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 9 record from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:52 PST+0800
+EXTRACT,Extract the stats overview data of the current number 9 record from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:52 PST+0800
+EXTRACT,Extract the historical stats of the current number 9 record from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:52 PST+0800
+EXTRACT,Parse the BeautifulSoup object of the current number 10 record from Steam Charts website using the 'app_id' to extract the data of its stats overview and historical stats.,SUCCESSFUL,,2026-04-12 13:24:53 PST+0800
+EXTRACT,Extract the stats overview data of the current number 10 record from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:53 PST+0800
+EXTRACT,Extract the historical stats of the current number 10 record from Steam Charts.,SUCCESSFUL,,2026-04-12 13:24:53 PST+0800
+EXTRACT,Save the extracted data of the top 10 records' stats overview to a JSON file.,SUCCESSFUL,,2026-04-12 13:24:53 PST+0800
+EXTRACT,Save the extracted data of the top 10 records' historical stats to a JSON file.,SUCCESSFUL,,2026-04-12 13:24:53 PST+0800
+TRANSFORM,Transform the extracted data of the current top 5 trending games from a JSON file.,SUCCESSFUL,,2026-04-12 13:24:53 PST+0800
+TRANSFORM,Transform the extracted data of the top 5 trending games' stats overview from a JSON file.,SUCCESSFUL,,2026-04-12 13:24:53 PST+0800
+TRANSFORM,Transform the extracted data of the top 5 trending games' historical stats from a JSON file.,SUCCESSFUL,,2026-04-12 13:24:53 PST+0800
+TRANSFORM,Transform the extracted data of the current top 10 games (by current players) from a JSON file.,SUCCESSFUL,,2026-04-12 13:24:53 PST+0800
+TRANSFORM,Transform the extracted data of the top 10 games' stats overview from a JSON file.,SUCCESSFUL,,2026-04-12 13:24:53 PST+0800
+TRANSFORM,Transform the extracted data of the top 10 games' historical stats from a JSON file.,SUCCESSFUL,,2026-04-12 13:24:53 PST+0800
+TRANSFORM,Transform the extracted data of the current top 10 records from a JSON file.,FAILED,Filename: 'data/input/top_10_records.json' is invalid for parsing the extracted data of the current top 10 records from a JSON file to perform data transformation.,2026-04-12 13:24:53 PST+0800
+TRANSFORM,Transform the extracted data of the current top 10 records' stats overview from a JSON file.,SUCCESSFUL,,2026-04-12 13:24:53 PST+0800
+TRANSFORM,Transform the extracted data of the current top 10 records' historical stats from a JSON file.,SUCCESSFUL,,2026-04-12 13:24:53 PST+0800
