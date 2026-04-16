@@ -1,4 +1,6 @@
 """
+Perform web-scraping to extract all the data related to the current trending
+games tracked by Steam Charts.
 """
 from bs4 import BeautifulSoup
 
