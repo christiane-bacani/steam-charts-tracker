@@ -11,3 +11,33 @@ def extract_top_5_trending_games(soup: BeautifulSoup) -> dict[str, list]:
 
     table = content_class.find("table")
     tbody = table.find("tbody")
+    table_rows = tbody.find_all("tr")
+
+    scraped_data = {
+        "app_id":                  [],
+        "rank":                    [],
+        "name":                    [],
+        "twenty_four_hour_change": [],
+        "current_players":         []
+    }
+
+    for rank, table_row in enumerate(table_rows):
+        table_data = table_row.find_all("td")
+
+        # Extract application ID
+        app_id = table_data[0].find("a")["href"]
+        app_id = str(app_id).replace("/app/", "")
+        scraped_data["app_id"].append(app_id)
+
+        # Extract rank number
+        scraped_data["rank"].append(rank)
+
+        # Extract 24-hour change percentage
+        twenty_four_hour_change = table_data[1].get_text()
+        scraped_data["twenty_four_hour_change"].append(twenty_four_hour_change)
+
+        # Extract the no. of current players
+        current_players = table_data[3].get_text()
+        scraped_data["current_players"].append(current_players)
+
+    return scraped_data
