@@ -2,7 +2,23 @@
 """
 from bs4 import BeautifulSoup
 
-def extract_top_5_trending_games(soup: BeautifulSoup) -> dict[str, list]:
+def scrape_top_5_trending_games(soup: BeautifulSoup) -> dict[str, list]:
+    """
+    Web-scrape the data of the current top 5 trending games on Steam Charts website.
+
+    Args:
+        soup (bs4.BeautifulSoup): The parsed BeautifulSoup object for web-scraping.
+
+    Returns:
+        dict[str, list]: The scraped data as a dictionary.
+        Example:
+        >>> top_5_trending_games = scrape_top_5_trending_games(soup)
+        >>> print(top_5_trending_games)
+        {'app_id': ['1782210', '3058630', '1637320', '236690', '1361350'],
+        'rank': [0, 1, 2, 3, 4], 'name': [], 'twenty_four_hour_change': ['+193.2%',
+        '+178.6%', '+159.4%', '+92.4%', '+80.2%'], 'current_players': ['2418', 
+        '773', '2740', '128', '250']}
+    """
     body = soup.find("body")
     content_wrapper = body.find("div", attrs={"id": "content-wrapper"})
     content_class = content_wrapper.find(
@@ -31,6 +47,9 @@ def extract_top_5_trending_games(soup: BeautifulSoup) -> dict[str, list]:
 
         # Extract rank number
         scraped_data["rank"].append(rank)
+
+        name = table_data[0].get_text()
+        scraped_data["name"].append(name)
 
         # Extract 24-hour change percentage
         twenty_four_hour_change = table_data[1].get_text()
