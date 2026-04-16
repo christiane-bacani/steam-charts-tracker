@@ -1,1 +1,1 @@
-from . import etl_pipeline_logs
+from . import logger
