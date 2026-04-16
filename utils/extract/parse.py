@@ -6,19 +6,18 @@ from bs4 import BeautifulSoup
 
 def parse_soup(url: str) -> BeautifulSoup:
     """
-    Parse the BeautifulSoup object to perform web-scraping.
+    Fetch a URL and return a parsed BeautifulSoup object.
 
     Args:
-        url (str): URL of the website.
+        url (str): URL of the website to scrape.
 
     Returns:
-        bs4.BeautifulSoup: The parsed BeautifulSoup object for web-scraping.
+        BeautifulSoup: Parsed object ready for scraping.
     """
-    response = requests.get(url)
+    response = requests.get(url, timeout=10)
 
     if response.status_code != 200:
-        raise Exception("The request has been unsuccessfully processed by the server.")
+        return response.raise_for_status()
 
     else:
-        soup = BeautifulSoup(response.text, "html.parser")
-        return soup
+        return BeautifulSoup(response.text, "html.parser")
