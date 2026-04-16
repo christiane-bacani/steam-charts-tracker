@@ -11,13 +11,6 @@ def scrape_top_5_trending_games(soup: BeautifulSoup) -> dict[str, list]:
 
     Returns:
         dict[str, list]: The scraped data as a dictionary.
-        Example:
-        >>> top_5_trending_games = scrape_top_5_trending_games(soup)
-        >>> print(top_5_trending_games)
-        {'app_id': ['1782210', '3058630', '1637320', '236690', '1361350'],
-        'rank': [0, 1, 2, 3, 4], 'name': [], 'twenty_four_hour_change': ['+193.2%',
-        '+178.6%', '+159.4%', '+92.4%', '+80.2%'], 'current_players': ['2418', 
-        '773', '2740', '128', '250']}
     """
     body = soup.find("body")
     content_wrapper = body.find("div", attrs={"id": "content-wrapper"})
