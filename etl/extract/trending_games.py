@@ -57,5 +57,5 @@ def scrape_top_5_trending_games(soup: BeautifulSoup) -> dict[str, list]:
         current_players = table_data[3].get_text()
         scraped_data["current_players"].append(current_players)
 
-    logger.info("Successfully scraped the current data of the top 5 trending games")
+    logger.info("Successfully scraped the current data of the top 5 trending games.")
     return scraped_data
