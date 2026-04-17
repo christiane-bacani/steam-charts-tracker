@@ -1,3 +1,4 @@
 *.pyc*
 TODO.txt
 experiment.py
+.env
