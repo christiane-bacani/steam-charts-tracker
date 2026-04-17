@@ -17,8 +17,10 @@ def create_database(database_name: str) -> None:
         database_name (str): The database name
     """
     load_dotenv()
-    conn = init_connection(os.getenv("DB_USERNAME"),
-                           os.getenv("HOST"),
+    conn = init_connection(os.getenv("HOST"),
+                           os.getenv("PORT"),
+                           "steam_charts",
+                           os.getenv("DB_USERNAME"),
                            os.getenv("DB_PASSWORD"))
     cursor = conn.cursor()
 
