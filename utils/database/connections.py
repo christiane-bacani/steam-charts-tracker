@@ -5,22 +5,28 @@ import psycopg2
 
 from logs import logger
 
-def init_connection(user: str, host: str, password: str, port: int = 5432) -> object:
+def init_connection(host: str, 
+                    port: int,
+                    database: str, 
+                    user: str, 
+                    password: str) -> object:
     """
     Establish a PostgreSQL database connection using Pyscopg2.
 
     Args:
-        user (str): Username required to authenticate.
         host (str): Database server address.
+        port (int): Connection port number.
+        database: The name of the database.
+        user (str): Username required to authenticate.
         password (str): Password used to authenticate.
-        port (str): Connection port number (defaults to 5432 if not provided).
     """
     logger.info("Establishing database connection.")
     conn = psycopg2.connect(
-        user=user,
         host=host,
-        password=password,
-        port=port
+        port=port,
+        database=database,
+        user=user,
+        password=password
     )
     logger.info("Successsfully established a database connection.")
     return conn
