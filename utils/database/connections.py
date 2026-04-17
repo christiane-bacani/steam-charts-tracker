@@ -15,12 +15,12 @@ def init_connection(user: str, host: str, password: str, port: int = 5432) -> ob
         password (str): Password used to authenticate.
         port (str): Connection port number (defaults to 5432 if not provided).
     """
-    logger.info("Establishing database connection")
+    logger.info("Establishing database connection.")
     conn = psycopg2.connect(
         user=user,
         host=host,
         password=password,
         port=port
     )
-    logger.info("Successsfully established a database connection")
+    logger.info("Successsfully established a database connection.")
     return conn
