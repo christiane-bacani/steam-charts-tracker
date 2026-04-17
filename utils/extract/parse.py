@@ -16,7 +16,7 @@ def parse_soup(url: str) -> BeautifulSoup:
     Returns:
         BeautifulSoup: Parsed object ready for scraping.
     """
-    logger.info(f"Fetching URL: {url}")
+    logger.info(f"Fetching URL: '{url}'.")
     response = requests.get(url, timeout=10)
 
     if response.status_code != 200:
@@ -24,5 +24,5 @@ def parse_soup(url: str) -> BeautifulSoup:
         return response.raise_for_status()
 
     else:
-        logger.info(f"Successfully fetched URL: {url}")
+        logger.info(f"Successfully fetched URL: '{url}'.")
         return BeautifulSoup(response.text, "html.parser")
