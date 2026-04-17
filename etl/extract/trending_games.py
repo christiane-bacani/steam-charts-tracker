@@ -4,6 +4,8 @@ the current trending games tracked by Steam Charts.
 """
 from bs4 import BeautifulSoup
 
+from logs import logger
+
 def scrape_top_5_trending_games(soup: BeautifulSoup) -> dict[str, list]:
     """
     Web-scrape the data of the current top 5 trending games on Steam Charts website.
@@ -14,6 +16,7 @@ def scrape_top_5_trending_games(soup: BeautifulSoup) -> dict[str, list]:
     Returns:
         dict[str, list]: The scraped data as a dictionary.
     """
+    logger.info(f"Scraping the current data of the top 5 trending games.")
     body = soup.find("body")
     content_wrapper = body.find("div", attrs={"id": "content-wrapper"})
     content_class = content_wrapper.find(
@@ -54,4 +57,5 @@ def scrape_top_5_trending_games(soup: BeautifulSoup) -> dict[str, list]:
         current_players = table_data[3].get_text()
         scraped_data["current_players"].append(current_players)
 
+    logger.info("Successfully scraped the current data of the top 5 trending games")
     return scraped_data
