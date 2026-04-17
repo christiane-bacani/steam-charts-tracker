@@ -31,5 +31,6 @@ def create_database(database_name: str) -> None:
         cursor.execute(f"CREATE DATABASE {database_name};")
         logger.info(f"Successfully created a new database: '{database_name}'.")
 
+    conn.autocommit = False
     cursor.close()
     conn.close()
