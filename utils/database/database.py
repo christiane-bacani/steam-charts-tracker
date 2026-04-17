@@ -27,9 +27,9 @@ def create_database(database_name: str) -> None:
     exists = cursor.fetchone()
 
     if not exists:
-        logger.info(f"Creating database: {database_name}")
+        logger.info(f"Creating database: '{database_name}'.")
         cursor.execute(f"CREATE DATABASE {database_name};")
-        logger.info(f"Successfully created a new database: {database_name}")
+        logger.info(f"Successfully created a new database: '{database_name}'.")
 
     cursor.close()
     conn.close()
