@@ -20,17 +20,17 @@ def create_database(database_name: str) -> None:
     conn = init_connection(os.getenv("DB_USERNAME"),
                            os.getenv("HOST"),
                            os.getenv("DB_PASSWORD"))
-    conn.autocommit = True
     cursor = conn.cursor()
 
     cursor.execute(f"SELECT 1 from pg_database WHERE datname = %s", (database_name, ))
     exists = cursor.fetchone()
 
     if not exists:
+        conn.autocommit = True
         logger.info(f"Creating database: '{database_name}'.")
         cursor.execute(f"CREATE DATABASE {database_name};")
         logger.info(f"Successfully created a new database: '{database_name}'.")
+        conn.autocommit = False
 
-    conn.autocommit = False
     cursor.close()
     conn.close()
