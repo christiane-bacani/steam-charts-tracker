@@ -3,8 +3,6 @@ Python module to establish database connection to PostgreSQL.
 """
 import psycopg2
 
-from logs import logger
-
 def init_connection(host: str, 
                     port: int,
                     database: str, 
