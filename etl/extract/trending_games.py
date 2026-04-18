@@ -1,6 +1,6 @@
 """
 Python module to perform web-scraping to extract all the data related to
-the current trending games tracked by Steam Charts.
+the current top 5trending games tracked by Steam Charts.
 """
 from bs4 import BeautifulSoup
 
