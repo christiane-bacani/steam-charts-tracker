@@ -14,7 +14,7 @@ def create_database(database_name: str) -> None:
     all the data for different layers.
 
     Args:
-        database_name (str): The database name
+        database_name (str): The name of the database.
     """
     load_dotenv()
     conn = init_connection(os.getenv("HOST"),
