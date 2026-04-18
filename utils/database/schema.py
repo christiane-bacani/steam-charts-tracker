@@ -11,7 +11,7 @@ from logs import logger
 def create_schema(schema_name: str) -> None:
     """
     Create new schema (if still does not exist) to store all
-    data data for different layers.
+    data for different data storage layers.
 
     Args:
         schema_name (str): The name of the schema.
