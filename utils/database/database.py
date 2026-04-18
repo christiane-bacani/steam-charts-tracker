@@ -3,6 +3,7 @@ Python module to create the database to store data for different layers.
 """
 import os
 from dotenv import load_dotenv
+
 from utils.database.connections import init_connection
 
 from logs import logger
