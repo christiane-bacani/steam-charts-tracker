@@ -16,12 +16,14 @@ def create_schema(schema_name: str) -> None:
     Args:
         schema_name (str): The name of the schema.
     """
+    logger.info("Establishing a connection to PostgreSQL to create new schema.")
     load_dotenv()
     conn = init_connection(os.getenv("HOST"),
                            os.getenv("PORT"),
                            "steam_charts",
                            os.getenv("DB_USERNAME"),
                            os.getenv("DB_PASSWORD"))
+    conn.autocommit = True
     cursor = conn.cursor()
 
     cursor.execute("""SELECT 1
@@ -31,9 +33,12 @@ def create_schema(schema_name: str) -> None:
 
     if not exists:
         logger.info(f"Creating schema: '{schema_name}'.")
-        cursor.execute("CREATE SCHEMA steam_charts.raw;")
+        cursor.execute(f"CREATE SCHEMA {schema_name};")
         logger.info(f"Successfully created a new schema: '{schema_name}'.")
-        cursor.commit()
 
+    else:
+        logger.info(f"Schema: '{schema_name}' was already created.")
+
+    conn.autocommit = False
     cursor.close()
     conn.close()
