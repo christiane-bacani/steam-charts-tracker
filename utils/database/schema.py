@@ -4,7 +4,7 @@ Python module to create database schema that consist of SQL tables per data laye
 import os
 from dotenv import load_dotenv
 
-from utils.database.connections import init_connection
+from utils.database.connection import init_connection
 
 from logs import logger
 
