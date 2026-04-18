@@ -20,7 +20,6 @@ def init_connection(host: str,
         user (str): Username required to authenticate.
         password (str): Password used to authenticate.
     """
-    logger.info("Establishing database connection.")
     conn = psycopg2.connect(
         host=host,
         port=port,
@@ -28,5 +27,4 @@ def init_connection(host: str,
         user=user,
         password=password
     )
-    logger.info("Successsfully established a database connection.")
     return conn
