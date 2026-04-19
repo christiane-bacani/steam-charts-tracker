@@ -1,13 +1,13 @@
 """
 Python module to establish database connection to PostgreSQL.
 """
-import psycopg2
+import sqlalchemy
 
 def init_connection(host: str, 
                     port: int,
                     database: str, 
                     user: str, 
-                    password: str) -> object:
+                    password: str) -> sqlalchemy.Engine:
     """
     Establish a PostgreSQL database connection using Pyscopg2.
 
@@ -18,11 +18,7 @@ def init_connection(host: str,
         user (str): Username required to authenticate.
         password (str): Password used to authenticate.
     """
-    conn = psycopg2.connect(
-        host=host,
-        port=port,
-        database=database,
-        user=user,
-        password=password
+    engine = sqlalchemy.create_engine(
+        f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{database}"
     )
-    return conn
+    return engine
