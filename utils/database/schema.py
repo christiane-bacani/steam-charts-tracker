@@ -32,12 +32,12 @@ def create_schema(schema_name: str) -> None:
     exists = cursor.fetchone()
 
     if not exists:
-        logger.info(f"Creating schema: 'raw.{schema_name}'.")
+        logger.info(f"Creating schema: 'steam_charts.{schema_name}'.")
         cursor.execute(f"CREATE SCHEMA {schema_name};")
-        logger.info(f"Successfully created a new schema: 'raw.{schema_name}'.")
+        logger.info(f"Successfully created a new schema: 'steam_charts.{schema_name}'.")
 
     else:
-        logger.info(f"Schema: '{schema_name}' was already created.")
+        logger.info(f"Schema: 'steam_charts.{schema_name}' was already created.")
 
     conn.autocommit = False
     cursor.close()
