@@ -33,7 +33,7 @@ def create_table_for_raw_layer(table_name: str) -> None:
     exists = cursor.fetchone()
 
     if not exists:
-        logger.info(f"Creating table: '{table_name}'.")
+        logger.info(f"Creating table: 'raw.{table_name}'.")
         cursor.execute("""CREATE TABLE top_5_trending_games (
                     app_id VARCHAR(255),
                     rank VARCHAR(255),
@@ -41,7 +41,7 @@ def create_table_for_raw_layer(table_name: str) -> None:
                     twenty_four_hour_change VARCHAR(255),
                     current_players VARCHAR(255)
                     );""")
-        logger.info(f"Successfully created a new table: '{table_name}'.")
+        logger.info(f"Successfully created a new table: 'raw.{table_name}'.")
 
     else:
         logger.info(f"Table: 'raw.{table_name}' was already created.")
