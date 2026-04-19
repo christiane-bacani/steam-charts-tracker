@@ -5,6 +5,7 @@ from utils.database.database import create_database
 from utils.database.schema import create_schema
 from utils.database.table import create_table_for_raw_layer
 from utils.extract.parse import parse_soup
+from utils.extract.trending_games import load_scraped_data_to_raw_layer
 
 from etl.extract.trending_games import scrape_top_5_trending_games
 
@@ -20,3 +21,4 @@ url = "https://steamcharts.com/"
 soup = parse_soup(url)
 
 top_5_trending_games = scrape_top_5_trending_games(soup)
+load_scraped_data_to_raw_layer(top_5_trending_games, "top5_trending_games_raw")
