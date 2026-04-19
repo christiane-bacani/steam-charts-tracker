@@ -31,29 +31,28 @@ def create_table_for_raw_layer(table_name: str) -> None:
         connection = connection.execution_options(isolation_level="AUTOCOMMIT")
 
         result = connection.execute(
-            text(f"""
+            text("""
                  SELECT 1
                  FROM information_schema.tables
                  WHERE table_schema =:schema
                  AND table_name =:table;
-            """),
-            {"schema": "raw", "table": table_name}
-        )
+                 """),
+                 {"schema": "raw", "table": table_name})
         exists = result.fetchone()
 
         if not exists:
             logger.info(f"Creating table: '{table_name}'.")
             connection.execute(
                 text("""
-                    CREATE TABLE raw.top5_trending_games_raw (
-                    app_id VARCHAR(255),
-                    rank VARCHAR(255),
-                    name VARCHAR(255),
-                    twenty_four_hour_change VARCHAR(255),
-                    currennt_players VARCHAR(255)
-                    )
-            """)
-            )
+                     CREATE TABLE raw.top5_trending_games_raw (
+                     id SERIAL PRIMARY KEY,
+                     app_id TEXT,
+                     rank TEXT,
+                     name TEXT,
+                     twenty_four_hour_change TEXT,
+                     current_players TEXT,
+                     timestamp TIMESTAMPTZ DEFAULT (NOW() AT TIME ZONE 'Asia/Manila');
+                     """))
             logger.info(f"Successfully created a new table: '{table_name}'.")
 
         else:
