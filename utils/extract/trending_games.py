@@ -23,7 +23,7 @@ def load_scraped_data_to_raw_layer(scraped_data: dict,
     """
     logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
     load_dotenv()
-    conn = init_connection(
+    engine = init_connection(
         os.getenv("HOST"),
         os.getenv("PORT"),
         "steam_charts",
@@ -32,7 +32,7 @@ def load_scraped_data_to_raw_layer(scraped_data: dict,
     )
 
     df = pd.DataFrame(scraped_data)
-    df.to_sql(table_name, conn, schema="raw", if_exists="append", index=False)
-    logger.info(f"Successfully loaded new data to SQL table: 'raw.{table_name}'.")
 
-    conn.close()
+    logger.info(f"Loading new data to SQL Table: '{table_name}'.")
+    df.to_sql(table_name, con=engine, schema="raw", if_exists="append", index=False)
+    logger.info(f"Successfully loaded new data to SQL table: '{table_name}'.")
