@@ -14,7 +14,7 @@ create_database("steam_charts")
 create_schema("raw")
 create_schema("stg")
 create_schema("mart")
-create_table_for_raw_layer("top_5_trending_games")
+create_table_for_raw_layer("top5_trending_games_raw")
 
 url = "https://steamcharts.com/"
 soup = parse_soup(url)
