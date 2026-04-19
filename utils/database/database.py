@@ -31,8 +31,8 @@ def create_database(database_name: str) -> None:
         connection = connection.execution_options(isolation_level="AUTOCOMMIT")
 
         result = connection.execute(
-            text(f"SELECT 1 from pg_database WHERE datname =:name"),
-            {"name": database_name}
+            text("SELECT 1 from pg_database WHERE datname =:database"),
+            {"database": database_name}
         )
         exists = result.fetchone()
 
