@@ -33,6 +33,6 @@ def load_scraped_data_to_raw_layer(scraped_data: dict,
 
     df = pd.DataFrame(scraped_data)
     df.to_sql(table_name, conn, schema="raw", if_exists="append", index=False)
-    logger.info(f"Successfully loaded new data to SQL table: '{table_name}'.")
+    logger.info(f"Successfully loaded new data to SQL table: 'raw.{table_name}'.")
 
     conn.close()
