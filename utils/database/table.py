@@ -51,7 +51,7 @@ def create_table_for_raw_layer(table_name: str) -> None:
                      name TEXT,
                      twenty_four_hour_change TEXT,
                      current_players TEXT,
-                     timestamp TIMESTAMPTZ DEFAULT (NOW() AT TIME ZONE 'Asia/Manila');
+                     timestamp TIMESTAMPTZ DEFAULT (NOW() AT TIME ZONE 'Asia/Manila'));
                      """))
             logger.info(f"Successfully created a new table: '{table_name}'.")
 
