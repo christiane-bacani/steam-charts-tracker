@@ -1,5 +1,6 @@
 """
-Python module to create the database to store data for different data storage layers.
+Python module to create the database to store all the data to
+different data storage layers.
 """
 from sqlalchemy import text
 
@@ -13,7 +14,7 @@ from logs import logger
 def create_database(database_name: str) -> None:
     """
     Create new database (if still does not exist) to store
-    all the data for different data storage layers.
+    all the data to different data storage layers.
 
     Args:
         database_name (str): The name of the database.
