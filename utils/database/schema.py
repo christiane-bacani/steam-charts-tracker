@@ -29,9 +29,12 @@ def create_schema(schema_name: str) -> None:
         connection = connection.execution_options(isolation_level="AUTOCOMMIT")
 
         result = connection.execute(
-            text(f"SELECT 1 FROM information_schema.schemata WHERE schema_name =:name"),
-            {"name": schema_name}
-        )
+            text("""
+                 SELECT 1
+                 FROM information_schema.schemata
+                 WHERE schema_name =:schema
+                 """),
+                 {"schema": schema_name})
         exists = result.fetchone()
 
         if not exists:
