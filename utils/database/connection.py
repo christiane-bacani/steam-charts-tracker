@@ -9,7 +9,7 @@ def init_connection(host: str,
                     user: str, 
                     password: str) -> sqlalchemy.Engine:
     """
-    Establish a PostgreSQL database connection using Pyscopg2.
+    Establish a PostgreSQL database connection using SQLAlchemy and Pyscopg2.
 
     Args:
         host (str): Database server address.
