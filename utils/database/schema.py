@@ -32,9 +32,9 @@ def create_schema(schema_name: str) -> None:
     exists = cursor.fetchone()
 
     if not exists:
-        logger.info(f"Creating schema: '{schema_name}'.")
+        logger.info(f"Creating schema: 'raw.{schema_name}'.")
         cursor.execute(f"CREATE SCHEMA {schema_name};")
-        logger.info(f"Successfully created a new schema: '{schema_name}'.")
+        logger.info(f"Successfully created a new schema: 'raw.{schema_name}'.")
 
     else:
         logger.info(f"Schema: '{schema_name}' was already created.")
