@@ -13,6 +13,7 @@ from etl.extract.top_games import scrape_top100_games
 
 
 
+# Create Database objects
 create_database("steam_charts")
 create_schema("raw")
 create_schema("stg")
@@ -20,12 +21,15 @@ create_schema("mart")
 create_table_for_raw_layer("top5_trending_games_raw")
 create_table_for_raw_layer("top100_games_raw")
 
+# Parse BeautifulSoup object to extract trending games and top records
 url = "https://steamcharts.com/"
 soup = parse_soup(url)
 
+# Extract top 5 trending games and save to `raw` layer
 top5_trending_games = scrape_top5_trending_games(soup)
 load_scraped_data_to_raw_layer(top5_trending_games, "top5_trending_games_raw")
 
+# Extract top 100 games (by current players) and save to `raw` layer
 top100_games = {
     "app_id":          [],
     "rank":            [],
