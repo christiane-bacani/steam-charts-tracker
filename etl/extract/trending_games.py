@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 
 from logs import logger
 
-def scrape_top_5_trending_games(soup: BeautifulSoup) -> dict[str, list]:
+def scrape_top5_trending_games(soup: BeautifulSoup) -> dict[str, list]:
     """
     Web-scrape the data of the current top 5 trending games on Steam Charts website.
 
