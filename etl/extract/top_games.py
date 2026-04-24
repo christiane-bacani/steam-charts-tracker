@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 
 from logs import logger
 
-def scrape_top_100_games(soup: BeautifulSoup,
+def scrape_top100_games(soup: BeautifulSoup,
                          scraped_data: dict[str, list]) -> dict[str, list]:
     """
     Web-scrape the data of the current top 100 games (by current players) on Steam
