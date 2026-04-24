@@ -42,6 +42,7 @@ def create_table_for_raw_layer(table_name: str) -> None:
     elif table_name == "top100_games_raw":
         command = """
         CREATE TABLE raw.top100_games_raw (
+        id SERIAL PRIMARY KEY,
         app_id TEXT,
         rank TEXT,
         name TEXT,
