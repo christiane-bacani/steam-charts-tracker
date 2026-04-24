@@ -17,3 +17,9 @@ def scrap_top_100_games(soup: BeautifulSoup) -> dict[str, list]:
     Returns:
         dict[str, list]: The scraped data as a dictionary.
     """
+    logger.info("Scraping the current data of the top 100 games (by current players).")
+    body = soup.find("body")
+    content_wrapper = body.find("div", attrs={"id": "content-wrapper"})
+    content_class = content_wrapper.find(
+        "div", attrs={"class": "content"}
+    )
