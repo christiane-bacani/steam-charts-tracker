@@ -48,7 +48,8 @@ def create_table_for_raw_layer(table_name: str) -> None:
         name TEXT,
         current_players TEXT,
         peak_players TEXT,
-        hours_played TEXT);;
+        hours_played TEXT,
+        timestamp TIMESTAMPTZ DEFAULT (NOW() AT TIME ZONE 'Asia/Manila'));
         """
 
     else:
