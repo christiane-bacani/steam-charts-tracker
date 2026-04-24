@@ -46,6 +46,7 @@ def scrape_top_5_trending_games(soup: BeautifulSoup) -> dict[str, list]:
         # Extract rank number
         scraped_data["rank"].append(rank + 1)
 
+        # Extract the game name
         name = table_data[0].get_text()
         scraped_data["name"].append(name)
 
