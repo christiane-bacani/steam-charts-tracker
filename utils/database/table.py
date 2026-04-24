@@ -27,6 +27,32 @@ def create_table_for_raw_layer(table_name: str) -> None:
                            os.getenv("DB_USERNAME"),
                            os.getenv("DB_PASSWORD"))
 
+    if table_name == "top5_trending_games_raw":
+        command = """
+        CREATE TABLE raw.top5_trending_games_raw (
+        id SERIAL PRIMARY KEY,
+        app_id TEXT,
+        rank TEXT,
+        name TEXT,
+        twenty_four_hour_change TEXT,
+        current_players TEXT,
+        timestamp TIMESTAMPTZ DEFAULT (NOW() AT TIME ZONE 'Asia/Manila'));
+        """
+
+    elif table_name == "top100_games_raw":
+        command = """
+        CREATE TABLE raw.top100_games_raw (
+        app_id TEXT,
+        rank TEXT,
+        name TEXT,
+        current_players TEXT,
+        peak_players TEXT,
+        hours_played TEXT);;
+        """
+
+    else:
+        raise Exception("Invalid table name!")
+
     with engine.connect() as connection:
         connection = connection.execution_options(isolation_level="AUTOCOMMIT")
 
@@ -42,17 +68,7 @@ def create_table_for_raw_layer(table_name: str) -> None:
 
         if not exists:
             logger.info(f"Creating table: '{table_name}'.")
-            connection.execute(
-                text("""
-                     CREATE TABLE raw.top5_trending_games_raw (
-                     id SERIAL PRIMARY KEY,
-                     app_id TEXT,
-                     rank TEXT,
-                     name TEXT,
-                     twenty_four_hour_change TEXT,
-                     current_players TEXT,
-                     timestamp TIMESTAMPTZ DEFAULT (NOW() AT TIME ZONE 'Asia/Manila'));
-                     """))
+            connection.execute(text(command))
             logger.info(f"Successfully created a new table: '{table_name}'.")
 
         else:
