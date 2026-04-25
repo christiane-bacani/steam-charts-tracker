@@ -52,5 +52,5 @@ load_scraped_data_to_raw_layer(top100_games, "top100_games_raw")
 top10_records = scrape_top10_records(soup)
 load_scraped_data_to_raw_layer(top10_records, "top10_records_raw")
 
-top10_games_raw = extract_top5_trending_games_raw()
-top10_games_stg = transform_top5_trending_games_raw(top10_games_raw)
+top5_trending_games_raw = extract_top5_trending_games_raw()
+top5_trending_games_stg = transform_top5_trending_games_raw(top5_trending_games_raw)
