@@ -20,6 +20,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
     logger.info("Validating the data from: 'top5_trending_games_stg'.")
 
     if not pd.api.types.is_numeric_dtype(df["id"]):
+        logger.info("Values of 'id' column are in the wrong datatype!")
         df["id"] = pd.to_numeric(df["id"], errors="raise")
 
     total_no_of_rows = df.shape[0]
@@ -37,3 +38,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
 
     if id_column_has_duplicates:
         raise Exception("'id' column consist of duplicate values!")
+
+    if not pd.api.types.is_numeric_dtype(df["application_id"]):
+        logger.info("Values of 'application_id' column are in the wrong datatype!")
+        df["application_id"] = pd.to_numeric(df["application_id"], errors="coerce")
