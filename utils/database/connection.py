@@ -14,7 +14,7 @@ def init_connection(host: str,
     Args:
         host (str): Database server address.
         port (int): Connection port number.
-        database: The name of the database.
+        database (str): The name of the database.
         user (str): Username required to authenticate.
         password (str): Password used to authenticate.
 
