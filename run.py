@@ -13,6 +13,7 @@ from etl.extract.top_games import scrape_top100_games
 from etl.extract.top_records import scrape_top10_records
 
 from etl.transform.trending_games import extract_top5_trending_games_raw
+from etl.transform.trending_games import transform_top5_trending_games_raw
 
 
 
@@ -52,3 +53,4 @@ top10_records = scrape_top10_records(soup)
 load_scraped_data_to_raw_layer(top10_records, "top10_records_raw")
 
 top10_games_raw = extract_top5_trending_games_raw()
+transformed_top10_games = transform_top5_trending_games_raw(top10_games_raw)
