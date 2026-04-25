@@ -7,8 +7,8 @@ from sqlalchemy import Engine
 
 def extract_top10_games_raw(engine: Engine) -> pd.DataFrame:
     """
-    Extract the data from the table `top10_games_raw` from the raw
-    layer.
+    Extract the data from the table `top10_games_raw` of the raw
+    data storage layer.
 
     Args:
         engine (Engine): SQLAlchemy Engine.
