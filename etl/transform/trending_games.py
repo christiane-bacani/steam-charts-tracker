@@ -13,6 +13,6 @@ def extract_top10_games_raw(engine: Engine) -> pd.DataFrame:
     Args:
         engine (Engine): SQLAlchemy Engine.
     """
-    query = "SELECT * FROM raw.top10_games_raw"
+    query = "SELECT * FROM raw.top10_games_raw;"
     df = pd.read_sql(query, con=engine)
     return df
