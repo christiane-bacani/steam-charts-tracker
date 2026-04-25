@@ -41,6 +41,7 @@ def transform_top5_trending_games_raw(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The transformed data as a DataFrame.
     """
+    # Perform data transformation per column
     df["app_id"] = df["app_id"].str.replace("/app/", "")
     df["app_id"] = pd.to_numeric(df["app_id"], errors="coerce")
 
@@ -57,6 +58,7 @@ def transform_top5_trending_games_raw(df: pd.DataFrame) -> pd.DataFrame:
 
     df["current_players"] = pd.to_numeric(df["current_players"], errors="coerce")
 
+    # Rename the column names
     df.rename(columns={
         "app_id":                      "application_id",
         "rank":                        "current_rank",
