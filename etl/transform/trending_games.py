@@ -1,6 +1,6 @@
 """
-Python module to perform web-scraping to extract all the data related to
-the current top 5 trending games tracked by Steam Charts.
+Python module to perform data transformation to all extracted data related
+to the current top 5 trending games tracked by Steam Charts.
 """
 import pandas as pd
 from sqlalchemy import Engine
