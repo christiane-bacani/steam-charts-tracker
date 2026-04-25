@@ -15,6 +15,9 @@ def extract_top5_trending_games_raw() -> pd.DataFrame:
     """
     Extract the data from the table `top5_trending_games_raw` of the raw
     data storage layer.
+
+    Returns:
+        DataFrame: The extracted data as a DataFrame.
     """
     logger.info("Extracting the data from: 'top5_trending_games_raw'.")
     load_dotenv()
