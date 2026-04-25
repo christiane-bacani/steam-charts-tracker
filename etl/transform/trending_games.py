@@ -41,6 +41,8 @@ def transform_top5_trending_games_raw(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The transformed data as a DataFrame.
     """
+    logger.info("Transforming the data from: 'top5_trending_games_raw'.")
+
     # Perform data transformation per column
     df["app_id"] = df["app_id"].str.replace("/app/", "")
     df["app_id"] = pd.to_numeric(df["app_id"], errors="coerce")
@@ -60,11 +62,12 @@ def transform_top5_trending_games_raw(df: pd.DataFrame) -> pd.DataFrame:
 
     # Rename the column names
     df.rename(columns={
-        "app_id":                      "application_id",
-        "rank":                        "current_rank",
-        "name":                        "game_name",
-        "twenty_four_hour_change_pct": "change_pct_within_24hr",
-        "current_players":             "no_of_current_players"
+        "app_id":                  "application_id",
+        "rank":                    "current_rank",
+        "name":                    "game_name",
+        "twenty_four_hour_change": "change_pct_within_24hr",
+        "current_players":         "no_of_current_players"
     }, inplace=True)
 
+    logger.info("Successfully transformed the data from: 'top5_trending_games_raw'.")
     return df
