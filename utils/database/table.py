@@ -52,6 +52,18 @@ def create_table_for_raw_layer(table_name: str) -> None:
         timestamp TIMESTAMPTZ DEFAULT (NOW() AT TIME ZONE 'Asia/Manila'));
         """
 
+    elif table_name == "top10_records_raw":
+        command = """
+        CREATE TABLE raw.top10_records_raw (
+        id SERIAL PRIMARY KEY,
+        app_id TEXT,
+        rank TEXT,
+        name TEXT,
+        peak_players TEXT,
+        time TEXT,
+        timestamp TIMESTAMPTZ DEFAULT (NOW() AT TIME ZONE 'Asia/Manila'));
+        """
+
     else:
         raise Exception("Invalid table name!")
 
