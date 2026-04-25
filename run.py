@@ -15,6 +15,8 @@ from etl.extract.top_records import scrape_top10_records
 from etl.transform.trending_games import extract_top5_trending_games_raw
 from etl.transform.trending_games import transform_top5_trending_games_raw
 
+from etl.transform.validate import validate_top5_trending_games_stg
+
 
 
 # Create Database objects
@@ -54,3 +56,4 @@ load_scraped_data_to_raw_layer(top10_records, "top10_records_raw")
 
 top5_trending_games_raw = extract_top5_trending_games_raw()
 top5_trending_games_stg = transform_top5_trending_games_raw(top5_trending_games_raw)
+validate_top5_trending_games_stg(top5_trending_games_stg)
