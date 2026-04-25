@@ -10,6 +10,7 @@ from utils.load.raw import load_scraped_data_to_raw_layer
 
 from etl.extract.trending_games import scrape_top5_trending_games
 from etl.extract.top_games import scrape_top100_games
+from etl.extract.top_records import scrape_top10_records
 
 
 
@@ -42,3 +43,6 @@ for number in range(1, 5):
     top100_games_soup = parse_soup(f"{url}top/p.{number}")
     top100_games = scrape_top100_games(top100_games_soup, top100_games)
 load_scraped_data_to_raw_layer(top100_games, "top100_games_raw")
+
+# Extract top 10 records and save to `raw` layer
+top10_records = scrape_top10_records(soup)
