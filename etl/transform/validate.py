@@ -22,7 +22,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
     if not pd.api.types.is_numeric_dtype(df["id"]):
         df["id"] = pd.to_numeric(df["id"], errors="raise")
 
-    total_no_of_rows = len(df["id"])
+    total_no_of_rows = len(df)
 
     if min(df["id"]) not in range(1, total_no_of_rows + 1):
         raise Exception("Invalid range of values from the 'id' column!")
