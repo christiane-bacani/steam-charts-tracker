@@ -46,3 +46,4 @@ load_scraped_data_to_raw_layer(top100_games, "top100_games_raw")
 
 # Extract top 10 records and save to `raw` layer
 top10_records = scrape_top10_records(soup)
+load_scraped_data_to_raw_layer(top10_records, "top10_records_raw")
