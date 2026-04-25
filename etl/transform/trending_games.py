@@ -11,12 +11,12 @@ from utils.database.connection import init_connection
 
 from logs import logger
 
-def extract_top10_games_raw() -> pd.DataFrame:
+def extract_top5_trending_games_raw() -> pd.DataFrame:
     """
-    Extract the data from the table `top10_games_raw` of the raw
+    Extract the data from the table `top5_trending_games_raw` of the raw
     data storage layer.
     """
-    logger.info("Extracting data from the table: 'top10_games_raw'.")
+    logger.info("Extracting the data from: 'top5_trending_games_raw'.")
     load_dotenv()
     engine = init_connection(os.getenv("HOST"),
                              os.getenv("PORT"),
@@ -24,8 +24,8 @@ def extract_top10_games_raw() -> pd.DataFrame:
                              os.getenv("DB_USERNAME"),
                              os.getenv("DB_PASSWORD"))
 
-    query = "SELECT * FROM raw.top10_games_raw;"
+    query = "SELECT * FROM raw.top5_trending_games_raw;"
     df = pd.read_sql(query, engine)
 
-    logger.info("Successfully extracted the data from the table: 'top10_games_raw'.")
+    logger.info("Successfully extracted the data from: 'top5_trending_games_raw'.")
     return df
