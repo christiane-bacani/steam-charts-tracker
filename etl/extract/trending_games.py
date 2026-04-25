@@ -40,7 +40,6 @@ def scrape_top5_trending_games(soup: BeautifulSoup) -> dict[str, list]:
 
         # Extract application ID
         app_id = table_data[0].find("a")["href"]
-        app_id = str(app_id).replace("/app/", "")
         scraped_data["app_id"].append(app_id)
 
         # Extract rank number
