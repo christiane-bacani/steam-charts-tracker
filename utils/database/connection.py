@@ -17,6 +17,9 @@ def init_connection(host: str,
         database: The name of the database.
         user (str): Username required to authenticate.
         password (str): Password used to authenticate.
+
+    Returns:
+        engine (Engine): SQLAlchemy Engine.
     """
     engine = create_engine(
         f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{database}"
