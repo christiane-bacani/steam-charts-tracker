@@ -114,5 +114,19 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         df.reset_index()
         logger.info("Column: 'no_of_current_players' with missing values are removed.")
 
+    columns = df.columns
+    correct_order_of_columns = [
+        "id",
+        "application_id",
+        "current_rank",
+        "game_name",
+        "change_pct_within_24hr",
+        "no_of_current_players",
+        "timestamp"
+    ]
+
+    if columns != correct_order_of_columns:
+        raise Exception("Columns of the table: 'top5_trending_games_stg' are inaccurate!")
+
     logger.info("Successfully validated the data from: 'top5_trending_games_stg'.")
     return df
