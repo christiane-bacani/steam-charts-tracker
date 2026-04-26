@@ -1,6 +1,6 @@
 """
 Python module to create SQL tables from a specific schema that represents
-a specific data storage layer.
+a specific data layers (bronze/raw, silver/stage, gold/mart)
 """
 from sqlalchemy import text
 
