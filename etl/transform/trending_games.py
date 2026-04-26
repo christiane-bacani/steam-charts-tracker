@@ -14,7 +14,7 @@ from logs import logger
 def extract_top5_trending_games_raw() -> pd.DataFrame:
     """
     Extract the data from the table `top5_trending_games_raw` of the raw
-    data storage layer.
+    data layer.
 
     Returns:
         DataFrame: The extracted data as a DataFrame.
@@ -36,7 +36,7 @@ def extract_top5_trending_games_raw() -> pd.DataFrame:
 def transform_top5_trending_games_raw(df: pd.DataFrame) -> pd.DataFrame:
     """
     Transform the extracted data from the table `top5_trending_games_raw` of the raw
-    data storage layer.
+    data layer.
 
     Args:
         df (DataFrame): The extracted data as a DataFrame.
