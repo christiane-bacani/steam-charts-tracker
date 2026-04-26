@@ -9,7 +9,7 @@ from logs import logger
 def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
     """
     Validate the data from the DataFrame object 'top5_trending_games_stg'
-    before loading to the stage data storage layer.
+    before loading to the stage data layer.
 
     Args:
         df (DataFrame): The transformed data as a DataFrame.
