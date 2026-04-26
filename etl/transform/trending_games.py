@@ -11,28 +11,6 @@ from utils.database.connection import init_connection
 
 from logs import logger
 
-def extract_top5_trending_games_raw() -> pd.DataFrame:
-    """
-    Extract the data from the table `top5_trending_games_raw` of the raw
-    data layer.
-
-    Returns:
-        DataFrame: The extracted data as a DataFrame.
-    """
-    logger.info("Extracting the data from: 'top5_trending_games_raw'.")
-    load_dotenv()
-    engine = init_connection(os.getenv("HOST"),
-                             os.getenv("PORT"),
-                             "steam_charts",
-                             os.getenv("DB_USERNAME"),
-                             os.getenv("DB_PASSWORD"))
-
-    query = "SELECT * FROM raw.top5_trending_games_raw;"
-    df = pd.read_sql(query, engine)
-
-    logger.info("Successfully extracted the data from: 'top5_trending_games_raw'.")
-    return df
-
 def transform_top5_trending_games_raw(df: pd.DataFrame) -> pd.DataFrame:
     """
     Transform the extracted data from the table `top5_trending_games_raw` of the raw
