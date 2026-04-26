@@ -1,5 +1,6 @@
 """
-Python module to create database schema for different data storage layer.
+Python module to create database schema for different data layers (bronze/raw,
+silver/stage, gold/mart).
 """
 from sqlalchemy import text
 
