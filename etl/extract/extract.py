@@ -132,7 +132,7 @@ def scrape_top100_games(soup: BeautifulSoup,
 
 def scrape_top10_records(soup: BeautifulSoup) -> dict[str, list]:
     """
-    Web-scrape the data of the current top 10 records on Steam Charts Website.
+    Web-scrape the data of the current top 10 records on Steam Charts website.
 
     Args:
         soup (bs4.BeautifulSoup): The parsed BeautifulSoup object for web-scraping.
