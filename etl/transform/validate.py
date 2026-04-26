@@ -114,7 +114,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         df.reset_index()
         logger.info("Column: 'no_of_current_players' with missing values are removed.")
 
-    columns = df.columns
+    columns = list(df.columns)
     correct_order_of_columns = [
         "id",
         "application_id",
