@@ -19,6 +19,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
     """
     logger.info("Validating the data from: 'top5_trending_games_stg'.")
 
+    # Perform validation checks to 'id' column
     if not pd.api.types.is_numeric_dtype(df["id"]):
         logger.info("Column: 'id' consist of wrong datatype!")
         df["id"] = pd.to_numeric(df["id"], errors="raise")
@@ -46,6 +47,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         df.reset_index()
         logger.info("Removed duplicate values for 'id' column.")
 
+    # Perform validation checks to 'application_id' column
     if not pd.api.types.is_numeric_dtype(df["application_id"]):
         logger.info("Column: 'application_id' consist of wrong datatype!")
         df["application_id"] = pd.to_numeric(df["application_id"], errors="coerce")
@@ -57,6 +59,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         df.reset_index(inplace=True)
         logger.info("Column: 'application_id' with missing values are removed.")
 
+    # Perform validation checks to 'current_rank' column
     if not pd.api.types.is_numeric_dtype(df["current_rank"]):
         logger.info("Column: 'current_rank' consist of wrong datatype!")
         df["current_rank"] = pd.to_numeric(df["current_rank"], errors="coerce")
@@ -74,6 +77,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
     if max(df["current_rank"]) not in range(1, 5 + 1):
         raise Exception("Invalid range of values from the 'current_rank' column!")
 
+    # Perform validation checks to 'game_name' column
     if not pd.api.types.is_string_dtype(df["game_name"]):
         logger.info("Column: 'game_name' consist of wrong datatype!")
         df["game_name"] = df["game_name"].astype(str)
@@ -88,6 +92,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         df.reset_index()
         logger.info("Column: 'game_name' with missing values are removed.")
 
+    # Perform validation checks to 'change_pct_within_24hr' column
     if not pd.api.types.is_numeric_dtype(df["change_pct_within_24hr"]):
         logger.info("Column: 'change_pct_within_24hr' consist of wrong datatype!")
         df["change_pct_within_24hr"] = pd.to_numeric(
@@ -101,6 +106,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         df.reset_index()
         logger.info("Column: 'change_pct_within_24hr' with missing values are removed.")
 
+    # Perform validation checks to 'no_of_current_players' column
     if not pd.api.types.is_numeric_dtype(df["no_of_current_players"]):
         logger.info("Column: 'no_of_current_players' consist of wrong datatype!")
         df["no_of_current_players"] = pd.to_numeric(
@@ -114,6 +120,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         df.reset_index()
         logger.info("Column: 'no_of_current_players' with missing values are removed.")
 
+    # Perform validation check to the whole dataset
     columns = list(df.columns)
     correct_order_of_columns = [
         "id",
