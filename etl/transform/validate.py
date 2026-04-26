@@ -100,3 +100,16 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         df.dropna(subset=["change_pct_within_24hr"], inplace=True)
         df.reset_index()
         logger.info("Column: 'change_pct_within_24hr' with missing values are removed.")
+
+    if not pd.api.types.is_numeric_dtype(df["no_of_current_players"]):
+        logger.info("Column: 'no_of_current_players' consist of wrong datatype!")
+        df["no_of_current_players"] = pd.to_numeric(
+            df["no_of_current_players"], errors="coerce"
+        )
+        logger.info("Type-casted the values of 'no_of_current_players' column.")
+
+    if df["no_of_current_players"].isnull().sum() > 0:
+        logger.info("Column: 'no_of_current_players' consist of null values!")
+        df.dropna(subset=["no_of_current_players"], inplace=True)
+        df.reset_index()
+        logger.info("Column: 'no_of_current_players' with missing values are removed.")
