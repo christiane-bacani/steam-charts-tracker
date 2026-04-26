@@ -63,8 +63,10 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Successfully type-casted the values of 'current_rank' column.")
 
     if df["current_rank"].isnull().sum() > 0:
-        # TODO: Check if it can be fix
-        raise Exception("'current_rank' column consist of null values!")
+        logger.info("Column: 'current_rank' column consist of null values!")
+        df.dropna(subset=["current_rank"], inplace=True)
+        df.reset_index(inplace=True)
+        logger.info("Removed rows with missing values of 'current_rank' column.")
 
     if min(df["current_rank"]) not in range(1, 5 + 1):
         raise Exception("Invalid range of values from the 'current_rank' column!")
