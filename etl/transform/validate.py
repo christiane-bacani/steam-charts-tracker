@@ -20,9 +20,9 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
     logger.info("Validating the data from: 'top5_trending_games_stg'.")
 
     if not pd.api.types.is_numeric_dtype(df["id"]):
-        logger.info("Values of 'id' column are in the wrong datatype!")
+        logger.info("Column: 'id' consist of wrong datatype!")
         df["id"] = pd.to_numeric(df["id"], errors="raise")
-        logger.info("Successfully type-casted the values of 'id' column.")
+        logger.info("Type-casted the values of 'id' column.")
 
     total_no_of_rows = df.shape[0]
 
@@ -47,9 +47,9 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Successfully removed duplicate values for 'id' column.")
 
     if not pd.api.types.is_numeric_dtype(df["application_id"]):
-        logger.info("Values of 'application_id' column are in the wrong datatype!")
+        logger.info("Column: 'application_id' consist of wrong datatype!")
         df["application_id"] = pd.to_numeric(df["application_id"], errors="coerce")
-        logger.info("Successfully type-casted the values of 'application_id' column.")
+        logger.info("Type-casted the values of 'application_id' column.")
 
     if df["application_id"].isnull().sum() > 0:
         logger.info("Column: 'application_id' consist of null values!")
@@ -58,9 +58,9 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Removed rows with missing values of 'application_id' column.")
 
     if not pd.api.types.is_numeric_dtype(df["current_rank"]):
-        logger.info("Values of 'current_rank' column are in the wrong dataype!")
+        logger.info("Column: 'current_rank' consist of wrong datatype!")
         df["current_rank"] = pd.to_numeric(df["current_rank"], errors="coerce")
-        logger.info("Successfully type-casted the values of 'current_rank' column.")
+        logger.info("Type-casted the values of 'current_rank' column.")
 
     if df["current_rank"].isnull().sum() > 0:
         logger.info("Column: 'current_rank' column consist of null values!")
@@ -75,9 +75,9 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         raise Exception("Invalid range of values from the 'current_rank' column!")
 
     if not pd.api.types.is_string_dtype(df["game_name"]):
-        logger.info("Values of 'game_name' column are in the wrong dataype!")
+        logger.info("Column: 'game_name' consist of wrong datatype!")
         df["game_name"] = df["game_name"].astype(str)
-        logger.info("Successfully type-casted the values of 'game_name' column.")
+        logger.info("Type-casted the values of 'game_name' column.")
 
     if df["game_name"].str.len() > 255:
         raise Exception("Column: 'game_name' consist of moe than 255 characters!")
@@ -87,3 +87,10 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         df.dropna(subset=["game_name"], inplace=True)
         df.reset_index()
         logger.info("Removed rows with missing values of 'game_name' column.")
+
+    if not pd.api.types.is_numeric_dtype(df["change_pct_within_24hr"]):
+        logger.info("Column: 'change_pct_within_24hr' consist of wrong datatype!")
+        df["change_pct_within_24hr"] = pd.to_numeric(
+            df["change_pct_within_24hr"], errors="coerce"
+        )
+        logger.info("Type-casted the values of 'change_pct_within_24hr' column.")
