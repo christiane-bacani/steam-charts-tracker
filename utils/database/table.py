@@ -87,3 +87,55 @@ def create_table_for_raw_layer(table_name: str) -> None:
 
         else:
             logger.info(f"Table: '{table_name}' was already created.")
+
+def create_table_for_stg_layer(table_name: str) -> None:
+    """
+    Create new SQL table (if still does not exist) from 'stg' schema
+    to store all data.
+
+    Args:
+        table_name (str): The name of the table.
+    """
+    logger.info("Establishing a connection to PostgreSQL to create new table.")
+    load_dotenv()
+    engine = init_connection(os.getenv("HOST"),
+                           os.getenv("PORT"),
+                           "steam_charts",
+                           os.getenv("DB_USERNAME"),
+                           os.getenv("DB_PASSWORD"))
+
+    if table_name == "top5_trending_games_stg":
+        command = """
+        CREATE TABLE stg.top5_trending_games_stg (
+        id SERIAL PRIMARY KEY,
+        application_id INTEGER,
+        current_rank INTEGER,
+        game_name VARCHAR(255),
+        change_pct_within_24hr DECIMAL(5, 1),
+        no_of_current_players INTEGER,
+        timestamp TIMESTAMPTZ DEFAULT (NOW() AT TIME ZONE 'Asia/Manila')); 
+        """
+
+    else:
+        raise Exception("Invalid table name!")
+
+    with engine.connect() as connection:
+        connection = connection.execution_options(isolation_level="AUTOCOMMIT")
+
+        result = connection.execute(
+            text("""
+                 SELECT 1
+                 FROM information_schema.tables
+                 WHERE table_schema =:schema
+                 AND table_name =:table;
+                 """),
+                 {"schema": "stg", "table": table_name})
+        exists = result.fetchone()
+
+        if not exists:
+            logger.info(f"Creating table: '{table_name}'.")
+            connection.execute(text(command))
+            logger.info(f"Successfully created a new table: '{table_name}'.")
+
+        else:
+            logger.info(f"Table: '{table_name}' was already created.")
