@@ -1,6 +1,6 @@
 """
 Python module to create the database to store all the data to
-different data storage layers.
+different data layers (bronze/raw, silver/stage, gold/mart).
 """
 from sqlalchemy import text
 
@@ -14,7 +14,8 @@ from logs import logger
 def create_database(database_name: str) -> None:
     """
     Create new database (if still does not exist) to store
-    all the data to different data storage layers.
+    all the data to different data layers (bronze/raw,
+    silver/stage, gold/mart).
 
     Args:
         database_name (str): The name of the database.
