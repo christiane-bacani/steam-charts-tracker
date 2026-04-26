@@ -36,7 +36,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Column: 'id' consist of null values!")
         df.dropna(subset=["id"], inplace=True)
         df.reset_index(inplace=True)
-        logger.info("Removed rows with missing values of 'id' column.")
+        logger.info("Column: 'id' with missing values are removed.")
 
     id_column_has_duplicates = df["id"].duplicated().any()
 
@@ -55,7 +55,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Column: 'application_id' consist of null values!")
         df.dropna(subset=["application_id"], inplace=True)
         df.reset_index(inplace=True)
-        logger.info("Removed rows with missing values of 'application_id' column.")
+        logger.info("Column: 'application_id' with missing values are removed.")
 
     if not pd.api.types.is_numeric_dtype(df["current_rank"]):
         logger.info("Column: 'current_rank' consist of wrong datatype!")
@@ -66,7 +66,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Column: 'current_rank' column consist of null values!")
         df.dropna(subset=["current_rank"], inplace=True)
         df.reset_index(inplace=True)
-        logger.info("Removed rows with missing values of 'current_rank' column.")
+        logger.info("Column: 'current_rank' with missing values are removed.")
 
     if min(df["current_rank"]) not in range(1, 5 + 1):
         raise Exception("Invalid range of values from the 'current_rank' column!")
@@ -86,7 +86,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Column: 'game_name' consist of null values!")
         df.dropna(subset=["game_name"], inplace=True)
         df.reset_index()
-        logger.info("Removed rows with missing values of 'game_name' column.")
+        logger.info("Column: 'game_name' with missing values are removed.")
 
     if not pd.api.types.is_numeric_dtype(df["change_pct_within_24hr"]):
         logger.info("Column: 'change_pct_within_24hr' consist of wrong datatype!")
@@ -94,3 +94,9 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
             df["change_pct_within_24hr"], errors="coerce"
         )
         logger.info("Type-casted the values of 'change_pct_within_24hr' column.")
+
+    if df["change_pct_within_24hr"].isnull().sum() > 0:
+        logger.info("Column: 'change_pct_within_24hr' consist of null values!")
+        df.dropna(subset=["change_pct_within_24hr"], inplace=True)
+        df.reset_index()
+        logger.info("Column: 'change_pct_within_24hr' with missing values are removed.")
