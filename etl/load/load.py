@@ -22,7 +22,7 @@ def load_data_to_schema(data: dict | pd.DataFrame,
     Args:
         data (dict | DataFrame): The data which can be a dictionary or DataFrame.
         schema_name (str): The name of the database schema.
-        table_name: str: The name of the SQL Table.
+        table_name (str): The name of the SQL Table.
     """
     logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
     load_dotenv()
