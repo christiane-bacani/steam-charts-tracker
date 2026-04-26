@@ -1,6 +1,7 @@
 """
 Python module to store all scraped, transformed, aggregrated, or modeleted data
-from Steam Charts website to their corresponding data storage layer.
+from Steam Charts website to their corresponding data layers (bronze/raw, silver/stage,
+and gold/mart).
 """
 import pandas as pd
 
@@ -11,14 +12,16 @@ from utils.database.connection import init_connection
 
 from logs import logger
 
-def load_scraped_data_to_raw_layer(scraped_data: dict,
-                                   table_name: str) -> None:
+def load_data_to_schema(data: dict | pd.DataFrame,
+                        schema_name: str,
+                        table_name: str) -> None:
     """
-    Load the scraped data that is tracked by Steam Charts to the data storage layer
-    called `raw`.
+    Load the data to a certain database schema which is an equivalent to a certain data
+    layer (bronze/raw, silve/stage, and gold/mart).
 
     Args:
-        scraped_data (dict): The scraped data as a dictionary.
+        data (dict | DataFrame): The data which can be a dictionary or DataFrame.
+        schema_name (str): The name of the database schema.
         table_name: str: The name of the SQL Table.
     """
     logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
@@ -31,8 +34,14 @@ def load_scraped_data_to_raw_layer(scraped_data: dict,
         os.getenv("DB_PASSWORD")
     )
 
-    df = pd.DataFrame(scraped_data)
+    if type(data) is dict:
+        df = pd.DataFrame(data)
+
+    else:
+        df = data
 
     logger.info(f"Loading new data to SQL Table: '{table_name}'.")
-    df.to_sql(table_name, con=engine, schema="raw", if_exists="append", index=False)
+    df.to_sql(
+        table_name, con=engine, schema=schema_name, if_exists="append", index=False
+    )
     logger.info(f"Successfully loaded new data to SQL table: '{table_name}'.")
