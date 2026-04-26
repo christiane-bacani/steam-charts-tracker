@@ -44,7 +44,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Column: 'id' consist of duplicate values!")
         df["id"].drop_duplicates(keep="first", inplace=True)
         df.reset_index()
-        logger.info("Successfully removed duplicate values for 'id' column.")
+        logger.info("Removed duplicate values for 'id' column.")
 
     if not pd.api.types.is_numeric_dtype(df["application_id"]):
         logger.info("Column: 'application_id' consist of wrong datatype!")
@@ -113,3 +113,27 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         df.dropna(subset=["no_of_current_players"], inplace=True)
         df.reset_index()
         logger.info("Column: 'no_of_current_players' with missing values are removed.")
+
+    if pd.api.types.is_datetime64_any_dtype(df["data_timestamp"]):
+        logger.info("Column: 'date_timestamp' consist of wrong datatype!")        
+        df["data_timestamp"] = pd.to_datetime(
+            df["data_timestamp"], errors="raise", format="%Y-%m-%d %H:%M:%Z"
+        )
+        logger.info("Type-casted the values of 'date_timestamp' column.")
+
+    if df["data_timestamp"].isnull().sum() > 0:
+        logger.info("Column: 'data_timestamp' consist of null values!")
+        df.dropna(subset=["data_timestamp"], inplace=True)
+        df.reset_index()
+        logger.info("Column: 'data_timestamp' with missing values are removed.")
+
+    data_timestamp_column_has_duplicates = df["data_timestamp"].duplicated().any()
+
+    if data_timestamp_column_has_duplicates:
+        logger.info("Column: 'data_timestamp' consist of duplicate values!")
+        df["id"].drop_duplicates(keep="last", inplace=True)
+        df.reset_index()
+        logger.info("Removed duplicate values for 'data_timestamp' column.")
+
+    logger.info("Successfully validated the data from: 'top5_trending_games_stg'.")
+    return df
