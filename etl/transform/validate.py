@@ -42,3 +42,6 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
     if not pd.api.types.is_numeric_dtype(df["application_id"]):
         logger.info("Values of 'application_id' column are in the wrong datatype!")
         df["application_id"] = pd.to_numeric(df["application_id"], errors="coerce")
+
+    if df["application_id"].isnull().sum() > 0:
+        raise Exception("'application_id' column consist of null values!")
