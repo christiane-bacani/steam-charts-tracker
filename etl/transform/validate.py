@@ -33,7 +33,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         raise Exception("Invalid range of values from the 'id' column!")
 
     if df["id"].isnull().sum() > 0:
-        logger.info("'id' column consist of null values!")
+        logger.info("Column: 'id' consist of null values!")
         df.dropna(subset=["id"], inplace=True)
         df.reset_index(inplace=True)
         logger.info("Removed rows with missing values of 'id' column.")
@@ -41,7 +41,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
     id_column_has_duplicates = df["id"].duplicated().any()
 
     if id_column_has_duplicates:
-        logger.info("'id' column consist of duplicate values!")
+        logger.info("Column: 'id' consist of duplicate values!")
         df["id"].drop_duplicates(keep="first", inplace=True)
         df.reset_index()
         logger.info("Successfully removed duplicate values for 'id' column.")
@@ -52,7 +52,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Successfully type-casted the values of 'application_id' column.")
 
     if df["application_id"].isnull().sum() > 0:
-        logger.info("'application_id' column consist of null values!")
+        logger.info("Column: 'application_id' consist of null values!")
         df.dropna(subset=["application_id"], inplace=True)
         df.reset_index(inplace=True)
         logger.info("Removed rows with missing values of 'application_id' column.")
@@ -78,10 +78,10 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Successfully type-casted the values of 'game_name' column.")
 
     if df["game_name"].str.len() > 255:
-        raise Exception("'game_name' column consist of more than 255 characters!")
+        raise Exception("Column: 'game_name' consist of moe than 255 characters!")
 
     if df["game_name"].isnull().sum() > 0:
-        logger.info("'game_name' column consist of null values!")
+        logger.info("Column: 'game_name' consist of null values!")
         df.dropna(subset=["game_name"], inplace=True)
         df.reset_index()
         logger.info("Removed rows with missing values of 'game_name' column.")
