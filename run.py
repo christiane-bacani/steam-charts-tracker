@@ -7,7 +7,6 @@ from utils.database.table import create_table_for_raw_layer
 from utils.database.table import create_table_for_stg_layer
 
 from utils.extract.parse import parse_soup
-from utils.load.raw import load_scraped_data_to_raw_layer
 
 from etl.extract.trending_games import scrape_top5_trending_games
 from etl.extract.top_games import scrape_top100_games
@@ -17,6 +16,8 @@ from etl.transform.trending_games import extract_top5_trending_games_raw
 from etl.transform.trending_games import transform_top5_trending_games_raw
 
 from etl.transform.validate import validate_top5_trending_games_stg
+
+from etl.load.load import load_data_to_schema
 
 
 
@@ -36,7 +37,7 @@ soup = parse_soup(url)
 
 # Extract top 5 trending games and save to `raw` data layer
 top5_trending_games = scrape_top5_trending_games(soup)
-load_scraped_data_to_raw_layer(top5_trending_games, "top5_trending_games_raw")
+load_data_to_schema(top5_trending_games, "raw", "top5_trending_games_raw")
 
 # Extract top 100 games (by current players) and save to `raw` data layer
 top100_games = {
@@ -50,11 +51,11 @@ top100_games = {
 for number in range(1, 5):
     top100_games_soup = parse_soup(f"{url}top/p.{number}")
     top100_games = scrape_top100_games(top100_games_soup, top100_games)
-load_scraped_data_to_raw_layer(top100_games, "top100_games_raw")
+load_data_to_schema(top100_games, "raw", "top100_games_raw")
 
 # Extract top 10 records and save to `raw` data layer
 top10_records = scrape_top10_records(soup)
-load_scraped_data_to_raw_layer(top10_records, "top10_records_raw")
+load_data_to_schema(top10_records, "raw", "top10_records_raw")
 
 top5_trending_games_raw = extract_top5_trending_games_raw()
 top5_trending_games_stg = transform_top5_trending_games_raw(top5_trending_games_raw)
