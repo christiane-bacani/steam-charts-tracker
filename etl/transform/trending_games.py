@@ -69,7 +69,8 @@ def transform_top5_trending_games_raw(df: pd.DataFrame) -> pd.DataFrame:
         "rank":                    "current_rank",
         "name":                    "game_name",
         "twenty_four_hour_change": "change_pct_within_24hr",
-        "current_players":         "no_of_current_players"
+        "current_players":         "no_of_current_players",
+        "timestamp":               "date_timestamp"
     }, inplace=True)
 
     logger.info("Successfully transformed the data from: 'top5_trending_games_raw'.")
