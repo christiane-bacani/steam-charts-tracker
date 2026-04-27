@@ -206,7 +206,6 @@ def extract_data_from_sql_table(schema_name: str, table_name: str) -> pd.DataFra
 
     query = f"SELECT * FROM {schema_name}.{table_name};"
     df = pd.read_sql(query, engine)
-    df.drop(columns=["id", "timestamp"], inplace=True)
 
     logger.info(f"Successfully extracted the data from: '{table_name}'.")
     return df
