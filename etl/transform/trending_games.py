@@ -4,11 +4,6 @@ to the current top 5 trending games tracked by Steam Charts.
 """
 import pandas as pd
 
-import os
-from dotenv import load_dotenv
-
-from utils.database.connection import init_connection
-
 from logs import logger
 
 def transform_top5_trending_games_raw(df: pd.DataFrame) -> pd.DataFrame:
