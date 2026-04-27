@@ -7,14 +7,12 @@ from utils.database.table import create_table_for_raw_layer
 from utils.database.table import create_table_for_stg_layer
 
 from utils.extract.parse import parse_soup
-
 from etl.extract.extract import scrape_top5_trending_games
 from etl.extract.extract import scrape_top100_games
 from etl.extract.extract import scrape_top10_records
+
 from etl.extract.extract import extract_data_from_sql_table
-
-from etl.transform.trending_games import transform_top5_trending_games_raw
-
+from etl.transform.transform import transform_top5_trending_games_raw
 from etl.transform.validate import validate_top5_trending_games_stg
 
 from etl.load.load import load_data_to_schema
