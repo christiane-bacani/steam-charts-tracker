@@ -19,34 +19,6 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
     """
     logger.info("Validating the data from: 'top5_trending_games_stg'.")
 
-    # Perform validation checks to 'id' column
-    if not pd.api.types.is_numeric_dtype(df["id"]):
-        logger.info("Column: 'id' consist of wrong datatype!")
-        df["id"] = pd.to_numeric(df["id"], errors="raise")
-        logger.info("Type-casted the values of 'id' column.")
-
-    total_no_of_rows = df.shape[0]
-
-    if min(df["id"]) not in range(1, total_no_of_rows + 1):
-        raise Exception("Invalid range of values from the 'id' column!")
-
-    elif max(df["id"]) not in range(1, total_no_of_rows + 1):
-        raise Exception("Invalid range of values from the 'id' column!")
-
-    if df["id"].isnull().sum() > 0:
-        logger.info("Column: 'id' consist of null values!")
-        df.dropna(subset=["id"], inplace=True)
-        df.reset_index(inplace=True)
-        logger.info("Column: 'id' with missing values are removed.")
-
-    id_column_has_duplicates = df["id"].duplicated().any()
-
-    if id_column_has_duplicates:
-        logger.info("Column: 'id' consist of duplicate values!")
-        df["id"].drop_duplicates(keep="first", inplace=True)
-        df.reset_index()
-        logger.info("Removed duplicate values for 'id' column.")
-
     # Perform validation checks to 'application_id' column
     if not pd.api.types.is_numeric_dtype(df["application_id"]):
         logger.info("Column: 'application_id' consist of wrong datatype!")
@@ -123,13 +95,11 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
     # Perform validation check to the whole dataset
     columns = list(df.columns)
     correct_order_of_columns = [
-        "id",
         "application_id",
         "current_rank",
         "game_name",
         "change_pct_within_24hr",
-        "no_of_current_players",
-        "timestamp"
+        "no_of_current_players"
     ]
 
     if columns != correct_order_of_columns:
