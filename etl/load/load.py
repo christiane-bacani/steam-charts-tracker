@@ -41,7 +41,18 @@ def load_data_to_schema(data: dict | pd.DataFrame,
         df = data
 
     logger.info(f"Loading new data to SQL Table: '{table_name}'.")
-    df.to_sql(
-        table_name, con=engine, schema=schema_name, if_exists="append", index=False
-    )
+
+    if schema_name == "raw":    
+        df.to_sql(
+            table_name, con=engine, schema=schema_name, if_exists="append", index=False
+        )
+
+    elif schema_name == "stg":
+        df.to_sql(
+            table_name, con=engine, schema=schema_name, if_exists="replace", index=False
+        )
+
+    else:
+        raise Exception("Invalid database schema name!")
+
     logger.info(f"Successfully loaded new data to SQL table: '{table_name}'.")
