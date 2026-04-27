@@ -95,11 +95,13 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
     # Perform validation check to the whole dataset
     columns = list(df.columns)
     correct_order_of_columns = [
+        "id",
         "application_id",
         "current_rank",
         "game_name",
         "change_pct_within_24hr",
-        "no_of_current_players"
+        "no_of_current_players",
+        "timestamp"
     ]
 
     if columns != correct_order_of_columns:
