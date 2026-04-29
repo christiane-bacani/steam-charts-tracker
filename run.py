@@ -60,3 +60,5 @@ top5_trending_games_raw = extract_data_from_sql_table("raw", "top5_trending_game
 top5_trending_games_stg = transform_top5_trending_games_raw(top5_trending_games_raw)
 top5_trending_games_stg = validate_top5_trending_games_stg(top5_trending_games_stg)
 load_data_to_schema(top5_trending_games_stg, "stg", "top5_trending_games_stg")
+
+top100_games_raw = extract_data_from_sql_table("raw", "top100_games_raw")
