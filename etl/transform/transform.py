@@ -58,3 +58,29 @@ def transform_top100_games_raw(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The transformed data as a DataFrame.
     """
+    logger.info("Transforming the data from: 'top100_games_raw'.")
+
+    df["app_id"] = df["app_id"].str.replace("/app/", "")
+    df["app_id"] = pd.to_numeric(df["app_id"], errors="coerce")
+
+    df["rank"] = df["rank"].str.replace(".", "").str.strip()
+
+    df["name"] = df["name"].str.strip()
+
+    df["current_players"] = pd.to_numeric(df["current_players"], errors="coerce")
+
+    df["peak_players"] = pd.to_numeric(df["peak_players"], errors="coerce")
+
+    df["hours_played"] = pd.to_numeric(df["hours_played"], errors="coerce")
+
+    df.rename(columns={
+        "app_id":          "application_id",
+        "rank":            "current_rank",
+        "name":            "game_name",
+        "current_players": "no_of_current_players",
+        "peak_players":    "no_of_peak_players",
+        "hours_played":    "total_hours_played",
+    }, inplace=True)
+
+    logger.info("Successfully transformed the data from: 'top100_games_raw'.")
+    return df
