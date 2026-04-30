@@ -65,6 +65,7 @@ def transform_top100_games_raw(df: pd.DataFrame) -> pd.DataFrame:
     df["app_id"] = pd.to_numeric(df["app_id"], errors="coerce")
 
     df["rank"] = df["rank"].str.replace(".", "").str.strip()
+    df["rank"] = pd.to_numeric(df["rank"], errors="coerce")
 
     df["name"] = df["name"].str.strip()
 
