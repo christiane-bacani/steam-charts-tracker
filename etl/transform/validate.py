@@ -109,3 +109,15 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
 
     logger.info("Successfully validated the data from: 'top5_trending_games_stg'.")
     return df
+
+def validate_top100_games_stg(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Validate the data from the DataFrame object 'top100_game_stg' before
+    loading to the stage data layer.
+
+    Args:
+        df (DataFrame): The transformed data as a DataFrame.
+
+    Returns:
+        DataFrame: The validated and transformed data as a DataFrame.
+    """
