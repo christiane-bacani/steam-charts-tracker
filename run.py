@@ -36,11 +36,11 @@ url = "https://steamcharts.com/"
 soup = parse_soup(url)
 
 # Extract top 5 trending games and save to `raw` data layer
-top5_trending_games = scrape_top5_trending_games(soup)
-load_data_to_schema(top5_trending_games, "raw", "top5_trending_games_raw")
+top5_trending_games_raw = scrape_top5_trending_games(soup)
+load_data_to_schema(top5_trending_games_raw, "raw", "top5_trending_games_raw")
 
 # Extract top 100 games (by current players) and save to `raw` data layer
-top100_games = {
+top100_games_raw = {
     "app_id":          [],
     "rank":            [],
     "name":            [],
@@ -50,12 +50,12 @@ top100_games = {
 }
 for number in range(1, 5):
     top100_games_soup = parse_soup(f"{url}top/p.{number}")
-    top100_games = scrape_top100_games(top100_games_soup, top100_games)
-load_data_to_schema(top100_games, "raw", "top100_games_raw")
+    top100_games_raw = scrape_top100_games(top100_games_soup, top100_games_raw)
+load_data_to_schema(top100_games_raw, "raw", "top100_games_raw")
 
 # Extract top 10 records and save to `raw` data layer
-top10_records = scrape_top10_records(soup)
-load_data_to_schema(top10_records, "raw", "top10_records_raw")
+top10_records_raw = scrape_top10_records(soup)
+load_data_to_schema(top10_records_raw, "raw", "top10_records_raw")
 
 # Transform the extracted data of the top 5 trending games and save to 'stg' data layer
 top5_trending_games_raw = extract_data_from_sql_table("raw", "top5_trending_games_raw")
