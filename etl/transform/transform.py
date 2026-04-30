@@ -87,3 +87,15 @@ def transform_top100_games_raw(df: pd.DataFrame) -> pd.DataFrame:
 
     logger.info("Successfully transformed the data from: 'top100_games_raw'.")
     return df
+
+def transform_top10_records_raw(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Transform the extracted data from the table `top10_records_raw` of the raw data
+    layer.
+
+    Args:
+        df (DataFrame): The extracted data as a DataFrame.
+
+    Returns:
+        DataFrame: The transformed data as a DataFrame.
+    """
