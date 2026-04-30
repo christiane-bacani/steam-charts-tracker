@@ -60,6 +60,7 @@ def transform_top100_games_raw(df: pd.DataFrame) -> pd.DataFrame:
     """
     logger.info("Transforming the data from: 'top100_games_raw'.")
 
+    # Perform data transformation per column
     df["app_id"] = df["app_id"].str.replace("/app/", "")
     df["app_id"] = pd.to_numeric(df["app_id"], errors="coerce")
 
@@ -73,6 +74,7 @@ def transform_top100_games_raw(df: pd.DataFrame) -> pd.DataFrame:
 
     df["hours_played"] = pd.to_numeric(df["hours_played"], errors="coerce")
 
+    # Rename the column names
     df.rename(columns={
         "app_id":          "application_id",
         "rank":            "current_rank",
