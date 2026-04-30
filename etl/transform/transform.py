@@ -81,7 +81,7 @@ def transform_top100_games_raw(df: pd.DataFrame) -> pd.DataFrame:
         "name":            "game_name",
         "current_players": "no_of_current_players",
         "peak_players":    "no_of_peak_players",
-        "hours_played":    "total_hours_played",
+        "hours_played":    "no_of_hours_played",
     }, inplace=True)
 
     logger.info("Successfully transformed the data from: 'top100_games_raw'.")
