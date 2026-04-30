@@ -147,10 +147,10 @@ def validate_top100_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         df.reset_index(inplace=True)
         logger.info("Column: 'current_rank' with missing values are removed.")
 
-    if min(df["current_rank"]) not in range(1, 5 + 1):
+    if min(df["current_rank"]) not in range(1, 100 + 1):
         raise Exception("Invalid range of values from the 'current_rank' column!")
 
-    if max(df["current_rank"]) not in range(1, 5 + 1):
+    if max(df["current_rank"]) not in range(1, 100 + 1):
         raise Exception("Invalid range of values from the 'current_rank' column!")
 
     # Perform validation checks to 'game_name' column
