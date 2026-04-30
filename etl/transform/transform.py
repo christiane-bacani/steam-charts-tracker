@@ -99,3 +99,10 @@ def transform_top10_records_raw(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The transformed data as a DataFrame.
     """
+    logger.info("Transforming the data from: 'top10_records_raw'.")
+
+    # Perform data transformation per column
+    df["app_id"] = df["app_id"].str.replace("/app/", "")
+    df["app_id"] = pd.to_numeric(df["app_id"], errors="coerce")
+
+    logger.info("Successfully transformed the data from: 'top10_records_raw'.")
