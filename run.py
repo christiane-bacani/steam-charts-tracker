@@ -14,6 +14,7 @@ from etl.extract.extract import scrape_top10_records
 from etl.extract.extract import extract_data_from_sql_table
 from etl.transform.transform import transform_top5_trending_games_raw
 from etl.transform.transform import transform_top100_games_raw
+from etl.transform.transform import transform_top10_records_raw
 from etl.transform.validate import validate_top5_trending_games_stg
 from etl.transform.validate import validate_top100_games_stg
 
@@ -68,3 +69,7 @@ top100_games_raw = extract_data_from_sql_table("raw", "top100_games_raw")
 top100_games_stg = transform_top100_games_raw(top100_games_raw)
 top100_games_stg = validate_top100_games_stg(top100_games_stg)
 load_data_to_schema(top100_games_stg, "stg", "top100_games_stg")
+
+top10_records_raw = extract_data_from_sql_table("raw", "top10_records_raw")
+top10_records_stg = transform_top10_records_raw(top10_records_raw)
+load_data_to_schema(top10_records_stg, "stg", "top10_records_stg")
