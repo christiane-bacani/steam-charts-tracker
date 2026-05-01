@@ -109,8 +109,7 @@ def transform_top10_records_raw(df: pd.DataFrame) -> pd.DataFrame:
 
     df["name"] = df["name"].str.strip()
 
-    df["time"] = df["time"].str.replace("-01T00:00:00Z", "")
-    df["time"] = pd.to_datetime(df["time"], format="%Y-%M", errors="coerce")
+    # TODO...
 
     logger.info("Successfully transformed the data from: 'top10_records_raw'.")
     return df
