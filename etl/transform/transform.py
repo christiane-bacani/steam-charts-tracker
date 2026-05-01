@@ -105,4 +105,12 @@ def transform_top10_records_raw(df: pd.DataFrame) -> pd.DataFrame:
     df["app_id"] = df["app_id"].str.replace("/app/", "")
     df["app_id"] = pd.to_numeric(df["app_id"], errors="coerce")
 
+    df["rank"] = pd.to_numeric(df["rank"], errors="coerce")
+
+    df["name"] = df["name"].str.strip()
+
+    df["year"] = df["name"].str.split("-")[0]
+    df["month"] = df["month"].str.split("-")[1]
+
     logger.info("Successfully transformed the data from: 'top10_records_raw'.")
+    return df
