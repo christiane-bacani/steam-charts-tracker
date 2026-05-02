@@ -109,7 +109,7 @@ def transform_top10_records_raw(df: pd.DataFrame) -> pd.DataFrame:
 
     df["name"] = df["name"].str.strip()
 
-    # TODO...
+    df["peak_players"] = pd.to_numeric(df["peak_players"], errors="coerce")
 
     logger.info("Successfully transformed the data from: 'top10_records_raw'.")
     return df
