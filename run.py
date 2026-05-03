@@ -17,6 +17,7 @@ from etl.transform.transform import transform_top100_games_raw
 from etl.transform.transform import transform_top10_records_raw
 from etl.transform.validate import validate_top5_trending_games_stg
 from etl.transform.validate import validate_top100_games_stg
+from etl.transform.validate import validate_top10_records_stg
 
 from etl.load.load import load_data_to_schema
 
@@ -73,4 +74,5 @@ load_data_to_schema(top100_games_stg, "stg", "top100_games_stg")
 # Transform the extracted data of the top 100 games and save to 'stg' data layer
 top10_records_raw = extract_data_from_sql_table("raw", "top10_records_raw")
 top10_records_stg = transform_top10_records_raw(top10_records_raw)
+top10_records_stg = validate_top10_records_stg(top10_records_stg)
 load_data_to_schema(top10_records_stg, "stg", "top10_records_stg")
