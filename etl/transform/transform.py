@@ -112,13 +112,22 @@ def transform_top10_records_raw(df: pd.DataFrame) -> pd.DataFrame:
     df["peak_players"] = pd.to_numeric(df["peak_players"], errors="coerce")
 
     df["time"] = pd.to_datetime(df["time"], errors="raise")
+
     df["peak_month"] = df["time"].dt.month_name()
     df["peak_year"] = df["time"].dt.year
 
     df.drop(columns=["time"], inplace=True)
+
     df = df[
-        [""]
+        ["id", "app_id", "rank", "name", "peak_players", "time", "timestamp"]
     ]
+
+    df.rename(columns={
+        "app_id": "application_id",
+        "rank":   "current_rank",
+        "name":   "game_name",
+        "peak_players": "no_of_peak_players"
+    }, inplace=True)
 
     logger.info("Successfully transformed the data from: 'top10_records_raw'.")
     return df
