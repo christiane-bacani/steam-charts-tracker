@@ -116,12 +116,15 @@ def transform_top10_records_raw(df: pd.DataFrame) -> pd.DataFrame:
     df["peak_month"] = df["time"].dt.month_name()
     df["peak_year"] = df["time"].dt.year
 
+    # Remove unnecessary column
     df.drop(columns=["time"], inplace=True)
 
+    # Reorder the structure of the columns
     df = df[
         ["id", "app_id", "rank", "name", "peak_players", "time", "timestamp"]
     ]
 
+    # Rename the column names
     df.rename(columns={
         "app_id": "application_id",
         "rank":   "current_rank",
