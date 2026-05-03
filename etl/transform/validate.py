@@ -327,7 +327,7 @@ def validate_top10_records_stg(df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Column: 'peak_month' with invalid values are removed.")
 
     # Perform validation checks to 'peak_year'
-    if not pd.api.types(df["peak_year"]):
+    if not pd.api.types.is_numeric_dtype(df["peak_year"]):
         logger.info("Column: 'peak_year' consist of wrong datatype!")
         df["peak_year"] = df["peak_year"].astype(str)
         logger.info("Type-casted the values of 'peak_year' column.")
