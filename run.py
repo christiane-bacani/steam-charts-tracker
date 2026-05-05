@@ -5,6 +5,7 @@ from utils.database.database import create_database
 from utils.database.schema import create_schema
 from utils.database.table import create_table_for_raw_layer
 from utils.database.table import create_table_for_stg_layer
+from utils.database.table import create_table_for_mart_layer
 
 from utils.extract.parse import parse_soup
 from etl.extract.extract import scrape_top5_trending_games
@@ -32,6 +33,7 @@ create_table_for_raw_layer("top5_trending_games_raw")
 create_table_for_raw_layer("top100_games_raw")
 create_table_for_raw_layer("top10_records_raw")
 create_table_for_stg_layer("top5_trending_games_stg")
+create_table_for_mart_layer("dim_application_id")
 
 # Parse BeautifulSoup object to extract trending games and top records
 url = "https://steamcharts.com/"
