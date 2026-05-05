@@ -176,7 +176,7 @@ def create_table_for_mart_layer(table_name: str) -> None:
                  WHERE table_schema =:schema
                  AND table_name =:table;
                  """),
-                 {"schema": "stg", "table": table_name})
+                 {"schema": "mart", "table": table_name})
         exists = result.fetchone()
 
         if not exists:
