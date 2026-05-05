@@ -33,7 +33,7 @@ create_table_for_raw_layer("top5_trending_games_raw")
 create_table_for_raw_layer("top100_games_raw")
 create_table_for_raw_layer("top10_records_raw")
 create_table_for_stg_layer("top5_trending_games_stg")
-create_table_for_mart_layer("dim_application_id")
+create_table_for_mart_layer("dim_steam_game")
 
 # Parse BeautifulSoup object to extract trending games and top records
 url = "https://steamcharts.com/"
