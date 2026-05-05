@@ -56,3 +56,12 @@ def load_data_to_schema(data: dict | pd.DataFrame,
         raise Exception("Invalid database schema name!")
 
     logger.info(f"Successfully loaded new data to SQL table: '{table_name}'.")
+
+def denormalize_dim(dimension_name: str) -> None:
+    """
+    Denormalize the dimension data by combining, summarizing, and flatting silver layer
+    data (data from `stg` schema) into business-ready structure.
+
+    Args:
+        dimension_name (str): The name of the dimension data.
+    """
