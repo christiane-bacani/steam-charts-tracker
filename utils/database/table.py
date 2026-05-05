@@ -165,3 +165,24 @@ def create_table_for_mart_layer(table_name: str) -> None:
 
     else:
         raise Exception("Invalid table name!")
+
+    with engine.connect() as connection:
+        connection = connection.execution_options(isolation_level="AUTOCOMMIT")
+
+        result = connection.execute(
+            text("""
+                 SELECT 1
+                 FROM information_schema.tables
+                 WHERE table_schema =:schema
+                 AND table_name =:table;
+                 """),
+                 {"schema": "stg", "table": table_name})
+        exists = result.fetchone()
+
+        if not exists:
+            logger.info(f"Creating table: '{table_name}'.")
+            connection.execute(text(command))
+            logger.info(f"Successfully created a new table: '{table_name}'.")
+
+        else:
+            logger.info(f"Table: '{table_name}' was already created.")
