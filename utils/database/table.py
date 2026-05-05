@@ -158,7 +158,7 @@ def create_table_for_mart_layer(table_name: str) -> None:
 
     if table_name == "dim_steam_game":
         command = """
-        CREATE TABLE stg.dim_steam_game (
+        CREATE TABLE mart.dim_steam_game (
         application_id INTEGER PRIMARY KEY,
         game_name VARCHAR(255));
         """
