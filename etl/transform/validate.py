@@ -292,7 +292,9 @@ def validate_top10_records_stg(df: pd.DataFrame) -> pd.DataFrame:
     # Perform validation checks to 'no_of_peak_players' column
     if not pd.api.types.is_numeric_dtype(df["no_of_peak_players"]):
         logger.info("Column: 'no_of_peak_players' consist of wrong datatype!")
-        df["no_of_peak_players"] = df["no_of_peak_players"].astype(str)
+        df["no_of_peak_players"] = pd.to_numeric(
+            df["no_of_peak_players"], errors="coerce"
+        )
         logger.info("Type-casted the values of 'no_of_peak_players' column.")
 
     if df["no_of_peak_players"].isnull().sum() > 0:
@@ -329,7 +331,7 @@ def validate_top10_records_stg(df: pd.DataFrame) -> pd.DataFrame:
     # Perform validation checks to 'peak_year'
     if not pd.api.types.is_numeric_dtype(df["peak_year"]):
         logger.info("Column: 'peak_year' consist of wrong datatype!")
-        df["peak_year"] = df["peak_year"].astype(str)
+        df["peak_year"] = pd.to_numeric(df["peak_year"], errors="coerce")
         logger.info("Type-casted the values of 'peak_year' column.")
 
     if df["peak_year"].isnull().sum() > 0:
