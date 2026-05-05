@@ -156,9 +156,9 @@ def create_table_for_mart_layer(table_name: str) -> None:
                            os.getenv("DB_USERNAME"),
                            os.getenv("DB_PASSWORD"))
 
-    if table_name == "dim_application_id":
+    if table_name == "dim_steam_game":
         command = """
-        CREATE TABLE stg.game_name (
+        CREATE TABLE stg.dim_steam_game (
         application_id INTEGER PRIMARY KEY,
         game_name VARCHAR(255));
         """
