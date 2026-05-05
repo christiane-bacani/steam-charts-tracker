@@ -139,3 +139,29 @@ def create_table_for_stg_layer(table_name: str) -> None:
 
         else:
             logger.info(f"Table: '{table_name}' was already created.")
+
+def create_table_for_mart_layer(table_name: str) -> None:
+    """
+    Create new SQL table (if still does not exist) from 'mart' schema
+    to store all data.
+
+    Args:
+        table_name (str): The name of the table.
+    """
+    logger.info("Establishing a connection to PostgreSQL to create new table.")
+    load_dotenv()
+    engine = init_connection(os.getenv("HOST"),
+                           os.getenv("PORT"),
+                           "steam_charts",
+                           os.getenv("DB_USERNAME"),
+                           os.getenv("DB_PASSWORD"))
+
+    if table_name == "dim_application_id":
+        command = """
+        CREATE TABLE stg.game_name (
+        application_id INTEGER PRIMARY KEY,
+        game_name VARCHAR(255));
+        """
+
+    else:
+        raise Exception("Invalid table name!")
