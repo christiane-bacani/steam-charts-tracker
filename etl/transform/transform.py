@@ -141,3 +141,13 @@ def transform_top10_records_raw(df: pd.DataFrame) -> pd.DataFrame:
 
     logger.info("Successfully transformed the data from: 'top10_records_raw'.")
     return df
+
+def transform_dim_column(column_name: str) -> None:
+    """
+    Transform dimension columns from tables of the silver data layer to
+    create dimension tables that has business-ready structure using star schema.
+
+    Args:
+        table_name (str): The name of the table.
+        column_name (str): The name of the dimension column.
+    """
