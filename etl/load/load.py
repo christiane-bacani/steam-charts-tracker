@@ -65,3 +65,12 @@ def denormalize_dim(dimension_name: str) -> None:
     Args:
         dimension_name (str): The name of the dimension data.
     """
+    logger.info("Establishing a connection to PostgreSQL to denormalize dim data.")
+    load_dotenv()
+    engine = init_connection(
+        os.getenv("HOST"),
+        os.getenv("PORT"),
+        "steam_charts",
+        os.getenv("DB_USERNAME"),
+        os.getenv("DB_PASSWORD")
+    )
