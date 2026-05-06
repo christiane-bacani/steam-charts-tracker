@@ -3,6 +3,11 @@ Python module to perform data transformation to all data tracked by Steam Charts
 """
 import pandas as pd
 
+import os
+from dotenv import load_dotenv
+
+from utils.database.connection import init_connection
+
 from logs import logger
 
 def transform_top5_trending_games_raw(df: pd.DataFrame) -> pd.DataFrame:
@@ -151,3 +156,12 @@ def transform_dim_column(column_name: str) -> None:
         table_name (str): The name of the table.
         column_name (str): The name of the dimension column.
     """
+    logger.info("Establishing a connection to PostgreSQL to denormalize dim data.")
+    load_dotenv()
+    engine = init_connection(
+        os.getenv("HOST"),
+        os.getenv("PORT"),
+        "steam_charts",
+        os.getenv("DB_USERNAME"),
+        os.getenv("DB_PASSWORD")
+    )
