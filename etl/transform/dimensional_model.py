@@ -10,15 +10,14 @@ from utils.database.connection import init_connection
 
 from logs import logger
 
-def transform_dim_column(column_name: str) -> None:
+def create_dim_table(column_name: str) -> None:
     """
-    Transform dimension columns from tables of the silver data layer to
-    create dimension tables that has business-ready structure using the given
-    dimension columns.
+    Create dimension tables using the given columns of different tables from
+    `stg` database schema to create a dimension model for reporting and
+    dashboarding queries.
 
     Args:
-        table_name (str): The name of the table.
-        column_name (str): The name of the dimension column.
+        column_name (str): The name of the column.
     """
     logger.info("Establishing a connection to PostgreSQL to transform dim columns.")
     load_dotenv()
