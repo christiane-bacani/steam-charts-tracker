@@ -57,13 +57,14 @@ def load_data_to_schema(data: dict | pd.DataFrame,
 
     logger.info(f"Successfully loaded new data to SQL table: '{table_name}'.")
 
-def denormalize_dim(dimension_name: str) -> None:
+def create_dim_table(table_name: str, column_name: str) -> None:
     """
-    Denormalize the dimension data by combining, summarizing, and flatting silver layer
-    data (data from `stg` schema) into business-ready structure.
+    Create dimension table using the dimension columns from the  tables of `stg` schema
+    (silver data layer).
 
     Args:
-        dimension_name (str): The name of the dimension data.
+        table_name (str): The name of the table.
+        column_name (str): The name of the dimension column.
     """
     logger.info("Establishing a connection to PostgreSQL to denormalize dim data.")
     load_dotenv()
@@ -75,19 +76,7 @@ def denormalize_dim(dimension_name: str) -> None:
         os.getenv("DB_PASSWORD")
     )
 
-    if dimension_name == "dim_steam_game":
-        trending_games_app_id = pd.read_sql_table("top5_trending_games_stg",
-                                                  con=engine,
-                                                  schema="stg",
-                                                  columns=["application_id"])
-        top_games_app_id = pd.read_sql_table("top100_games_stg",
-                                             con=engine,
-                                             schema="stg",
-                                             columns=["application_id"])
-        top_records_app_id = pd.read_sql_table("top10_records_stg",
-                                               con=engine,
-                                               schema="stg",
-                                               columns=["application_id"])
-
-    else:
-        raise Exception("Invalid dimension name!")
+    df = pd.read_sql_table(
+        table_name=table_name, con=engine, schema="stg", columns=[column_name]
+    )
+    print(df)
