@@ -56,27 +56,3 @@ def load_data_to_schema(data: dict | pd.DataFrame,
         raise Exception("Invalid database schema name!")
 
     logger.info(f"Successfully loaded new data to SQL table: '{table_name}'.")
-
-def create_dim_table(table_name: str, column_name: str) -> None:
-    """
-    Create dimension table using the dimension columns from the  tables of `stg` schema
-    (silver data layer).
-
-    Args:
-        table_name (str): The name of the table.
-        column_name (str): The name of the dimension column.
-    """
-    logger.info("Establishing a connection to PostgreSQL to denormalize dim data.")
-    load_dotenv()
-    engine = init_connection(
-        os.getenv("HOST"),
-        os.getenv("PORT"),
-        "steam_charts",
-        os.getenv("DB_USERNAME"),
-        os.getenv("DB_PASSWORD")
-    )
-
-    df = pd.read_sql_table(
-        table_name=table_name, con=engine, schema="stg", columns=[column_name]
-    )
-    print(df)
