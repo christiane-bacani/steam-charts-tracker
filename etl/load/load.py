@@ -74,3 +74,12 @@ def denormalize_dim(dimension_name: str) -> None:
         os.getenv("DB_USERNAME"),
         os.getenv("DB_PASSWORD")
     )
+
+    if dimension_name == "dim_steam_game":
+        trending_games_app_id = pd.read_sql_table("top5_trending_games_stg",
+                                                  con=engine,
+                                                  schema="stg",
+                                                  columns=["application_id"])
+
+    else:
+        raise Exception("Invalid dimension name!")
