@@ -80,6 +80,14 @@ def denormalize_dim(dimension_name: str) -> None:
                                                   con=engine,
                                                   schema="stg",
                                                   columns=["application_id"])
+        top_games_app_id = pd.read_sql_table("top100_games_stg",
+                                             con=engine,
+                                             schema="stg",
+                                             columns=["application_id"])
+        top_records_app_id = pd.read_sql_table("top10_records_stg",
+                                               con=engine,
+                                               schema="stg",
+                                               columns=["application_id"])
 
     else:
         raise Exception("Invalid dimension name!")
