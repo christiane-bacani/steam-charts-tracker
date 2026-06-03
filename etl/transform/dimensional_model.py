@@ -35,6 +35,5 @@ def create_dim_table(column_name: str) -> None:
                                               con=engine,
                                               schema="stg",
                                               columns=[column_name])
-    print(trending_games_app_id)
-
+    
     logger.info("Successfully transformed the dimension column: `application_id`.")
