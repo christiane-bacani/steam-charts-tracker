@@ -17,7 +17,7 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                         table_name: str) -> None:
     """
     Load the data to a certain database schema which is an equivalent to a certain data
-    layer (bronze/raw, silve/stage, and gold/mart).
+    layer (bronze/raw, silver/stage, and gold/mart).
 
     Args:
         data (dict | DataFrame): The data which can be a dictionary or DataFrame.
