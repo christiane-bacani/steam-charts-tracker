@@ -32,21 +32,12 @@ def create_dim_table(column: str) -> None:
     dimension_table = None
 
     if column == 'application_id':
-        logger.info(f"Transforming dim column: `{column}` to a dim table.")
-        app_id = pd.read_sql_table("top5_trending_games_stg",
+        logger.info("Creating the dimension table: `dim_application`.")
+        dim_application = pd.read_sql_table("top5_trending_games_stg",
                                                 con=engine,
                                                 schema="stg",
-                                                columns=[column])
-        app_id = app_id["app_id"]
-
-        game_name = pd.read_sql_table("top5_trending_games_stg",
-                                                     con=engine,
-                                                     schema="stg",
-                                                     columns=["game_name"])
-        game_name = game_name["game_name"]
-
-        dim_application = pd.DataFrame(columns=[app_id, game_name])
-        logger.info(f"Successfully transformed dim column: `{column}` to a dim table.")
+                                                columns=[column, "game_name"])
+        logger.info("Successfully created the dimension table: `dim_application`.")
         dimension_table = dim_application
 
     return dimension_table
