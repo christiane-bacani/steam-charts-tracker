@@ -10,14 +10,14 @@ from utils.database.connection import init_connection
 
 from logs import logger
 
-def create_dim_table(column_name: str) -> None:
+def create_dim_table(column: str) -> None:
     """
     Create dimension tables using the given columns of different tables from
     `stg` database schema to create a dimension model for reporting and
     dashboarding queries.
 
     Args:
-        column_name (str): The name of the column.
+        column (str): The name of the column.
     """
     logger.info("Establishing a connection to PostgreSQL to transform dim columns.")
     load_dotenv()
@@ -29,11 +29,24 @@ def create_dim_table(column_name: str) -> None:
         os.getenv("DB_PASSWORD")
     )
 
-    logger.info("Transforming the dimension column: `application_id`.")
+    dimension_table = None
 
-    trending_games_app_id = pd.read_sql_table("top5_trending_games_stg",
-                                              con=engine,
-                                              schema="stg",
-                                              columns=[column_name])
-    
-    logger.info("Successfully transformed the dimension column: `application_id`.")
+    if column == 'application_id':
+        logger.info(f"Transforming dim column: `{column}` to a dim table.")
+        app_id = pd.read_sql_table("top5_trending_games_stg",
+                                                con=engine,
+                                                schema="stg",
+                                                columns=[column])
+        app_id = app_id["app_id"]
+
+        game_name = pd.read_sql_table("top5_trending_games_stg",
+                                                     con=engine,
+                                                     schema="stg",
+                                                     columns=["game_name"])
+        game_name = game_name["game_name"]
+
+        dim_application = pd.DataFrame(columns=[app_id, game_name])
+        logger.info(f"Successfully transformed dim column: `{column}` to a dim table.")
+        dimension_table = dim_application
+
+    return dimension_table
