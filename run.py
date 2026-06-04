@@ -19,6 +19,7 @@ from etl.transform.transform import transform_top10_records_raw
 from etl.transform.validate import validate_top5_trending_games_stg
 from etl.transform.validate import validate_top100_games_stg
 from etl.transform.validate import validate_top10_records_stg
+from etl.transform.dimensional_model import create_dim_table
 
 from etl.load.load import load_data_to_schema
 
@@ -78,3 +79,6 @@ top10_records_raw = extract_data_from_sql_table("raw", "top10_records_raw")
 top10_records_stg = transform_top10_records_raw(top10_records_raw)
 top10_records_stg = validate_top10_records_stg(top10_records_stg)
 load_data_to_schema(top10_records_stg, "stg", "top10_records_stg")
+
+# Create dimension table based on the given dimension column
+dim_application = create_dim_table("application_id")
