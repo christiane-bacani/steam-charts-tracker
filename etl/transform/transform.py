@@ -154,7 +154,27 @@ def transform_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
     """
     logger.info("Transforming the data from: 'dim_steam_game'.")
 
+    # Data deduplication
     df.drop_duplicates(keep="first", inplace=True)
 
     logger.info("Successfully transformed the data from: `dim_steam_game`.")
     return df
+
+def transform_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Transform the dimension table: `dim_timestamp` from the mart data layer.
+
+    Args:
+        df (DataFrame): The extracted data as a DataFrame.
+
+    Returns:
+        DataFrame: The transformed data as a DataFrame.
+    """
+    logger.info("Transforming the data from: 'dim_timestamp'.")
+
+    # Data deduplication
+    df.drop_duplicates(
+        subset=["application_id", "game_name"], keep="first", inplace=True
+    )
+
+    logger.info("Transforming the data from: 'dim_timestamp'.")
