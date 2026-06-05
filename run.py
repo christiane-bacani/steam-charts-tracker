@@ -20,6 +20,7 @@ from etl.transform.transform import transform_dim_steam_game
 from etl.transform.validate import validate_top5_trending_games_stg
 from etl.transform.validate import validate_top100_games_stg
 from etl.transform.validate import validate_top10_records_stg
+from etl.transform.validate import validate_dim_steam_game
 from etl.transform.dimensional_model import integrate_dimension
 
 from etl.load.load import load_data_to_schema
@@ -84,3 +85,4 @@ load_data_to_schema(top10_records_stg, "stg", "top10_records_stg")
 # Create dimension table based on the given dimension column
 dim_steam_game = integrate_dimension("game_name")
 dim_steam_game = transform_dim_steam_game(dim_steam_game)
+dim_steam_game = validate_dim_steam_game(dim_steam_game)
