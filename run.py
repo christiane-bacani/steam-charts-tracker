@@ -82,8 +82,10 @@ top10_records_stg = transform_top10_records_raw(top10_records_raw)
 top10_records_stg = validate_top10_records_stg(top10_records_stg)
 load_data_to_schema(top10_records_stg, "stg", "top10_records_stg")
 
-# Create dimension table based on the given dimension column
+# Integrate 'game_name' dimension from 'stg' data layer and save to 'mart' data layer
 dim_steam_game = integrate_dimension("game_name")
 dim_steam_game = transform_dim_steam_game(dim_steam_game)
 dim_steam_game = validate_dim_steam_game(dim_steam_game)
-load_data_to_schema(dim_steam_game, "mart", "dim_steam_Game")
+load_data_to_schema(dim_steam_game, "mart", "dim_steam_game")
+
+dim_timestamp = integrate_dimension("timestamp")
