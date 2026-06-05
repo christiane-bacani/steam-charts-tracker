@@ -34,26 +34,26 @@ def integrate_dimension(dim_column: str) -> pd.DataFrame:
     if dim_column == "game_name":
         logger.info("Integrating the data of dim column: `game_name`.")
 
-        top5_trending_games_stg = pd.read_sql_table("top5_trending_games_stg",
-                                                con=engine,
-                                                schema="stg",
-                                                columns=["application_id",
-                                                         "game_name"])
-        top10_records_stg = pd.read_sql_table("top10_records_stg",
-                                              con=engine,
-                                              schema="stg",
-                                              columns=["application_id",
-                                                       "game_name"])
-        top100_games_stg = pd.read_sql_table("top100_games_stg",
-                                             con=engine,
-                                             schema="stg",
-                                             columns=["application_id",
-                                                      "game_name"])
+        trending_games = pd.read_sql_table("top5_trending_games_stg",
+                                           con=engine,
+                                           schema="stg",
+                                           columns=["application_id",
+                                                    "game_name"])
+        top_records = pd.read_sql_table("top10_records_stg",
+                                        con=engine,
+                                        schema="stg",
+                                        columns=["application_id",
+                                                 "game_name"])
+        top_games  = pd.read_sql_table("top100_games_stg",
+                                       con=engine,
+                                       schema="stg",
+                                       columns=["application_id",
+                                                "game_name"])
         dim_steam_game = pd.DataFrame(columns=[
             "application_id", "game_name"
         ])
 
-        dataframes = [top5_trending_games_stg, top10_records_stg, top100_games_stg]
+        dataframes = [trending_games, top_games, top_records]
 
         for dataframe in dataframes:
             dim_steam_game = pd.concat([dim_steam_game, dataframe], ignore_index=True)
