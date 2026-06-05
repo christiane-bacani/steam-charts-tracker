@@ -47,7 +47,7 @@ def load_data_to_schema(data: dict | pd.DataFrame,
             table_name, con=engine, schema=schema_name, if_exists="append", index=False
         )
 
-    elif schema_name == "stg":
+    elif schema_name == "stg" or schema_name == "mart":
         df.to_sql(
             table_name, con=engine, schema=schema_name, if_exists="replace", index=False
         )
