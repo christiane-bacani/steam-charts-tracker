@@ -16,6 +16,7 @@ from etl.extract.extract import extract_data_from_sql_table
 from etl.transform.transform import transform_top5_trending_games_raw
 from etl.transform.transform import transform_top100_games_raw
 from etl.transform.transform import transform_top10_records_raw
+from etl.transform.transform import transform_dim_steam_game
 from etl.transform.validate import validate_top5_trending_games_stg
 from etl.transform.validate import validate_top100_games_stg
 from etl.transform.validate import validate_top10_records_stg
@@ -82,3 +83,4 @@ load_data_to_schema(top10_records_stg, "stg", "top10_records_stg")
 
 # Create dimension table based on the given dimension column
 dim_steam_game = integrate_dimension("game_name")
+dim_steam_game = transform_dim_steam_game(dim_steam_game)
