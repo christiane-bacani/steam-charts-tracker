@@ -141,3 +141,14 @@ def transform_top10_records_raw(df: pd.DataFrame) -> pd.DataFrame:
 
     logger.info("Successfully transformed the data from: 'top10_records_raw'.")
     return df
+
+def transform_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Transform the dimension table: `dim_steam_game` from the mart data layer.
+
+    Args:
+        df (DataFrame): The extracted data as a DataFrame.
+
+    Returns:
+        DataFrame: The transformed data as a DataFrame.
+    """
