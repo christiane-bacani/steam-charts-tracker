@@ -10,16 +10,17 @@ from utils.database.connection import init_connection
 
 from logs import logger
 
-def create_dim_table(column: str) -> None:
+def integrate_dimension(dim_column: str) -> pd.DataFrame:
     """
-    Create dimension tables using the given columns of different tables from
-    `stg` database schema to create a dimension model for reporting and
-    dashboarding queries.
+    Integrate all the data of different dimension columns
+    from different tables of `stg` database schema to create
+    a unified dimension table for reporting and dashboarding
+    queries.
 
     Args:
-        column (str): The name of the column.
+        dim_column (str): The name of the dimension.
     """
-    logger.info("Establishing a connection to PostgreSQL to transform dim columns.")
+    logger.info("Establishing a connection to PostgreSQL to integrate dim columns..")
     load_dotenv()
     engine = init_connection(
         os.getenv("HOST"),
@@ -29,15 +30,26 @@ def create_dim_table(column: str) -> None:
         os.getenv("DB_PASSWORD")
     )
 
-    dimension_table = None
-
-    if column == 'application_id':
-        logger.info("Creating the dimension table: `dim_application`.")
-        dim_application = pd.read_sql_table("top5_trending_games_stg",
+    if dim_column == "game_name":
+        logger.info("Integrating the data of dim column: `game_name`.")
+        top5_trending_games_stg = pd.read_sql_table("top5_trending_games_stg",
                                                 con=engine,
                                                 schema="stg",
-                                                columns=[column, "game_name"])
-        logger.info("Successfully created the dimension table: `dim_application`.")
-        dimension_table = dim_application
+                                                columns=["application_id", "game_name"])
+        top10_records_stg = pd.read_sql_table("top10_records_stg",
+                                              con=engine,
+                                              schema="stg",
+                                              columns=["application_id", "game_name"])
+        top100_games_stg = pd.read_sql_table("top100_games_stg",
+                                             con=engine,
+                                             schema="stg",
+                                             columns=["application_id", "game_name"])
+        dim_steam_game = pd.DataFrame(columns=["application_id", "game_name"])
 
-    return dimension_table
+        dataframes = [top5_trending_games_stg, top10_records_stg, top100_games_stg]
+
+        for dataframe in dataframes:
+            dim_steam_game = pd.concat([dim_steam_game, dataframe], ignore_index=True)
+
+        logger.info("Successfully integrated the data of dim column: `game_name`.")
+        return dim_steam_game
