@@ -419,5 +419,5 @@ def validate_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
     if columns != correct_order_of_columns:
         raise Exception("Columns of the table: 'dim_steam_game' are inaccurate!")
 
-    logger.info("Successfully validated the data from: 'top5_trending_games_stg'.")
+    logger.info("Successfully validated the data from: 'dim_steam_game'.")
     return df
