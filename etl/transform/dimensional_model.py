@@ -1,5 +1,6 @@
 """
-Python module to perform dimensional modeling to all data tracked by Steam Charts.
+Python module to perform data integration of different dimension columns from
+different tables that consist of all data tracked by Steam Charts.
 """
 import pandas as pd
 
