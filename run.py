@@ -88,4 +88,5 @@ dim_steam_game = transform_dim_steam_game(dim_steam_game)
 dim_steam_game = validate_dim_steam_game(dim_steam_game)
 load_data_to_schema(dim_steam_game, "mart", "dim_steam_game")
 
+# Integrate 'timestamp' dmension from 'stg' data layer and save to 'mart' data layer
 dim_timestamp = integrate_dimension("timestamp")
