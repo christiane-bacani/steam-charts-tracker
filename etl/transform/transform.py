@@ -152,3 +152,9 @@ def transform_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The transformed data as a DataFrame.
     """
+    logger.info("Transforming the data from: 'dim_steam_game'.")
+
+    df.drop_duplicates(keep="first", inplace=True)
+
+    logger.info("Successfully transformed the data from: `dim_steam_game`.")
+    return df
