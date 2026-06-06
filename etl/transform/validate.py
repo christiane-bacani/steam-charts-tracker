@@ -433,3 +433,40 @@ def validate_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.
     """
+    logger.info("Validating the data from: 'dim_steam_game'.")
+
+    # Perform validation checks to 'id' column
+    if not pd.api.types.is_numeric_dtype(df["id"]):
+        logger.info("Column: 'id' consist of wrong datatype!")
+        df["id"] = pd.to_numeric(df["id"], errors="coerce")
+        logger.info("Type-casted the values of 'id' column.")
+
+    if df["id"].isnull().sum() > 0:
+        logger.info("Column: 'id' consist of null values!")
+        df.dropna(subset=["id"], inplace=True)
+        df.reset_index(inplace=True)
+        logger.info("Column: 'id' with missing values are removed.")
+
+    if df["id"].duplicated().sum() > 0:
+        logger.info("Column: 'id' consist of duplicate values!")
+        df.drop_duplicates(subset=["id"], keep="first", inplace=True)
+        df.sort_values(by="id", inplace=True)
+        logger.info("Column: 'id' with duplicate values are removed.")
+
+    # Perform validation checks to 'timestamp' column
+    if not pd.api.types.is_datetime64_any_dtype(df["timestamp"]):
+        logger.info("Column: 'timestamp' consist of wrong datatype!")
+        df["timestamp"] = pd.to_datetime(df["timestamp"], errors="raise", utc=True)
+        logger.info("Column: 'timestamp' with wrong datatype are fixed.")
+
+    if df["timestamp"].isnull().sum() > 0:
+        logger.info("Column: 'timestamp' consist of null values!")
+        df.dropna(subset=["timestamp"], inplace=True)
+        df.reset_index(inplace=True)
+        logger.info("Column: 'timestamp' with missing values are removed.")
+
+    if df["timestamp"].duplicated().sum() > 0:
+        logger.info("Column: 'timestamp' consist of duplicate values!")
+        df.drop_duplicates(subset=["timestamp"], keep="last", inplace=True)
+        df.sort_values(by="timestamp", inplace=True)
+        logger.info("Column: 'timestamp' with duplicate values are removed.")
