@@ -115,6 +115,31 @@ def create_table_for_stg_layer(table_name: str) -> None:
         no_of_current_players INTEGER,
         timestamp TIMESTAMPTZ DEFAULT (NOW() AT TIME ZONE 'Asia/Manila')); 
         """
+    elif table_name == "top100_games_stg":
+        command = """
+        CREATE TABLE stg.top100_games_stg (
+        id SERIAL PRIMARY KEY,
+        application_id INTEGER,
+        current_rank INTEGER,
+        game_name VARCHAR(255),
+        no_of_current_players INTEGER,
+        no_of_peak_players INTEGER,
+        no_of_hours_played INTEGER,
+        timestamp TIMESTAMPTZ DEFAULT (NOW() AT TIME ZONE 'Asia/Manila'));
+        """
+
+    elif table_name == "top10_records_stg":
+        command = """
+        CREATE TABLE stg.top10_records_stg (
+        id SERIAL PRIMARY KEY,
+        application_id INTEGER,
+        current_rank INTEGER,
+        game_name VARCHAR(255),
+        no_of_peak_players INTEGER,
+        peak_month MONTH,
+        peak_year YEAR,
+        timestamp TIMESTAMPTZ (NOW() AT TIME ZONE 'Asia/Manila'));
+        """
 
     else:
         raise Exception("Invalid table name!")
