@@ -48,9 +48,15 @@ def load_data_to_schema(data: dict | pd.DataFrame,
         )
 
     elif schema_name == "stg" or schema_name == "mart":
-        df.to_sql(
-            table_name, con=engine, schema=schema_name, if_exists="replace", index=False
-        )
+        from sqlalchemy import text
+
+        with engine.connect() as connection:
+            connection = connection.execution_options(isolation_level="AUTOCOMMIT")
+
+            connection.execute(text(f"TRUNCATE TABLE {schema_name}.{table_name};"))
+            df.to_sql(
+                table_name, con=engine, schema=schema_name, if_exists="replace", index=False
+            )
 
     else:
         raise Exception("Invalid database schema name!")
