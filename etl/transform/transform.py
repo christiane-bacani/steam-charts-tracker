@@ -179,7 +179,7 @@ def transform_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
     df.sort_values(by="timestamp", inplace=True)
 
     # Create the primary key
-    df["id"] = len(df)
+    df["id"] = range(1, len(df) + 1)
 
     # Reorder the structure of columns
     df = df[["id", "timestamp"]]
