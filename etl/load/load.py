@@ -43,9 +43,11 @@ def load_data_to_schema(data: dict | pd.DataFrame,
     logger.info(f"Loading new data to SQL Table: '{table_name}'.")
 
     if schema_name == "raw":    
-        df.to_sql(
-            table_name, con=engine, schema=schema_name, if_exists="append", index=False
-        )
+        df.to_sql(table_name,
+                  con=engine,
+                  schema=schema_name,
+                  if_exists="append",
+                  index=False)
 
     elif schema_name == "stg" or schema_name == "mart":
         from sqlalchemy import text
@@ -54,9 +56,11 @@ def load_data_to_schema(data: dict | pd.DataFrame,
             connection = connection.execution_options(isolation_level="AUTOCOMMIT")
 
             connection.execute(text(f"TRUNCATE TABLE {schema_name}.{table_name};"))
-            df.to_sql(
-                table_name, con=engine, schema=schema_name, if_exists="append", index=False
-            )
+            df.to_sql(table_name,
+                      con=engine,
+                      schema=schema_name,
+                      if_exists="append",
+                      index=False)
 
     else:
         raise Exception("Invalid database schema name!")
