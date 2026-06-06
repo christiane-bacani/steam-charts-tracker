@@ -184,5 +184,8 @@ def transform_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
     # Reorder the structure of columns
     df = df[["id", "timestamp"]]
 
+    # Reset the index value to (0 - n-1)
+    df.reset_index(inplace=True)
+
     logger.info("Successfully transformed the data from: `dim_timestamp`.")
     return df
