@@ -52,8 +52,10 @@ def load_data_to_schema(data: dict | pd.DataFrame,
     elif schema_name == "stg" or schema_name == "mart":
         from sqlalchemy import text
 
-        with engine.begin() as connection:
-            connection.execute(text(f"TRUNCATE TABLE {schema_name}.{table_name};"))
+        with engine.connect() as connection:
+            connection = connection.execution_options(isolation_level="AUTOCOMMIT")
+
+            connection.execute(f"TRUNCATE TABLE {schema_name}.{table_name};")
             df.to_sql(table_name,
                       con=engine,
                       schema=schema_name,
