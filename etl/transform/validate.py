@@ -479,7 +479,7 @@ def validate_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
     ]
 
     if columns != correct_order_of_columns:
-        raise Exception("Columns of the table: 'dim_steam_game' are inaccurate!")
+        raise Exception("Columns of the table: 'dim_timestamp' are inaccurate!")
 
-    logger.info("Successfully validated the data from: 'dim_steam_game'.")
+    logger.info("Successfully validated the data from: 'dim_timestamp'.")
     return df
