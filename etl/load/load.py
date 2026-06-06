@@ -55,7 +55,7 @@ def load_data_to_schema(data: dict | pd.DataFrame,
 
             connection.execute(text(f"TRUNCATE TABLE {schema_name}.{table_name};"))
             df.to_sql(
-                table_name, con=engine, schema=schema_name, if_exists="replace", index=False
+                table_name, con=engine, schema=schema_name, if_exists="append", index=False
             )
 
     else:
