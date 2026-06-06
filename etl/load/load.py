@@ -57,7 +57,7 @@ def load_data_to_schema(data: dict | pd.DataFrame,
             df.to_sql(
                 table_name, con=engine, schema=schema_name, if_exists="append", index=False
             )
-        
+
     else:
         raise Exception("Invalid database schema name!")
 
