@@ -182,3 +182,4 @@ def transform_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
     df["id"] = len(df)
 
     logger.info("Successfully transformed the data from: `dim_timestamp`.")
+    return df
