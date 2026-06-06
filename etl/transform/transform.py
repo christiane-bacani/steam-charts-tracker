@@ -173,8 +173,6 @@ def transform_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
     logger.info("Transforming the data from: 'dim_timestamp'.")
 
     # Data deduplication
-    df.drop_duplicates(
-        subset=["application_id", "game_name"], keep="first", inplace=True
-    )
+    df.drop_duplicates(keep="first", inplace=True)
 
     logger.info("Transforming the data from: 'dim_timestamp'.")
