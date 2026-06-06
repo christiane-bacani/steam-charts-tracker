@@ -175,4 +175,4 @@ def transform_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
     # Data deduplication
     df.drop_duplicates(keep="first", inplace=True)
 
-    logger.info("Transforming the data from: 'dim_timestamp'.")
+    logger.info("Successfully transformed the data from: `dim_timestamp`.")
