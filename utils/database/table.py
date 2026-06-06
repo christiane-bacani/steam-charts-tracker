@@ -115,6 +115,7 @@ def create_table_for_stg_layer(table_name: str) -> None:
         no_of_current_players INTEGER,
         timestamp TIMESTAMPTZ DEFAULT (NOW() AT TIME ZONE 'Asia/Manila')); 
         """
+
     elif table_name == "top100_games_stg":
         command = """
         CREATE TABLE stg.top100_games_stg (
