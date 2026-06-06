@@ -175,4 +175,10 @@ def transform_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
     # Data deduplication
     df.drop_duplicates(keep="first", inplace=True)
 
+    # Sort the dataframe based on the earliest timestamp
+    df = df.sort_values(by="timestamp")
+
+    # Created new column
+    df["id"] = len(df)
+
     logger.info("Successfully transformed the data from: `dim_timestamp`.")
