@@ -176,7 +176,7 @@ def transform_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
     df.drop_duplicates(keep="first", inplace=True)
 
     # Sort the dataframe based on the earliest timestamp
-    df = df.sort_values(by="timestamp")
+    df.sort_values(by="timestamp", inplace=True)
 
     # Created new column
     df["id"] = len(df)
