@@ -470,3 +470,16 @@ def validate_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
         df.drop_duplicates(subset=["timestamp"], keep="last", inplace=True)
         df.sort_values(by="timestamp", inplace=True)
         logger.info("Column: 'timestamp' with duplicate values are removed.")
+
+    # Perform validation check to the whole dataset
+    columns = list(df.columns)
+    correct_order_of_columns = [
+        "id",
+        "timestamp"
+    ]
+
+    if columns != correct_order_of_columns:
+        raise Exception("Columns of the table: 'dim_steam_game' are inaccurate!")
+
+    logger.info("Successfully validated the data from: 'dim_steam_game'.")
+    return df
