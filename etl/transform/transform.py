@@ -157,6 +157,9 @@ def transform_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
     # Data deduplication
     df.drop_duplicates(keep="first", inplace=True)
 
+    # Sort the dataframe based on the application ID
+    df.sort_values(by="application_id", inplace=True)
+
     logger.info("Successfully transformed the data from: `dim_steam_game`.")
     return df
 
