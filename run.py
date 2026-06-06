@@ -17,6 +17,7 @@ from etl.transform.transform import transform_top5_trending_games_raw
 from etl.transform.transform import transform_top100_games_raw
 from etl.transform.transform import transform_top10_records_raw
 from etl.transform.transform import transform_dim_steam_game
+from etl.transform.transform import transform_dim_timestamp
 from etl.transform.validate import validate_top5_trending_games_stg
 from etl.transform.validate import validate_top100_games_stg
 from etl.transform.validate import validate_top10_records_stg
@@ -90,3 +91,4 @@ load_data_to_schema(dim_steam_game, "mart", "dim_steam_game")
 
 # Integrate 'timestamp' dmension from 'stg' data layer and save to 'mart' data layer
 dim_timestamp = integrate_dimension("timestamp")
+dim_timestamp = transform_dim_timestamp(dim_timestamp)
