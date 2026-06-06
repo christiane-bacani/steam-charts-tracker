@@ -454,7 +454,7 @@ def validate_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Column: 'id' with duplicate values are removed.")
 
     # Perform validation checks to 'timestamp' column
-    if not pd.api.types.is_datetime64_any_dtype(df["timestamp"]):
+    if not pd.api.types.is_datetime64_ns_dtype(df["timestamp"]):
         logger.info("Column: 'timestamp' consist of wrong datatype!")
         df["timestamp"] = pd.to_datetime(df["timestamp"], errors="raise", utc=True)
         logger.info("Column: 'timestamp' with wrong datatype are fixed.")
