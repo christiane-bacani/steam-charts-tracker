@@ -163,6 +163,12 @@ def create_table_for_mart_layer(table_name: str) -> None:
         game_name VARCHAR(255));
         """
 
+    elif table_name == "dim_timestamp":
+        command = """
+        CREATE TABLE mart.dim_timestamp (
+        id INTEGER PRIMARY KEY,
+        timestamp TIMESTAMPTZ);
+        """
     else:
         raise Exception("Invalid table name!")
 
