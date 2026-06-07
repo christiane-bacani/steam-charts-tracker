@@ -59,4 +59,12 @@ def load_data_to_schema(data: dict | pd.DataFrame,
     else:
         raise Exception("Invalid database schema name!")
 
+    if schema_name == "stg" and table_name == "top5_trending_games_stg":
+        from sqlalchemy import text
+
+        with engine.begin() as connection:
+            connection.execute(text(
+                f"ALTER TABLE stg.top5_trending_games_stg ADD PRIMARY KEY (id);"
+            ))
+
     logger.info(f"Successfully loaded new data to SQL table: '{table_name}'.")
