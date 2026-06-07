@@ -64,7 +64,23 @@ def load_data_to_schema(data: dict | pd.DataFrame,
 
         with engine.begin() as connection:
             connection.execute(text(
-                f"ALTER TABLE stg.top5_trending_games_stg ADD PRIMARY KEY (id);"
+                f"""ALTER TABLE stg.top5_trending_games_stg
+                    ADD PRIMARY KEY (id);
+
+                    ALTER TABLE stg.top5_trending_games_stg
+                    ALTER COLUMN application_id TYPE INTEGER;
+
+                    ALTER TABLE stg.top5_trending_games_stg
+                    ALTER COLUMN current_rank INTEGER;
+
+                    ALTER TABLE stg.top5_trending_games_stg
+                    ALTER COLUMN game_name TYPE VARCHAR(255);
+
+                    ALTER TABLE stg.top5_trending_games_stg
+                    ALTER COLUMN change_pct_within_24hr DECIMAL(5, 1);
+
+                    ALTER TABLE stg.top5_trending_games_stg
+                    ALTER COLUMN no_of_current_players TYPE INTEGER;"""
             ))
 
     logger.info(f"Successfully loaded new data to SQL table: '{table_name}'.")
