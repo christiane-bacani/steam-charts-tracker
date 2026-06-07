@@ -61,7 +61,10 @@ def load_data_to_schema(data: dict | pd.DataFrame,
 
     from sqlalchemy import text
 
-    if schema_name == "stg" and table_name == "top5_trending_games_stg":
+    if schema_name == "raw":
+        pass
+
+    elif schema_name == "stg" and table_name == "top5_trending_games_stg":
         with engine.begin() as connection:
             connection.execute(text(
                 f"""ALTER TABLE stg.top5_trending_games_stg
@@ -164,5 +167,19 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     ALTER TABLE mart.dim_steam_game
                     ALTER COLUMN game_name TYPE VARCHAR(255);"""
             ))
+
+    elif schema_name == "mart" and table_name == "dim_timestamp":
+        with engine.begin() as connection:
+            connection.execute(text(
+                f"""ALTER TABLE mart.dim_timestamp
+                    ALTER COLUMN id TYPE INTEGER
+                    USING id::INTEGER;
+
+                    ALTER TABLE mart.dim_timestamp
+                    ADD PRIMARY KEY (id);"""
+            ))
+
+    else:
+        raise Exception("Invalid database schema name or table name!")
 
     logger.info(f"Successfully loaded new data to SQL table: '{table_name}'.")
