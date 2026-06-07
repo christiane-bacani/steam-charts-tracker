@@ -136,12 +136,19 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     ALTER COLUMN no_of_peak_players TYPE INTEGER
                     USING no_of_peak_players::INTEGER;
 
-                    ALTER TABLE stg.top10_records_stg
-                    ALTER COLUMN peak_month TYPE ENUM
-                    USING peak_month::ENUM;
+                    CREATE TYPE enum_month AS ENUM (
+                    'January', 'February', 'March',
+                    'April',   'May',      'June',
+                    'July',    'August',   'September',
+                    'October', 'November', 'December');
 
                     ALTER TABLE stg.top10_records_stg
-                    ALTER COLUMN peak_year TYPE YEAR;"""
+                    ALTER COLUMN peak_month TYPE enum_month
+                    USING peak_month::enum_month;
+
+                    ALTER TABLE stg.top10_records_stg
+                    ALTER COLUMN peak_year TYPE CHAR(4)
+                    USING LPAD(peak_year::TEXT, 4, '0');"""
             ))
 
     logger.info(f"Successfully loaded new data to SQL table: '{table_name}'.")
