@@ -31,7 +31,16 @@ def integrate_dimension(dim_column: str) -> pd.DataFrame:
         os.getenv("DB_PASSWORD")
     )
 
-    if dim_column == "game_name":
+    if dim_column == "current_rank":
+        logger.info("Integrating the data of dim column: `current_rank`.")
+
+        dim_rank_number = pd.DataFrame(columns=["rank_number"])
+        dim_rank_number["rank_number"] = range(1, 101)
+
+        logger.info(f"Successfully integrated the data of dim column: `current_rank`.")
+        return dim_rank_number
+
+    elif dim_column == "game_name":
         logger.info("Integrating the data of dim column: `game_name`.")
 
         trending_games = pd.read_sql_table("top5_trending_games_stg",
