@@ -151,4 +151,18 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     USING LPAD(peak_year::TEXT, 4, '0');"""
             ))
 
+    elif schema_name == "mart" and table_name == "dim_steam_game":
+        with engine.begin() as connection:
+            connection.execute(text(
+                f"""ALTER TABLE mart.dim_steam_game
+                    ALTER TYPE application_id TYPE INTEGER
+                    USING application_id::INTEGER;
+
+                    ALTER TABLE mart.dim_steam_game
+                    ADD PRIMARY KEY (application_id);
+
+                    ALTER TABLE mart.dim_steam_game
+                    ALTER TYPE game_name TYPE VARCHAR(255);"""
+            ))
+
     logger.info(f"Successfully loaded new data to SQL table: '{table_name}'.")
