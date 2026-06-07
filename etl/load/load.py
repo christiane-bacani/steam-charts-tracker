@@ -162,7 +162,7 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     ADD PRIMARY KEY (application_id);
 
                     ALTER TABLE mart.dim_steam_game
-                    ALTER TYPE game_name TYPE VARCHAR(255);"""
+                    ALTER COLUMN game_name TYPE VARCHAR(255);"""
             ))
 
     logger.info(f"Successfully loaded new data to SQL table: '{table_name}'.")
