@@ -91,3 +91,6 @@ dim_timestamp = integrate_dimension("timestamp")
 dim_timestamp = transform_dim_timestamp(dim_timestamp)
 dim_timestamp = validate_dim_timestamp(dim_timestamp)
 load_data_to_schema(dim_timestamp, "mart", "dim_timestamp")
+
+# Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
+dim_rank_number = integrate_dimension("current_rank")
