@@ -4,7 +4,6 @@ Python module to run the ETL Pipeline for Steam Charts Tracker.
 from utils.database.database import create_database
 from utils.database.schema import create_schema
 from utils.database.table import create_table_for_raw_layer
-from utils.database.table import create_table_for_mart_layer
 
 from utils.extract.parse import parse_soup
 from etl.extract.extract import scrape_top5_trending_games
@@ -36,8 +35,6 @@ create_schema("mart")
 create_table_for_raw_layer("top5_trending_games_raw")
 create_table_for_raw_layer("top100_games_raw")
 create_table_for_raw_layer("top10_records_raw")
-create_table_for_mart_layer("dim_steam_game")
-create_table_for_mart_layer("dim_timestamp")
 
 # Parse BeautifulSoup object to extract trending games and top records
 url = "https://steamcharts.com/"
