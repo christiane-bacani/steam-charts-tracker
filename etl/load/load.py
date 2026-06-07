@@ -137,11 +137,8 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     USING no_of_peak_players::INTEGER;
 
                     ALTER TABLE stg.top10_records_stg
-                    ALTER COLUMN peak_month TYPE ENUM(
-                    'January', 'February', 'March',
-                    'April',   'May',      'June',
-                    'July',    'August',   'September',
-                    'October', 'November', 'December');
+                    ALTER COLUMN peak_month TYPE ENUM
+                    USING peak_month::ENUM;
 
                     ALTER TABLE stg.top10_records_stg
                     ALTER COLUMN peak_year TYPE YEAR;"""
