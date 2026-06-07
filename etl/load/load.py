@@ -155,7 +155,7 @@ def load_data_to_schema(data: dict | pd.DataFrame,
         with engine.begin() as connection:
             connection.execute(text(
                 f"""ALTER TABLE mart.dim_steam_game
-                    ALTER TYPE application_id TYPE INTEGER
+                    ALTER COLUMN application_id TYPE INTEGER
                     USING application_id::INTEGER;
 
                     ALTER TABLE mart.dim_steam_game
