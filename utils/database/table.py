@@ -104,19 +104,7 @@ def create_table_for_stg_layer(table_name: str) -> None:
                            os.getenv("DB_USERNAME"),
                            os.getenv("DB_PASSWORD"))
 
-    if table_name == "top5_trending_games_stg":
-        command = """
-        CREATE TABLE stg.top5_trending_games_stg (
-        id SERIAL PRIMARY KEY,
-        application_id INTEGER,
-        current_rank INTEGER,
-        game_name VARCHAR(255),
-        change_pct_within_24hr DECIMAL(5, 1),
-        no_of_current_players INTEGER,
-        timestamp TIMESTAMPTZ DEFAULT (NOW() AT TIME ZONE 'Asia/Manila')); 
-        """
-
-    elif table_name == "top100_games_stg":
+    if table_name == "top100_games_stg":
         command = """
         CREATE TABLE stg.top100_games_stg (
         id SERIAL PRIMARY KEY,
