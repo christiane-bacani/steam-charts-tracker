@@ -88,3 +88,6 @@ def integrate_dimension(dim_column: str) -> pd.DataFrame:
 
         logger.info("Successfully integrated the data of dim column: `timestamp`.")
         return dim_timestamp
+
+    else:
+        raise Exception("Invalid dimension column name!")
