@@ -59,28 +59,31 @@ def load_data_to_schema(data: dict | pd.DataFrame,
     else:
         raise Exception("Invalid database schema name!")
 
-    if schema_name == "stg" and table_name == "top5_trending_games_stg":
-        from sqlalchemy import text
+    from sqlalchemy import text
 
+    if schema_name == "stg" and table_name == "top5_trending_games_stg":
         with engine.begin() as connection:
             connection.execute(text(
                 f"""ALTER TABLE stg.top5_trending_games_stg
                     ADD PRIMARY KEY (id);
 
                     ALTER TABLE stg.top5_trending_games_stg
-                    ALTER COLUMN application_id TYPE INTEGER;
+                    ALTER COLUMN application_id TYPE INTEGER
+                    USING application_id::INTEGER;
 
                     ALTER TABLE stg.top5_trending_games_stg
-                    ALTER COLUMN current_rank INTEGER;
+                    ALTER COLUMN current_rank TYPE INTEGER
+                    USING current_rank::INTEGER;
 
                     ALTER TABLE stg.top5_trending_games_stg
                     ALTER COLUMN game_name TYPE VARCHAR(255);
 
                     ALTER TABLE stg.top5_trending_games_stg
-                    ALTER COLUMN change_pct_within_24hr DECIMAL(5, 1);
+                    ALTER COLUMN change_pct_within_24hr TYPE DECIMAL(5, 1);
 
                     ALTER TABLE stg.top5_trending_games_stg
-                    ALTER COLUMN no_of_current_players TYPE INTEGER;"""
+                    ALTER COLUMN no_of_current_players TYPE INTEGER
+                    USING no_of_current_players::INTEGER;"""
             ))
 
     logger.info(f"Successfully loaded new data to SQL table: '{table_name}'.")
