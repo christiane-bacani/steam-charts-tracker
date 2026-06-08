@@ -20,6 +20,7 @@ from etl.transform.transform import transform_dim_timestamp
 from etl.transform.validate import validate_top5_trending_games_stg
 from etl.transform.validate import validate_top100_games_stg
 from etl.transform.validate import validate_top10_records_stg
+from etl.transform.validate import validate_dim_rank_number
 from etl.transform.validate import validate_dim_steam_game
 from etl.transform.validate import validate_dim_timestamp
 from etl.transform.dimensional_model import integrate_dimension
@@ -81,6 +82,11 @@ top10_records_stg = transform_top10_records_raw(top10_records_raw)
 top10_records_stg = validate_top10_records_stg(top10_records_stg)
 load_data_to_schema(top10_records_stg, "stg", "top10_records_stg")
 
+# Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
+dim_rank_number = integrate_dimension("current_rank")
+dim_rank_number = transform_dim_rank_number(dim_rank_number)
+dim_rank_number = validate_dim_rank_number(dim_rank_number)
+
 # Integrate 'game_name' dimension from 'stg' data layer and save to 'mart' data layer
 dim_steam_game = integrate_dimension("game_name")
 dim_steam_game = transform_dim_steam_game(dim_steam_game)
@@ -93,6 +99,4 @@ dim_timestamp = transform_dim_timestamp(dim_timestamp)
 dim_timestamp = validate_dim_timestamp(dim_timestamp)
 load_data_to_schema(dim_timestamp, "mart", "dim_timestamp")
 
-# Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
-dim_rank_number = integrate_dimension("current_rank")
-dim_rank_number = transform_dim_rank_number(dim_rank_number)
+print(dim_rank_number)
