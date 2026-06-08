@@ -98,5 +98,3 @@ dim_timestamp = integrate_dimension("timestamp")
 dim_timestamp = transform_dim_timestamp(dim_timestamp)
 dim_timestamp = validate_dim_timestamp(dim_timestamp)
 load_data_to_schema(dim_timestamp, "mart", "dim_timestamp")
-
-print(dim_rank_number)
