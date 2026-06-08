@@ -14,6 +14,7 @@ from etl.extract.extract import extract_data_from_sql_table
 from etl.transform.transform import transform_top5_trending_games_raw
 from etl.transform.transform import transform_top100_games_raw
 from etl.transform.transform import transform_top10_records_raw
+from etl.transform.transform import transform_dim_rank_number
 from etl.transform.transform import transform_dim_steam_game
 from etl.transform.transform import transform_dim_timestamp
 from etl.transform.validate import validate_top5_trending_games_stg
@@ -94,3 +95,4 @@ load_data_to_schema(dim_timestamp, "mart", "dim_timestamp")
 
 # Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
 dim_rank_number = integrate_dimension("current_rank")
+dim_rank_number = transform_dim_rank_number(dim_rank_number)
