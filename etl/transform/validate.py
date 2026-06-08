@@ -380,6 +380,34 @@ def validate_dim_rank_number(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.
     """
+    logger.info("Validating the data from: 'dim_steam_game'.")
+
+    # Perform validation checks to 'rank_number' column
+    if not pd.api.types.is_numeric_dtype(df["rank_number"]):
+        logger.info("Column: 'rank_number' consist of wrong datatype!")
+        df["rank_number"] = pd.to_numeric(df["rank_number"], errors="coerce")
+        logger.info("Type-casted the value pf 'rank_number' column.")
+
+    if df["rank_number"].isnull().sum() > 0:
+        logger.info("Column: 'rank_number' consist of null values!")
+        df.dropna(subset=["rank_number"], inplace=True)
+        df.reset_index(inplace=True)
+        logger.info("Column: 'rank_number' with missing values are removed.")
+
+    if df["rank_number"].duplicated().sum() > 0:
+        logger.info("Column: 'rank_number' consist of duplicate values!")
+        df.drop_duplicates(subset=["rank_number"], keep="last", inplace=True)
+        df.sort_values(by="rank_number", inplace=True)
+        logger.info("Column: 'rank_number' with duplicate values are removed.")
+
+    # Perform validation check to the whole dataset
+    columns = list(df.columns)
+
+    if columns != ["rank_number"]:
+        raise Exception("Columns of the table: 'dim_rank_number' are inaccurate!")
+
+    logger.info("Successfully validated the data from: 'dim_rank_number'.")
+    return df
 
 def validate_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
     """
