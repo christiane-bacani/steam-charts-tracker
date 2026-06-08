@@ -159,6 +159,7 @@ def transform_dim_rank_number(df: pd.DataFrame) -> pd.DataFrame:
 
     logger.info("Successfully transformed the data from: 'dim_rank_number'.")
     return df
+
 def transform_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
     """
     Transform the dimension table: `dim_steam_game` from the mart data layer.
