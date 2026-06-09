@@ -190,6 +190,21 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     ADD PRIMARY KEY (id);"""
             ))
 
+    elif schema_name == "mart" and table_name == "dim_peak_month":
+        with engine.begin() as connection:
+            connection.execute(text(
+                f"""ALTER TABLE mart.dim_peak_month
+                    ALTER COLUMN id TYPE INTEGER
+                    USING id::INTEGER;
+
+                    ALTER TABLE mart.dim_peak_month
+                    ADD PRIMARY KEY(id);
+
+                    ALTER TABLE mart.dim_peak_month
+                    ALTER COLUMN peak_month TYPE enum_month
+                    USING peak_month::enum_month;"""
+            ))
+
     else:
         raise Exception("Invalid database table name!")
 
