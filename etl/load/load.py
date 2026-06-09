@@ -191,6 +191,6 @@ def load_data_to_schema(data: dict | pd.DataFrame,
             ))
 
     else:
-        raise Exception("Invalid database schema name or table name!")
+        raise Exception("Invalid database table name!")
 
     logger.info(f"Successfully loaded new data to SQL table: '{table_name}'.")
