@@ -58,7 +58,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Type-casted the values of 'game_name' column.")
 
     if (df["game_name"].str.len() > 255).any():
-        raise Exception("Column: 'game_name' consist of moe than 255 characters!")
+        raise Exception("Column: 'game_name' consist of more than 255 characters!")
 
     if df["game_name"].isnull().sum() > 0:
         logger.info("Column: 'game_name' consist of null values!")
@@ -162,7 +162,7 @@ def validate_top100_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Type-casted the values of 'game_name' column.")
 
     if (df["game_name"].str.len() > 255).any():
-        raise Exception("Column: 'game_name' consist of moe than 255 characters!")
+        raise Exception("Column: 'game_name' consist of more than 255 characters!")
 
     if df["game_name"].isnull().sum() > 0:
         logger.info("Column: 'game_name' consist of null values!")
@@ -281,7 +281,7 @@ def validate_top10_records_stg(df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Type-casted the values of 'game_name' column.")
 
     if (df["game_name"].str.len() > 255).any():
-        raise Exception("Column: 'game_name' consist of moe than 255 characters!")
+        raise Exception("Column: 'game_name' consist of more than 255 characters!")
 
     if df["game_name"].isnull().sum() > 0:
         logger.info("Column: 'game_name' consist of null values!")
@@ -396,7 +396,7 @@ def validate_dim_rank_number(df: pd.DataFrame) -> pd.DataFrame:
 
     if df["rank_number"].duplicated().sum() > 0:
         logger.info("Column: 'rank_number' consist of duplicate values!")
-        df.drop_duplicates(subset=["rank_number"], keep="last", inplace=True)
+        df.drop_duplicates(subset=["rank_number"], keep="first", inplace=True)
         df.sort_values(by="rank_number", inplace=True)
         logger.info("Column: 'rank_number' with duplicate values are removed.")
 
@@ -441,7 +441,7 @@ def validate_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Type-casted the values of 'game_name' column.")
 
     if (df["game_name"].str.len() > 255).any():
-        raise Exception("Column: 'game_name' consist of moe than 255 characters!")
+        raise Exception("Column: 'game_name' consist of more than 255 characters!")
 
     if df["game_name"].isnull().sum() > 0:
         logger.info("Column: 'game_name' consist of null values!")
@@ -535,3 +535,65 @@ def validate_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.
     """
+    logger.info("Validating the data from: 'dim_peak_month'.")
+
+    # Perform validation checks to 'id' column
+    if not pd.api.types.is_numeric_dtype(df["id"]):
+        logger.info("Column: 'id' consist of wrong datatype!")
+        df["id"] = pd.to_numeric(df["id"], errors="coerce")
+        logger.info("Type-casted the values of 'id' column.")
+
+    if df["id"].isnull().sum() > 0:
+        logger.info("Column: 'id' consist of null values!")
+        df.dropna(subset=["id"], inplace=True)
+        df.reset_index(inplace=True)
+        logger.info("Column: 'id' with missing values are removed.")
+
+    if df["id"].duplicated().sum() > 0:
+        logger.info("Column: 'id' consist of duplicate values!")
+        df.drop_duplicates(subset=["id"], keep="first", inplace=True)
+        df.sort_values(by="id", inplace=True)
+        logger.info("Column: 'id' with duplicate values are removed.")
+
+    # Perform validation checks to 'peak_month' column
+    if not pd.api.types.is_string_dtype(df["peak_month"]):
+        logger.info("Column: 'peak_month' consist of wrong datatype!")
+        df["peak_month"] = df["peak_month"].astype(str)
+        logger.info("Type-casted the values of 'peak_month' column.")
+
+    if (df["peak_month"].str.len() > 255).any():
+        raise Exception("Column: 'peak_month' consist of more than 255 characters!")
+
+    if df["peak_month"].isnull().sum() > 0:
+        logger.info("Column: 'peak_month' consist of null values!")
+        df.dropna(subset=["peak_month"], inplace=True)
+        df.reset_index(inplace=True)
+        logger.info("Column: 'peak_month' with missing values are removed.")
+
+    if df["peak_month"].duplicated().sum() > 0:
+        logger.info("Column: 'peak_month' consist of duplicate values!")
+        df.drop_duplicates(subset=["peak_month"], keep="first", inplace=True)
+        df["peak_month"] = pd.Categorical(
+            df["peak_month"],
+            categories=[
+                "January", "February", "March",
+                "April",   "May",      "June",
+                "July",    "August",   "September",
+                "October", "November", "December"
+            ]
+        )
+        df.sort_values(by="peak_month", inplace=True)
+        logger.info("Column: 'peak_month' with duplicate values are removed.")
+
+    # Perform validation check to the whole dataset
+    columns = list(df.columns)
+    correct_order_of_columns = [
+        "id",
+        "peak_month"
+    ]
+
+    if columns != correct_order_of_columns:
+        raise Exception("Columns of the table: 'dim_peak_month' are inaccurate!")
+
+    logger.info("Successfully validated the data from: 'dim_peak_month'.")
+    return df
