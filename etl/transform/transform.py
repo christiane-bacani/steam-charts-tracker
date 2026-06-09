@@ -223,19 +223,6 @@ def transform_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
     """
     logger.info("Transforming the data from: 'dim_peak_month'.")
 
-    # Data deduplication
-    df.drop_duplicates(subset=["peak_month"], keep="first", inplace=True)
-
-    # Sort the dataframe based on the preferred order from 'peak_month' column
-    preferred_order = [
-        "January", "February", "March",
-        "April",   "May",      "June",
-        "July",    "August",   "September",
-        "October", "November", "December"
-    ]
-    df["peak_month"] = pd.Categorical(df["peak_month"], categories=preferred_order)
-    df.sort_values(by="peak_month", inplace=True)
-
     # Create the primary key
     df["id"] = range(1, len(df) + 1)
 
