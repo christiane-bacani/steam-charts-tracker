@@ -106,7 +106,7 @@ def integrate_dimension(dim_column: str) -> pd.DataFrame:
                                            schema="stg",
                                            columns=["peak_month"])
 
-        dim_peak_month = range(1, len(dim_peak_month) + 1)
+        dim_peak_month["id"] = range(1, len(dim_peak_month) + 1)
 
         logger.info("Successfully integrated the data of dim column: `peak_month`.")
         return dim_peak_month
