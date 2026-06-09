@@ -380,7 +380,7 @@ def validate_dim_rank_number(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.
     """
-    logger.info("Validating the data from: 'dim_steam_game'.")
+    logger.info("Validating the data from: 'dim_rank_number'.")
 
     # Perform validation checks to 'rank_number' column
     if not pd.api.types.is_numeric_dtype(df["rank_number"]):
@@ -523,3 +523,15 @@ def validate_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
 
     logger.info("Successfully validated the data from: 'dim_timestamp'.")
     return df
+
+def validate_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Validate the data from the DataFrame object 'dim_peak_month'
+    before loading to the stage data layer.
+
+    Args:
+        df (DataFrame): The transformed data as a DataFrame.
+
+    Returns:
+        DataFrame: The validated and transformed data as a DataFrame.
+    """
