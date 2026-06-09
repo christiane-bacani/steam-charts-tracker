@@ -154,6 +154,17 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     USING LPAD(peak_year::TEXT, 4, '0');"""
             ))
 
+    elif schema_name == "mart" and table_name == "dim_rank_number":
+        with engine.begin() as connection:
+            connection.execute(text(
+                f"""ALTER TABLE mart.dim_rank_number
+                    ALTER COLUMN rank_number TYPE INTEGER
+                    USING rank_number::INTEGER;
+
+                    ALTER TABLE mart.dim_rank_number
+                    ADD PRIMARY KEY (rank_number);"""
+            ))
+
     elif schema_name == "mart" and table_name == "dim_steam_game":
         with engine.begin() as connection:
             connection.execute(text(
