@@ -99,3 +99,6 @@ dim_timestamp = integrate_dimension("timestamp")
 dim_timestamp = transform_dim_timestamp(dim_timestamp)
 dim_timestamp = validate_dim_timestamp(dim_timestamp)
 load_data_to_schema(dim_timestamp, "mart", "dim_timestamp")
+
+# Integrate 'peak_month' dimension fron 'stg' data layer and save to 'mart' data layer
+dim_peak_month = integrate_dimension("peak_month")
