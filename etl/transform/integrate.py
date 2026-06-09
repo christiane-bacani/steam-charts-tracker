@@ -113,5 +113,16 @@ def integrate_dimension(dim_column: str) -> pd.DataFrame:
         logger.info("Successfully integrated the data of dim column: `peak_month`.")
         return dim_peak_month
 
+    elif dim_column == "peak_year":
+        logger.info("Integrating the data of dim column: `peak_year`.")
+
+        dim_peak_year = pd.read_sql_table("top10_records_stg",
+                                          con=engine,
+                                          schema="stg",
+                                          columns=["peak_year"])
+
+        logger.info("Successfully integrated the data of dim column: `peak_year`.")
+        return dim_peak_year
+
     else:
         raise Exception("Invalid dimension column name!")
