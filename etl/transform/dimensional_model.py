@@ -101,10 +101,14 @@ def integrate_dimension(dim_column: str) -> pd.DataFrame:
     elif dim_column == "peak_month":
         logger.info("Integrating the data of dim column: `peak_month`.")
 
-        dim_peak_month = pd.read_sql_table("top10_records_stg",
-                                           con=engine,
-                                           schema="stg",
-                                           columns=["peak_month"])
+        dim_peak_month = pd.DataFrame({
+            "peak_month": [
+                "January", "February", "March",
+                "April",   "May",      "June",
+                "July",    "August",   "September",
+                "October", "November", "December"
+            ]
+        })
 
         logger.info("Successfully integrated the data of dim column: `peak_month`.")
         return dim_peak_month
