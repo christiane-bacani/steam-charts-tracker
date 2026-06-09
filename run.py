@@ -107,3 +107,6 @@ dim_peak_month = integrate_dimension("peak_month")
 dim_peak_month = transform_dim_peak_month(dim_peak_month)
 dim_peak_month = validate_dim_peak_month(dim_peak_month)
 load_data_to_schema(dim_peak_month, "mart", "dim_peak_month")
+
+# Integrate 'peak_year' dimension fron 'stg' data layer and save to 'mart' data layer
+dim_peak_year = integrate_dimension("peak_year")
