@@ -86,6 +86,7 @@ load_data_to_schema(top10_records_stg, "stg", "top10_records_stg")
 dim_rank_number = integrate_dimension("current_rank")
 dim_rank_number = transform_dim_rank_number(dim_rank_number)
 dim_rank_number = validate_dim_rank_number(dim_rank_number)
+load_data_to_schema(dim_rank_number, "mart", "dim_rank_number")
 
 # Integrate 'game_name' dimension from 'stg' data layer and save to 'mart' data layer
 dim_steam_game = integrate_dimension("game_name")
