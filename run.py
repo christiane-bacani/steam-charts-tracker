@@ -25,7 +25,7 @@ from etl.transform.validate import validate_dim_rank_number
 from etl.transform.validate import validate_dim_steam_game
 from etl.transform.validate import validate_dim_timestamp
 from etl.transform.validate import validate_dim_peak_month
-from etl.transform.dimensional_model import integrate_dimension
+from etl.transform.integrate import integrate_dimension
 
 from etl.load.load import load_data_to_schema
 
