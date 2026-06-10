@@ -231,3 +231,14 @@ def transform_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
 
     logger.info("Successfully transformed the data from: `dim_peak_month`.")
     return df
+
+def transform_dim_peak_year(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Transform the dimension table: `dim_peak_year` from the mart data layer.
+    
+    Args:
+        df (DataFrame): The extracted data as a DataFrame.
+
+    Returns:
+        DataFrame: The transformed data as a DataFrame.
+    """
