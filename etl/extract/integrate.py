@@ -20,6 +20,9 @@ def integrate_dimension(dim_column: str) -> pd.DataFrame:
 
     Args:
         dim_column (str): The name of the dimension.
+
+    Returns:
+        DataFrame: The created dimension table.
     """
     logger.info("Establishing a connection to PostgreSQL to integrate dim columns.")
     load_dotenv()
