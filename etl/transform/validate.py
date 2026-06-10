@@ -597,3 +597,15 @@ def validate_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
 
     logger.info("Successfully validated the data from: 'dim_peak_month'.")
     return df
+
+def validate_dim_peak_year(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Validate the data from the DataFrame object 'dim_peak_year'
+    before loading to the stage data layer.
+
+    Args:
+        df (DataFrame): The transformed data as a DataFrame.
+
+    Returns:
+        DataFrame: The validated and transformed data as a DataFrame.    
+    """
