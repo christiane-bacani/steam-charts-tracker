@@ -11,6 +11,7 @@ from etl.extract.extract import scrape_top100_games
 from etl.extract.extract import scrape_top10_records
 
 from etl.extract.extract import extract_data_from_sql_table
+from etl.extract.integrate import integrate_dimension
 from etl.transform.transform import transform_top5_trending_games_raw
 from etl.transform.transform import transform_top100_games_raw
 from etl.transform.transform import transform_top10_records_raw
@@ -27,7 +28,6 @@ from etl.transform.validate import validate_dim_steam_game
 from etl.transform.validate import validate_dim_timestamp
 from etl.transform.validate import validate_dim_peak_month
 from etl.transform.validate import validate_dim_peak_year
-from etl.transform.integrate import integrate_dimension
 
 from etl.load.load import load_data_to_schema
 
