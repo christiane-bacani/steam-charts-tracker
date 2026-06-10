@@ -649,7 +649,7 @@ def validate_dim_peak_year(df: pd.DataFrame) -> pd.DataFrame:
 
     from datetime import datetime
 
-    if df["peak_year"] > datetime.now().year:
+    if (df["peak_year"] > datetime.now().year).any():
         logger.info("Column: 'peak_year' consist of logically wrong values!")
         df["peak_year"] = df[df["peak_year"] <= datetime.now().year]
         df["id"] = range(1, len(df) + 1)
