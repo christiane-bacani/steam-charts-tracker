@@ -150,8 +150,8 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     USING peak_month::stg_enum_month;
 
                     ALTER TABLE stg.top10_records_stg
-                    ALTER COLUMN peak_year TYPE CHAR(4)
-                    USING LPAD(peak_year::TEXT, 4, '0');"""
+                    ALTER COLUMN peak_year TYPE INTEGER
+                    USING peak_year::INTEGER;"""
             ))
 
     elif schema_name == "mart" and table_name == "dim_rank_number":
@@ -209,6 +209,21 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     ALTER TABLE mart.dim_peak_month
                     ALTER COLUMN peak_month TYPE mart_enum_month
                     USING peak_month::mart_enum_month;"""
+            ))
+
+    elif schema_name == "mart" and table_name == "dim_peak_year":
+        with engine.begin() as connection:
+            connection.execute(text(
+                f"""ALTER TABLE mart.dim_peak_year
+                    ALTER COLUMN id TYPE INTEGER
+                    USING id::INTEGER;
+
+                    ALTER TABLE mart.dim_peak_year
+                    ADD PRIMARY KEY (id);
+
+                    ALTER TABLE mart.dim_peak_year
+                    ALTER COLUMN peak_year TYPE INTEGER
+                    USING peak_year::INTEGER;"""
             ))
 
     else:
