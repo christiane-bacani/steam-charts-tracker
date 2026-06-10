@@ -26,6 +26,7 @@ from etl.transform.validate import validate_dim_rank_number
 from etl.transform.validate import validate_dim_steam_game
 from etl.transform.validate import validate_dim_timestamp
 from etl.transform.validate import validate_dim_peak_month
+from etl.transform.validate import validate_dim_peak_year
 from etl.transform.integrate import integrate_dimension
 
 from etl.load.load import load_data_to_schema
@@ -112,3 +113,5 @@ load_data_to_schema(dim_peak_month, "mart", "dim_peak_month")
 # Integrate 'peak_year' dimension fron 'stg' data layer and save to 'mart' data layer
 dim_peak_year = integrate_dimension("peak_year")
 dim_peak_year = transform_dim_peak_year(dim_peak_year)
+dim_peak_year = validate_dim_peak_year(dim_peak_year)
+load_data_to_schema(dim_peak_year, "mart", "dim_peak_year")
