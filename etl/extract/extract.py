@@ -212,7 +212,7 @@ def extract_data_from_sql_table(schema_name: str,
                                scheme=schema_name,
                                columns=columns)
 
-    else:    
+    else:
         query = f"SELECT * FROM {schema_name}.{table_name};"
         df = pd.read_sql(query, engine)
 
