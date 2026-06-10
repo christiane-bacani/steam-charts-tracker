@@ -206,15 +206,8 @@ def extract_data_from_sql_table(schema_name: str,
                              os.getenv("DB_USERNAME"),
                              os.getenv("DB_PASSWORD"))
 
-    if columns is not None:
-        df = pd.read_sql_table(table_name,
-                               con=engine,
-                               scheme=schema_name,
-                               columns=columns)
-
-    else:
-        query = f"SELECT * FROM {schema_name}.{table_name};"
-        df = pd.read_sql(query, engine)
+    query = f"SELECT * FROM {schema_name}.{table_name};"
+    df = pd.read_sql(query, engine)
 
     logger.info(f"Successfully extracted the data from: '{table_name}'.")
     return df
