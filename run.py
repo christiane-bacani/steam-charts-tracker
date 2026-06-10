@@ -104,14 +104,18 @@ dim_timestamp = transform_dim_timestamp(dim_timestamp)
 dim_timestamp = validate_dim_timestamp(dim_timestamp)
 load_data_to_schema(dim_timestamp, "mart", "dim_timestamp")
 
-# Integrate 'peak_month' dimension fron 'stg' data layer and save to 'mart' data layer
+# Integrate 'peak_month' dimension from 'stg' data layer and save to 'mart' data layer
 dim_peak_month = integrate_dimension("peak_month")
 dim_peak_month = transform_dim_peak_month(dim_peak_month)
 dim_peak_month = validate_dim_peak_month(dim_peak_month)
 load_data_to_schema(dim_peak_month, "mart", "dim_peak_month")
 
-# Integrate 'peak_year' dimension fron 'stg' data layer and save to 'mart' data layer
+# Integrate 'peak_year' dimension from 'stg' data layer and save to 'mart' data layer
 dim_peak_year = integrate_dimension("peak_year")
 dim_peak_year = transform_dim_peak_year(dim_peak_year)
 dim_peak_year = validate_dim_peak_year(dim_peak_year)
 load_data_to_schema(dim_peak_year, "mart", "dim_peak_year")
+
+# Extract the data of the top 5 trending games from 'stg' data layer and
+# create the fact table and save to 'mart' data layer
+top10_records_stg = extract_data_from_sql_table("mart", "top10_records_stg")
