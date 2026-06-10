@@ -242,3 +242,22 @@ def transform_dim_peak_year(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The transformed data as a DataFrame.
     """
+    logger.info("Transform the data from: 'dim_peak_year'.")
+
+    # Data deduplication
+    df.drop_duplicates(keep="first", inplace=True)
+
+    # Type-cast the column 'peak_year'
+    df["peak_year"] = pd.to_numeric(df["peak_year"], errors="raise")
+
+    # Sort the dataframe based on the earliest year
+    df.sort_values(by="peak_year", inplace=True)
+
+    # Create the primary key
+    df["id"] = range(1, len(df) + 1)
+
+    # Reorder the structure of columns
+    df = df[["id", "peak_year"]]
+
+    logger.info("Successfully transformed the data from: `dim_peak_year`.")
+    return df
