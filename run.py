@@ -31,6 +31,8 @@ from etl.transform.validate import validate_dim_peak_year
 
 from etl.load.load import load_data_to_schema
 
+from utils.fact import create_fact_table
+
 
 
 # Create Database objects
@@ -119,3 +121,4 @@ load_data_to_schema(dim_peak_year, "mart", "dim_peak_year")
 # Extract the data of the top 5 trending games from 'stg' data layer and
 # create the fact table and save to 'mart' data layer
 top5_trending_games_stg = extract_data_from_sql_table("stg", "top5_trending_games_stg")
+create_fact_table(top5_trending_games_stg, "top5_trending_games_stg")
