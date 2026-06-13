@@ -254,7 +254,11 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     ON DELETE CASCADE;
 
                     ALTER TABLE mart.fact_trending_games
-                    ALTER COLUMN change_pct_within_24hr TYPE DECIMAL(5, 1);"""
+                    ALTER COLUMN change_pct_within_24hr TYPE DECIMAL(5, 1);
+
+                    ALTER TABLE mart.fact_trending_games
+                    ALTER COLUMN no_of_current_players TYPE INTEGER
+                    USING no_of_current_players::INTEGER;"""
             ))
 
     else:
