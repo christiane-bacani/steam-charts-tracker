@@ -67,3 +67,6 @@ def create_fact_table(df: pd.DataFrame) -> pd.DataFrame:
 
         logger.info("Successfully created the new fact table: 'fact_trending_games'.")
         return fact_trending_games
+
+    else:
+        raise Exception("Invalid table to use for creating fact table!")
