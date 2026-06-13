@@ -128,3 +128,6 @@ fact_trending_games = create_fact_table(top5_trending_games_stg,
 fact_trending_games = transform_fact_trending_games(fact_trending_games)
 fact_trending_games = validate_fact_trending_games(fact_trending_games)
 load_data_to_schema(fact_trending_games, "mart", "fact_trending_games")
+
+# Extract the data of the top 100 games from 'stg' data layer and
+# create the fact table and save to 'mart' data layer
