@@ -49,7 +49,14 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                   if_exists="append",
                   index=False)
 
-    elif schema_name == "stg" or schema_name == "mart":
+    elif schema_name == "stg":
+        df.to_sql(table_name,
+                    con=engine,
+                    schema=schema_name,
+                    if_exists="replace",
+                    index=False)
+
+    elif schema_name == "mart":
         with engine.begin() as connection:
             connection.execute(text(
                 f"""ALTER TABLE mart.fact_trending_games
@@ -59,10 +66,9 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     DROP CONSTRAINT IF EXISTS fk_rank_number_id_trending_games;"""
             ))
         df.to_sql(table_name,
-                    con=engine,
-                    schema=schema_name,
-                    if_exists="replace",
-                    index=False)
+                  schema=schema_name,
+                  if_exists="replace",
+                  index=False)
 
     else:
         raise Exception("Invalid database schema name!")
