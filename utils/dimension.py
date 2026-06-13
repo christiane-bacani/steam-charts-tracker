@@ -21,7 +21,7 @@ def create_dimension_table(dim_column: str) -> pd.DataFrame:
         dim_column (str): The column that should be a dimension table.
 
     Returns:
-        DataFrame: The created dimensio table.
+        DataFrame: The created dimension table.
     """
     load_dotenv()
     engine = init_connection(
