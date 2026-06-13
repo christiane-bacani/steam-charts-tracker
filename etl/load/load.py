@@ -237,7 +237,11 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     FOREIGN KEY (rank_number_id)
                     REFERENCES mart.dim_rank_number(rank_number)
                     ON UPDATE CASCADE
-                    ON DELETE CASCADE;"""
+                    ON DELETE CASCADE;
+
+                    ALTER TABLE mart.fact_trending_games
+                    ALTER COLUMN change_pct_within_24hr TYPE DECIMAL(5, 1)
+                    USING change_pct_within_24_hr::DECIMAL(5, 1);"""
             ))
 
     else:
