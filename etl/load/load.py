@@ -50,6 +50,14 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                   index=False)
 
     elif schema_name == "stg" or schema_name == "mart":
+        with engine.begin() as connection:
+            connection.execute(text(
+                f"""ALTER TABLE mart.fact_trending_games
+                    DROP CONSTRAINT IF EXISTS fk_application_id_trending_games;
+
+                    ALTER TABLE mart.fact_trending_games
+                    DROP CONSTRAINT IF EXISTS fk_rank_number_id_trending_games;"""
+            ))
         df.to_sql(table_name,
                     con=engine,
                     schema=schema_name,
@@ -226,7 +234,7 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     FOREIGN KEY (application_id)
                     REFERENCES mart.dim_steam_game(application_id)
                     ON UPDATE CASCADE
-                    ON DELETE SET NULL;
+                    ON DELETE CASCADE;
 
                     ALTER TABLE mart.fact_trending_games
                     ALTER COLUMN rank_number_id TYPE INTEGER
@@ -237,7 +245,7 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     FOREIGN KEY (rank_number_id)
                     REFERENCES mart.dim_rank_number(rank_number)
                     ON UPDATE CASCADE
-                    ON DELETE SET NULL;
+                    ON DELETE CASCADE;
 
                     ALTER TABLE mart.fact_trending_games
                     ALTER COLUMN change_pct_within_24hr TYPE DECIMAL(5, 1);"""
