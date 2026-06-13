@@ -139,15 +139,9 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     ALTER COLUMN no_of_peak_players TYPE INTEGER
                     USING no_of_peak_players::INTEGER;
 
-                    CREATE TYPE stg_enum_month AS ENUM (
-                    'January', 'February', 'March',
-                    'April',   'May',      'June',
-                    'July',    'August',   'September',
-                    'October', 'November',  'December');
-
                     ALTER TABLE stg.top10_records_stg
-                    ALTER COLUMN peak_month TYPE stg_enum_month
-                    USING peak_month::stg_enum_month;
+                    ALTER COLUMN peak_month TYPE VARCHAR(25)
+                    USING peak_month::VARCHAR(25);
 
                     ALTER TABLE stg.top10_records_stg
                     ALTER COLUMN peak_year TYPE INTEGER
@@ -200,15 +194,9 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     ALTER TABLE mart.dim_peak_month
                     ADD PRIMARY KEY(id);
 
-                    CREATE TYPE mart_enum_month AS ENUM (
-                    'January', 'February', 'March',
-                    'April',   'May',      'June',
-                    'July',    'August',   'September',
-                    'October', 'November', 'December');
-
                     ALTER TABLE mart.dim_peak_month
-                    ALTER COLUMN peak_month TYPE mart_enum_month
-                    USING peak_month::mart_enum_month;"""
+                    ALTER COLUMN peak_month TYPE VARCHAR(75)
+                    USING peak_month::VARCHAR(75);"""
             ))
 
     elif schema_name == "mart" and table_name == "dim_peak_year":
