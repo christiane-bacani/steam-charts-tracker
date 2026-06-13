@@ -67,6 +67,7 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     DROP CONSTRAINT IF EXISTS fk_rank_number_id_trending_games;"""
             ))
         df.to_sql(table_name,
+                  con=engine,
                   schema=schema_name,
                   if_exists="replace",
                   index=False)
