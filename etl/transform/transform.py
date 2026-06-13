@@ -261,3 +261,15 @@ def transform_dim_peak_year(df: pd.DataFrame) -> pd.DataFrame:
 
     logger.info("Successfully transformed the data from: `dim_peak_year`.")
     return df
+
+def transform_fact_trending_games(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Transform the dimension table: `dim_peak_year` from the mart data layer.
+    Transform the fact table: `fact_trending_games` from the mart data layer.
+
+    Args:
+        df (DataFrame): The extracted data as a DataFrame.
+
+    Returns:
+        DataFrame: The transformed data as a DataFrame.
+    """
