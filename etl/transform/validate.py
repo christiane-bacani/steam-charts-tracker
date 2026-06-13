@@ -667,3 +667,15 @@ def validate_dim_peak_year(df: pd.DataFrame) -> pd.DataFrame:
 
     logger.info("Successfully validated the data from: 'dim_peak_year'.")
     return df
+
+def validate_fact_trending_games(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Validate the data from the DataFrame object 'fact_trending_games'
+    before loading to the stage data layer.
+
+    Args:
+        df (DataFrame): The transformed data as a DataFrame.
+
+    Returns:
+        DataFrame: The validated and transformed data as a DataFrame.    
+    """
