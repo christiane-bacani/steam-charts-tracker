@@ -20,6 +20,7 @@ from etl.transform.transform import transform_dim_steam_game
 from etl.transform.transform import transform_dim_timestamp
 from etl.transform.transform import transform_dim_peak_month
 from etl.transform.transform import transform_dim_peak_year
+from etl.transform.transform import transform_fact_trending_games
 from etl.transform.validate import validate_top5_trending_games_stg
 from etl.transform.validate import validate_top100_games_stg
 from etl.transform.validate import validate_top10_records_stg
@@ -121,4 +122,6 @@ load_data_to_schema(dim_peak_year, "mart", "dim_peak_year")
 # Extract the data of the top 5 trending games from 'stg' data layer and
 # create the fact table and save to 'mart' data layer
 top5_trending_games_stg = extract_data_from_sql_table("stg", "top5_trending_games_stg")
-fact_trending_games = create_fact_table(top5_trending_games_stg, "top5_trending_games_stg")
+fact_trending_games = create_fact_table(top5_trending_games_stg,
+                                        "top5_trending_games_stg")
+fact_trending_games = transform_fact_trending_games(fact_trending_games)
