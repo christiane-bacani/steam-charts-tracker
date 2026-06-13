@@ -5,7 +5,7 @@ from utils.database.database import create_database
 from utils.database.schema import create_schema
 from utils.database.table import create_table_for_raw_layer
 
-from utils.extract.parse import parse_soup
+from utils.parse import parse_soup
 from etl.extract.extract import scrape_top5_trending_games
 from etl.extract.extract import scrape_top100_games
 from etl.extract.extract import scrape_top10_records
