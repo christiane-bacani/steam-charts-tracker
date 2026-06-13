@@ -238,7 +238,7 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     FOREIGN KEY (application_id)
                     REFERENCES mart.dim_steam_game(application_id)
                     ON UPDATE CASCADE
-                    ON DELETE RESTRICT;
+                    ON DELETE CASCADE;
 
                     ALTER TABLE mart.fact_trending_games
                     ALTER COLUMN rank_number_id TYPE INTEGER
@@ -249,7 +249,7 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     FOREIGN KEY (rank_number_id)
                     REFERENCES mart.dim_rank_number(rank_number)
                     ON UPDATE CASCADE
-                    ON DELETE RESTRICT;"""
+                    ON DELETE CASCADE;"""
             ))
 
     else:
