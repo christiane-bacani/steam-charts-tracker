@@ -242,7 +242,7 @@ def transform_dim_peak_year(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The transformed data as a DataFrame.
     """
-    logger.info("Transform the data from: 'dim_peak_year'.")
+    logger.info("Transforming the data from: 'dim_peak_year'.")
 
     # Data deduplication
     df.drop_duplicates(keep="first", inplace=True)
@@ -273,7 +273,7 @@ def transform_fact_trending_games(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The transformed data as a DataFrame.
     """
-    logger.info("Transform the data from: `fact_trending_games`.")
+    logger.info("Transforming the data from: `fact_trending_games`.")
 
     # Remove rows with any missing values from any columns
     df.dropna(how="all", inplace=True, ignore_index=True)
