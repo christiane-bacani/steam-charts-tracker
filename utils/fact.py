@@ -32,18 +32,6 @@ def create_fact_table(df: pd.DataFrame, table_name: str) -> pd.DataFrame:
         os.getenv("DB_PASSWORD")
     )
 
-    # Extract all the dimension table
-    dim_rank_number = pd.read_sql("SELECT * FROM mart.dim_rank_number",
-                                  engine)
-    dim_steam_game = pd.read_sql("SELECT * FROM mart.dim_steam_game",
-                                 engine)
-    dim_timestamp = pd.read_sql("SELECT * FROM mart.dim_timestamp",
-                                engine)
-    dim_peak_month = pd.read_sql("SELECT * FROM mart.dim_peak_month",
-                                 engine)
-    dim_peak_year = pd.read_sql("SELECT * FROM mart.dim_peak_year",
-                                engine)
-
     if table_name == "top5_trending_games_stg":
         logger.info("Creating new fact table: 'fact_trending_game'.")
 
