@@ -33,16 +33,16 @@ def create_dimension_table(dim_column: str) -> pd.DataFrame:
     )
 
     if dim_column == "current_rank":
-        logger.info("Integrating the data of dim column: `current_rank`.")
+        logger.info("Creating new dimension table: 'dim_rank_number'.")
 
         dim_rank_number = pd.DataFrame(columns=["rank_number"])
         dim_rank_number["rank_number"] = range(1, 101)
 
-        logger.info(f"Successfully integrated the data of dim column: `current_rank`.")
+        logger.info("Successfully created the new dimension table: 'dim_rank_number'.")
         return dim_rank_number
 
     elif dim_column == "game_name":
-        logger.info("Integrating the data of dim column: `game_name`.")
+        logger.info("Creating new dimension table: 'dim_steam_game'.")
 
         trending_games = pd.read_sql_table("top5_trending_games_stg",
                                            con=engine,
@@ -68,11 +68,11 @@ def create_dimension_table(dim_column: str) -> pd.DataFrame:
         for dataframe in dataframes:
             dim_steam_game = pd.concat([dim_steam_game, dataframe], ignore_index=True)
 
-        logger.info(f"Successfully integrated the data of dim column: `game_name`.")
+        logger.info("Successfully created the new dimension table: 'dim_steam_game'.")
         return dim_steam_game
 
     elif dim_column == "timestamp":
-        logger.info("Integrating the data of dim column: `timestamp`.")
+        logger.info("Creating new dimension table: 'dim_timestamp'.")
 
         trending_games_timestamp = pd.read_sql_table("top5_trending_games_stg",
                                                 con=engine,
@@ -96,11 +96,11 @@ def create_dimension_table(dim_column: str) -> pd.DataFrame:
         for dataframe in dataframes:
             dim_timestamp = pd.concat([dim_timestamp, dataframe], ignore_index=True)
 
-        logger.info("Successfully integrated the data of dim column: `timestamp`.")
+        logger.info("Successfully created the new dimension table: 'dim_timestamp'.")
         return dim_timestamp
 
     elif dim_column == "peak_month":
-        logger.info("Integrating the data of dim column: `peak_month`.")
+        logger.info("Creating new dimension table: 'dim_peak_month'.")
 
         dim_peak_month = pd.DataFrame({
             "peak_month": [
@@ -111,18 +111,18 @@ def create_dimension_table(dim_column: str) -> pd.DataFrame:
             ]
         })
 
-        logger.info("Successfully integrated the data of dim column: `peak_month`.")
+        logger.info("Successfully created the new dimension table: 'dim_peak_month'.")
         return dim_peak_month
 
     elif dim_column == "peak_year":
-        logger.info("Integrating the data of dim column: `peak_year`.")
+        logger.info("Creating new dimension table: 'dim_peak_year'.")
 
         dim_peak_year = pd.read_sql_table("top10_records_stg",
                                           con=engine,
                                           schema="stg",
                                           columns=["peak_year"])
 
-        logger.info("Successfully integrated the data of dim column: `peak_year`.")
+        logger.info("Successfully created the new dimension table: 'dim_peak_year'.")
         return dim_peak_year
 
     else:
