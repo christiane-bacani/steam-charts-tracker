@@ -11,13 +11,12 @@ from utils.database.connection import init_connection
 
 from logs import logger
 
-def create_fact_table(df: pd.DataFrame, table_name: str) -> pd.DataFrame:
+def create_fact_table(df: pd.DataFrame) -> pd.DataFrame:
     """
     Create fact table from a certain DataFrame object.
 
     Args:
         df (DataFrame): The DataFrame object.
-        table_name (str): The table name of the given DataFrame object.
         
     Returns:
         DataFrame: The created fact table.
@@ -32,7 +31,14 @@ def create_fact_table(df: pd.DataFrame, table_name: str) -> pd.DataFrame:
         os.getenv("DB_PASSWORD")
     )
 
-    if table_name == "top5_trending_games_stg":
+    columns = list(df.columns)
+
+    if columns == ["id",
+                   "application_id",
+                   "current_rank",
+                   "game_name",
+                   "change_pct_within_24hr",
+                   "no_of_current_players","timestamp"]:
         logger.info("Creating new fact table: 'fact_trending_game'.")
 
         query = """
