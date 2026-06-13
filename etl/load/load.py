@@ -226,6 +226,28 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     USING peak_year::INTEGER;"""
             ))
 
+    elif schema_name == "mart" and table_name == "fact_trending_games":
+        with engine.begin() as connection:
+            connection.execute(text(
+                f"""ALTER TABLE mart.fact_trending_games
+                    ALTER COLUMN application_id TYPE INTEGER
+                    USING application_id::INTEGER;
+
+                    ALTER TABLE mart.fact_trending_games
+                    ADD CONSTRAINT fk_application_id_trending_games
+                    FOREIGN KEY (application_id)
+                    REFERENCES mart.dim_steam_game(application_id)
+                    ON UPDATE CASCADE
+                    ON DELETE RESTRICT;
+
+                    ALTER TABLE mart.fact_trending_games
+                    ADD CONSTRAINT fk_rank_number_id_trending_games
+                    FOREIGN KEY (rank_number_id)
+                    REFERENCES mart.dim_rank_number(rank_number)
+                    ON UPDATE CASCADE
+                    ON DELETE RESTRICT;"""
+            ))
+
     else:
         raise Exception("Invalid database table name!")
 
