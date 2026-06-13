@@ -4,6 +4,7 @@ from Steam Charts website to their corresponding data layers (bronze/raw, silver
 and gold/mart).
 """
 import pandas as pd
+from sqlalchemy import text
 
 import os
 from dotenv import load_dotenv
@@ -72,8 +73,6 @@ def load_data_to_schema(data: dict | pd.DataFrame,
 
     else:
         raise Exception("Invalid database schema name!")
-
-    from sqlalchemy import text
 
     if schema_name == "raw":
         pass
