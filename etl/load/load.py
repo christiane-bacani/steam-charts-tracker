@@ -195,8 +195,8 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     ADD PRIMARY KEY(id);
 
                     ALTER TABLE mart.dim_peak_month
-                    ALTER COLUMN peak_month TYPE VARCHAR(75)
-                    USING peak_month::VARCHAR(75);"""
+                    ALTER COLUMN peak_month TYPE VARCHAR(25)
+                    USING peak_month::VARCHAR(25);"""
             ))
 
     elif schema_name == "mart" and table_name == "dim_peak_year":
