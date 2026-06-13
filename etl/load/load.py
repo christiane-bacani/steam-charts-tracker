@@ -241,6 +241,10 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     ON DELETE RESTRICT;
 
                     ALTER TABLE mart.fact_trending_games
+                    ALTER COLUMN rank_number_id TYPE INTEGER
+                    USING rank_number_id::INTEGER;
+
+                    ALTER TABLE mart.fact_trending_games
                     ADD CONSTRAINT fk_rank_number_id_trending_games
                     FOREIGN KEY (rank_number_id)
                     REFERENCES mart.dim_rank_number(rank_number)
