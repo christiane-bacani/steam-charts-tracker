@@ -258,7 +258,18 @@ def load_data_to_schema(data: dict | pd.DataFrame,
 
                     ALTER TABLE mart.fact_trending_games
                     ALTER COLUMN no_of_current_players TYPE INTEGER
-                    USING no_of_current_players::INTEGER;"""
+                    USING no_of_current_players::INTEGER;
+
+                    ALTER TABLE mart.fact_trending_games
+                    ALTER COLUMN timestamp_id TYPE INTEGER
+                    USING timestamp_id::INTEGER;
+
+                    ALTER TABLE mart.fact_trending_games
+                    ADD CONSTRAINT fk_timestamp_id_trending_games
+                    FOREIGN KEY (timestamp_id)
+                    REFERENCES mart.dim_timestamp(id)
+                    ON UPDATE CASCADE
+                    ON DELETE CASCADE;"""
             ))
 
     else:
