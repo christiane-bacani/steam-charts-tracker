@@ -41,9 +41,11 @@ Steam Charts Tracker automates the full data lifecycle from raw HTML extraction 
 ┌─────────────────────────────────────────────────────┐
 │                  MART LAYER                         │
 │         Analytics-Ready Dimensional Model           │
-│   dim_rank_number   dim_steam_game                  │
-│   dim_timestamp     dim_peak_month                  │
-│   dim_peak_year     fact_tables (in progress)       │
+│   dim_rank_number         fact_trending_games       │
+│   dim_timestamp           fact_top_games            │
+│   dim_peak_year                                     │
+│   dim_steam_game                                    │
+│   dim_peak_month                                    │
 └─────────────────────────────────────────────────────┘
 ```
 
