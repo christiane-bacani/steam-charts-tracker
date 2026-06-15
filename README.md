@@ -18,7 +18,7 @@ Steam Charts Tracker automates the full data lifecycle from raw HTML extraction 
 │              steamcharts.com                        │
 │     (Requests + BeautifulSoup scraping)             │
 └────────────────────┬────────────────────────────────┘
-                     │
+                     │ Ingest + Load
                      ▼
 ┌─────────────────────────────────────────────────────┐
 │                  RAW LAYER                          │
@@ -27,7 +27,7 @@ Steam Charts Tracker automates the full data lifecycle from raw HTML extraction 
 │   top100_games_raw                                  │
 │   top10_records_raw                                 │
 └────────────────────┬────────────────────────────────┘
-                     │  Transform + Validate
+                     │  Transform + Validate + Load
                      ▼
 ┌─────────────────────────────────────────────────────┐
 │                STAGING LAYER (stg)                  │
@@ -36,7 +36,7 @@ Steam Charts Tracker automates the full data lifecycle from raw HTML extraction 
 │   top100_games_stg                                  │
 │   top10_records_stg                                 │
 └────────────────────┬────────────────────────────────┘
-                     │  Integrate + Dimension Build
+                     │  Integrate + Dimension Build + Fact Build + Load
                      ▼
 ┌─────────────────────────────────────────────────────┐
 │                  MART LAYER                         │
