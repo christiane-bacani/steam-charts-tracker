@@ -20,6 +20,7 @@ from etl.transform.transform import transform_dim_timestamp
 from etl.transform.transform import transform_dim_peak_month
 from etl.transform.transform import transform_dim_peak_year
 from etl.transform.transform import transform_fact_trending_games
+from etl.transform.transform import transform_fact_top_games
 from etl.transform.validate import validate_top5_trending_games_stg
 from etl.transform.validate import validate_top100_games_stg
 from etl.transform.validate import validate_top10_records_stg
