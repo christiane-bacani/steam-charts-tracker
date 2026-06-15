@@ -65,11 +65,12 @@ Steam Charts Tracker automates the full data lifecycle from raw HTML extraction 
 
 | Layer | Tools |
 |---|---|
-| Extraction | Python, Requests, BeautifulSoup |
+| Ingestion | Python, Requests, BeautifulSoup |
+| Extraction | Pandas, SQLAlchemy  |
 | Transformation | Pandas, SQLAlchemy |
 | Validation | Custom validation modules per dataset |
-| Storage | PostgreSQL (local), Snowflake (cloud) |
-| Logging | Python structured logging |
+| Storage | PostgreSQL (Local), Snowflake (Cloud) |
+| Logging | Python structured custom logging |
 
 ---
 
@@ -93,11 +94,11 @@ steam-charts-tracker/
 │   │   ├── database.py      # Database creation
 │   │   ├── schema.py        # Schema creation (raw, stg, mart)
 │   │   └── table.py         # Table creation for raw layer
-│   ├── extract/
-│   │   └── parse.py         # BeautifulSoup parser utility
+|   |
+│   └── parse.py             # BeautifulSoup parser utility
+|   └── dimension.py         # Dimension table utilities
 │   └── fact.py              # Fact table utilities
-│
-├── data/                    # Raw and processed data storage
+|
 ├── logs/                    # Structured pipeline run logs
 ├── run.py                   # Pipeline entry point
 ├── .gitignore
@@ -113,15 +114,15 @@ steam-charts-tracker/
 create_database("steam_charts")
 create_schema("raw") → create_schema("stg") → create_schema("mart")
 
-# 2. Extract → Load to raw layer
+# 2. Scrape → Load to raw layer
 scrape_top5_trending_games()   → load to raw
 scrape_top100_games()          → load to raw  (4 paginated pages)
 scrape_top10_records()         → load to raw
 
-# 3. Transform → Validate → Load to stg layer
-transform → validate → load to stg  (per dataset)
+# 3. Extract → Transform → Validate → Load to stg layer
+extract → transform → validate → load to stg  (per dataset)
 
-# 4. Integrate dimensions → Transform → Validate → Load to mart layer
+# 4. Extract → Integrate/Create dimensions table → Create facts table →  Transform → Validate → Load to mart layer
 dim_rank_number / dim_steam_game / dim_timestamp /
 dim_peak_month / dim_peak_year → load to mart
 ```
@@ -171,13 +172,13 @@ python run.py
 
 ## Roadmap
 
-- [ ] Wrap pipeline in Apache Airflow DAGs for scheduled orchestration
 - [ ] Add fact table construction for mart layer
+- [ ] Migrate Gold Data Layer to Snowflake Cloud Data Warehouse
+- [ ] Fix the ETL/ELT Pipeline Logic for stage and gold data layer to handle SCDs and not use replace logic every schedule
+- [ ] Wrap pipeline in Apache Airflow DAGs for scheduled orchestration
 - [ ] Power BI / dashboard integration for player trend visualization
-- [ ] Add app_id and game_name to trending_games scraper
-- [ ] Migrate raw data storage from dict to local JSON
-- [ ] Add Snowflake cloud load integration
-
+- [ ] Use Apache Spark through PySpark to handle massive amount of data and for Proof of Work
+- [ ] Create the Web App for steam users for recommendation of game based on preferences and game statistics
 ---
 
 ## Author
