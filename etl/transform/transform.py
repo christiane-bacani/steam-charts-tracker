@@ -278,10 +278,10 @@ def transform_fact_trending_games(df: pd.DataFrame) -> pd.DataFrame:
     df.dropna(how="all", inplace=True, ignore_index=True)
 
     # Type-cast the column 'application_id'
-    df["application_id"] = pd.to_numeric(df["application_id"], errors="coerce")
+    df["application_id"] = pd.to_numeric(df["application_id"], errors="raise")
 
     # Type-cast the column 'rank_number_id'
-    df["rank_number_id"] = pd.to_numeric(df["rank_number_id"], errors="coerce")
+    df["rank_number_id"] = pd.to_numeric(df["rank_number_id"], errors="raise")
 
     # Type-cast the column 'change_pct_within_24hr'
     df["change_pct_within_24hr"] = pd.to_numeric(df["change_pct_within_24hr"],
@@ -293,7 +293,7 @@ def transform_fact_trending_games(df: pd.DataFrame) -> pd.DataFrame:
 
     # Type-cast the column 'timestamp_id'
     df["timestamp_id"] = pd.to_numeric(df["timestamp_id"],
-                                       errors="coerce")
+                                       errors="raise")
 
     logger.info("Successfully transformed the data from: `fact_trending_games`.")
     return df
@@ -308,3 +308,31 @@ def transform_fact_top_games(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The transformed data as a DataFrame.
     """
+    logger.info("Transforming the data from: `fact_top_games`.")
+
+    # Remove rows with any missing values from any columns
+    df.dropna(how="all", inplace=True, ignore_index=True)
+
+    # Type-cast the column 'application_id'
+    df["application_id"] = pd.to_numeric(df["application_id"], errors="raise")
+
+    # Type-cast the column 'rank_number_id'
+    df["rank_number_id"] = pd.to_numeric(df["rank_number_id"], errors="raise")
+
+    # Type-cast the column 'no_of_current_players'
+    df["no_of_current_players"] = pd.to_numeric(df["no_of_current_players"],
+                                                "coerce")
+
+    # Type-cast the column 'no_of_peak_players'
+    df["no_of_peak_players"] = pd.to_numeric(df["no_of_peak_players"],
+                                             "coerce")
+
+    # Type-cast the column 'no_of_hours_played'
+    df["no_of_hours_played"] = pd.to_numeric(df["no_of_hours_played"],
+                                             "coerce")
+
+    # Type-cast the column 'no_of_hours_played'
+    df["timestamp_id"] = pd.to_numeric(df["timestamp_id"], errors="raise")
+
+    logger.info("Successfully transformed the data from: `fact_top_games`.")
+    return df
