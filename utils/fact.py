@@ -68,5 +68,54 @@ def create_fact_table(df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Successfully created the new fact table: 'fact_trending_games'.")
         return fact_trending_games
 
+    elif columns == ["id",
+                     "application_id",
+                     "current_rank",
+                     "game_name",
+                     "no_of_current_players",
+                     "no_of_peak_players",
+                     "no_of_hours_played",
+                     "timestamp"]:
+        logger.info("Creating new fact table: 'fact_top_games'.")
+
+        query = """
+        SELECT
+            stg.top100_games_stg.id AS id,
+            mart.dim_steam_game.application_id AS application_id,
+            mart.dim_rank_number.rank_number AS rank_number_id,
+            stg.top100_games_stg.no_of_current_players AS no_of_current_players,
+            stg.top100_games_stg.no_of_peak_players AS no_of_peak_players,
+            stg.top100_games_stg.no_of_hours_played AS no_of_hours_played,
+            mart.dim_timestamp.id AS timestamp_id
+        FROM
+            stg.top100_games_stg
+        INNER JOIN
+            mart.dim_steam_game
+        ON
+            stg.top100_games_stg.application_id = mart.dim_steam_game.application_id
+        INNER JOIN
+            mart.dim_rank_number
+        ON
+            stg.top100_games_stg.current_rank = mart.dim_rank_number.rank_number
+        INNER JOIN
+            mart.dim_timestamp
+        ON
+            stg.top100_games_stg.timestamp = mart.dim_timestamp.timestamp
+        """
+        fact_top_games = pd.read_sql(query, engine)
+
+        # For unknown reason, I can't get the natural result order of rows without
+        # using the PK: 'id' that's why I query it above compared to other SQL commands
+        # we've made and sort it to ascending order before removing it totally for our
+        # fact table.
+        fact_top_games.sort_values(by="id", inplace=True)
+        fact_top_games = fact_top_games[[
+            "application_id",     "rank_number_id",     "no_of_current_players",
+            "no_of_peak_players", "no_of_hours_played", "timestamp_id"
+        ]]
+
+        logger.info("Successfully created the new fact table: 'fact_top_games'.")
+        return fact_top_games
+
     else:
         raise Exception("Invalid table to use for creating fact table!")
