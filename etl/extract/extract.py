@@ -185,8 +185,7 @@ def scrape_top10_records(soup: BeautifulSoup) -> dict[str, list]:
     return scraped_data
 
 def extract_data_from_sql_table(schema_name: str,
-                                table_name:  str,
-                                columns=None) -> pd.DataFrame:
+                                table_name:  str) -> pd.DataFrame:
     """
     Extract data from different SQL tables from a certain database schema that
     corresponds to a certain data layer (bronze/raw, silver/stage, and gold/mart).
