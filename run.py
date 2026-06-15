@@ -30,6 +30,7 @@ from etl.transform.validate import validate_dim_timestamp
 from etl.transform.validate import validate_dim_peak_month
 from etl.transform.validate import validate_dim_peak_year
 from etl.transform.validate import validate_fact_trending_games
+from etl.transform.validate import validate_fact_top_games
 
 from etl.load.load import load_data_to_schema
 
