@@ -874,7 +874,7 @@ def validate_fact_top_games(df: pd.DataFrame) -> pd.DataFrame:
         df.reset_index(inplace=True)
         logger.info("Column: 'no_of_current_players' with missing values are removed.")
 
-    if (df["no_of_current_players"] < 0).any:
+    if (df["no_of_current_players"] < 0).any():
         logger.info("'no_of_current_players' column consist of off-range values!")
         df["no_of_current_players"] = df[df["no_of_current_players"] >= 0]
         df.reset_index(inplace=True)
@@ -893,7 +893,7 @@ def validate_fact_top_games(df: pd.DataFrame) -> pd.DataFrame:
         df.reset_index(inplace=True)
         logger.info("Column: 'no_of_peak_players' with missing values are removed.")
 
-    if (df["no_of_peak_players"] < 0).any:
+    if (df["no_of_peak_players"] < 0).any():
         logger.info("'no_of_peak_players' column consist of off-range values!")
         df["no_of_peak_players"] = df[df["no_of_peak_players"] >= 0]
         df.reset_index(inplace=True)
@@ -912,7 +912,7 @@ def validate_fact_top_games(df: pd.DataFrame) -> pd.DataFrame:
         df.reset_index(inplace=True)
         logger.info("Column: 'no_of_hours_played' with missing values are removed.")
 
-    if (df["no_of_hours_played"] < 0).any:
+    if (df["no_of_hours_played"] < 0).any():
         logger.info("'no_of_hours_played' column consist of off-range values!")
         df["no_of_hours_played"] = df[df["no_of_hours_played"] >= 0]
         df.reset_index(inplace=True)
@@ -931,7 +931,7 @@ def validate_fact_top_games(df: pd.DataFrame) -> pd.DataFrame:
         df.reset_index(inplace=True)
         logger.info("Column: 'timestamp_id' with missing values are removed.")
 
-    if (df["timestamp_id"] < 1).any:
+    if (df["timestamp_id"] < 1).any():
         logger.info("'timestamp_id' column consist of off-range values!")
         df["timestamp_id"] = df[df["timestamp_id"] > 0]
         df.reset_index(inplace=True)
