@@ -275,6 +275,21 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     ON DELETE CASCADE;"""
             ))
 
+    elif schema_name == "mart" and table_name == "fact_top_games":
+        with engine.begin() as connection:
+            connection.execute(text(
+                f"""ALTER TABLE mart.fact_top_games
+                    ALTER COLUMN application_id TYPE INTEGER
+                    USING application_id::INTEGER;
+
+                    ALTER TABLE mart.fact_top_games
+                    ADD CONSTRAINT fk_application_id_fact_top_games
+                    FOREIGN KEY (application_id)
+                    REFERENCES mart.dim_steam_game(application_id)
+                    ON UPDATE CASCADE
+                    ON DELETE CASCADE;"""
+            ))
+
     else:
         raise Exception("Invalid database table name!")
 
