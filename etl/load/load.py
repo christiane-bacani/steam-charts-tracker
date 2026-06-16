@@ -296,7 +296,11 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     ALTER TABLE mart.fact_top_games
                     ADD CONSTRAINT fk_rank_number_id_top_games
                     FOREIGN KEY (rank_number_id)
-                    REFERENCES mart.dim_rank_number(rank_number);"""
+                    REFERENCES mart.dim_rank_number(rank_number);
+
+                    ALTER TABLE mart.fact_top_games
+                    ALTER COLUMN no_of_current_players TYPE INTEGER
+                    USING no_of_current_players::INTEGER;"""
             ))
 
     else:
