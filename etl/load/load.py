@@ -283,11 +283,20 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     USING application_id::INTEGER;
 
                     ALTER TABLE mart.fact_top_games
-                    ADD CONSTRAINT fk_application_id_fact_top_games
+                    ADD CONSTRAINT fk_application_id_top_games
                     FOREIGN KEY (application_id)
                     REFERENCES mart.dim_steam_game(application_id)
                     ON UPDATE CASCADE
-                    ON DELETE CASCADE;"""
+                    ON DELETE CASCADE;
+
+                    ALTER TABLE mart.fact_top_games
+                    ALTER COLUMN rank_number_id TYPE INTEGER
+                    USING rank_number_id::INTEGER;
+
+                    ALTER TABLE mart.fact_top_games
+                    ADD CONSTRAINT fk_rank_number_id_top_games
+                    FOREIGN KEY (rank_number_id)
+                    REFERENCES mart.fact_top_games(rank_number_id);"""
             ))
 
     else:
