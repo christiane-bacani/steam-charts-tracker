@@ -310,7 +310,11 @@ def load_data_to_schema(data: dict | pd.DataFrame,
 
                     ALTER TABLE mart.fact_top_games
                     ALTER COLUMN no_of_peak_players TYPE INTEGER
-                    USING no_of_peak_players::INTEGER;"""
+                    USING no_of_peak_players::INTEGER;
+
+                    ALTER TABLE mart.fact_top_games
+                    ALTER COLUMN no_of_hours_played TYPE INTEGER
+                    USING no_of_hours_played::INTEGER;"""
             ))
 
     else:
