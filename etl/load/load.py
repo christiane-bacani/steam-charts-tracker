@@ -324,7 +324,7 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     USING timestamp_id::INTEGER;
 
                     ALTER TABLE mart.fact_top_games
-                    ADD CONSTRAINT timestamp_id_top_games
+                    ADD CONSTRAINT fk_timestamp_id_top_games
                     FOREIGN KEY (timestamp_id)
                     REFERENCES mart.dim_timestamp(id);"""
             ))
