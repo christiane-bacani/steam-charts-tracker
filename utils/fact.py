@@ -129,6 +129,7 @@ def create_fact_table(df: pd.DataFrame) -> pd.DataFrame:
 
         query = """
         SELECT
+            stg.top10_records_stg.id AS id,
             mart.dim_steam_game.application_id AS application_id,
             mart.dim_rank_number.rank_number AS rank_number_id,
             stg.top10_records_stg.no_of_peak_players AS no_of_peak_players,
@@ -159,6 +160,16 @@ def create_fact_table(df: pd.DataFrame) -> pd.DataFrame:
             stg.top10_records_stg.timestamp = mart.dim_timestamp.timestamp;
         """
         fact_top_records = pd.read_sql(query, engine)
+
+        # For unknown reason, I can't get the natural result order of rows without
+        # using the PK: 'id' that's why I query it above compared to other SQL commands
+        # we've made and sort it to ascending order before removing it totally for our
+        # fact table.
+        fact_top_records.sort_values(by="id", inplace=True)
+        fact_top_records = fact_top_records[[
+            "application_id", "rank_number_id", "no_of_peak_players",
+            "peak_month_id",  "peak_year_id",   "timestamp_id"
+        ]]
 
         logger.info("Successfully created the new fact table: 'fact_top_records'.")
         return fact_top_records
