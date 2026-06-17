@@ -953,3 +953,15 @@ def validate_fact_top_games(df: pd.DataFrame) -> pd.DataFrame:
 
     logger.info("Successfully validated the data from: 'fact_top_games'.")
     return df
+
+def validate_fact_top_records(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Validate the data from the DataFrame object 'fact_top_games'
+    before loading to the stage data layer.
+
+    Args:
+        df (DataFrame): The transformed data as a DataFrame.
+
+    Returns:
+        DataFrame: The validated and transformed data as a DataFrame.    
+    """
