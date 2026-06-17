@@ -821,7 +821,7 @@ def validate_fact_top_games(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.    
     """
-    logger.info("Validating the data from: 'fact_trending_games'.")
+    logger.info("Validating the data from: 'fact_top_games'.")
 
     # Perform validation checks to 'application_id' column
     if not pd.api.types.is_numeric_dtype(df["application_id"]):
