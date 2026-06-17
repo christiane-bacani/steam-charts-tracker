@@ -965,3 +965,117 @@ def validate_fact_top_records(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.    
     """
+    logger.info("Validating the data from: 'fact_top_records'.")
+
+    # Perform validation checks to 'application_id' column
+    if not pd.api.types.is_numeric_dtype(df["application_id"]):
+        logger.info("Column: 'application_id' consist of wrong datatype!")
+        df["application_id"] = pd.to_numeric(df["application_id"],
+                                                  errors="coerce")
+        logger.info("Type-casted the values of 'application_id' column.")
+
+    if df["application_id"].isnull().sum() > 0:
+        logger.info("Column: 'application_id' consist of null values!")
+        df.dropna(subset=["application_id"], inplace=True)
+        df.reset_index(inplace=True)
+        logger.info("Column: 'application_id' with missing values are removed.")
+
+    if (df["application_id"] < 1).any():
+        logger.info("'application_id' column consist of off-range values!")
+        df["application_id"] = df[df["application_id"] > 0]
+        df.reset_index(inplace=True)
+        logger.info("'application_id' column with off-range values are removed.")
+
+    # Perform validation checks to 'rank_number_id' column
+    if not pd.api.types.is_numeric_dtype(df["rank_number_id"]):
+        logger.info("Column: 'rank_number_id' consist of wrong datatype!")
+        df["rank_number_id"] = pd.to_numeric(df["rank_number_id"],
+                                                  errors="coerce")
+        logger.info("Type-casted the values of 'rank_number_id' column.")
+
+    if df["rank_number_id"].isnull().sum() > 0:
+        logger.info("Column: 'rank_number_id' consist of null values!")
+        df.dropna(subset=["rank_number_id"], inplace=True)
+        df.reset_index(inplace=True)
+        logger.info("Column: 'rank_number_id' with missing values are removed.")
+
+    if (df["rank_number_id"] > 100).any() or (df["rank_number_id"] < 1).any():
+        logger.info("'rank_number_id' column consist of off-range values!")
+        df["rank_number"] = df[(df["rank_number"] >= 1) & (df["rank_number" <= 100])]
+        df.reset_index(inplace=True)
+        logger.info("'rank_number_id' column with off-range values are removed.")
+
+    # Perform validation checks to 'no_of_peak_players' column
+    if not pd.api.types.is_numeric_dtype(df["no_of_peak_players"]):
+        logger.info("Column: 'no_of_peak_players' consist of wrong datatype!")
+        df["no_of_peak_players"] = pd.to_numeric(df["no_of_peak_players"],
+                                                  errors="coerce")
+        logger.info("Type-casted the values of 'no_of_peak_players' column.")
+
+    if df["no_of_peak_players"].isnull().sum() > 0:
+        logger.info("Column: 'no_of_peak_players' consist of null values!")
+        df.dropna(subset=["no_of_peak_players"], inplace=True)
+        df.reset_index(inplace=True)
+        logger.info("Column: 'no_of_peak_players' with missing values are removed.")
+
+    if (df["no_of_peak_players"] < 0).any():
+        logger.info("'no_of_peak_players' column consist of off-range values!")
+        df["no_of_peak_players"] = df[df["no_of_peak_players"] >= 0]
+        df.reset_index(inplace=True)
+        logger.info("'no_of_peak_players' column with off-range values are removed.")
+
+    # Perform validation checks to 'peak_month_id' column
+    if not pd.api.types.is_numeric_dtype(df["peak_month_id"]):
+        logger.info("Column: 'peak_month_id' consist of wrong datatype!")
+        df["peak_month_id"] = pd.to_numeric(df["peak_month_id"],
+                                                  errors="coerce")
+        logger.info("Type-casted the values of 'peak_month_id' column.")
+
+    if df["peak_month_id"].isnull().sum() > 0:
+        logger.info("Column: 'peak_month_id' consist of null values!")
+        df.dropna(subset=["peak_month_id"], inplace=True)
+        df.reset_index(inplace=True)
+        logger.info("Column: 'peak_month_id' with missing values are removed.")
+
+    if (df["peak_month_id"] < 1).any() or (df["peak_month_id"] > 12).any():
+        logger.info("'peak_month_id' column consist of off-range values!")
+        df["peak_month_id"] = df[(df["peak_month_id"] >= 1) &
+                                 df["peak_month_id"] <= 12]
+        df.reset_index(inplace=True)
+        logger.info("'peak_month_id' column with off-range values are removed.")
+
+    # Perform validation checks to 'peak_year_id'
+    if not pd.api.types.is_numeric_dtype(df["peak_year_id"]):
+        logger.info("Column: 'peak_year_id' consist of wrong datatype!")
+        df["peak_year_id"] = pd.to_numeric(df["peak_year_id"],
+                                                  errors="coerce")
+        logger.info("Type-casted the values of 'peak_year_id' column.")
+
+    if df["peak_year_id"].isnull().sum() > 0:
+        logger.info("Column: 'peak_year_id' consist of null values!")
+        df.dropna(subset=["peak_year_id"], inplace=True)
+        df.reset_index(inplace=True)
+        logger.info("Column: 'peak_year_id' with missing values are removed.")
+
+    if (df["peak_year_id"] < 1).any():
+        logger.info("'peak_year_id' column consist of off-range values!")
+        df["peak_year_id"] = df[df["peak_year_id"] > 0]
+        df.reset_index(inplace=True)
+        logger.info("'peak_year_id' column with off-range values are removed.")
+
+    # Perform validation check to the whole dataset
+    columns = list(df.columns)
+    correct_order_of_columns = [
+        "application_id",
+        "rank_number_id",
+        "no_of_peak_players",
+        "peak_month_id",
+        "peak_year_id",
+        "timestamp_id"
+    ]
+
+    if columns != correct_order_of_columns:
+        raise Exception("Columns of the table: 'fact_top_records' are inaccurate!")
+
+    logger.info("Successfully validated the data from: 'fact_top_records'.")
+    return df
