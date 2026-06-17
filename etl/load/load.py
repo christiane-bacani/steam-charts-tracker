@@ -348,6 +348,17 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     FOREIGN KEY (application_id)
                     REFERENCES mart.dim_steam_game(application_id)
                     ON UPDATE CASCADE
+                    ON DELETE CASCADE;
+
+                    ALTER TABLE mart.fact_top_records
+                    ALTER COLUMN rank_number_id TYPE INTEGER
+                    USING rank_number_id::INTEGER;
+
+                    ALTER TABLE mart.fact_top_records
+                    ADD CONSTRAINT fk_rank_number_id_top_records
+                    FOREIGN KEY (rank_number_id)
+                    REFERENCES mart.dim_rank_number(rank_number)
+                    ON UPDATE CASCADE
                     ON DELETE CASCADE;"""
             ))
 
