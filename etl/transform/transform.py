@@ -336,3 +336,14 @@ def transform_fact_top_games(df: pd.DataFrame) -> pd.DataFrame:
 
     logger.info("Successfully transformed the data from: `fact_top_games`.")
     return df
+
+def transform_fact_top_records(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Transform the fact table: `fact_top_records` from the mart data layer.
+
+    Args:
+        df (DataFrame): The extracted data as a DataFrame.
+
+    Returns:
+        DataFrame: The transformed data as a DataFrame.
+    """    
