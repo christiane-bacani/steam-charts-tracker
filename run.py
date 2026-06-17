@@ -141,3 +141,4 @@ load_data_to_schema(fact_top_games, "mart", "fact_top_games")
 # Extract the data of the top 10 records from 'stg' data layer and
 # create the fact table and save to 'mart' data layer
 top10_records_stg = extract_data_from_sql_table("stg", "top10_records_stg")
+fact_top_records = create_fact_table(top10_records_stg)
