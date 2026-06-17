@@ -346,4 +346,26 @@ def transform_fact_top_records(df: pd.DataFrame) -> pd.DataFrame:
 
     Returns:
         DataFrame: The transformed data as a DataFrame.
-    """    
+    """
+    logger.info("Transforming the data from: `fact_top_records`.")
+
+    # Type-cast the column 'application_id'
+    df["application_id"] = pd.to_numeric(df["application_id"], errors="raise")
+
+    # Type-cast the column 'rank_number_id'
+    df["rank_number_id"] = pd.to_numeric(df["rank_number_id"], errors="raise")
+
+    # Type-cast the column 'no_of_peak_players'
+    df["no_of_peak_players"] = pd.to_numeric(df["no_of_peak_players"], errors="coerce")
+
+    # Type-cast the column 'peak_month_id'
+    df["peak_month_id"] = pd.to_numeric(df["peak_month_id"], errors="raise")
+
+    # Type-cast the column 'peak_year_id'
+    df["peak_year_id"] = pd.to_numeric(df["peak_year_id"], errors="raise")
+
+    # Type-cast the column 'timestamp_id'
+    df["timestamp_id"] = pd.to_numeric(df["timestamp_id"], errors="raise")
+
+    logger.info("Successfully transformed the data from: `fact_top_records`.")
+    return df
