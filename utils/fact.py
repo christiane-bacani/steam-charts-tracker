@@ -117,5 +117,51 @@ def create_fact_table(df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Successfully created the new fact table: 'fact_top_games'.")
         return fact_top_games
 
+    elif columns == ["id",
+                     "application_id",
+                     "current_rank",
+                     "game_name",
+                     "no_of_peak_players",
+                     "peak_month",
+                     "peak_year",
+                     "timestamp"]:
+        logger.info("Creating new fact table: 'fact_top_records'.")
+
+        query = """
+        SELECT
+            mart.dim_steam_game.application_id AS application_id,
+            mart.dim_rank_number.rank_number AS rank_number_id,
+            stg.top10_records_stg.no_of_peak_players AS no_of_peak_players,
+            mart.dim_peak_month.id AS peak_month_id,
+            mart.dim_peak_year.id AS peak_year_id,
+            mart.dim_timestamp.id AS timestamp_id
+        FROM
+            stg.top10_records_stg
+        INNER JOIN
+            mart.dim_steam_game
+        ON
+            stg.top10_records_stg.application_id = mart.dim_steam_game.application_id
+        INNER JOIN
+            mart.dim_rank_number
+        ON
+            stg.top10_records_stg.current_rank = mart.dim_rank_number.rank_number
+        INNER JOIN
+            mart.dim_peak_month
+        ON
+            stg.top10_records_stg.peak_month = mart.dim_peak_month.peak_month
+        INNER JOIN
+            mart.dim_peak_year
+        ON
+            stg.top10_records_stg.peak_year = mart.dim_peak_year.peak_year
+        INNER JOIN
+            mart.dim_timestamp
+        ON
+            stg.top10_records_stg.timestamp = mart.dim_timestamp.timestamp;
+        """
+        fact_top_records = pd.read_sql(query, engine)
+
+        logger.info("Successfully created the new fact table: 'fact_top_records'.")
+        return fact_top_records
+
     else:
         raise Exception("Invalid table to use for creating fact table!")
