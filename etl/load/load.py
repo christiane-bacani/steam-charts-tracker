@@ -314,7 +314,16 @@ def load_data_to_schema(data: dict | pd.DataFrame,
 
                     ALTER TABLE mart.fact_top_games
                     ALTER COLUMN no_of_hours_played TYPE INTEGER
-                    USING no_of_hours_played::INTEGER;"""
+                    USING no_of_hours_played::INTEGER;
+
+                    ALTER TABLE mart.fact_top_games
+                    ALTER COLUMN timestamp_id TYPE INTEGER
+                    USING timestamp_id::INTEGER;
+
+                    ALTER TABLE mart.fact_top_games
+                    ADD CONSTRAINT timestamp_id_top_games
+                    FOREIGN KEY (timestamp_id)
+                    REFERENCES mart.dim_timestamp(id);"""
             ))
 
     else:
