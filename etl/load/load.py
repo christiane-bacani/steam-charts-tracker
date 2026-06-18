@@ -359,7 +359,11 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     FOREIGN KEY (rank_number_id)
                     REFERENCES mart.dim_rank_number(rank_number)
                     ON UPDATE CASCADE
-                    ON DELETE CASCADE;"""
+                    ON DELETE CASCADE;
+    
+                    ALTER TABLE mart.fact_top_records
+                    ALTER COLUMN no_of_peak_players TYPE INTEGER
+                    USING no_of_peak_players::INTEGER;"""
             ))
 
     else:
