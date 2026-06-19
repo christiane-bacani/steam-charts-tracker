@@ -85,7 +85,10 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     DROP CONSTRAINT IF EXISTS fk_rank_number_id_top_records;
 
                     ALTER TABLE mart.fact_top_records
-                    DROP CONSTRAINT IF EXISTS fk_peak_month_id_top_records;"""
+                    DROP CONSTRAINT IF EXISTS fk_peak_month_id_top_records;
+
+                    ALTER TABLE mart.fact_top_records
+                    DROP CONSTRAIT IF EXISTS fk_peak_year_id_top_records;"""
             ))
         df.to_sql(table_name,
                   con=engine,
@@ -378,7 +381,16 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     ALTER TABLE mart.fact_top_records
                     ADD CONSTRAINT fk_peak_month_id_top_records
                     FOREIGN KEY (peak_month_id)
-                    REFERENCES mart.dim_peak_month(id);"""
+                    REFERENCES mart.dim_peak_month(id);
+
+                    ALTER TABLE mart.fact_top_records
+                    ALTER COLUMN peak_year_id TYPE INTEGER
+                    USING peak_year_id::INTEGER;
+
+                    ALTER TABLE mart.fact_top_records
+                    ADD CONSTRAINT fk_peak_year_id_top_records
+                    FOREIGN KEY (peak_year_id)
+                    REFERENCES mart.dim_peak_year(id);"""
             ))
 
     else:
