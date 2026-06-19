@@ -72,6 +72,7 @@ for number in range(1, 5):
     top100_games_raw = scrape_top100_games(top100_games_soup, top100_games_raw)
 load_data_to_schema(top100_games_raw, "raw", "top100_games_raw")
 
+"""
 # Extract top 10 records and save to `raw` data layer
 top10_records_raw = scrape_top10_records(soup)
 load_data_to_schema(top10_records_raw, "raw", "top10_records_raw")
@@ -93,6 +94,7 @@ top10_records_raw = extract_data_from_sql_table("raw", "top10_records_raw")
 top10_records_stg = transform_top10_records_raw(top10_records_raw)
 top10_records_stg = validate_top10_records_stg(top10_records_stg)
 load_data_to_schema(top10_records_stg, "stg", "top10_records_stg")
+"""
 
 """
 # Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
