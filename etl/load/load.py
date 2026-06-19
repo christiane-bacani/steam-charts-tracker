@@ -363,7 +363,16 @@ def load_data_to_schema(data: dict | pd.DataFrame,
     
                     ALTER TABLE mart.fact_top_records
                     ALTER COLUMN no_of_peak_players TYPE INTEGER
-                    USING no_of_peak_players::INTEGER;"""
+                    USING no_of_peak_players::INTEGER;
+
+                    ALTER TABLE mart.fact_top_records
+                    ALTER COLUMN peak_month_id TYPE INTEGER
+                    USING peak_month_id::INTEGER;
+
+                    ALTER TABLE mart.fact_top_records
+                    ADD CONSTRAINT fk_peak_month_id_top_records
+                    FOREIGN KEY (peak_month_id);
+                    REFERENCES mart.dim_peak_month(id);"""
             ))
 
     else:
