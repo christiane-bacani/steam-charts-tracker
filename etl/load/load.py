@@ -390,7 +390,16 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     ALTER TABLE mart.fact_top_records
                     ADD CONSTRAINT fk_peak_year_id_top_records
                     FOREIGN KEY (peak_year_id)
-                    REFERENCES mart.dim_peak_year(id);"""
+                    REFERENCES mart.dim_peak_year(id);
+
+                    ALTER TABLE mart.fact_top_records
+                    ALTER COLUMN timestamp_id TYPE INTEGER
+                    USING timestamp_id::INTEGER;
+
+                    ALTER TABLE mart.fact_top_records
+                    ADD CONSTRAINT fk_timestamp_id_top_records
+                    FOREIGN KEY (timestamp_id)
+                    REFERENCES mart.dim_timestamp(id);"""
             ))
 
     else:
