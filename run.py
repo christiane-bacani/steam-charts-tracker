@@ -94,6 +94,7 @@ top10_records_stg = transform_top10_records_raw(top10_records_raw)
 top10_records_stg = validate_top10_records_stg(top10_records_stg)
 load_data_to_schema(top10_records_stg, "stg", "top10_records_stg")
 
+"""
 # Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
 dim_rank_number = create_dimension_table("current_rank")
 dim_rank_number = transform_dim_rank_number(dim_rank_number)
@@ -147,3 +148,4 @@ fact_top_records = create_fact_table(top10_records_stg)
 fact_top_records = transform_fact_top_records(fact_top_records)
 fact_top_records = validate_fact_top_records(fact_top_records)
 load_data_to_schema(fact_top_records, "mart", "fact_top_records")
+"""
