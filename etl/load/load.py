@@ -79,7 +79,10 @@ def load_data_to_schema(data: dict | pd.DataFrame,
                     DROP CONSTRAINT IF EXISTS fk_timestamp_id_top_games;
 
                     ALTER TABLE mart.fact_top_records
-                    DROP CONSTRAINT IF EXISTS fk_application_id_top_records;"""
+                    DROP CONSTRAINT IF EXISTS fk_application_id_top_records;
+
+                    ALTER TABLE mart.fact_top_records
+                    DROP CONSTRAINT IF EXISTS fk_peak_month_id_top_records;"""
             ))
         df.to_sql(table_name,
                   con=engine,
