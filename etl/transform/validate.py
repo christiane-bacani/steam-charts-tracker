@@ -100,6 +100,12 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         df.reset_index(inplace=True)
         logger.info("Column: 'no_of_current_players' with missing values are removed.")
 
+    if (df["no_of_current_players"] < 0).any():
+        logger.info("'no_of_current_players' column consist of off-range values!")
+        df["no_of_current_players"] = df[df["no_of_current_players"] >= 0]
+        df.reset_index(inplace=True)
+        logger.info("'no_of_current_players' column with off-range values are removed.")
+
     # Perform validation check to the whole dataset
     columns = list(df.columns)
     correct_order_of_columns = [
@@ -195,6 +201,12 @@ def validate_top100_games_stg(df: pd.DataFrame) -> pd.DataFrame:
         df.dropna(subset=["no_of_current_players"], inplace=True)
         df.reset_index(inplace=True)
         logger.info("Column: 'no_of_current_players' with missing values are removed.")
+
+    if (df["no_of_current_players"] < 0).any():
+        logger.info("'no_of_current_players' column consist of off-range values!")
+        df["no_of_current_players"] = df[df["no_of_current_players"] >= 0]
+        df.reset_index(inplace=True)
+        logger.info("'no_of_current_players' column with off-range values are removed.")
 
     # Perform validation checks to 'no_of_peak_players' column
     if not pd.api.types.is_numeric_dtype(df["no_of_peak_players"]):
@@ -769,9 +781,9 @@ def validate_fact_trending_games(df: pd.DataFrame) -> pd.DataFrame:
         df.reset_index(inplace=True)
         logger.info("Column: 'no_of_current_players' with missing values are removed.")
 
-    if (df["no_of_current_players"] < 1).any():
+    if (df["no_of_current_players"] < 0).any():
         logger.info("'no_of_current_players' column consist of off-range values!")
-        df["no_of_current_players"] = df[df["no_of_current_players"] > 0]
+        df["no_of_current_players"] = df[df["no_of_current_players"] >= 0]
         df.reset_index(inplace=True)
         logger.info("'no_of_current_players' column with off-range values are removed.")
 
