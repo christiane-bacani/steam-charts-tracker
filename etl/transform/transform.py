@@ -372,7 +372,7 @@ def transform_fact_top_records(df: pd.DataFrame) -> pd.DataFrame:
 
 def transform(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Transform the extracted data from the stg or mart data layer by
+    Transform the extracted data from the raw/stg data layer by
     checking the column structure of the extracted data then run
     the correct transformation function.
 
@@ -382,3 +382,12 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The transformed data as a DataFrame.        
     """
+    columns = list(df.columns)
+
+    if columns == ["id",
+                   "app_id",
+                   "rank",
+                   "name",
+                   "twenty_for_hour_change",
+                   "current_players"]:
+        return transform_top5_trending_games_raw(df)
