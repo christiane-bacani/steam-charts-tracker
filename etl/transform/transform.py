@@ -369,3 +369,16 @@ def transform_fact_top_records(df: pd.DataFrame) -> pd.DataFrame:
 
     logger.info("Successfully transformed the data from: `fact_top_records`.")
     return df
+
+def transform(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Transform the extracted data from the stg or mart data layer by
+    checking the column structure of the extracted data then run
+    the correct transformation function.
+
+    Args:
+        df (DataFrame): The extracted data as a DataFrame.
+
+    Returns:
+        DataFrame: The transformed data as a DataFrame.        
+    """
