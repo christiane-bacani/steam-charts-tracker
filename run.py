@@ -11,17 +11,6 @@ from etl.extract.extract import scrape_top100_games
 from etl.extract.extract import scrape_top10_records
 
 from etl.extract.extract import extract_data_from_sql_table
-from etl.transform.transform import transform_top5_trending_games_raw
-from etl.transform.transform import transform_top100_games_raw
-from etl.transform.transform import transform_top10_records_raw
-from etl.transform.transform import transform_dim_rank_number
-from etl.transform.transform import transform_dim_steam_game
-from etl.transform.transform import transform_dim_timestamp
-from etl.transform.transform import transform_dim_peak_month
-from etl.transform.transform import transform_dim_peak_year
-from etl.transform.transform import transform_fact_trending_games
-from etl.transform.transform import transform_fact_top_games
-from etl.transform.transform import transform_fact_top_records
 from etl.transform.validate import validate_top5_trending_games_stg
 from etl.transform.validate import validate_top100_games_stg
 from etl.transform.validate import validate_top10_records_stg
@@ -83,6 +72,7 @@ load_data_to_schema(top10_records_raw, "raw", "top10_records_raw")
 # transform the data, validate the transformed data, and save the
 # transformed/validated data to `stg` data layer
 top5_trending_games_raw = extract_data_from_sql_table("raw", "top5_trending_games_raw")
+transform(top5_trending_games_raw)
 
 """
 # Transform the extracted data of the top 5 trending games and save to 'stg' data layer
