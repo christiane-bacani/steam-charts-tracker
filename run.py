@@ -78,9 +78,10 @@ top10_records_raw = scrape_top10_records(soup)
 load_data_to_schema(top10_records_raw, "raw", "top10_records_raw")
 
 
-# Extract ingested data from `raw` data layer, transform the data,
-# validate the transformed data, and save the transformed/validated data to
-# `stg` data layer
+
+# Extract ingested data of top 5 trending games from `raw` data layer,
+# transform the data, validate the transformed data, and save the
+# transformed/validated data to `stg` data layer
 top5_trending_games_raw = extract_data_from_sql_table("raw", "top5_trending_games_raw")
 
 """
