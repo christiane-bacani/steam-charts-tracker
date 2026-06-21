@@ -1115,4 +1115,4 @@ def validate(df: pd.DataFrame) -> pd.DataFrame:
                    "twenty_four_hour_change",
                    "current_players",
                    "timestamp"]:
-        
+        return validate_top5_trending_games_raw(df)
