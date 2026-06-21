@@ -1107,12 +1107,11 @@ def validate(df: pd.DataFrame) -> pd.DataFrame:
     """
     columns = list(df.columns)
 
-    
     if columns == ["id", 
-                   "app_id",
-                   "rank",
-                   "name",
-                   "twenty_four_hour_change",
-                   "current_players",
+                   "application_id", 
+                   "current_rank", 
+                   "game_name", 
+                   "change_pct_within_24hr", 
+                   "no_of_current_players", 
                    "timestamp"]:
         return validate_top5_trending_games_raw(df)
