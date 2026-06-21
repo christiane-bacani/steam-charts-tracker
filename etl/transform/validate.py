@@ -1091,3 +1091,17 @@ def validate_fact_top_records(df: pd.DataFrame) -> pd.DataFrame:
 
     logger.info("Successfully validated the data from: 'fact_top_records'.")
     return df
+
+def validate(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Validate the extracted and transformed data
+    from the raw/stg data layer before loading it
+    to the next data layer.
+
+    Args:
+        df (DataFrame): The extracted and transformed
+                        data as a DataFrame.
+
+    Returns:
+        DataFrame: The transformed data as a DataFrame.        
+    """
