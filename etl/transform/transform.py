@@ -384,10 +384,13 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
     """
     columns = list(df.columns)
 
-    if columns == ["id",
+    print(columns)
+    
+    if columns == ["id", 
                    "app_id",
                    "rank",
                    "name",
-                   "twenty_for_hour_change",
-                   "current_players"]:
+                   "twenty_four_hour_change",
+                   "current_players",
+                   "timestamp"]:
         return transform_top5_trending_games_raw(df)
