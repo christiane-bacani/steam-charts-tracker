@@ -510,7 +510,7 @@ def load(data: dict | pd.DataFrame) -> pd.DataFrame:
                    "name",
                    "twenty_four_hour_change",
                    "current_players"]:
-        load_scraped_top5_trending_games(data)
+        load_scraped_top5_trending_games(pd.DataFrame(data))
 
     elif columns == ["app_id",
                      "rank",
@@ -518,14 +518,14 @@ def load(data: dict | pd.DataFrame) -> pd.DataFrame:
                      "current_players",
                      "peak_players",
                      "hours_played"]:
-        load_scraped_top100_games(data)
+        load_scraped_top100_games(pd.DataFrame(data))
 
     elif columns == ["app_id",
                      "rank",
                      "name",
                      "peak_players",
                      "time"]:
-        load_scraped_top10_records(data)
+        load_scraped_top10_records(pd.DataFrame(data))
 
     else:
         raise Exception("Invalid data to load to the target data layer!")
