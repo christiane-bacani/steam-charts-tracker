@@ -33,8 +33,8 @@ url = "https://steamcharts.com/"
 soup = parse_soup(url)
 
 # Ingest top 5 trending games and save the ingested data to `raw` data layer
-top5_trending_games_raw = scrape_top5_trending_games(soup)
-load_data_to_schema(top5_trending_games_raw, "raw", "top5_trending_games_raw")
+scraped_top5_trending_games = scrape_top5_trending_games(soup)
+load_data_to_schema(scraped_top5_trending_games, "raw", "top5_trending_games_raw")
 
 # Ingest top 100 games (by current players) and save the ingested data to
 # `raw` data layer
