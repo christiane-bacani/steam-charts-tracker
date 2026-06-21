@@ -384,8 +384,6 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
     """
     columns = list(df.columns)
 
-    print(columns)
-    
     if columns == ["id", 
                    "app_id",
                    "rank",
