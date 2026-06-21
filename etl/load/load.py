@@ -409,3 +409,14 @@ def load_data_to_schema(data: dict | pd.DataFrame,
         raise Exception("Invalid database table name!")
 
     logger.info(f"Successfully loaded new data to SQL table: '{table_name}'.")
+
+def load(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Load the extracted, transformed, and validated data
+    from the raw/stg data layer to the next data layer
+    for further processing.
+
+    Args:
+        df (DataFrame): The extracted, transformed, validated
+                        data as a DataFrame.
+    """
