@@ -12,7 +12,8 @@ from etl.extract.extract import scrape_top10_records
 
 from etl.extract.extract import extract_data_from_sql_table
 from etl.transform.transform import transform
-from etl.load.load import load_data_to_schema
+from etl.transform.validate import validate
+from etl.load.load import load
 
 from utils.dimension import create_dimension_table
 from utils.fact import create_fact_table
@@ -34,11 +35,11 @@ soup = parse_soup(url)
 
 # Ingest top 5 trending games and save the ingested data to `raw` data layer
 scraped_top5_trending_games = scrape_top5_trending_games(soup)
-load_data_to_schema(scraped_top5_trending_games, "raw", "top5_trending_games_raw")
+load(scraped_top5_trending_games)
 
 # Ingest top 100 games (by current players) and save the ingested data to
 # `raw` data layer
-top100_games_raw = {
+scraped_top100_games = {
     "app_id":          [],
     "rank":            [],
     "name":            [],
@@ -48,12 +49,12 @@ top100_games_raw = {
 }
 for number in range(1, 5):
     top100_games_soup = parse_soup(f"{url}top/p.{number}")
-    top100_games_raw = scrape_top100_games(top100_games_soup, top100_games_raw)
-load_data_to_schema(top100_games_raw, "raw", "top100_games_raw")
+    scraped_top100_games = scrape_top100_games(top100_games_soup, scraped_top100_games)
+load(scraped_top100_games)
 
 # Ingest top 10 game records and save the ingested data to `raw` data layer
-top10_records_raw = scrape_top10_records(soup)
-load_data_to_schema(top10_records_raw, "raw", "top10_records_raw")
+scraped_top10_records = scrape_top10_records(soup)
+load(scraped_top10_records)
 
 
 
@@ -62,6 +63,7 @@ load_data_to_schema(top10_records_raw, "raw", "top10_records_raw")
 # transformed/validated data to `stg` data layer
 top5_trending_games_raw = extract_data_from_sql_table("raw", "top5_trending_games_raw")
 top5_trending_games_raw = transform(top5_trending_games_raw)
+top5_trending_games_raw = validate(top5_trending_games_raw)
 
 """
 # Transform the extracted data of the top 5 trending games and save to 'stg' data layer
