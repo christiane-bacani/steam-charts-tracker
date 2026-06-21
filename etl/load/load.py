@@ -410,6 +410,31 @@ def load_data_to_schema(data: dict | pd.DataFrame,
 
     logger.info(f"Successfully loaded new data to SQL table: '{table_name}'.")
 
+def load_scraped_top5_trending_games(df: pd.DataFrame) -> None:
+    """
+    Load the data: `top5_trending_games` to the raw data layer for
+    further processing.
+
+    Args:
+        df (DataFrame): The ingested data as a DataFrame.
+    """
+    logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
+    load_dotenv()
+    engine = init_connection(
+        os.getenv("HOST"),
+        os.getenv("PORT"),
+        "steam_charts",
+        os.getenv("DB_USERNAME"),
+        os.getenv("DB_PASSWORD")
+    )
+
+    logger.info(f"Loading new data to SQL Table: 'top5_trending_games_raw'.")
+    df.to_sql("top5_trending_games_raw",
+              con=engine,
+              schema_name="raw",
+              if_exists="append")
+    logger.info(f"Successfully loaded new data to SQL table: 'top5_trending_games_raw'.")
+
 def load(df: pd.DataFrame) -> pd.DataFrame:
     """
     Load the extracted, transformed, and validated data
