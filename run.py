@@ -64,6 +64,7 @@ load(scraped_top10_records)
 top5_trending_games_raw = extract_data_from_sql_table("raw", "top5_trending_games_raw")
 top5_trending_games_raw = transform(top5_trending_games_raw)
 top5_trending_games_raw = validate(top5_trending_games_raw)
+load(top5_trending_games_raw)
 
 """
 # Transform the extracted data of the top 5 trending games and save to 'stg' data layer
