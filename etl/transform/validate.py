@@ -8,9 +8,9 @@ from datetime import datetime
 
 from logs import logger
 
-def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
+def validate_top5_trending_games_raw(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Validate the data from the DataFrame object 'top5_trending_games_stg'
+    Validate the data from the DataFrame object 'top5_trending_games_raw'
     before loading to the stage data layer.
 
     Args:
@@ -19,7 +19,7 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.
     """
-    logger.info("Validating the data from: 'top5_trending_games_stg'.")
+    logger.info("Validating the data from: 'top5_trending_games_raw'.")
 
     # Perform validation checks to 'application_id' column
     if not pd.api.types.is_numeric_dtype(df["application_id"]):
@@ -119,9 +119,9 @@ def validate_top5_trending_games_stg(df: pd.DataFrame) -> pd.DataFrame:
     ]
 
     if columns != correct_order_of_columns:
-        raise Exception("Columns of the table: 'top5_trending_games_stg' are inaccurate!")
+        raise Exception("Columns of the table: 'top5_trending_games_raw' are inaccurate!")
 
-    logger.info("Successfully validated the data from: 'top5_trending_games_stg'.")
+    logger.info("Successfully validated the data from: 'top5_trending_games_raw'.")
     return df
 
 def validate_top100_games_stg(df: pd.DataFrame) -> pd.DataFrame:
@@ -1105,3 +1105,14 @@ def validate(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The transformed data as a DataFrame.        
     """
+    columns = list(df.columns)
+
+    
+    if columns == ["id", 
+                   "app_id",
+                   "rank",
+                   "name",
+                   "twenty_four_hour_change",
+                   "current_players",
+                   "timestamp"]:
+        
