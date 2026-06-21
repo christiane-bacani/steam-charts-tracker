@@ -61,7 +61,7 @@ load_data_to_schema(top10_records_raw, "raw", "top10_records_raw")
 # transform the data, validate the transformed data, and save the
 # transformed/validated data to `stg` data layer
 top5_trending_games_raw = extract_data_from_sql_table("raw", "top5_trending_games_raw")
-top5_trending_games_stg = transform(top5_trending_games_raw)
+top5_trending_games_raw = transform(top5_trending_games_raw)
 
 """
 # Transform the extracted data of the top 5 trending games and save to 'stg' data layer
