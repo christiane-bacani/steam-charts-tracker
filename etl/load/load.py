@@ -431,8 +431,9 @@ def load_scraped_top5_trending_games(df: pd.DataFrame) -> None:
     logger.info(f"Loading new data to SQL Table: 'top5_trending_games_raw'.")
     df.to_sql("top5_trending_games_raw",
               con=engine,
-              schema_name="raw",
-              if_exists="append")
+              schema="raw",
+              if_exists="append",
+              index=False)
     logger.info(f"Successfully loaded new data to SQL table: 'top5_trending_games_raw'.")
 
 def load_scraped_top100_games(df: pd.DataFrame) -> None:
@@ -456,8 +457,9 @@ def load_scraped_top100_games(df: pd.DataFrame) -> None:
     logger.info(f"Loading new data to SQL Table: 'top100_games_raw'.")
     df.to_sql("top100_games_raw",
               con=engine,
-              schema_name="raw",
-              if_exists="append")
+              schema="raw",
+              if_exists="append",
+              index=False)
     logger.info(f"Successfully loaded new data to SQL table: 'top100_games_raw'.")
 
 def load_scraped_top10_records(df: pd.DataFrame) -> None:
@@ -481,8 +483,9 @@ def load_scraped_top10_records(df: pd.DataFrame) -> None:
     logger.info(f"Loading new data to SQL Table: 'top10_records_raw'.")
     df.to_sql("top10_records_raw",
               con=engine,
-              schema_name="raw",
-              if_exists="append")
+              schema="raw",
+              if_exists="append",
+              index=False)
     logger.info(f"Successfully loaded new data to SQL table: 'top10_records_raw'.")
 
 def load(data: dict | pd.DataFrame) -> pd.DataFrame:
