@@ -412,8 +412,8 @@ def load_data_to_schema(data: dict | pd.DataFrame,
 
 def load_scraped_top5_trending_games(df: pd.DataFrame) -> None:
     """
-    Load the data: `top5_trending_games` to the raw data layer for
-    further processing.
+    Load the ingested data: `top5_trending_games` to the raw data
+    layer for further processing.
 
     Args:
         df (DataFrame): The ingested data as a DataFrame.
@@ -435,13 +435,97 @@ def load_scraped_top5_trending_games(df: pd.DataFrame) -> None:
               if_exists="append")
     logger.info(f"Successfully loaded new data to SQL table: 'top5_trending_games_raw'.")
 
-def load(df: pd.DataFrame) -> pd.DataFrame:
+def load_scraped_top100_games(df: pd.DataFrame) -> None:
+    """
+    Load the ingested data: `top100_games` to the raw data
+    layer for further processing.
+
+    Args:
+        df (DataFrame): The ingested data as a DataFrame.
+    """
+    logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
+    load_dotenv()
+    engine = init_connection(
+        os.getenv("HOST"),
+        os.getenv("PORT"),
+        "steam_charts",
+        os.getenv("DB_USERNAME"),
+        os.getenv("DB_PASSWORD")
+    )
+
+    logger.info(f"Loading new data to SQL Table: 'top100_games_raw'.")
+    df.to_sql("top100_games_raw",
+              con=engine,
+              schema_name="raw",
+              if_exists="append")
+    logger.info(f"Successfully loaded new data to SQL table: 'top100_games_raw'.")
+
+def load_scraped_top10_records(df: pd.DataFrame) -> None:
+    """
+    Load the ingested data: `top10_records` to the raw data
+    layer for further processing.
+
+    Args:
+        df (DataFrame): The ingested data as a DataFrame.
+    """
+    logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
+    load_dotenv()
+    engine = init_connection(
+        os.getenv("HOST"),
+        os.getenv("PORT"),
+        "steam_charts",
+        os.getenv("DB_USERNAME"),
+        os.getenv("DB_PASSWORD")
+    )
+
+    logger.info(f"Loading new data to SQL Table: 'top10_records_raw'.")
+    df.to_sql("top10_records_raw",
+              con=engine,
+              schema_name="raw",
+              if_exists="append")
+    logger.info(f"Successfully loaded new data to SQL table: 'top10_records_raw'.")
+
+def load(data: dict | pd.DataFrame) -> pd.DataFrame:
     """
     Load the extracted, transformed, and validated data
     from the raw/stg data layer to the next data layer
     for further processing.
 
     Args:
-        df (DataFrame): The extracted, transformed, validated
-                        data as a DataFrame.
+        data (dict | DataFrame): The ingested data as a dictionary | 
+                                 The extracted, transformed, validated
+                                 data as a DataFrame.
     """
+    if type(data) is dict:
+        columns = list(data.keys())
+
+    elif type(data) is pd.DataFrame:
+        columns = list(data.columns)
+
+    else:
+        raise Exception("The data consist of invalid datatype!")       
+
+    if columns == ["app_id",
+                   "rank",
+                   "name",
+                   "twenty_four_hour_change",
+                   "current_players"]:
+        load_scraped_top5_trending_games(data)
+
+    elif columns == ["app_id",
+                     "rank",
+                     "name",
+                     "current_players",
+                     "peak_players",
+                     "hours_played"]:
+        load_scraped_top100_games(data)
+
+    elif columns == ["app_id",
+                     "rank",
+                     "name",
+                     "peak_players",
+                     "time"]:
+        load_scraped_top10_records(data)
+
+    else:
+        raise Exception("Invalid data to load to the target data layer!")
