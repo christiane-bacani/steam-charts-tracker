@@ -43,22 +43,22 @@ def ingest_top5_trending_games(soup: BeautifulSoup) -> dict[str, list]:
     for rank, table_row in enumerate(table_rows):
         table_data = table_row.find_all("td")
 
-        # Extract application ID
+        # Ingest application ID
         app_id = table_data[0].find("a")["href"]
         ingested_data["app_id"].append(app_id)
 
-        # Extract rank number
+        # Ingest rank number
         ingested_data["rank"].append(rank + 1)
 
-        # Extract the game name
+        # Ingest the game name
         name = table_data[0].get_text()
         ingested_data["name"].append(name)
 
-        # Extract 24-hour change percentage
+        # Ingest 24-hour change percentage
         twenty_four_hour_change = table_data[1].get_text()
         ingested_data["twenty_four_hour_change"].append(twenty_four_hour_change)
 
-        # Extract the no. of current players
+        # Ingest the no. of current players
         current_players = table_data[3].get_text()
         ingested_data["current_players"].append(current_players)
 
@@ -104,27 +104,27 @@ def ingest_top100_games(soup: BeautifulSoup,
     for table_row in table_rows:
         table_data = table_row.find_all("td")
 
-        # Extract application ID
+        # Ingest application ID
         app_id = table_data[1].find("a")["href"]
         ingested_data["app_id"].append(app_id)
 
-        # Extract rank number
+        # Ingest rank number
         rank = table_data[0].get_text()
         ingested_data["rank"].append(rank)
 
-        # Extract the game name
+        # Ingest the game name
         name = table_data[1].get_text()
         ingested_data["name"].append(name)
 
-        # Extract the no. of current players
+        # Ingest the no. of current players
         current_players = table_data[2].get_text()
         ingested_data["current_players"].append(current_players)
 
-        # Extract the no. of peak players
+        # Ingest the no. of peak players
         peak_players = table_data[4].get_text()
         ingested_data["peak_players"].append(peak_players)
 
-        # Extract the total no. of hours played
+        # Ingest the total no. of hours played
         hours_played = table_data[5].get_text()
         ingested_data["hours_played"].append(hours_played)
 
@@ -163,22 +163,22 @@ def ingest_top10_records(soup: BeautifulSoup) -> dict[str, list]:
     for rank, table_row in enumerate(table_rows):
         table_data = table_row.find_all("td")
 
-        # Extract application ID
+        # Ingest application ID
         app_id = table_data[0].find("a")["href"]
         ingested_data["app_id"].append(app_id)
 
-        # Extract rank number
+        # Ingest rank number
         ingested_data["rank"].append(rank + 1)
 
-        # Extract the game name
+        # Ingest the game name
         name = table_data[0].get_text()
         ingested_data["name"].append(name)
 
-        # Extract the no. of peak players
+        # Ingest the no. of peak players
         peak_players = table_data[1].get_text()
         ingested_data["peak_players"].append(peak_players)
 
-        # Extract the time
+        # Ingest the time
         time = table_data[2].get_text()
         ingested_data["time"].append(time)
 
