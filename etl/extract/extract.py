@@ -210,3 +210,17 @@ def extract_data_from_sql_table(schema_name: str,
 
     logger.info(f"Successfully extracted the data from: '{table_name}'.")
     return df
+
+def extract(table_name: str) -> pd.DataFrame:
+    """
+    Extract the data from the raw/stg data layer by
+    checking the name of the table then extract it
+    for further processing.
+
+    Args:
+        table_name (str): The name of the table from raw/stg
+                          data layer.
+
+    Returns:
+        DataFrame: The extracted data as a DataFrame.
+    """
