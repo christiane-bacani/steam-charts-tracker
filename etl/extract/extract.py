@@ -224,3 +224,19 @@ def extract(table_name: str) -> pd.DataFrame:
     Returns:
         DataFrame: The extracted data as a DataFrame.
     """
+    logger.info(f"Extracting the data from: '{table_name}'.")
+    load_dotenv()
+    engine = init_connection(os.getenv("HOST"),
+                             os.getenv("PORT"),
+                             "steam_charts",
+                             os.getenv("DB_USERNAME"),
+                             os.getenv("DB_PASSWORD"))
+
+    if table_name == "top5_trending_games_raw":
+        logger.info("Extracting the data: 'top5_trending_game_raw'.")
+        query = "SELECT * FROM raw.top5_trending_games_raw;"
+        logger.info("Successfully extracted the data: 'top5_trending_games_raw'")
+        return pd.read_sql(query, engine)
+
+    else:
+        raise Exception("Invalid table name to extract!")
