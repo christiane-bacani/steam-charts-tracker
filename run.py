@@ -5,7 +5,7 @@ from utils.database.database import create_database
 from utils.database.schema import create_schema
 from utils.database.table import create_table_for_raw_layer
 
-from utils.parse import parse_soup
+from utils.parse import parse
 from etl.extract.extract import ingest_top5_trending_games
 from etl.extract.extract import ingest_top100_games
 from etl.extract.extract import ingest_top10_records
@@ -31,7 +31,7 @@ create_table_for_raw_layer("top10_records_raw")
 
 # Parse BeautifulSoup object to extract trending games and top records
 url = "https://steamcharts.com/"
-soup = parse_soup(url)
+soup = parse(url)
 
 # Ingest top 5 trending games and save the ingested data to `raw` data layer
 top5_trending_games = ingest_top5_trending_games(soup)
@@ -48,7 +48,7 @@ top100_games = {
     "hours_played":    []
 }
 for number in range(1, 5):
-    top100_games_soup = parse_soup(f"{url}top/p.{number}")
+    top100_games_soup = parse(f"{url}top/p.{number}")
     top100_games = ingest_top100_games(top100_games_soup, top100_games)
 load(top100_games)
 
