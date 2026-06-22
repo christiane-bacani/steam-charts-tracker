@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 
 from logs import logger
 
-def parse_soup(url: str) -> BeautifulSoup:
+def parse(url: str) -> BeautifulSoup:
     """
     Fetch a URL and return a parsed BeautifulSoup object.
 
