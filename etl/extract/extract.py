@@ -16,12 +16,12 @@ def ingest_top5_trending_games(soup: BeautifulSoup) -> dict[str, list]:
     Ingest the data of the current top 5 trending games on Steam Charts website.
 
     Args:
-        soup (bs4.BeautifulSoup): The parsed BeautifulSoup object for web-scraping.
+        soup (bs4.BeautifulSoup): The parsed BeautifulSoup object.
 
     Returns:
-        dict[str, list]: The scraped data as a dictionary.
+        dict[str, list]: The ingested data as a dictionary.
     """
-    logger.info("Scraping the current data of the top 5 trending games.")
+    logger.info("Ingesting the current data of the top 5 trending games.")
     body = soup.find("body")
     content_wrapper = body.find("div", attrs={"id": "content-wrapper"})
     content_class = content_wrapper.find(
@@ -32,7 +32,7 @@ def ingest_top5_trending_games(soup: BeautifulSoup) -> dict[str, list]:
     tbody = table.find("tbody")
     table_rows = tbody.find_all("tr")
 
-    scraped_data = {
+    ingested_data = {
         "app_id":                  [],
         "rank":                    [],
         "name":                    [],
@@ -45,51 +45,52 @@ def ingest_top5_trending_games(soup: BeautifulSoup) -> dict[str, list]:
 
         # Extract application ID
         app_id = table_data[0].find("a")["href"]
-        scraped_data["app_id"].append(app_id)
+        ingested_data["app_id"].append(app_id)
 
         # Extract rank number
-        scraped_data["rank"].append(rank + 1)
+        ingested_data["rank"].append(rank + 1)
 
         # Extract the game name
         name = table_data[0].get_text()
-        scraped_data["name"].append(name)
+        ingested_data["name"].append(name)
 
         # Extract 24-hour change percentage
         twenty_four_hour_change = table_data[1].get_text()
-        scraped_data["twenty_four_hour_change"].append(twenty_four_hour_change)
+        ingested_data["twenty_four_hour_change"].append(twenty_four_hour_change)
 
         # Extract the no. of current players
         current_players = table_data[3].get_text()
-        scraped_data["current_players"].append(current_players)
+        ingested_data["current_players"].append(current_players)
 
-    logger.info("Successfully scraped the current data of the top 5 trending games.")
-    return scraped_data
+    logger.info("Successfully ingested the current data of the top 5 trending games.")
+    return ingested_data
 
 def ingest_top100_games(soup: BeautifulSoup,
-                         scraped_data: dict[str, list]) -> dict[str, list]:
+                        ingested_data: dict[str, list]) -> dict[str, list]:
     """
     Ingest the data of the current top 100 games (by current players) on Steam
     Charts website.
 
     Args:
-        soup (bs4.BeautifulSoup): The parsed BeautifulSoup object for web-scraping.
+        soup (bs4.BeautifulSoup): The parsed BeautifulSoup object.
+        ingested_data (dict): The existing ingested data as a dictionary.
 
     Returns:
-        dict[str, list]: The scraped data as a dictionary.
+        dict[str, list]: The ingested data as a dictionary.
     """
-    if len(scraped_data["rank"]) == 0:
+    if len(ingested_data["rank"]) == 0:
         n = "1-25"
 
-    elif len(scraped_data["rank"]) == 25:
+    elif len(ingested_data["rank"]) == 25:
         n = "26-50"
 
-    elif len(scraped_data["rank"]) == 50:
+    elif len(ingested_data["rank"]) == 50:
         n = "51-75"
 
     else:
         n = "76-100"
 
-    logger.info(f"Scraping the current data of the top {n} games.")
+    logger.info(f"Ingesting the current data of the top {n} games.")
     body = soup.find("body")
     content_wrapper = body.find("div", attrs={"id": "content-wrapper"})
     content_class = content_wrapper.find(
@@ -105,42 +106,42 @@ def ingest_top100_games(soup: BeautifulSoup,
 
         # Extract application ID
         app_id = table_data[1].find("a")["href"]
-        scraped_data["app_id"].append(app_id)
+        ingested_data["app_id"].append(app_id)
 
         # Extract rank number
         rank = table_data[0].get_text()
-        scraped_data["rank"].append(rank)
+        ingested_data["rank"].append(rank)
 
         # Extract the game name
         name = table_data[1].get_text()
-        scraped_data["name"].append(name)
+        ingested_data["name"].append(name)
 
         # Extract the no. of current players
         current_players = table_data[2].get_text()
-        scraped_data["current_players"].append(current_players)
+        ingested_data["current_players"].append(current_players)
 
         # Extract the no. of peak players
         peak_players = table_data[4].get_text()
-        scraped_data["peak_players"].append(peak_players)
+        ingested_data["peak_players"].append(peak_players)
 
         # Extract the total no. of hours played
         hours_played = table_data[5].get_text()
-        scraped_data["hours_played"].append(hours_played)
+        ingested_data["hours_played"].append(hours_played)
 
-    logger.info(f"Successfully scraped the current data of the top {n} games.")
-    return scraped_data
+    logger.info(f"Successfully ingested the current data of the top {n} games.")
+    return ingested_data
 
 def ingest_top10_records(soup: BeautifulSoup) -> dict[str, list]:
     """
     Ingest the data of the current top 10 records on Steam Charts website.
 
     Args:
-        soup (bs4.BeautifulSoup): The parsed BeautifulSoup object for web-scraping.
+        soup (bs4.BeautifulSoup): The parsed BeautifulSoup object.
 
     Returns:
-        dict[str, list]: The scraped data as a dictionary.
+        dict[str, list]: The ingested data as a dictionary.
     """
-    logger.info("Scraping the current data of the top 10 records.")
+    logger.info("Ingesting the current data of the top 10 records.")
     body = soup.find("body")
     content_wrapper = body.find("div", attrs={"id": "content-wrapper"})
     content_class = content_wrapper.find_all(
@@ -151,7 +152,7 @@ def ingest_top10_records(soup: BeautifulSoup) -> dict[str, list]:
     tbody = table.find("tbody")
     table_rows = tbody.find_all("tr")
 
-    scraped_data = {
+    ingested_data = {
         "app_id":       [],
         "rank":         [],
         "name":         [],
@@ -164,25 +165,25 @@ def ingest_top10_records(soup: BeautifulSoup) -> dict[str, list]:
 
         # Extract application ID
         app_id = table_data[0].find("a")["href"]
-        scraped_data["app_id"].append(app_id)
+        ingested_data["app_id"].append(app_id)
 
         # Extract rank number
-        scraped_data["rank"].append(rank + 1)
+        ingested_data["rank"].append(rank + 1)
 
         # Extract the game name
         name = table_data[0].get_text()
-        scraped_data["name"].append(name)
+        ingested_data["name"].append(name)
 
         # Extract the no. of peak players
         peak_players = table_data[1].get_text()
-        scraped_data["peak_players"].append(peak_players)
+        ingested_data["peak_players"].append(peak_players)
 
         # Extract the time
         time = table_data[2].get_text()
-        scraped_data["time"].append(time)
+        ingested_data["time"].append(time)
 
-    logger.info("Successfully scraped the current data of the top 10 records.")
-    return scraped_data
+    logger.info("Successfully ingested the current data of the top 10 records.")
+    return ingested_data
 
 def extract(table_name: str) -> pd.DataFrame:
     """
