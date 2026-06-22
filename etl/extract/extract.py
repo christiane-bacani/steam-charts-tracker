@@ -11,9 +11,9 @@ from utils.database.connection import init_connection
 
 from logs import logger
 
-def scrape_top5_trending_games(soup: BeautifulSoup) -> dict[str, list]:
+def ingest_top5_trending_games(soup: BeautifulSoup) -> dict[str, list]:
     """
-    Web-scrape the data of the current top 5 trending games on Steam Charts website.
+    Ingest the data of the current top 5 trending games on Steam Charts website.
 
     Args:
         soup (bs4.BeautifulSoup): The parsed BeautifulSoup object for web-scraping.
@@ -65,10 +65,10 @@ def scrape_top5_trending_games(soup: BeautifulSoup) -> dict[str, list]:
     logger.info("Successfully scraped the current data of the top 5 trending games.")
     return scraped_data
 
-def scrape_top100_games(soup: BeautifulSoup,
+def ingest_top100_games(soup: BeautifulSoup,
                          scraped_data: dict[str, list]) -> dict[str, list]:
     """
-    Web-scrape the data of the current top 100 games (by current players) on Steam
+    Ingest the data of the current top 100 games (by current players) on Steam
     Charts website.
 
     Args:
@@ -130,9 +130,9 @@ def scrape_top100_games(soup: BeautifulSoup,
     logger.info(f"Successfully scraped the current data of the top {n} games.")
     return scraped_data
 
-def scrape_top10_records(soup: BeautifulSoup) -> dict[str, list]:
+def ingest_top10_records(soup: BeautifulSoup) -> dict[str, list]:
     """
-    Web-scrape the data of the current top 10 records on Steam Charts website.
+    Ingest the data of the current top 10 records on Steam Charts website.
 
     Args:
         soup (bs4.BeautifulSoup): The parsed BeautifulSoup object for web-scraping.
@@ -183,33 +183,6 @@ def scrape_top10_records(soup: BeautifulSoup) -> dict[str, list]:
 
     logger.info("Successfully scraped the current data of the top 10 records.")
     return scraped_data
-
-def extract_data_from_sql_table(schema_name: str,
-                                table_name:  str) -> pd.DataFrame:
-    """
-    Extract data from different SQL tables from a certain database schema that
-    corresponds to a certain data layer (bronze/raw, silver/stage, and gold/mart).
-
-    Args:
-        schema_name (str): The name of the database schema.
-        table_name (str): The name of the SQL Table.
-
-    Returns:
-        DataFrame: The extracted data as a DataFrame.
-    """
-    logger.info(f"Extracting the data from: '{table_name}'.")
-    load_dotenv()
-    engine = init_connection(os.getenv("HOST"),
-                             os.getenv("PORT"),
-                             "steam_charts",
-                             os.getenv("DB_USERNAME"),
-                             os.getenv("DB_PASSWORD"))
-
-    query = f"SELECT * FROM {schema_name}.{table_name};"
-    df = pd.read_sql(query, engine)
-
-    logger.info(f"Successfully extracted the data from: '{table_name}'.")
-    return df
 
 def extract(table_name: str) -> pd.DataFrame:
     """
