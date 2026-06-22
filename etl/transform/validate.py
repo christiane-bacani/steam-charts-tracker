@@ -1117,4 +1117,4 @@ def validate(df: pd.DataFrame) -> pd.DataFrame:
         return validate_top5_trending_games_raw(df)
 
     else:
-        raise Exception("Invalid transformed data to validate!")
+        raise Exception("Invalid data to validate!")

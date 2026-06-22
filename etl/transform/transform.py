@@ -394,4 +394,4 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
         return transform_top5_trending_games_raw(df)
 
     else:
-        raise Exception("Invalid extracted data to transform!")
+        raise Exception("Invalid data to transform!")
