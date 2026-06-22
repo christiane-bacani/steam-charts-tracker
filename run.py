@@ -6,9 +6,9 @@ from utils.database.schema import create_schema
 from utils.database.table import create_table_for_raw_layer
 
 from utils.parse import parse_soup
-from etl.extract.extract import scrape_top5_trending_games
-from etl.extract.extract import scrape_top100_games
-from etl.extract.extract import scrape_top10_records
+from etl.extract.extract import ingest_top5_trending_games
+from etl.extract.extract import ingest_top100_games
+from etl.extract.extract import ingest_top10_records
 
 from etl.extract.extract import extract
 from etl.transform.transform import transform
@@ -34,12 +34,12 @@ url = "https://steamcharts.com/"
 soup = parse_soup(url)
 
 # Ingest top 5 trending games and save the ingested data to `raw` data layer
-scraped_top5_trending_games = scrape_top5_trending_games(soup)
-load(scraped_top5_trending_games)
+top5_trending_games = ingest_top5_trending_games(soup)
+load(top5_trending_games)
 
 # Ingest top 100 games (by current players) and save the ingested data to
 # `raw` data layer
-scraped_top100_games = {
+top100_games = {
     "app_id":          [],
     "rank":            [],
     "name":            [],
@@ -49,12 +49,12 @@ scraped_top100_games = {
 }
 for number in range(1, 5):
     top100_games_soup = parse_soup(f"{url}top/p.{number}")
-    scraped_top100_games = scrape_top100_games(top100_games_soup, scraped_top100_games)
-load(scraped_top100_games)
+    top100_games = ingest_top100_games(top100_games_soup, top100_games)
+load(top100_games)
 
 # Ingest top 10 game records and save the ingested data to `raw` data layer
-scraped_top10_records = scrape_top10_records(soup)
-load(scraped_top10_records)
+top10_records = ingest_top10_records(soup)
+load(top10_records)
 
 
 
