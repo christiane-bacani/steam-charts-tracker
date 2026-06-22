@@ -10,7 +10,7 @@ from etl.extract.extract import scrape_top5_trending_games
 from etl.extract.extract import scrape_top100_games
 from etl.extract.extract import scrape_top10_records
 
-from etl.extract.extract import extract_data_from_sql_table
+from etl.extract.extract import extract
 from etl.transform.transform import transform
 from etl.transform.validate import validate
 from etl.load.load import load
@@ -61,7 +61,7 @@ load(scraped_top10_records)
 # Extract ingested data of top 5 trending games from `raw` data layer,
 # transform the data, validate the transformed data, and save the
 # transformed/validated data to `stg` data layer
-top5_trending_games_raw = extract_data_from_sql_table("raw", "top5_trending_games_raw")
+top5_trending_games_raw = extract("top5_trending_games_raw")
 top5_trending_games_raw = transform(top5_trending_games_raw)
 top5_trending_games_raw = validate(top5_trending_games_raw)
 load(top5_trending_games_raw)
