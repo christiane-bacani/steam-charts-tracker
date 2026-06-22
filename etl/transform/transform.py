@@ -392,3 +392,6 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
                    "current_players",
                    "timestamp"]:
         return transform_top5_trending_games_raw(df)
+
+    else:
+        raise Exception("Invalid data to transform!")
