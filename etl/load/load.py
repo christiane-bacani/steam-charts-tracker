@@ -541,8 +541,8 @@ def load_top5_trending_games_raw(df: pd.DataFrame) -> None:
 
         logger.info("Renaming the table: 'top5_trending_games_new' to 'top5_trending_games_stg'.")
         connection.execute(text(
-            f"""ALTER TABLE stg.top5_trending_games_new TO
-                            stg.top5_trending_games_stg;"""
+            f"""ALTER TABLE RENAME stg.top5_trending_games_new TO
+                                   stg.top5_trending_games_stg;"""
         ))
     logger.info(f"Successfully loaded new data to SQL table: 'top5_trending_games_stg'.")
 
