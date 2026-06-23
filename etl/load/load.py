@@ -508,13 +508,13 @@ def load_top5_trending_games_raw(df: pd.DataFrame) -> None:
 
     logger.info(f"Loading new data to SQL Table: 'top5_trending_games_stg'.")
 
-    logger.info("Attempting to acquire connection...")
     with engine.begin() as connection:
-        logger.info("Connection acquired.")
-
-        logger.info("Creating table: 'top5_trending_games_new'.")
         connection.execute(text(
-            f"""CREATE OR REPLACE stg.top5_trending_games_new (
+            f"""DROP TABLE IF EXISTS stg.top5_trending_games_new;"""
+        ))
+
+        connection.execute(text(
+            f"""CREATE TABLE stg.top5_trending_games_new (
                     id SERIAL PRIMARY KEY,
                     application_id INTEGER,
                     current_rank INTEGER,
@@ -525,7 +525,6 @@ def load_top5_trending_games_raw(df: pd.DataFrame) -> None:
                 );"""
         ))
 
-        logger.info("Loading new data to the table: 'top5_trending_games_new'.")
         df.to_sql("top5_trending_games_new",
                   con=connection,
                   schema="stg",
@@ -534,15 +533,13 @@ def load_top5_trending_games_raw(df: pd.DataFrame) -> None:
                   method="multi",
                   chunksize=1000)
 
-        logger.info("Dropping the existing table: 'top5_trending_games_stg'.")
         connection.execute(text(
             f"""DROP TABLE IF EXISTS stg.top5_trending_games_stg;"""
         ))
 
-        logger.info("Renaming the table: 'top5_trending_games_new' to 'top5_trending_games_stg'.")
         connection.execute(text(
            f"""ALTER TABLE stg.top5_trending_games_new
-               RENAME TO stg.top5_trending_games_stg;"""
+               RENAME TO top5_trending_games_stg;"""
         ))
     logger.info(f"Successfully loaded new data to SQL table: 'top5_trending_games_stg'.")
 
