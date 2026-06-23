@@ -508,7 +508,10 @@ def load_top5_trending_games_raw(df: pd.DataFrame) -> None:
 
     logger.info(f"Loading new data to SQL Table: 'top5_trending_games_stg'.")
 
+    logger.info("Attempting to acquire connection...")
     with engine.begin() as connection:
+        logger.info("Connection acquired.")
+
         logger.info("Creating table: 'top5_trending_games_new'.")
         connection.execute(text(
             f"""CREATE TABLE stg.top5_trending_games_new (
@@ -524,10 +527,12 @@ def load_top5_trending_games_raw(df: pd.DataFrame) -> None:
 
         logger.info("Loading new data to the table: 'top5_trending_games_new'.")
         df.to_sql("top5_trending_games_new",
-                  con=engine,
+                  con=connection,
                   schema="stg",
                   if_exists="append",
-                  index=False)
+                  index=False,
+                  method="multi",
+                  chunk=1000)
 
         logger.info("Dropping the existing table: 'top5_trending_games_stg'.")
         connection.execute(text(
