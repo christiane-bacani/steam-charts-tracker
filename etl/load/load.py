@@ -509,6 +509,7 @@ def load_top5_trending_games_raw(df: pd.DataFrame) -> None:
     logger.info(f"Loading new data to SQL Table: 'top5_trending_games_stg'.")
 
     with engine.begin() as connection:
+        logger.info("Creating table: 'top5_trending_games_new'.")
         connection.execute(text(
             f"""CREATE TABLE stg.top5_trending_games_new (
                     id SERIAL PRIMARY KEY,
@@ -520,15 +521,20 @@ def load_top5_trending_games_raw(df: pd.DataFrame) -> None:
                     timestamp TIMESTAMPTZ DEFAULT (NOW() AT TIME ZONE 'Asia/Manila')
                 );"""
         ))
+
+        logger.info("Loading new data to the table: 'top5_trending_games_new'.")
         df.to_sql("top5_trending_games_new",
                   con=engine,
                   schema="stg",
                   if_exists="append",
                   index=False)
 
+        logger.info("Dropping the existing table: 'top5_trending_games_stg'.")
         connection.execute(text(
             f"""DROP TABLE IF EXISTS stg.top5_trending_games_stg;"""
         ))
+
+        logger.info("Renaming the table: 'top5_trending_games_new' to 'top5_trending_games_stg'.")
         connection.execute(text(
             f"""ALTER TABLE stg.top5_trending_games_new TO
                             stg.top5_trending_games_stg;"""
