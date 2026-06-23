@@ -532,7 +532,7 @@ def load_top5_trending_games_raw(df: pd.DataFrame) -> None:
                   if_exists="append",
                   index=False,
                   method="multi",
-                  chunk=1000)
+                  chunksize=1000)
 
         logger.info("Dropping the existing table: 'top5_trending_games_stg'.")
         connection.execute(text(
