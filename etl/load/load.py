@@ -514,7 +514,7 @@ def load_top5_trending_games_raw(df: pd.DataFrame) -> None:
 
         logger.info("Creating table: 'top5_trending_games_new'.")
         connection.execute(text(
-            f"""CREATE TABLE stg.top5_trending_games_new (
+            f"""CREATE OR REPLACE TABLE stg.top5_trending_games_new (
                     id SERIAL PRIMARY KEY,
                     application_id INTEGER,
                     current_rank INTEGER,
