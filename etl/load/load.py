@@ -507,6 +507,7 @@ def load_top5_trending_games_raw(df: pd.DataFrame) -> None:
     )
 
     logger.info(f"Loading new data to SQL Table: 'top5_trending_games_stg'.")
+
     with engine.begin() as connection:
         connection.execute(text(
             f"""CREATE TABLE stg.top5_trending_games_new (
