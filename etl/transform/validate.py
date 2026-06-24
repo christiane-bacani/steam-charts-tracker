@@ -255,10 +255,10 @@ def validate_top100_games_raw(df: pd.DataFrame) -> pd.DataFrame:
     logger.info("Successfully validated the data from: 'top100_games_raw'.")
     return df
 
-def validate_top10_records_stg(df: pd.DataFrame) -> pd.DataFrame:
+def validate_top10_records_raw(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Validate the data from the DataFrame object 'top10_records_stg' before
-    loading to the stage data layer.
+    Validate the data from the DataFrame object 'top10_records_raw'
+    before loading to the stage data layer.
 
     Args:
         df (DataFrame): The transformed data as a DataFrame.
@@ -266,7 +266,7 @@ def validate_top10_records_stg(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.
     """
-    logger.info("Validating the data from: 'top5_trending_games_stg'.")
+    logger.info("Validating the data from: 'top5_trending_games_raw'.")
 
     # Perform validation checks to 'application_id' column
     if not pd.api.types.is_numeric_dtype(df["application_id"]):
@@ -394,9 +394,9 @@ def validate_top10_records_stg(df: pd.DataFrame) -> pd.DataFrame:
     ]
 
     if columns != correct_order_of_columns:
-        raise Exception("Columns of the table: 'top10_records_stg' are inaccurate!")
+        raise Exception("Columns of the table: 'top10_records_raw' are inaccurate!")
 
-    logger.info("Successfully validated the data from: 'top10_records_stg'.")
+    logger.info("Successfully validated the data from: 'top10_records_raw'.")
     return df
 
 def validate_dim_rank_number(df: pd.DataFrame) -> pd.DataFrame:
