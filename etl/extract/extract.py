@@ -209,7 +209,13 @@ def extract(table_name: str) -> pd.DataFrame:
     if table_name == "top5_trending_games_raw":
         logger.info("Extracting the data: 'top5_trending_game_raw'.")
         query = "SELECT * FROM raw.top5_trending_games_raw;"
-        logger.info("Successfully extracted the data: 'top5_trending_games_raw'")
+        logger.info("Successfully extracted the data: 'top5_trending_games_raw'.")
+        return pd.read_sql(query, engine)
+
+    elif table_name == "top100_games_raw":
+        logger.info("Extracting the data: 'top100_games_raw'.")
+        query = "SELECT * FROM raw.top100_games_raw;"
+        logger.info("Successfully extracted the data: 'top100_games_raw'.")
         return pd.read_sql(query, engine)
 
     else:
