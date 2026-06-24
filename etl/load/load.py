@@ -410,7 +410,7 @@ def load_data_to_schema(data: dict | pd.DataFrame,
 
     logger.info(f"Successfully loaded new data to SQL table: '{table_name}'.")
 
-def load_scraped_top5_trending_games(df: pd.DataFrame) -> None:
+def load_top5_trending_games(df: pd.DataFrame) -> None:
     """
     Load the ingested data: `top5_trending_games` to the raw data
     layer for further processing.
@@ -436,7 +436,7 @@ def load_scraped_top5_trending_games(df: pd.DataFrame) -> None:
               index=False)
     logger.info(f"Successfully loaded new data to SQL table: 'top5_trending_games_raw'.")
 
-def load_scraped_top100_games(df: pd.DataFrame) -> None:
+def load_top100_games(df: pd.DataFrame) -> None:
     """
     Load the ingested data: `top100_games` to the raw data
     layer for further processing.
@@ -462,7 +462,7 @@ def load_scraped_top100_games(df: pd.DataFrame) -> None:
               index=False)
     logger.info(f"Successfully loaded new data to SQL table: 'top100_games_raw'.")
 
-def load_scraped_top10_records(df: pd.DataFrame) -> None:
+def load_top10_records(df: pd.DataFrame) -> None:
     """
     Load the ingested data: `top10_records` to the raw data
     layer for further processing.
@@ -601,9 +601,9 @@ def load_top100_games_raw(df: pd.DataFrame) -> None:
 
 def load(data: dict | pd.DataFrame) -> pd.DataFrame:
     """
-    Load the extracted, transformed, and validated data
-    from the raw/stg data layer to the next data layer
-    for further processing.
+    Load the ingested, extracted, transformed, and
+    validated data from the website source or raw/stg
+    data layer to the next data layer for further processing.
 
     Args:
         data (dict | DataFrame): The ingested data as a dictionary | 
@@ -624,7 +624,7 @@ def load(data: dict | pd.DataFrame) -> pd.DataFrame:
                    "name",
                    "twenty_four_hour_change",
                    "current_players"]:
-        load_scraped_top5_trending_games(pd.DataFrame(data))
+        load_top5_trending_games(pd.DataFrame(data))
 
     elif columns == ["app_id",
                      "rank",
@@ -632,14 +632,14 @@ def load(data: dict | pd.DataFrame) -> pd.DataFrame:
                      "current_players",
                      "peak_players",
                      "hours_played"]:
-        load_scraped_top100_games(pd.DataFrame(data))
+        load_top100_games(pd.DataFrame(data))
 
     elif columns == ["app_id",
                      "rank",
                      "name",
                      "peak_players",
                      "time"]:
-        load_scraped_top10_records(pd.DataFrame(data))
+        load_top10_records(pd.DataFrame(data))
 
     elif columns == ["id",
                      "application_id",
