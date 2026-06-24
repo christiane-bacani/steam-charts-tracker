@@ -490,8 +490,8 @@ def load_scraped_top10_records(df: pd.DataFrame) -> None:
 
 def load_top5_trending_games_raw(df: pd.DataFrame) -> None:
     """
-    Load the extracted data: `top5_trending_games_raw` to the stg data
-    layer for further processing.
+    Load the extracted data: `top5_trending_games_raw` to the
+    stg data layer for further processing.
 
     Args:
         df (DataFrame): The extracted data as a DataFrame.
@@ -543,6 +543,62 @@ def load_top5_trending_games_raw(df: pd.DataFrame) -> None:
         ))
     logger.info(f"Successfully loaded new data to SQL table: 'top5_trending_games_stg'.")
 
+def load_top100_games_raw(df: pd.DataFrame) -> None:
+    """
+    Load the extracted data: `top100_games_raw` to the
+    stg data layer for further processing.
+
+    Args:
+        df (DataFrame): The extracted data as a DataFrame.
+    """
+    logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
+    load_dotenv()
+    engine = init_connection(
+        os.getenv("HOST"),
+        os.getenv("PORT"),
+        "steam_charts",
+        os.getenv("DB_USERNAME"),
+        os.getenv("DB_PASSWORD")
+    )
+
+    logger.info(f"Loading new data to SQL Table: 'top100_games_stg'.")
+
+    with engine.begin() as connection:
+        connection.execute(text(
+            f"""DROP TABLE IF EXISTS stg.top100_games_new;"""
+        ))
+
+        connection.execute(text(
+            f"""CREATE TABLE stg.top100_games_new (
+                    id SERIAL PRIMARY KEY,
+                    application_id INTEGER,
+                    current_rank INTEGER,
+                    game_name VARCHAR(255),
+                    no_of_current_players INTEGER,
+                    no_of_peak_players INTEGER,
+                    no_of_hours_played INTEGER,
+                    timestamp TIMESTAMPTZ DEFAULT (NOW() AT TIME ZONE 'Asia/Manila')
+                );"""
+        ))
+
+        df.to_sql("top100_games_new",
+                  con=connection,
+                  schema="stg",
+                  if_exists="append",
+                  index=False,
+                  method="multi",
+                  chunksize=1000)
+
+        connection.execute(text(
+            f"""DROP TABLE IF EXISTS stg.top100_games_stg;"""
+        ))
+
+        connection.execute(text(
+           f"""ALTER TABLE stg.top100_games_new
+               RENAME TO top100_games_stg;"""
+        ))
+    logger.info(f"Successfully loaded new data to SQL table: 'top100_games_stg'.")
+
 def load(data: dict | pd.DataFrame) -> pd.DataFrame:
     """
     Load the extracted, transformed, and validated data
@@ -593,6 +649,16 @@ def load(data: dict | pd.DataFrame) -> pd.DataFrame:
                      "no_of_current_players",
                      "timestamp"]:
         load_top5_trending_games_raw(data)
+
+    elif columns == ["id",
+                     "application_id",
+                     "current_rank",
+                     "game_name",
+                     "no_of_current_players",
+                     "no_of_peak_players",
+                     "no_of_hours_played",
+                     "timestamp"]:
+        return load_top100_games_raw(data)
 
     else:
         raise Exception("Invalid data to load to the target data layer!")
