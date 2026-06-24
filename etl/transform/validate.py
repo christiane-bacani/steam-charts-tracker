@@ -135,7 +135,7 @@ def validate_top100_games_raw(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.
     """
-    logger.info("Validating the data from: 'top5_trending_games_raw'.")
+    logger.info("Validating the data from: 'top100_games_raw'.")
 
     # Perform validation checks to 'application_id' column
     if not pd.api.types.is_numeric_dtype(df["application_id"]):
