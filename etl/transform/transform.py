@@ -393,5 +393,15 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
                    "timestamp"]:
         return transform_top5_trending_games_raw(df)
 
+    elif columns == ["id",
+                     "app_id",
+                     "rank",
+                     "name",
+                     "current_players",
+                     "peak_players",
+                     "hours_played",
+                     "timestamp"]:
+        return transform_top100_games_raw(df)
+
     else:
         raise Exception("Invalid data to transform!")
