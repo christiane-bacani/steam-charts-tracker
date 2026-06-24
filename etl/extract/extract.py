@@ -198,7 +198,6 @@ def extract(table_name: str) -> pd.DataFrame:
     Returns:
         DataFrame: The extracted data as a DataFrame.
     """
-    logger.info(f"Extracting the data from: '{table_name}'.")
     load_dotenv()
     engine = init_connection(os.getenv("HOST"),
                              os.getenv("PORT"),
