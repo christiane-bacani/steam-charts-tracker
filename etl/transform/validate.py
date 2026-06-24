@@ -1117,12 +1117,12 @@ def validate(df: pd.DataFrame) -> pd.DataFrame:
         return validate_top5_trending_games_raw(df)
 
     elif columns == ["id",
-                     "app_id",
-                     "rank",
-                     "name",
-                     "current_players",
-                     "peak_players",
-                     "hours_played",
+                     "application_id",
+                     "current_rank",
+                     "game_name",
+                     "no_of_current_players",
+                     "no_of_peak_players",
+                     "no_of_hours_played",
                      "timestamp"]:
         return validate_top100_games_raw(df)
 
