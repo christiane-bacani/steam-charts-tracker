@@ -58,7 +58,7 @@ load(top10_records)
 
 
 
-# Extract ingested data of top 5 trending games from `raw` data layer,
+# Extract the ingested data of top 5 trending games from `raw` data layer,
 # transform the data, validate the transformed data, and save the
 # transformed/validated data to `stg` data layer
 top5_trending_games_raw = extract("top5_trending_games_raw")
@@ -66,7 +66,7 @@ top5_trending_games_raw = transform(top5_trending_games_raw)
 top5_trending_games_raw = validate(top5_trending_games_raw)
 load(top5_trending_games_raw)
 
-# Extract ingested data of top 100 games from `raw` data layer,
+# Extract the ingested data of top 100 games from `raw` data layer,
 # transform the data, validate the transformed data, and save the
 # transformed/validated data to `stg` data layer
 top100_games_raw = extract("top100_games_raw")
