@@ -66,13 +66,10 @@ top5_trending_games_raw = transform(top5_trending_games_raw)
 top5_trending_games_raw = validate(top5_trending_games_raw)
 load(top5_trending_games_raw)
 
+# Extract ingested data of top 100 games from `raw` data layer,
+# transform the data, validate the transformed data, and save the
+# transformed/validated data to `stg` data layer
 """
-# Transform the extracted data of the top 5 trending games and save to 'stg' data layer
-top5_trending_games_raw = extract_data_from_sql_table("raw", "top5_trending_games_raw")
-top5_trending_games_stg = transform_top5_trending_games_raw(top5_trending_games_raw)
-top5_trending_games_stg = validate_top5_trending_games_stg(top5_trending_games_stg)
-load_data_to_schema(top5_trending_games_stg, "stg", "top5_trending_games_stg")
-
 # Transform the extracted data of the top 100 games and save to 'stg' data layer
 top100_games_raw = extract_data_from_sql_table("raw", "top100_games_raw")
 top100_games_stg = transform_top100_games_raw(top100_games_raw)
