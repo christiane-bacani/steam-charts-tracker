@@ -73,6 +73,8 @@ top100_games_raw = extract("top100_games_raw")
 top100_games_raw = transform(top100_games_raw)
 top100_games_raw = validate(top100_games_raw)
 load(top100_games_raw)
+
+extract("top10_records_raw")
 """
 # Transform the extracted data of the top 100 games and save to 'stg' data layer
 top100_games_raw = extract_data_from_sql_table("raw", "top100_games_raw")
