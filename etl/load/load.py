@@ -716,13 +716,14 @@ def load(data: dict | pd.DataFrame) -> pd.DataFrame:
                      "timestamp"]:
         return load_top100_games_raw(data)
 
-    elif columns == ["id",
-                     "app_id",
-                     "rank",
-                     "name",
-                     "peak_players",
-                     "time",
-                     "timestamp"]:
+    elif columns == ['id',
+                     'application_id',
+                     'current_rank',
+                     'game_name',
+                     'no_of_peak_players',
+                     'peak_month',
+                     'peak_year',
+                     'timestamp']:
         return load_top10_records_raw(data)
 
     else:
