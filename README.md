@@ -172,7 +172,6 @@ python run.py
 
 ## Roadmap
 
-- [ ] Add fact table construction for mart layer
 - [ ] Migrate Gold Data Layer to Snowflake Cloud Data Warehouse
 - [ ] Fix the ETL/ELT Pipeline Logic for stage and gold data layer to handle SCDs and not use replace logic every schedule
 - [ ] Wrap pipeline in Apache Airflow DAGs for scheduled orchestration
