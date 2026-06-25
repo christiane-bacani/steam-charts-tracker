@@ -74,6 +74,9 @@ top100_games_raw = transform(top100_games_raw)
 top100_games_raw = validate(top100_games_raw)
 load(top100_games_raw)
 
+# Extract the ingested data of top 10 records from `raw` data layer,
+# transform the data, validate the transformed data, and save the
+# transformed/validated data to `stg` data layer
 extract("top10_records_raw")
 """
 # Transform the extracted data of the top 100 games and save to 'stg' data layer
