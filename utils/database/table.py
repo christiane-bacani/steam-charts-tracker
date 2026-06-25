@@ -87,3 +87,12 @@ def create_table_for_raw_layer(table_name: str) -> None:
 
         else:
             logger.info(f"Table: '{table_name}' was already created.")
+
+def create_table_for_mart_layer(table_name: str) -> None:
+    """
+    Create new SQL table (if still does not exist) from 'mart' schema
+    of Snowflake Data Warehouse to store all data.
+
+    Args:
+        table_name (str): The name of the table.
+    """    
