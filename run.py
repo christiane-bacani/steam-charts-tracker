@@ -77,14 +77,9 @@ load(top100_games_raw)
 # Extract the ingested data of top 10 records from `raw` data layer,
 # transform the data, validate the transformed data, and save the
 # transformed/validated data to `stg` data layer
-extract("top10_records_raw")
-"""
-# Transform the extracted data of the top 100 games and save to 'stg' data layer
-top100_games_raw = extract_data_from_sql_table("raw", "top100_games_raw")
-top100_games_stg = transform_top100_games_raw(top100_games_raw)
-top100_games_stg = validate_top100_games_stg(top100_games_stg)
-load_data_to_schema(top100_games_stg, "stg", "top100_games_stg")
+top10_records_raw = extract("top10_records_raw")
 
+"""
 # Transform the extracted data of the top 10 records and save to 'stg' data layer
 top10_records_raw = extract_data_from_sql_table("raw", "top10_records_raw")
 top10_records_stg = transform_top10_records_raw(top10_records_raw)
