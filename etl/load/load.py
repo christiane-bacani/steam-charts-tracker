@@ -660,5 +660,14 @@ def load(data: dict | pd.DataFrame) -> pd.DataFrame:
                      "timestamp"]:
         return load_top100_games_raw(data)
 
+    elif columns == ["id",
+                     "app_id",
+                     "rank",
+                     "name",
+                     "peak_players",
+                     "time",
+                     "timestamp"]:
+        return load_top10_records_raw(data)
+
     else:
         raise Exception("Invalid data to load to the target data layer!")
