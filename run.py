@@ -82,14 +82,6 @@ top10_records_raw = transform(top10_records_raw)
 top10_records_raw = validate(top10_records_raw)
 load(top10_records_raw)
 """
-# Transform the extracted data of the top 10 records and save to 'stg' data layer
-top10_records_raw = extract_data_from_sql_table("raw", "top10_records_raw")
-top10_records_stg = transform_top10_records_raw(top10_records_raw)
-top10_records_stg = validate_top10_records_stg(top10_records_stg)
-load_data_to_schema(top10_records_stg, "stg", "top10_records_stg")
-"""
-
-"""
 # Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
 dim_rank_number = create_dimension_table("current_rank")
 dim_rank_number = transform_dim_rank_number(dim_rank_number)
