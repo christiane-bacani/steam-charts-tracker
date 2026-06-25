@@ -1126,5 +1126,15 @@ def validate(df: pd.DataFrame) -> pd.DataFrame:
                      "timestamp"]:
         return validate_top100_games_raw(df)
 
+    elif columns == ['id',
+                     'application_id',
+                     'current_rank',
+                     'game_name',
+                     'no_of_peak_players',
+                     'peak_month',
+                     'peak_year',
+                     'timestamp']:
+        return validate_top10_records_raw(df)
+
     else:
         raise Exception("Invalid data to validate!")
