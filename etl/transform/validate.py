@@ -19,7 +19,7 @@ def validate_top5_trending_games_raw(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.
     """
-    logger.info("Validating the data from: 'top5_trending_games_raw'.")
+    logger.info("Validating the data: 'top5_trending_games_raw'.")
 
     # Perform validation checks to 'application_id' column
     if not pd.api.types.is_numeric_dtype(df["application_id"]):
@@ -121,7 +121,7 @@ def validate_top5_trending_games_raw(df: pd.DataFrame) -> pd.DataFrame:
     if columns != correct_order_of_columns:
         raise Exception("Columns of the table: 'top5_trending_games_raw' are inaccurate!")
 
-    logger.info("Successfully validated the data from: 'top5_trending_games_raw'.")
+    logger.info("Successfully validated the data: 'top5_trending_games_raw'.")
     return df
 
 def validate_top100_games_raw(df: pd.DataFrame) -> pd.DataFrame:
@@ -135,7 +135,7 @@ def validate_top100_games_raw(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.
     """
-    logger.info("Validating the data from: 'top100_games_raw'.")
+    logger.info("Validating the data: 'top100_games_raw'.")
 
     # Perform validation checks to 'application_id' column
     if not pd.api.types.is_numeric_dtype(df["application_id"]):
@@ -252,7 +252,7 @@ def validate_top100_games_raw(df: pd.DataFrame) -> pd.DataFrame:
     if columns != correct_order_of_columns:
         raise Exception("Columns of the table: 'top100_games_raw' are inaccurate!")
 
-    logger.info("Successfully validated the data from: 'top100_games_raw'.")
+    logger.info("Successfully validated the data: 'top100_games_raw'.")
     return df
 
 def validate_top10_records_raw(df: pd.DataFrame) -> pd.DataFrame:
@@ -266,7 +266,7 @@ def validate_top10_records_raw(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.
     """
-    logger.info("Validating the data from: 'top5_trending_games_raw'.")
+    logger.info("Validating the data: 'top5_trending_games_raw'.")
 
     # Perform validation checks to 'application_id' column
     if not pd.api.types.is_numeric_dtype(df["application_id"]):
@@ -396,7 +396,7 @@ def validate_top10_records_raw(df: pd.DataFrame) -> pd.DataFrame:
     if columns != correct_order_of_columns:
         raise Exception("Columns of the table: 'top10_records_raw' are inaccurate!")
 
-    logger.info("Successfully validated the data from: 'top10_records_raw'.")
+    logger.info("Successfully validated the data: 'top10_records_raw'.")
     return df
 
 def validate_dim_rank_number(df: pd.DataFrame) -> pd.DataFrame:
@@ -410,7 +410,7 @@ def validate_dim_rank_number(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.
     """
-    logger.info("Validating the data from: 'dim_rank_number'.")
+    logger.info("Validating the data: 'dim_rank_number'.")
 
     # Perform validation checks to 'rank_number' column
     if not pd.api.types.is_numeric_dtype(df["rank_number"]):
@@ -436,7 +436,7 @@ def validate_dim_rank_number(df: pd.DataFrame) -> pd.DataFrame:
     if columns != ["rank_number"]:
         raise Exception("Columns of the table: 'dim_rank_number' are inaccurate!")
 
-    logger.info("Successfully validated the data from: 'dim_rank_number'.")
+    logger.info("Successfully validated the data: 'dim_rank_number'.")
     return df
 
 def validate_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
@@ -450,7 +450,7 @@ def validate_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.
     """
-    logger.info("Validating the data from: 'dim_steam_game'.")
+    logger.info("Validating the data: 'dim_steam_game'.")
 
     # Perform validation checks to 'application_id' column
     if not pd.api.types.is_numeric_dtype(df["application_id"]):
@@ -495,7 +495,7 @@ def validate_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
     if columns != correct_order_of_columns:
         raise Exception("Columns of the table: 'dim_steam_game' are inaccurate!")
 
-    logger.info("Successfully validated the data from: 'dim_steam_game'.")
+    logger.info("Successfully validated the data: 'dim_steam_game'.")
     return df
 
 def validate_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
@@ -509,7 +509,7 @@ def validate_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.
     """
-    logger.info("Validating the data from: 'dim_steam_game'.")
+    logger.info("Validating the data: 'dim_steam_game'.")
 
     # Perform validation checks to 'id' column
     if not pd.api.types.is_numeric_dtype(df["id"]):
@@ -557,7 +557,7 @@ def validate_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
     if columns != correct_order_of_columns:
         raise Exception("Columns of the table: 'dim_timestamp' are inaccurate!")
 
-    logger.info("Successfully validated the data from: 'dim_timestamp'.")
+    logger.info("Successfully validated the data: 'dim_timestamp'.")
     return df
 
 def validate_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
@@ -571,7 +571,7 @@ def validate_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.
     """
-    logger.info("Validating the data from: 'dim_peak_month'.")
+    logger.info("Validating the data: 'dim_peak_month'.")
 
     # Perform validation checks to 'id' column
     if not pd.api.types.is_numeric_dtype(df["id"]):
@@ -631,7 +631,7 @@ def validate_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
     if columns != correct_order_of_columns:
         raise Exception("Columns of the table: 'dim_peak_month' are inaccurate!")
 
-    logger.info("Successfully validated the data from: 'dim_peak_month'.")
+    logger.info("Successfully validated the data: 'dim_peak_month'.")
     return df
 
 def validate_dim_peak_year(df: pd.DataFrame) -> pd.DataFrame:
@@ -645,7 +645,7 @@ def validate_dim_peak_year(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.    
     """
-    logger.info("Validating the data from: 'dim_peak_year'.")
+    logger.info("Validating the data: 'dim_peak_year'.")
 
     # Perform validation checks to 'id' column
     if not pd.api.types.is_numeric_dtype(df["id"]):
@@ -701,7 +701,7 @@ def validate_dim_peak_year(df: pd.DataFrame) -> pd.DataFrame:
     if columns != correct_order_of_columns:
         raise Exception("Columns of the table: 'dim_peak_year' are inaccurate!")
 
-    logger.info("Successfully validated the data from: 'dim_peak_year'.")
+    logger.info("Successfully validated the data: 'dim_peak_year'.")
     return df
 
 def validate_fact_trending_games(df: pd.DataFrame) -> pd.DataFrame:
@@ -715,7 +715,7 @@ def validate_fact_trending_games(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.    
     """
-    logger.info("Validating the data from: 'fact_trending_games'.")
+    logger.info("Validating the data: 'fact_trending_games'.")
 
     # Perform validation checks to 'application_id' column
     if not pd.api.types.is_numeric_dtype(df["application_id"]):
@@ -819,7 +819,7 @@ def validate_fact_trending_games(df: pd.DataFrame) -> pd.DataFrame:
     if columns != correct_order_of_columns:
         raise Exception("Columns of the table: 'fact_trending_games' are inaccurate!")
 
-    logger.info("Successfully validated the data from: 'fact_trending_games'.")
+    logger.info("Successfully validated the data: 'fact_trending_games'.")
     return df
 
 def validate_fact_top_games(df: pd.DataFrame) -> pd.DataFrame:
@@ -833,7 +833,7 @@ def validate_fact_top_games(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.    
     """
-    logger.info("Validating the data from: 'fact_top_games'.")
+    logger.info("Validating the data: 'fact_top_games'.")
 
     # Perform validation checks to 'application_id' column
     if not pd.api.types.is_numeric_dtype(df["application_id"]):
@@ -963,7 +963,7 @@ def validate_fact_top_games(df: pd.DataFrame) -> pd.DataFrame:
     if columns != correct_order_of_columns:
         raise Exception("Columns of the table: 'fact_top_games' are inaccurate!")
 
-    logger.info("Successfully validated the data from: 'fact_top_games'.")
+    logger.info("Successfully validated the data: 'fact_top_games'.")
     return df
 
 def validate_fact_top_records(df: pd.DataFrame) -> pd.DataFrame:
@@ -977,7 +977,7 @@ def validate_fact_top_records(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.    
     """
-    logger.info("Validating the data from: 'fact_top_records'.")
+    logger.info("Validating the data: 'fact_top_records'.")
 
     # Perform validation checks to 'application_id' column
     if not pd.api.types.is_numeric_dtype(df["application_id"]):
@@ -1089,7 +1089,7 @@ def validate_fact_top_records(df: pd.DataFrame) -> pd.DataFrame:
     if columns != correct_order_of_columns:
         raise Exception("Columns of the table: 'fact_top_records' are inaccurate!")
 
-    logger.info("Successfully validated the data from: 'fact_top_records'.")
+    logger.info("Successfully validated the data: 'fact_top_records'.")
     return df
 
 def validate(df: pd.DataFrame) -> pd.DataFrame:
