@@ -64,6 +64,12 @@ def create_table_for_raw_layer(table_name: str) -> None:
         timestamp TIMESTAMPTZ DEFAULT (NOW() AT TIME ZONE 'Asia/Manila'));
         """
 
+    elif table_name == "dim_rank_number":
+        command = """
+        CREATE TABLE mart.dim_rank_number (
+        rank_number INTEGER PRIMARY KEY);
+        """
+
     else:
         raise Exception("Invalid table name!")
 
