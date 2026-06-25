@@ -407,9 +407,9 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
                      "app_id",
                      "rank",
                      "name",
-                     'peak_players',
-                     'time',
-                     'timestamp']:
+                     "peak_players",
+                     "time",
+                     "timestamp"]:
         return transform_top10_records_raw(df)
 
     else:
