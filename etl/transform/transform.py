@@ -403,10 +403,10 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
                      "timestamp"]:
         return transform_top100_games_raw(df)
 
-    elif columns == ['id',
-                     'app_id',
-                     'rank',
-                     'name',
+    elif columns == ["id",
+                     "app_id",
+                     "rank",
+                     "name",
                      'peak_players',
                      'time',
                      'timestamp']:
