@@ -599,6 +599,62 @@ def load_top100_games_raw(df: pd.DataFrame) -> None:
         ))
     logger.info(f"Successfully loaded new data to SQL table: 'top100_games_stg'.")
 
+def load_top10_records_raw(df: pd.DataFrame) -> None:
+    """
+    Load the extracted data: `top10_records_raw` to the
+    stg data layer for further processing.
+
+    Args:
+        df (DataFrame): The extracted data as a DataFrame.
+    """
+    logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
+    load_dotenv()
+    engine = init_connection(
+        os.getenv("HOST"),
+        os.getenv("PORT"),
+        "steam_charts",
+        os.getenv("DB_USERNAME"),
+        os.getenv("DB_PASSWORD")
+    )
+
+    logger.info(f"Loading new data to SQL Table: 'top10_records_stg'.")
+
+    with engine.begin() as connection:
+        connection.execute(text(
+            f"""DROP TABLE IF EXISTS stg.top10_records_new;"""
+        ))
+
+        connection.execute(text(
+            f"""CREATE TABLE stg.top10_records_new (
+                    id SERIAL PRIMARY KEY,
+                    application_id INTEGER,
+                    current_rank INTEGER,
+                    game_name VARCHAR(255),
+                    no_of_peak_players INTEGER,
+                    peak_month VARCHAR(25),
+                    peak_year INTEGER,
+                    timestamp TIMESTAMPTZ DEFAULT (NOW() AT TIME ZONE 'Asia/Manila')
+                );"""
+        ))
+
+        df.to_sql("top10_records_new",
+                  con=connection,
+                  schema="stg",
+                  if_exists="append",
+                  index=False,
+                  method="multi",
+                  chunksize=1000)
+
+        connection.execute(text(
+            f"""DROP TABLE IF EXISTS stg.top10_records_stg;"""
+        ))
+
+        connection.execute(text(
+           f"""ALTER TABLE stg.top10_records_new
+               RENAME TO top10_records_stg;"""
+        ))
+    logger.info(f"Successfully loaded new data to SQL table: 'top10_records_stg'.")
+
 def load(data: dict | pd.DataFrame) -> pd.DataFrame:
     """
     Load the ingested, extracted, transformed, and
