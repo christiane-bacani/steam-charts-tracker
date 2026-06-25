@@ -13,8 +13,8 @@ from logs import logger
 
 def create_table_for_raw_layer(table_name: str) -> None:
     """
-    Create new SQL table (if still does not exist) from 'raw' schema
-    to store all data.
+    Create new tables for 'raw' database schema (Bronze Layer)
+    of PostgreSQL Database store all the raw data.
 
     Args:
         table_name (str): The name of the table.
@@ -90,8 +90,9 @@ def create_table_for_raw_layer(table_name: str) -> None:
 
 def create_table_for_mart_layer(table_name: str) -> None:
     """
-    Create new SQL table (if still does not exist) from 'mart' schema
-    of Snowflake Data Warehouse to store all data.
+    Create new tables for 'mart' database schema (Gold Layer)
+    of Snowflake Data Warehouse to store all the modeled and
+    aggregated data.
 
     Args:
         table_name (str): The name of the table.
