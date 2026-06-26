@@ -38,12 +38,12 @@ def init_connection_to_snowflake(user: str,
     Establish a Snowflake Data Warehouse connection using Snowflake Connector.
 
     Args:
+        user (str): Username required to authenticate.
+        password (str): Password used to authenticate.
+        account (str): Account identifier to authenticate.        
         warehouse (str): The name of the data warehouse.
         database (str): The name of the database.
         schema (str): The name of the database schema.
-        account (str): Account identifier to authenticate.
-        user (str): Username required to authenticate.
-        password (str): Password used to authenticate.
 
     Returns:
         conn (SnowflakeConnection): Snowflake Data Warehouse Connection.
