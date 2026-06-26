@@ -28,12 +28,12 @@ def init_connection_to_postgres(host: str,
     )
     return engine
 
-def init_connection_to_snowflake(warehouse: str,
-                                 database: str,
-                                 schema: str,
+def init_connection_to_snowflake(user: str,
+                                 password: str,
                                  account: str,
-                                 user: str,
-                                 password: str) -> SnowflakeConnection:
+                                 warehouse: str,
+                                 database: str,
+                                 schema: str) -> SnowflakeConnection:
     """
     Establish a Snowflake Data Warehouse connection using Snowflake Connector.
 
@@ -45,6 +45,16 @@ def init_connection_to_snowflake(warehouse: str,
         user (str): Username required to authenticate.
         password (str): Password used to authenticate.
 
-    Returns
+    Returns:
         conn (SnowflakeConnection): Snowflake Data Warehouse Connection.
     """
+    conn = snowflake.connector.connection(
+        user=user,
+        password=password,
+        account=account,
+        warehouse=warehouse,
+        database=database,
+        schema=schema
+    )
+
+    return conn
