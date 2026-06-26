@@ -5,7 +5,7 @@ import snowflake.connector
 from snowflake.connector.connection import SnowflakeConnection
 from sqlalchemy import Engine, create_engine
 
-def init_connection(host: str, 
+def init_connection_to_postgres(host: str, 
                     port: int,
                     database: str, 
                     user: str, 
