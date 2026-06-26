@@ -7,7 +7,7 @@ from sqlalchemy import text
 import os
 from dotenv import load_dotenv
 
-from utils.database.connection import init_connection
+from utils.database.connection import init_connection_to_postgres
 
 from logs import logger
 
@@ -22,7 +22,7 @@ def create_database(database_name: str) -> None:
     """
     logger.info("Establishing a connection to PostgreSQL to create new database.")
     load_dotenv()
-    engine = init_connection(os.getenv("HOST"),
+    engine = init_connection_to_postgres(os.getenv("HOST"),
                            os.getenv("PORT"),
                            "postgres",
                            os.getenv("DB_USERNAME"),

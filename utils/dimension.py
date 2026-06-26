@@ -7,7 +7,7 @@ import pandas as pd
 import os
 from dotenv import load_dotenv
 
-from utils.database.connection import init_connection
+from utils.database.connection import init_connection_to_postgres
 
 from logs import logger
 
@@ -24,7 +24,7 @@ def create_dimension_table(dim_column: str) -> pd.DataFrame:
         DataFrame: The created dimension table.
     """
     load_dotenv()
-    engine = init_connection(
+    engine = init_connection_to_postgres(
         os.getenv("HOST"),
         os.getenv("PORT"),
         "steam_charts",

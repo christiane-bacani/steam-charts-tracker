@@ -9,7 +9,7 @@ from sqlalchemy import text
 import os
 from dotenv import load_dotenv
 
-from utils.database.connection import init_connection
+from utils.database.connection import init_connection_to_postgres
 
 from logs import logger
 
@@ -27,7 +27,7 @@ def load_data_to_schema(data: dict | pd.DataFrame,
     """
     logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
     load_dotenv()
-    engine = init_connection(
+    engine = init_connection_to_postgres(
         os.getenv("HOST"),
         os.getenv("PORT"),
         "steam_charts",
@@ -420,7 +420,7 @@ def load_top5_trending_games(df: pd.DataFrame) -> None:
     """
     logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
     load_dotenv()
-    engine = init_connection(
+    engine = init_connection_to_postgres(
         os.getenv("HOST"),
         os.getenv("PORT"),
         "steam_charts",
@@ -446,7 +446,7 @@ def load_top100_games(df: pd.DataFrame) -> None:
     """
     logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
     load_dotenv()
-    engine = init_connection(
+    engine = init_connection_to_postgres(
         os.getenv("HOST"),
         os.getenv("PORT"),
         "steam_charts",
@@ -472,7 +472,7 @@ def load_top10_records(df: pd.DataFrame) -> None:
     """
     logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
     load_dotenv()
-    engine = init_connection(
+    engine = init_connection_to_postgres(
         os.getenv("HOST"),
         os.getenv("PORT"),
         "steam_charts",
@@ -498,7 +498,7 @@ def load_top5_trending_games_raw(df: pd.DataFrame) -> None:
     """
     logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
     load_dotenv()
-    engine = init_connection(
+    engine = init_connection_to_postgres(
         os.getenv("HOST"),
         os.getenv("PORT"),
         "steam_charts",
@@ -553,7 +553,7 @@ def load_top100_games_raw(df: pd.DataFrame) -> None:
     """
     logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
     load_dotenv()
-    engine = init_connection(
+    engine = init_connection_to_postgres(
         os.getenv("HOST"),
         os.getenv("PORT"),
         "steam_charts",
@@ -609,7 +609,7 @@ def load_top10_records_raw(df: pd.DataFrame) -> None:
     """
     logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
     load_dotenv()
-    engine = init_connection(
+    engine = init_connection_to_postgres(
         os.getenv("HOST"),
         os.getenv("PORT"),
         "steam_charts",

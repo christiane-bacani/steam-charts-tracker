@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 import os
 from dotenv import load_dotenv
 
-from utils.database.connection import init_connection
+from utils.database.connection import init_connection_to_postgres
 
 from logs import logger
 
@@ -199,7 +199,7 @@ def extract(table_name: str) -> pd.DataFrame:
         DataFrame: The extracted data as a DataFrame.
     """
     load_dotenv()
-    engine = init_connection(os.getenv("HOST"),
+    engine = init_connection_to_postgres(os.getenv("HOST"),
                              os.getenv("PORT"),
                              "steam_charts",
                              os.getenv("DB_USERNAME"),
