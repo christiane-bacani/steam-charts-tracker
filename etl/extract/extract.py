@@ -199,11 +199,11 @@ def extract(table_name: str) -> pd.DataFrame:
         DataFrame: The extracted data as a DataFrame.
     """
     load_dotenv()
-    engine = init_connection_to_postgres(os.getenv("HOST"),
-                             os.getenv("PORT"),
-                             "steam_charts",
-                             os.getenv("DB_USERNAME"),
-                             os.getenv("DB_PASSWORD"))
+    engine = init_connection_to_postgres(os.getenv("POSTGRES_DB_USERNAME"),
+                                         os.getenv("POSTGRES_DB_PASSWORD"),
+                                         os.getenv("HOST"),
+                                         os.getenv("PORT"),
+                                         "steam_charts")
 
     if table_name == "top5_trending_games_raw":
         logger.info("Extracting the data: 'top5_trending_game_raw'.")

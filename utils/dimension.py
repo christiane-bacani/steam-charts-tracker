@@ -24,13 +24,11 @@ def create_dimension_table(dim_column: str) -> pd.DataFrame:
         DataFrame: The created dimension table.
     """
     load_dotenv()
-    engine = init_connection_to_postgres(
-        os.getenv("HOST"),
-        os.getenv("PORT"),
-        "steam_charts",
-        os.getenv("DB_USERNAME"),
-        os.getenv("DB_PASSWORD")
-    )
+    engine = init_connection_to_postgres(os.getenv("POSTGRES_DB_USERNAME"),
+                                         os.getenv("POSTGRES_DB_PASSWORD"),
+                                         os.getenv("HOST"),
+                                         os.getenv("PORT"),
+                                         "steam_charts")
 
     if dim_column == "current_rank":
         logger.info("Creating new dimension table: 'dim_rank_number'.")

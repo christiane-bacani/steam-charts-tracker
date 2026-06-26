@@ -22,11 +22,11 @@ def create_database(database_name: str) -> None:
     """
     logger.info("Establishing a connection to PostgreSQL to create new database.")
     load_dotenv()
-    engine = init_connection_to_postgres(os.getenv("HOST"),
-                           os.getenv("PORT"),
-                           "postgres",
-                           os.getenv("DB_USERNAME"),
-                           os.getenv("DB_PASSWORD"))
+    engine = init_connection_to_postgres(os.getenv("POSTGRES_DB_USERNAME"),
+                                         os.getenv("POSTGRES_DB_PASSWORD"),
+                                         os.getenv("HOST"),
+                                         os.getenv("PORT"),
+                                         "postgres")
 
     with engine.connect() as connection:
         connection = connection.execution_options(isolation_level="AUTOCOMMIT")

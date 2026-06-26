@@ -20,11 +20,11 @@ def create_schema(schema_name: str) -> None:
     """
     logger.info("Establishing a connection to PostgreSQL to create new schema.")
     load_dotenv()
-    engine = init_connection_to_postgres(os.getenv("HOST"),
-                           os.getenv("PORT"),
-                           "steam_charts",
-                           os.getenv("DB_USERNAME"),
-                           os.getenv("DB_PASSWORD"))
+    engine = init_connection_to_postgres(os.getenv("POSTGRES_DB_USERNAME"),
+                                         os.getenv("POSTGRES_DB_PASSWORD"),
+                                         os.getenv("HOST"),
+                                         os.getenv("PORT"),
+                                         "steam_charts")
 
     with engine.connect() as connection:
         connection = connection.execution_options(isolation_level="AUTOCOMMIT")

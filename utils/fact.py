@@ -23,13 +23,11 @@ def create_fact_table(df: pd.DataFrame) -> pd.DataFrame:
     """
     logger.info("Establishing a connection to PostgreSQL to integrate dim columns.")
     load_dotenv()
-    engine = init_connection_to_postgres(
-        os.getenv("HOST"),
-        os.getenv("PORT"),
-        "steam_charts",
-        os.getenv("DB_USERNAME"),
-        os.getenv("DB_PASSWORD")
-    )
+    engine = init_connection_to_postgres(os.getenv("POSTGRES_DB_USERNAME"),
+                                         os.getenv("POSTGRES_DB_PASSWORD"),
+                                         os.getenv("HOST"),
+                                         os.getenv("PORT"),
+                                         "steam_charts")
 
     columns = list(df.columns)
 

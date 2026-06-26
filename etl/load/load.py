@@ -27,13 +27,11 @@ def load_data_to_schema(data: dict | pd.DataFrame,
     """
     logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
     load_dotenv()
-    engine = init_connection_to_postgres(
-        os.getenv("HOST"),
-        os.getenv("PORT"),
-        "steam_charts",
-        os.getenv("DB_USERNAME"),
-        os.getenv("DB_PASSWORD")
-    )
+    engine = init_connection_to_postgres(os.getenv("POSTGRES_DB_USERNAME"),
+                                         os.getenv("POSTGRES_DB_PASSWORD"),
+                                         os.getenv("HOST"),
+                                         os.getenv("PORT"),
+                                         "steam_charts")
 
     if type(data) is dict:
         df = pd.DataFrame(data)
@@ -420,13 +418,11 @@ def load_top5_trending_games(df: pd.DataFrame) -> None:
     """
     logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
     load_dotenv()
-    engine = init_connection_to_postgres(
-        os.getenv("HOST"),
-        os.getenv("PORT"),
-        "steam_charts",
-        os.getenv("DB_USERNAME"),
-        os.getenv("DB_PASSWORD")
-    )
+    engine = init_connection_to_postgres(os.getenv("POSTGRES_DB_USERNAME"),
+                                         os.getenv("POSTGRES_DB_PASSWORD"),
+                                         os.getenv("HOST"),
+                                         os.getenv("PORT"),
+                                         "steam_charts")
 
     logger.info(f"Loading new data to SQL Table: 'top5_trending_games_raw'.")
     df.to_sql("top5_trending_games_raw",
@@ -446,13 +442,11 @@ def load_top100_games(df: pd.DataFrame) -> None:
     """
     logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
     load_dotenv()
-    engine = init_connection_to_postgres(
-        os.getenv("HOST"),
-        os.getenv("PORT"),
-        "steam_charts",
-        os.getenv("DB_USERNAME"),
-        os.getenv("DB_PASSWORD")
-    )
+    engine = init_connection_to_postgres(os.getenv("POSTGRES_DB_USERNAME"),
+                                         os.getenv("POSTGRES_DB_PASSWORD"),
+                                         os.getenv("HOST"),
+                                         os.getenv("PORT"),
+                                         "steam_charts")
 
     logger.info(f"Loading new data to SQL Table: 'top100_games_raw'.")
     df.to_sql("top100_games_raw",
@@ -472,13 +466,11 @@ def load_top10_records(df: pd.DataFrame) -> None:
     """
     logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
     load_dotenv()
-    engine = init_connection_to_postgres(
-        os.getenv("HOST"),
-        os.getenv("PORT"),
-        "steam_charts",
-        os.getenv("DB_USERNAME"),
-        os.getenv("DB_PASSWORD")
-    )
+    engine = init_connection_to_postgres(os.getenv("POSTGRES_DB_USERNAME"),
+                                         os.getenv("POSTGRES_DB_PASSWORD"),
+                                         os.getenv("HOST"),
+                                         os.getenv("PORT"),
+                                         "steam_charts")
 
     logger.info(f"Loading new data to SQL Table: 'top10_records_raw'.")
     df.to_sql("top10_records_raw",
@@ -498,13 +490,11 @@ def load_top5_trending_games_raw(df: pd.DataFrame) -> None:
     """
     logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
     load_dotenv()
-    engine = init_connection_to_postgres(
-        os.getenv("HOST"),
-        os.getenv("PORT"),
-        "steam_charts",
-        os.getenv("DB_USERNAME"),
-        os.getenv("DB_PASSWORD")
-    )
+    engine = init_connection_to_postgres(os.getenv("POSTGRES_DB_USERNAME"),
+                                         os.getenv("POSTGRES_DB_PASSWORD"),
+                                         os.getenv("HOST"),
+                                         os.getenv("PORT"),
+                                         "steam_charts")
 
     logger.info(f"Loading new data to SQL Table: 'top5_trending_games_stg'.")
 
@@ -553,13 +543,11 @@ def load_top100_games_raw(df: pd.DataFrame) -> None:
     """
     logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
     load_dotenv()
-    engine = init_connection_to_postgres(
-        os.getenv("HOST"),
-        os.getenv("PORT"),
-        "steam_charts",
-        os.getenv("DB_USERNAME"),
-        os.getenv("DB_PASSWORD")
-    )
+    engine = init_connection_to_postgres(os.getenv("POSTGRES_DB_USERNAME"),
+                                         os.getenv("POSTGRES_DB_PASSWORD"),
+                                         os.getenv("HOST"),
+                                         os.getenv("PORT"),
+                                         "steam_charts")
 
     logger.info(f"Loading new data to SQL Table: 'top100_games_stg'.")
 
@@ -609,13 +597,11 @@ def load_top10_records_raw(df: pd.DataFrame) -> None:
     """
     logger.info("Establishing a connection to PostgreSQL to load the data to a table.")
     load_dotenv()
-    engine = init_connection_to_postgres(
-        os.getenv("HOST"),
-        os.getenv("PORT"),
-        "steam_charts",
-        os.getenv("DB_USERNAME"),
-        os.getenv("DB_PASSWORD")
-    )
+    engine = init_connection_to_postgres(os.getenv("POSTGRES_DB_USERNAME"),
+                                         os.getenv("POSTGRES_DB_PASSWORD"),
+                                         os.getenv("HOST"),
+                                         os.getenv("PORT"),
+                                         "steam_charts")
 
     logger.info(f"Loading new data to SQL Table: 'top10_records_stg'.")
 

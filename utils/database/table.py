@@ -21,11 +21,11 @@ def create_table_for_raw_layer(table_name: str) -> None:
     """
     logger.info("Establishing a connection to PostgreSQL to create new table.")
     load_dotenv()
-    engine = init_connection_to_postgres(os.getenv("HOST"),
-                           os.getenv("PORT"),
-                           "steam_charts",
-                           os.getenv("DB_USERNAME"),
-                           os.getenv("DB_PASSWORD"))
+    engine = init_connection_to_postgres(os.getenv("POSTGRES_DB_USERNAME"),
+                                         os.getenv("POSTGRES_DB_PASSWORD"),
+                                         os.getenv("HOST"),
+                                         os.getenv("PORT"),
+                                         "steam_charts")
 
     if table_name == "top5_trending_games_raw":
         command = """
