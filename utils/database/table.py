@@ -96,4 +96,4 @@ def create_table_for_mart_layer(table_name: str) -> None:
 
     Args:
         table_name (str): The name of the table.
-    """    
+    """
