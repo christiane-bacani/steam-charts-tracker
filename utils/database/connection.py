@@ -5,20 +5,20 @@ import snowflake.connector
 from snowflake.connector.connection import SnowflakeConnection
 from sqlalchemy import Engine, create_engine
 
-def init_connection_to_postgres(host: str, 
-                    port: int,
-                    database: str, 
-                    user: str, 
-                    password: str) -> Engine:
+def init_connection_to_postgres(user: str,
+                                password: str,
+                                host: str,
+                                port: str,
+                                database: str) -> Engine:
     """
     Establish a PostgreSQL database connection using SQLAlchemy and Pyscopg2.
 
     Args:
+        user (str): Username required to authenticate.
+        password (str): Password used to authenticate.
         host (str): Database server address.
         port (int): Connection port number.
         database (str): The name of the database.
-        user (str): Username required to authenticate.
-        password (str): Password used to authenticate.
 
     Returns:
         engine (Engine): SQLAlchemy Engine.
