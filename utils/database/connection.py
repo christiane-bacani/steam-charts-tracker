@@ -42,7 +42,7 @@ def init_connection_to_snowflake(user: str,
     Returns:
         conn (SnowflakeConnection): Snowflake Data Warehouse Connection.
     """
-    conn = snowflake.connector.connection(
+    conn = snowflake.connector.connect(
         user=user,
         password=password,
         account=account
