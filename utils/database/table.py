@@ -1,6 +1,7 @@
 """
-Python module to create SQL tables from a specific schema that represents
-a specific data layers (bronze/raw, silver/stage, and gold/mart).
+Python module to create new SQL Tables from specific Database Schema
+of PostgreSQL and Snowflake that represents a specific data layer (bronze/
+raw, silver/stage, and gold/mart).
 """
 from sqlalchemy import text
 
@@ -11,13 +12,13 @@ from utils.database.connection import init_connection_to_postgres
 
 from logs import logger
 
-def create_table_for_raw_layer(table_name: str) -> None:
+def create_postgres_table_for_raw(table_name: str) -> None:
     """
-    Create new tables for 'raw' database schema (Bronze Layer)
-    of PostgreSQL Database store all the raw data.
+    Create new SQL Tables for 'raw' database schema (Bronze Layer)
+    of PostgreSQL Database to store all the raw data.
 
     Args:
-        table_name (str): The name of the table.
+        table_name (str): The desired name of the table.
     """
     logger.info("Establishing a connection to PostgreSQL to create new table.")
     load_dotenv()
