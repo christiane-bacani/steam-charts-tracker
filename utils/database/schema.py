@@ -1,6 +1,7 @@
 """
-Python module to create database schema for different data layers (bronze/raw,
-silver/stage, and gold/mart).
+Python module to create PostgreSQL and Snowflake Database Schema
+that represents the different data layers (bronze/raw, silver/stage,
+gold/mart).
 """
 from sqlalchemy import text
 
@@ -11,12 +12,13 @@ from utils.database.connection import init_connection_to_postgres
 
 from logs import logger
 
-def create_schema(schema_name: str) -> None:
+def create_postgres_schema(schema_name: str) -> None:
     """
-    Create new schema (if still does not exist) that consist of SQL tables.
+    Create new PostgreSQL Database Schema (if still does not
+    exist) that consist of tables.
 
     Args:
-        schema_name (str): The name of the schema.
+        schema_name (str): The desired name of the database schema.
     """
     logger.info("Establishing a connection to PostgreSQL to create new schema.")
     load_dotenv()
