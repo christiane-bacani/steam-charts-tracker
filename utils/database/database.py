@@ -45,3 +45,12 @@ def create_postgres_database(database_name: str) -> None:
 
         else:
             logger.info(f"Database: '{database_name}' was already created.")
+
+def create_snowflake_database(database_name: str) -> None:
+    """
+    Create new Snowflake Database (if still does not exist)
+    to store all the data for gold/mart data layer.
+
+    Args:
+        database_name (str): The desired name of the database.
+    """    
