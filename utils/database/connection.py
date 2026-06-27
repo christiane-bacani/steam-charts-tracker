@@ -1,5 +1,6 @@
 """
-Python module to establish database connection to PostgreSQL.
+Python module to establish connection to PostgreSQL Database and
+Snowflake Data Warehouse.
 """
 import snowflake.connector
 from snowflake.connector.connection import SnowflakeConnection
