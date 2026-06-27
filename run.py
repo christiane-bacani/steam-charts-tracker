@@ -1,9 +1,9 @@
 """
 Python module to run the ETL Pipeline for Steam Charts Tracker.
 """
-from utils.database.database import create_database
-from utils.database.schema import create_schema
-from utils.database.table import create_table_for_raw_layer
+from utils.database.database import create_postgres_database
+from utils.database.schema import create_postgres_schema
+from utils.database.table import create_postgres_table_for_raw
 from utils.database.warehouse import create_warehouse
 
 from utils.parse import parse
@@ -22,13 +22,13 @@ from utils.fact import create_fact_table
 
 
 # Create Database objects of PostgreSQL and Snowflake
-create_database("steam_charts")
-create_schema("raw")
-create_schema("stg")
-create_schema("mart")
-create_table_for_raw_layer("top5_trending_games_raw")
-create_table_for_raw_layer("top100_games_raw")
-create_table_for_raw_layer("top10_records_raw")
+create_postgres_database("steam_charts")
+create_postgres_schema("raw")
+create_postgres_schema("stg")
+create_postgres_schema("mart")
+create_postgres_table_for_raw("top5_trending_games_raw")
+create_postgres_table_for_raw("top100_games_raw")
+create_postgres_table_for_raw("top10_records_raw")
 create_warehouse("steam_charts_warehouse")
 
 # Parse BeautifulSoup object to extract trending games and top records
