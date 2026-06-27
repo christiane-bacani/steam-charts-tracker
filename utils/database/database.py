@@ -53,4 +53,7 @@ def create_snowflake_database(database_name: str) -> None:
 
     Args:
         database_name (str): The desired name of the database.
-    """    
+    """
+    logger.info("Establishing a connection to Snowflake to create new database.")
+    load_dotenv()
+    # TODO: Add more content here...
