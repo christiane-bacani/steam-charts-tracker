@@ -20,7 +20,7 @@ from utils.fact import create_fact_table
 
 
 
-# Create Database objects
+# Create Database objects of PostgreSQL and Snowflake
 create_database("steam_charts")
 create_schema("raw")
 create_schema("stg")
