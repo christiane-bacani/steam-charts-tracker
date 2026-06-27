@@ -1,6 +1,7 @@
 """
-Python module to create the database to store all the data to
-different data layers (bronze/raw, silver/stage, and gold/mart).
+Python module to create the PostgreSQL Database and Snowflake
+Database to store all the data to different data layers (bronze/raw,)
+silver/stage, and gold/mart).
 """
 from sqlalchemy import text
 
