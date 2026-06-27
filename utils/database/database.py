@@ -11,14 +11,14 @@ from utils.database.connection import init_connection_to_postgres
 
 from logs import logger
 
-def create_database(database_name: str) -> None:
+def create_postgres_database(database_name: str) -> None:
     """
-    Create new database (if still does not exist) to store
-    all the data to different data layers (bronze/raw,
-    silver/stage, and gold/mart).
+    Create new PostgreSQL Database (if still does not exist)
+    to store all the data for bronze/raw and silver/stage
+    data layer.
 
     Args:
-        database_name (str): The name of the database.
+        database_name (str): The desired name of the database.
     """
     logger.info("Establishing a connection to PostgreSQL to create new database.")
     load_dotenv()
