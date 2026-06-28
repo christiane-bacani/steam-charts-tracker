@@ -49,10 +49,38 @@ def init_connection_to_snowflake(user: str,
     Returns:
         conn (SnowflakeConnection): Snowflake Data Warehouse Connection.
     """
-    conn = snowflake.connector.connect(
-        user=user,
-        password=password,
-        account=account
-    )
+    if warehouse is None:    
+        conn = snowflake.connector.connect(
+            user=user,
+            password=password,
+            account=account
+        )
+
+    elif database is None:
+        conn = snowflake.connector.connect(
+            user=user,
+            password=password,
+            account=account,
+            warehouse=warehouse
+        )
+
+    elif schema is None:
+        conn = snowflake.connector.connect(
+            user=user,
+            password=password,
+            account=account,
+            warehouse=warehouse,
+            database=database
+        )
+
+    else:
+        conn = snowflake.connector.connect(
+            user=user,
+            password=password,
+            account=account,
+            warehouse=warehouse,
+            database=database,
+            schema=schema
+        )
 
     return conn
