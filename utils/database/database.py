@@ -9,6 +9,7 @@ import os
 from dotenv import load_dotenv
 
 from utils.database.connection import init_connection_to_postgres
+from utils.database.connection import init_connection_to_snowflake
 
 from logs import logger
 
@@ -56,4 +57,9 @@ def create_snowflake_database(database_name: str) -> None:
     """
     logger.info("Establishing a connection to Snowflake to create new database.")
     load_dotenv()
-    # TODO: Add more content here...
+    conn = init_connection_to_snowflake(os.getenv("SNOWFLAKE_USERNAME"),
+                                        os.getenv("SNOWFLAKE_PASSWORD"),
+                                        os.getenv("SNOWFLAKE_ACCOUNT_IDENTIFIER"),
+                                        "steam_charts_warehouse")
+
+    cursor = conn.cursor()
