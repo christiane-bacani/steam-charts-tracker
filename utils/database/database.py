@@ -63,3 +63,23 @@ def create_snowflake_database(database_name: str) -> None:
                                         "steam_charts_warehouse")
 
     cursor = conn.cursor()
+
+    cursor.execute(f"""
+    SELECT
+        COUNT(*)
+    FROM
+        SNOWFLAKE.INFORMATION_SCHEMA.DATABASES
+    WHERE
+        DATABASE_NAME = '{database_name}';
+    """)
+    exists = cursor.fetchone()[0]
+
+    if not exists:
+        logger.info(f"Creating new Snowflake Database: '{database_name}'.")
+        cursor.execute(f"CREATE DATABASE IF NOT EXISTS {database_name};")
+        logger.info(f"Successfully created a new Snowflake Database: {database_name}.")
+
+    else:
+        logger.info(f"Snowflake Database: '{database_name} was already created.'")
+
+    cursor.close()
