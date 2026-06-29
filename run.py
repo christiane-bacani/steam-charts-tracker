@@ -2,6 +2,7 @@
 Python module to run the ETL Pipeline for Steam Charts Tracker.
 """
 from utils.database.database import create_postgres_database
+from utils.database.database import create_snowflake_database
 from utils.database.schema import create_postgres_schema
 from utils.database.table import create_postgres_table_for_raw
 from utils.database.warehouse import create_warehouse
@@ -23,6 +24,7 @@ from utils.fact import create_fact_table
 
 # Create Database objects of PostgreSQL and Snowflake
 create_postgres_database("steam_charts")
+create_snowflake_database("STEAM_CHARTS")
 create_postgres_schema("raw")
 create_postgres_schema("stg")
 create_postgres_schema("mart")
