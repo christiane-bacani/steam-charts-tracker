@@ -40,9 +40,9 @@ def create_postgres_database(database_name: str) -> None:
         exists = result.fetchone()
 
         if not exists:
-            logger.info(f"Creating database: '{database_name}'.")
+            logger.info(f"Creating new Postgres database: '{database_name}'.")
             connection.execute(text(f"CREATE DATABASE {database_name};"))
-            logger.info(f"Successfully created a new database: '{database_name}'.")
+            logger.info(f"Successfully created Postgres database: '{database_name}'.")
 
         else:
             logger.info(f"Database: '{database_name}' was already created.")
