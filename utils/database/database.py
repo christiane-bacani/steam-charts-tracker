@@ -80,6 +80,6 @@ def create_snowflake_database(database_name: str) -> None:
         logger.info(f"Successfully created a new Snowflake Database: {database_name}.")
 
     else:
-        logger.info(f"Snowflake Database: '{database_name} was already created.'")
+        logger.info(f"Snowflake Database: '{database_name}' was already created.")
 
     cursor.close()
