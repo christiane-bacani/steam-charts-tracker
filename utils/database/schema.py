@@ -47,3 +47,12 @@ def create_postgres_schema(schema_name: str) -> None:
 
         else:
             logger.info(f"Schema: '{schema_name}' was already created.")
+
+def create_snowflake_schema(schema_name: str) -> None:
+    """
+    Create new Snowflake Database Schema (if still does not
+    exist) that consist of tables.
+
+    Args:
+        schema_name (str): The desired name of the database schema.
+    """
