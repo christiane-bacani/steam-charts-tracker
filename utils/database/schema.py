@@ -42,7 +42,7 @@ def create_postgres_schema(schema_name: str) -> None:
         exists = result.fetchone()
 
         if not exists:
-            logger.info(f"Creating schema: '{schema_name}'.")
+            logger.info(f"Creating new schema: '{schema_name}'.")
             connection.execute(text(f"CREATE SCHEMA {schema_name};"))
             logger.info(f"Successfully created a new schema: '{schema_name}'.")
 
@@ -66,3 +66,18 @@ def create_snowflake_schema(schema_name: str) -> None:
                                         "STEAM_CHARTS")
 
     cursor = conn.cursor()
+
+    cursor.execute(f"""
+    SELECT
+        SCHEMA_NAME
+    FROM
+        INFORMATION_SCHEMA.SCHEMATA
+    WHERE
+        SCHEMA_NAME = {schema_name}
+    """)
+    exists = cursor.fetchone()[0]
+
+    if not exists:
+        logger.info(f"Creating new Snowflake DB Schema: '{schema_name}'.")
+        cursor.execute(f"CREATE SCHEMA IF NOT EXISTS '{schema_name}.'")
+        logger.info(f"Successfully created a new Snowflake DB Schema: '{schema_name}'.")
