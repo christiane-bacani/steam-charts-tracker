@@ -14,11 +14,10 @@ from logs import logger
 
 def create_postgres_table_for_raw(table_name: str) -> None:
     """
-    Create new SQL Tables for 'raw' database schema (Bronze Layer)
-    of PostgreSQL Database to store all the raw data.
+    Create new PostgreSQL Table (if still does not exists).
 
     Args:
-        table_name (str): The desired name of the table.
+        table_name (str): The desired name of the database table.
     """
     logger.info("Establishing a connection to PostgreSQL to create new table.")
     load_dotenv()
