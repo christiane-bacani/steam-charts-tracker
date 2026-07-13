@@ -89,12 +89,6 @@ def create_postgres_table_for_raw(table_name: str) -> None:
         else:
             logger.info(f"Table: '{table_name}' was already created.")
 
-def create_table_for_mart_layer(table_name: str) -> None:
+def create_snowflake_table_for_mart(table_name: str) -> None:
     """
-    Create new tables for 'mart' database schema (Gold Layer)
-    of Snowflake Data Warehouse to store all the modeled and
-    aggregated data.
-
-    Args:
-        table_name (str): The name of the table.
     """
