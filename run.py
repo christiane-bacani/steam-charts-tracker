@@ -7,7 +7,7 @@ from utils.database.database import create_snowflake_database
 from utils.database.schema import create_postgres_schema
 from utils.database.schema import create_snowflake_schema
 from utils.database.table import create_postgres_table_for_raw
-from utils.database.table import create_snowflake_table_for_raw
+from utils.database.table import create_snowflake_table_for_mart
 
 from utils.parse import parse
 from etl.extract.extract import ingest_top5_trending_games
@@ -34,6 +34,7 @@ create_postgres_table_for_raw("top10_records_raw")
 create_warehouse("steam_charts_warehouse")
 create_snowflake_database("STEAM_CHARTS")
 create_snowflake_schema("MART")
+create_snowflake_table_for_mart("DIM_RANK_NUMBER")
 
 # Parse BeautifulSoup object to extract trending games and top records
 url = "https://steamcharts.com/"
