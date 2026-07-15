@@ -96,7 +96,7 @@ def create_snowflake_table_for_mart(table_name: str) -> None:
     Args:
         table_name (str): The desired name of the database table.
     """
-    logger.info("Establishing a connection to Snowflake to create new schema.")
+    logger.info("Establishing a connection to Snowflake to create new table.")
     load_dotenv()
     conn = init_connection_to_snowflake(os.getenv("SNOWFLAKE_USERNAME"),
                                         os.getenv("SNOWFLAKE_PASSWORD"),
