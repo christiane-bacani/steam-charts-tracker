@@ -7,6 +7,7 @@ from utils.database.database import create_snowflake_database
 from utils.database.schema import create_postgres_schema
 from utils.database.schema import create_snowflake_schema
 from utils.database.table import create_postgres_table_for_raw
+from utils.database.table import create_snowflake_table_for_raw
 
 from utils.parse import parse
 from etl.extract.extract import ingest_top5_trending_games
