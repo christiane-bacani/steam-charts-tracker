@@ -104,3 +104,18 @@ def create_snowflake_table_for_mart(table_name: str) -> None:
                                         "steam_charts_warehouse",
                                         "STEAM_CHARTS",
                                         "MART")
+
+    cursor = conn.cursor()
+
+    cursor.execute(f"""
+    SELECT COUNT(*)
+    FROM
+        INFORMATION_SCHEMA.TABLES
+    WHERE
+        TABLE_CATALOG = MART AND
+        TABLE_NAME = {table_name} 
+    """)
+    exists = cursor.fetchone()[0]
+
+    if exists:
+        logger.info(f"Table: '{table_name}' was already created.")
