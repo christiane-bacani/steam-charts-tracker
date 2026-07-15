@@ -117,11 +117,11 @@ def create_snowflake_table_for_mart(table_name: str) -> None:
     """)
     exists = cursor.fetchone()[0]
 
-    if exists:
-        logger.info(f"Table: '{table_name}' was already created.")
-
     if table_name == "DIM_RANK_NUMBER":
         command = """
         CREATE TABLE MART.DIM_RANK_NUMBER (
         rank_number INTEGER PRIMARY KEY);
         """
+
+    if exists:
+        logger.info(f"Table: '{table_name}' was already created.")
