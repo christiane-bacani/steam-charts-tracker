@@ -124,7 +124,7 @@ def create_snowflake_table_for_mart(table_name: str) -> None:
         """
 
     if exists:
-        logger.info(f"Table: '{table_name}' was already created.")
+        logger.info(f"Snowflake SQL Table: '{table_name}' was already created.")
 
     else:
         logger.info(f"Creating Snowflake SQL Table: '{table_name}'.")
