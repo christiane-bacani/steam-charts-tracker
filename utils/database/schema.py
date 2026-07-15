@@ -73,13 +73,13 @@ def create_snowflake_schema(schema_name: str) -> None:
     FROM
         INFORMATION_SCHEMA.SCHEMATA
     WHERE
-        SCHEMA_NAME = {schema_name}
+        SCHEMA_NAME = '{schema_name}'
     """)
     exists = cursor.fetchone()[0]
 
     if not exists:
         logger.info(f"Creating new Snowflake DB Schema: '{schema_name}'.")
-        cursor.execute(f"CREATE SCHEMA IF NOT EXISTS '{schema_name}.'")
+        cursor.execute(f"CREATE SCHEMA IF NOT EXISTS {schema_name}.'")
         logger.info(f"Successfully created a new Snowflake DB Schema: '{schema_name}'.")
 
     else:
