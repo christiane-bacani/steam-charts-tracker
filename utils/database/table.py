@@ -82,9 +82,9 @@ def create_postgres_table_for_raw(table_name: str) -> None:
         exists = result.fetchone()
 
         if not exists:
-            logger.info(f"Creating table: '{table_name}'.")
+            logger.info(f"Creating PostgreSQL Table: '{table_name}'.")
             connection.execute(text(command))
-            logger.info(f"Successfully created a new table: '{table_name}'.")
+            logger.info(f"Successfully created a new PostgreSQL table: '{table_name}'.")
 
         else:
             logger.info(f"Table: '{table_name}' was already created.")
