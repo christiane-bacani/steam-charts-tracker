@@ -113,7 +113,7 @@ def create_snowflake_table_for_mart(table_name: str) -> None:
         INFORMATION_SCHEMA.TABLES
     WHERE
         TABLE_CATALOG = MART AND
-        TABLE_NAME = {table_name} 
+        TABLE_NAME = '{table_name}'
     """)
     exists = cursor.fetchone()[0]
 
