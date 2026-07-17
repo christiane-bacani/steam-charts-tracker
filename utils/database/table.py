@@ -119,7 +119,7 @@ def create_snowflake_table_for_mart(table_name: str) -> None:
 
     if table_name == "DIM_RANK_NUMBER":
         command = """
-        CREATE TABLE MART.DIM_RANK_NUMBER (
+        CREATE TABLE STEAM_CHARTS.MART.DIM_RANK_NUMBER (
         rank_number INTEGER PRIMARY KEY);
         """
 
@@ -128,5 +128,5 @@ def create_snowflake_table_for_mart(table_name: str) -> None:
 
     else:
         logger.info(f"Creating Snowflake SQL Table: '{table_name}'.")
-        cursor.execute(text(command))
+        cursor.execute(command)
         logger.info(f"Successfully created a new Snowflake SQL Table: '{table_name}'.")
