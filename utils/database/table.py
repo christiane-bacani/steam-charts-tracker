@@ -125,7 +125,11 @@ def create_snowflake_table_for_mart(table_name: str) -> None:
         """
 
     elif table_name == "DIM_STEAM_GAME":
-        command = """"""
+        command = """
+        CREATE TABLE STEAM_CHARTS.MART.DIM_STEAM_GAME (
+        application_id INTEGER PRIMARY KEY,
+        game_name VARCHAR(255));
+        """
 
     else:
         raise Exception("Invalid table name!")        
