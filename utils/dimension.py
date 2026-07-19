@@ -11,6 +11,22 @@ from utils.database.connection import init_connection_to_postgres
 
 from logs import logger
 
+def create_dim_rank_number(top5_trending_games_stg: pd.DataFrame,
+                           top100_games_stg: pd.DataFrame,
+                           top10_records_stg: pd.DataFrame) -> pd.DataFrame:
+    """
+    Create the dimension table: `DIM_RANK_NUMBER` using different tables
+    of `stg` database schema.
+
+    Args:
+        top5_trending_games_stg (DataFrame): The top 5 trending games as a DataFrame.
+        top100_games_stg (DataFrame): The top 100 games as a DataFrame.
+        top10_records_stg (DataFrame): The top 10 records as a DataFrame.
+
+    Returns:
+        DataFrame: The created dimension table: `DIM_RANK_NUMBER`.
+    """
+
 def create_dimension_table(dim_column: str) -> pd.DataFrame:
     """
     Create dimension table from different different columns
