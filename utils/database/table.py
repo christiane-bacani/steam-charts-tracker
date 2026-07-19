@@ -115,7 +115,8 @@ def create_snowflake_table_for_mart(table_name: str) -> None:
         TABLE_CATALOG = 'MART' AND
         TABLE_NAME = '{table_name}'
     """)
-    exists = cursor.fetchone()[0]
+    row = cursor.fetchone()
+    exists = row is not None
 
     if table_name == "DIM_RANK_NUMBER":
         command = """
