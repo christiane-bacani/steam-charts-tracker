@@ -34,8 +34,7 @@ create_postgres_table_for_raw("top10_records_raw")
 create_warehouse("steam_charts_warehouse")
 create_snowflake_database("STEAM_CHARTS")
 create_snowflake_schema("MART")
-create_snowflake_table_for_mart("DIM_RANK_NUMBER")
-create_snowflake_table_for_mart("DIM_STEAM_GAME")
+
 
 
 # Parse BeautifulSoup object to extract trending games and top records
