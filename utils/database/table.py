@@ -135,10 +135,10 @@ def create_snowflake_table_for_mart(table_name: str) -> None:
     row = cursor.fetchone()
     exists = row[0] > 0
 
-    if exists:
-        logger.info(f"Snowflake SQL Table: '{table_name}' was already created.")
-
-    else:
+    if not exists:
         logger.info(f"Creating Snowflake SQL Table: '{table_name}'.")
         cursor.execute(command)
         logger.info(f"Successfully created a new Snowflake SQL Table: '{table_name}'.")
+
+    else:
+        logger.info(f"Snowflake SQL Table: '{table_name}' was already created.")
