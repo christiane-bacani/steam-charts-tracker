@@ -26,14 +26,21 @@ def create_warehouse(warehouse_name: str) -> None:
                                         os.getenv("SNOWFLAKE_ACCOUNT_IDENTIFIER"))
     cursor = conn.cursor()
 
-    logger.info(f"Creating warehouse: '{warehouse_name}'.")
-    cursor.execute("""
-    CREATE WAREHOUSE IF NOT EXISTS steam_charts_warehouse
-    WITH WAREHOUSE_SIZE = 'LARGE'
-    AUTO_SUSPEND = 60
-    AUTO_RESUME = TRUE
-    """)
-    logger.info(f"Successfully created a new warehouse: '{warehouse_name}.'")
+    cursor.execute("SHOW WAREHOUSES LIKE %s", (warehouse_name, ))
+    rows = cursor.fetchall()
+    exists = len(rows) > 0
+
+    if not exists:    
+        logger.info(f"Creating Snowflake Warehouse: '{warehouse_name}'.")
+        cursor.execute("""
+        CREATE WAREHOUSE team_charts_warehouse
+        WITH WAREHOUSE_SIZE = 'LARGE'
+        AUTO_SUSPEND = 60
+        AUTO_RESUME = TRUE
+        """)
+        logger.info(f"Successfully created a new Snowflake warehouse: '{warehouse_name}.'")
+
+    else:
+        logger.info(f"Snowflake Warehouse: '{warehouse_name}' was already created.")
 
     cursor.close()
-    conn.close()
