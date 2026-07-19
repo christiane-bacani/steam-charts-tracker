@@ -70,9 +70,10 @@ def create_snowflake_database(database_name: str) -> None:
     FROM
         SNOWFLAKE.INFORMATION_SCHEMA.DATABASES
     WHERE
-        DATABASE_NAME = '{database_name}';
-    """)
-    exists = cursor.fetchone()[0]
+        DATABASE_NAME = %s
+    """, (database_name, ))
+    row = cursor.fetchone()
+    exists = row[0] > 0
 
     if not exists:
         logger.info(f"Creating new Snowflake Database: '{database_name}'.")
