@@ -37,6 +37,7 @@ create_snowflake_schema("MART")
 create_snowflake_table_for_mart("DIM_RANK_NUMBER")
 create_snowflake_table_for_mart("DIM_STEAM_GAME")
 
+
 # Parse BeautifulSoup object to extract trending games and top records
 url = "https://steamcharts.com/"
 soup = parse(url)
