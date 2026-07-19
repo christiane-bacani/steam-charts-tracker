@@ -66,7 +66,7 @@ def create_postgres_table_for_raw(table_name: str) -> None:
         """
 
     else:
-        raise Exception("Invalid table name!")
+        raise Exception("Invalid PostgreSQL Table name!")
 
     with engine.connect() as connection:
         connection = connection.execution_options(isolation_level="AUTOCOMMIT")
@@ -105,19 +105,6 @@ def create_snowflake_table_for_mart(table_name: str) -> None:
                                         "STEAM_CHARTS",
                                         "MART")
 
-    cursor = conn.cursor()
-
-    cursor.execute(f"""
-    SELECT COUNT(*)
-    FROM
-        INFORMATION_SCHEMA.TABLES
-    WHERE
-        TABLE_CATALOG = 'MART' AND
-        TABLE_NAME = '{table_name}'
-    """)
-    row = cursor.fetchone()
-    exists = row is not None
-
     if table_name == "DIM_RANK_NUMBER":
         command = """
         CREATE TABLE STEAM_CHARTS.MART.DIM_RANK_NUMBER (
@@ -132,7 +119,20 @@ def create_snowflake_table_for_mart(table_name: str) -> None:
         """
 
     else:
-        raise Exception("Invalid table name!")        
+        raise Exception("Invalid Snowflake Table name!")        
+
+    cursor = conn.cursor()
+
+    cursor.execute(f"""
+    SELECT COUNT(*)
+    FROM
+        INFORMATION_SCHEMA.TABLES
+    WHERE
+        TABLE_CATALOG = 'MART' AND
+        TABLE_NAME = '{table_name}'
+    """)
+    row = cursor.fetchone()
+    exists = row is not None
 
     if exists:
         logger.info(f"Snowflake SQL Table: '{table_name}' was already created.")
