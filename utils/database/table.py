@@ -128,11 +128,12 @@ def create_snowflake_table_for_mart(table_name: str) -> None:
     FROM
         INFORMATION_SCHEMA.TABLES
     WHERE
-        TABLE_CATALOG = 'MART' AND
-        TABLE_NAME = '{table_name}'
-    """)
+        TABLE_CATALOG = 'STEAM_CHARTS' AND
+        TABLE_SCHEMA = 'MART' AND
+        TABLE_NAME = %s
+    """, (table_name, ))
     row = cursor.fetchone()
-    exists = row is not None
+    exists = row[0] > 0
 
     if exists:
         logger.info(f"Snowflake SQL Table: '{table_name}' was already created.")
