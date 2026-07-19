@@ -89,6 +89,11 @@ top10_records_raw = extract("top10_records_raw")
 top10_records_raw = transform(top10_records_raw)
 top10_records_raw = validate(top10_records_raw)
 load(top10_records_raw)
+
+
+# Extract the extracted and transformed data of top 5 trending games
+# `stg` data layer
+top5_trending_games_stg = extract("top5_trending_games_stg")
 """
 # Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
 dim_rank_number = create_dimension_table("current_rank")
