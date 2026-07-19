@@ -124,6 +124,9 @@ def create_snowflake_table_for_mart(table_name: str) -> None:
         rank_number INTEGER PRIMARY KEY);
         """
 
+    elif table_name == "DIM_STEAM_GAME":
+        # TODO: Build the command to create the Snowflake SQL Table for this function
+
     if exists:
         logger.info(f"Snowflake SQL Table: '{table_name}' was already created.")
 
