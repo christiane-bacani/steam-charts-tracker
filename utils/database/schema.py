@@ -73,8 +73,8 @@ def create_snowflake_schema(schema_name: str) -> None:
     FROM
         INFORMATION_SCHEMA.SCHEMATA
     WHERE
-        SCHEMA_NAME = '{schema_name}'
-    """)
+        SCHEMA_NAME = %s
+    """, (schema_name, ))
     row = cursor.fetchone()
     exists = row is not None
 
