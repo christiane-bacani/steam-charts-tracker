@@ -19,7 +19,7 @@ from etl.transform.transform import transform
 from etl.transform.validate import validate
 from etl.load.load import load
 
-from utils.dimension import create_dimension_table
+from utils.dimension import create_dim_rank_number
 from utils.fact import create_fact_table
 
 
