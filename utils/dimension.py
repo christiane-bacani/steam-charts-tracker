@@ -26,6 +26,7 @@ def create_dim_rank_number(top5_trending_games_stg: pd.DataFrame,
     Returns:
         DataFrame: The created dimension table: `DIM_RANK_NUMBER`.
     """
+    logger.info(f"Creating new dimension table: 'DIM_RANK_NUMBER'.")
 
 def create_dimension_table(dim_column: str) -> pd.DataFrame:
     """
