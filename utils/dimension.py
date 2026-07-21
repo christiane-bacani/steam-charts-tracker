@@ -26,7 +26,19 @@ def create_dim_rank_number(top5_trending_games_stg: pd.DataFrame,
     Returns:
         DataFrame: The created dimension table: `DIM_RANK_NUMBER`.
     """
-    logger.info(f"Creating new dimension table: 'DIM_RANK_NUMBER'.")
+    logger.info("Creating new dimension table: 'DIM_RANK_NUMBER'.")
+    
+    rank_number = pd.DataFrame(columns=["RANK_NUMBER"])
+    dataframes = [top5_trending_games_stg, top100_games_stg, top10_records_stg]
+
+    for dataframe in dataframes:
+        rank_number = pd.concat([rank_number, dataframe["rank_number"]], inplace=True)
+
+    rank_number = rank_number.drop_duplicates(keep="first")
+    rank_number = rank_number.sort_values(by="rank_number", ascending=True)
+
+    logger.info("Successfully created a new dimension table: 'DIM_RANK_NUMBER'.")
+    return rank_number
 
 def create_dimension_table(dim_column: str) -> pd.DataFrame:
     """
