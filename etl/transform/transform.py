@@ -412,5 +412,8 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
                      "timestamp"]:
         return transform_top10_records_raw(df)
 
+    elif columns == ["rank_number"]:
+        return transform_dim_rank_number(df)
+
     else:
         raise Exception("Invalid data to transform!")
