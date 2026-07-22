@@ -144,7 +144,7 @@ def transform_top10_records_raw(df: pd.DataFrame) -> pd.DataFrame:
 
 def transform_dim_rank_number(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Transform the dimension table: `dim_rank_number`.
+    Transform the dimension table: `DIM_RANK_NUMBER`.
 
     Args:
         df (DataFrame): The extracted dimension data as a DataFrame.
@@ -152,12 +152,12 @@ def transform_dim_rank_number(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The transformed data as a DataFrame.
     """
-    logger.info("Transforming the data: 'dim_rank_number'.")
+    logger.info("Transforming the data: 'DIM_RANK_NUMBER'.")
 
-    # Type-cast the column 'rank_number'
-    df["rank_number"] = pd.to_numeric(df["rank_number"], errors="coerce")
+    # Type-cast the column 'RANK_NUMBER'
+    df["rank_number"] = pd.to_numeric(df["RANK_NUMBER"], errors="coerce")
 
-    logger.info("Successfully transformed the data: 'dim_rank_number'.")
+    logger.info("Successfully transformed the data: 'DIM_RANK_NUMBER'.")
     return df
 
 def transform_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
