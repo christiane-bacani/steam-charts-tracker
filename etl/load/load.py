@@ -246,6 +246,16 @@ def load_top10_records_raw(df: pd.DataFrame) -> None:
         ))
     logger.info(f"Successfully loaded new data to SQL table: 'top10_records_stg'.")
 
+def load_dim_rank_number(df: pd.DataFrame) -> None:
+    """
+    Load the dimension data: `DIM_RANK_NUMBER` to the
+    mart data layer (Snowflake Data Warehouse) to
+    perform data analysis.
+
+    Args:
+        df (DataFrame): The dimension data as a DataFrame.
+    """
+
 def load(data: dict | pd.DataFrame) -> pd.DataFrame:
     """
     Load the ingested, extracted, transformed, and
@@ -316,6 +326,9 @@ def load(data: dict | pd.DataFrame) -> pd.DataFrame:
                      'peak_year',
                      'timestamp']:
         return load_top10_records_raw(data)
+
+    elif columns == ["RANK_NUMBER"]:
+        return load_dim_rank_number(data)
 
     else:
         raise Exception("Invalid data to load to the target data layer!")
