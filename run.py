@@ -100,6 +100,7 @@ top10_records_stg = extract("top10_records_stg")
 dim_rank_number = create_dim_rank_number(top5_trending_games_stg,
                                          top100_games_stg,
                                          top10_records_stg)
+dim_rank_number = transform(dim_rank_number)
 """
 # Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
 dim_rank_number = create_dimension_table("current_rank")
