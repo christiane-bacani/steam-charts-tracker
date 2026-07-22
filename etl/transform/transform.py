@@ -157,6 +157,9 @@ def transform_dim_rank_number(df: pd.DataFrame) -> pd.DataFrame:
     # Type-cast the column 'RANK_NUMBER'
     df["RANK_NUMBER"] = pd.to_numeric(df["RANK_NUMBER"], errors="coerce")
 
+    # Modify the index of the table by resetting it
+    df = df.reset_index(drop=True)
+
     logger.info("Successfully transformed the data: 'DIM_RANK_NUMBER'.")
     return df
 
