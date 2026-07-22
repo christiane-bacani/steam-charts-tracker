@@ -236,7 +236,7 @@ def extract(table_name: str) -> pd.DataFrame:
         return pd.read_sql(query, engine)
 
     elif table_name == "top10_records_stg":
-        logger.info("Extracting the data: 'top10_records_stg'.")
+        logger.info("Extracting the data: 'top10_records_stg'")
         query = "SELECT * FROM stg.top10_records_stg;"
         logger.info("Successfully extracted the data: 'top10_records_stg'.")
         return pd.read_sql(query, engine)
