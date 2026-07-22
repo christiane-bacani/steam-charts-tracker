@@ -42,12 +42,12 @@ url = "https://steamcharts.com/"
 soup = parse(url)
 
 # Ingest top 5 trending games and save the ingested data to `raw` data layer
-top5_trending_games = ingest_top5_trending_games(soup)
-load(top5_trending_games)
+top5_trending_games_data = ingest_top5_trending_games(soup)
+load(top5_trending_games_data)
 
 # Ingest top 100 games (by current players) and save the ingested data to
 # `raw` data layer
-top100_games = {
+top100_games_data = {
     "app_id":          [],
     "rank":            [],
     "name":            [],
@@ -57,12 +57,12 @@ top100_games = {
 }
 for number in range(1, 5):
     top100_games_soup = parse(f"{url}top/p.{number}")
-    top100_games = ingest_top100_games(top100_games_soup, top100_games)
-load(top100_games)
+    top100_games_data = ingest_top100_games(top100_games_soup, top100_games_data)
+load(top100_games_data)
 
 # Ingest top 10 game records and save the ingested data to `raw` data layer
-top10_records = ingest_top10_records(soup)
-load(top10_records)
+top10_records_data = ingest_top10_records(soup)
+load(top10_records_data)
 
 
 
@@ -102,6 +102,7 @@ dim_rank_number = create_dim_rank_number(top5_trending_games_stg,
                                          top10_records_stg)
 dim_rank_number = transform(dim_rank_number)
 dim_rank_number = validate(dim_rank_number)
+load(dim_rank_number)
 """
 # Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
 dim_rank_number = create_dimension_table("current_rank")
