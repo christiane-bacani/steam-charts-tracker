@@ -92,8 +92,8 @@ load(top10_records_raw)
 
 
 
-# Create the dimemsion table: `dim_rank_number` by integrating
-# the necessary columns of different tables of `stg` data layer
+# Create the dimension table: `dim_rank_number` by integrating
+# the necessary columns of different tables from `stg` data layer
 top5_trending_games_stg = extract("top5_trending_games_stg")
 top100_games_stg = extract("top100_games_stg")
 top10_records_stg = extract("top10_records_stg")
