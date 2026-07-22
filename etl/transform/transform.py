@@ -412,7 +412,7 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
                      "timestamp"]:
         return transform_top10_records_raw(df)
 
-    elif columns == ["rank_number"]:
+    elif columns == ["RANK_NUMBER"]:
         return transform_dim_rank_number(df)
 
     else:
