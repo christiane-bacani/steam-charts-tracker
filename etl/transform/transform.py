@@ -155,7 +155,7 @@ def transform_dim_rank_number(df: pd.DataFrame) -> pd.DataFrame:
     logger.info("Transforming the data: 'DIM_RANK_NUMBER'.")
 
     # Type-cast the column 'RANK_NUMBER'
-    df["rank_number"] = pd.to_numeric(df["RANK_NUMBER"], errors="coerce")
+    df["RANK_NUMBER"] = pd.to_numeric(df["RANK_NUMBER"], errors="coerce")
 
     logger.info("Successfully transformed the data: 'DIM_RANK_NUMBER'.")
     return df
