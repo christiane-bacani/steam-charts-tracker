@@ -31,7 +31,7 @@ create_postgres_schema("stg")
 create_postgres_table_for_raw("top5_trending_games_raw")
 create_postgres_table_for_raw("top100_games_raw")
 create_postgres_table_for_raw("top10_records_raw")
-create_warehouse("steam_charts_warehouse")
+create_warehouse("STEAM_CHARTS_WAREHOUSE")
 create_snowflake_database("STEAM_CHARTS")
 create_snowflake_schema("MART")
 
