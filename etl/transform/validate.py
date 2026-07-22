@@ -410,33 +410,33 @@ def validate_dim_rank_number(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.
     """
-    logger.info("Validating the data: 'dim_rank_number'.")
+    logger.info("Validating the data: 'DIM_RANK_NUMBER'.")
 
     # Perform validation checks to 'rank_number' column
-    if not pd.api.types.is_numeric_dtype(df["rank_number"]):
-        logger.info("Column: 'rank_number' consist of wrong datatype!")
-        df["rank_number"] = pd.to_numeric(df["rank_number"], errors="coerce")
-        logger.info("Type-casted the value pf 'rank_number' column.")
+    if not pd.api.types.is_numeric_dtype(df["RANK_NUMBER"]):
+        logger.info("Column: 'RANK_NUMBER' consist of wrong datatype!")
+        df["RANK_NUMBER"] = pd.to_numeric(df["RANK_NUMBER"], errors="coerce")
+        logger.info("Type-casted the value pf 'RANK_NUMBER' column.")
 
-    if df["rank_number"].isnull().sum() > 0:
-        logger.info("Column: 'rank_number' consist of null values!")
-        df.dropna(subset=["rank_number"], inplace=True)
+    if df["RANK_NUMBER"].isnull().sum() > 0:
+        logger.info("Column: 'RANK_NUMBER' consist of null values!")
+        df.dropna(subset=["RANK_NUMBER"], inplace=True)
         df.reset_index(inplace=True)
-        logger.info("Column: 'rank_number' with missing values are removed.")
+        logger.info("Column: 'RANK_NUMBER' with missing values are removed.")
 
-    if df["rank_number"].duplicated().sum() > 0:
-        logger.info("Column: 'rank_number' consist of duplicate values!")
-        df.drop_duplicates(subset=["rank_number"], keep="first", inplace=True)
-        df.sort_values(by="rank_number", inplace=True)
-        logger.info("Column: 'rank_number' with duplicate values are removed.")
+    if df["RANK_NUMBER"].duplicated().sum() > 0:
+        logger.info("Column: 'RANK_NUMBER' consist of duplicate values!")
+        df.drop_duplicates(subset=["RANK_NUMBER"], keep="first", inplace=True)
+        df.sort_values(by="RANK_NUMBER", inplace=True)
+        logger.info("Column: 'RANK_NUMBER' with duplicate values are removed.")
 
     # Perform validation check to the whole dataset
     columns = list(df.columns)
 
-    if columns != ["rank_number"]:
-        raise Exception("Columns of the table: 'dim_rank_number' are inaccurate!")
+    if columns != ["RANK_NUMBER"]:
+        raise Exception("Columns of the table: 'DIM_RANK_NUMBER' are inaccurate!")
 
-    logger.info("Successfully validated the data: 'dim_rank_number'.")
+    logger.info("Successfully validated the data: 'DIM_RANK_NUMBER'.")
     return df
 
 def validate_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
@@ -1135,6 +1135,9 @@ def validate(df: pd.DataFrame) -> pd.DataFrame:
                      'peak_year',
                      'timestamp']:
         return validate_top10_records_raw(df)
+
+    elif columns == ["RANK_NUMBER"]:
+        return validate_dim_rank_number(df)
 
     else:
         raise Exception("Invalid data to validate!")
