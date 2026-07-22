@@ -223,5 +223,11 @@ def extract(table_name: str) -> pd.DataFrame:
         logger.info("Successfully extracted the data: 'top10_records_raw'.")
         return pd.read_sql(query, engine)
 
+    elif table_name == "top5_trending_games_stg":
+        logger.info("Extracting the data: 'top5_trending_games_stg'.")
+        query = "SELECT * FROM stg.top5_trending_games_stg"
+        logger.info("Successfully extracted the data: 'top5_trending_games_stg'.")
+        return pd.read_sql(query, engine)
+
     else:
         raise Exception("Invalid table name to extract!")
