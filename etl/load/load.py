@@ -10,6 +10,7 @@ import os
 from dotenv import load_dotenv
 
 from utils.database.connection import init_connection_to_postgres
+from utils.database.connection import init_connection_to_snowflake
 
 from logs import logger
 
@@ -255,6 +256,8 @@ def load_dim_rank_number(df: pd.DataFrame) -> None:
     Args:
         df (DataFrame): The dimension data as a DataFrame.
     """
+    logger.info("Establishing a connection to Snowflake to load the data to a table.")
+    load_dotenv()
 
 def load(data: dict | pd.DataFrame) -> pd.DataFrame:
     """
