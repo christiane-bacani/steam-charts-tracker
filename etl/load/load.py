@@ -5,6 +5,7 @@ and gold/mart).
 """
 import pandas as pd
 from sqlalchemy import text
+from snowflake.connector.pandas_tools import write_pandas
 
 import os
 from dotenv import load_dotenv
@@ -258,6 +259,38 @@ def load_dim_rank_number(df: pd.DataFrame) -> None:
     """
     logger.info("Establishing a connection to Snowflake to load the data to a table.")
     load_dotenv()
+    conn = init_connection_to_snowflake(os.getenv("SNOWFLAKE_USERNAME"),
+                                        os.getenv("SNOWFLAKE_PASSWORD"),
+                                        os.getenv("SNOWFLAKE_ACCOUNT_IDENTIFIER"),
+                                        "steam_charts_warehouse",
+                                        "STEAM_CHARTS",
+                                        "MART")
+
+    cursor = conn.cursor()
+    
+    logger.info(f"Loading new data to SQL Table: 'DIM_RANK_NUMBER'.")
+
+    cursor.execute("""
+    CREATE OR REPLACE TABLE STEAM_CHARTS.MART.TEMP_DIM_RANK_NUMBER (
+    RANK_NUMBER INTEGER PRIMARY KEY);
+    """)
+    write_pandas(conn=conn,
+                 df=df,
+                 warehouse="STEAM_CHARTS_WAREHOUSE",
+                 database="STEAM_CHARTS",
+                 schema="MART",
+                 table="TEMP_DIM_RANK_NUMBER",
+                 auto_create_table=False,
+                 overwrite=True)
+    cursor.execute("""
+    DROP TABLE IF EXISTS STEAM_CHARTS.MART.DIM_RANK_NUMBER;
+    """)
+    cursor.execute("""
+    ALTER TABLE STEAM_CHARTS.MART.TEMP_DIM_RANK_NUMBER
+    RENAME TO STEAM_CHARTS.MART.DIM_RANK_NUMBER;
+    """)
+
+    logger.info(f"Successfully loaded new data to SQL table: 'DIM_RANK_NUMBER'.")
 
 def load(data: dict | pd.DataFrame) -> pd.DataFrame:
     """
