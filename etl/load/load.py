@@ -279,7 +279,7 @@ def load_dim_rank_number(df: pd.DataFrame) -> None:
                  warehouse="STEAM_CHARTS_WAREHOUSE",
                  database="STEAM_CHARTS",
                  schema="MART",
-                 table="TEMP_DIM_RANK_NUMBER",
+                 table_name="TEMP_DIM_RANK_NUMBER",
                  auto_create_table=False,
                  overwrite=True)
     cursor.execute("""
