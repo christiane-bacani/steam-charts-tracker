@@ -87,3 +87,4 @@ def create_snowflake_schema(schema_name: str) -> None:
         logger.info(f"Snowflake Database Schema: '{schema_name}' was already created.")
 
     cursor.close()
+    conn.close()

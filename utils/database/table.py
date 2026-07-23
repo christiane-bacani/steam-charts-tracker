@@ -142,3 +142,6 @@ def create_snowflake_table_for_mart(table_name: str) -> None:
 
     else:
         logger.info(f"Snowflake SQL Table: '{table_name}' was already created.")
+
+    cursor.close()
+    conn.close()

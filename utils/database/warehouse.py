@@ -44,3 +44,4 @@ def create_warehouse(warehouse_name: str) -> None:
         logger.info(f"Snowflake Warehouse: '{warehouse_name}' was already created.")
 
     cursor.close()
+    conn.close()
