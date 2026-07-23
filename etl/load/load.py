@@ -267,7 +267,7 @@ def load_dim_rank_number(df: pd.DataFrame) -> None:
                                         "MART")
 
     cursor = conn.cursor()
-    
+
     logger.info(f"Loading new data to SQL Table: 'DIM_RANK_NUMBER'.")
 
     cursor.execute("""
@@ -289,6 +289,9 @@ def load_dim_rank_number(df: pd.DataFrame) -> None:
     ALTER TABLE STEAM_CHARTS.MART.TEMP_DIM_RANK_NUMBER
     RENAME TO STEAM_CHARTS.MART.DIM_RANK_NUMBER;
     """)
+
+    cursor.close()
+    conn.close()
 
     logger.info(f"Successfully loaded new data to SQL table: 'DIM_RANK_NUMBER'.")
 
