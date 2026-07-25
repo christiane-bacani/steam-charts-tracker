@@ -40,6 +40,7 @@ def create_dim_rank_number(top5_trending_games_stg: pd.DataFrame,
     rank_number = rank_number.rename(columns={"current_rank": "RANK_NUMBER"})
     rank_number = rank_number.drop_duplicates(keep="first")
     rank_number = rank_number.sort_values(by="RANK_NUMBER", ascending=True)
+    rank_number = rank_number.reset_index(drop=True)
 
     logger.info("Successfully created a new dimension table: 'DIM_RANK_NUMBER'.")
     return rank_number
