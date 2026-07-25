@@ -276,7 +276,6 @@ def load_dim_rank_number(df: pd.DataFrame) -> None:
     """)
     write_pandas(conn=conn,
                  df=df,
-                 warehouse="STEAM_CHARTS_WAREHOUSE",
                  database="STEAM_CHARTS",
                  schema="MART",
                  table_name="TEMP_DIM_RANK_NUMBER",
