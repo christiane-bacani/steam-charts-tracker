@@ -100,10 +100,10 @@ top10_records_stg = extract("top10_records_stg")
 dim_rank_number = create_dim_rank_number(top5_trending_games_stg,
                                          top100_games_stg,
                                          top10_records_stg)
-print(dim_rank_number)
-# dim_rank_number = transform(dim_rank_number)
-# dim_rank_number = validate(dim_rank_number)
-# load(dim_rank_number)
+
+dim_rank_number = transform(dim_rank_number)
+dim_rank_number = validate(dim_rank_number)
+load(dim_rank_number)
 
 # Create the dimension table: `DIM_STEAM_GAME` by integrating
 # the necessary columns of different tables from `stg` data layer
