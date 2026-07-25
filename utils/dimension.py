@@ -40,7 +40,7 @@ def create_dim_rank_number(top5_trending_games_stg: pd.DataFrame,
     logger.info("Successfully created a new dimension table: 'DIM_RANK_NUMBER'.")
     return rank_number
 
-def create_dim_steam_Game(top5_trending_games_stg: pd.DataFrame,
+def create_dim_steam_game(top5_trending_games_stg: pd.DataFrame,
                           top100_games_stg: pd.DataFrame,
                           top10_records_stg: pd.DataFrame) -> pd.DataFrame:
     """
