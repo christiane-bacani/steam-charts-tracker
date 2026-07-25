@@ -156,7 +156,7 @@ def transform_dim_rank_number(df: pd.DataFrame) -> pd.DataFrame:
 
     # Rename the column
     df = df.rename(columns={"current_rank": "RANK_NUMBER"})
-
+    
     # Type-cast the column 'RANK_NUMBER'
     df["RANK_NUMBER"] = pd.to_numeric(df["RANK_NUMBER"], errors="coerce")
 
