@@ -28,17 +28,17 @@ def create_dim_rank_number(top5_trending_games_stg: pd.DataFrame,
     """
     logger.info("Creating new dimension table: 'DIM_RANK_NUMBER'.")
     
-    rank_number = pd.DataFrame(columns=["current_rank"])
+    dim_rank_number = pd.DataFrame(columns=["current_rank"])
     dataframes = [top5_trending_games_stg, top100_games_stg, top10_records_stg]
 
     for dataframe in dataframes:
-        rank_number = pd.concat([rank_number,
-                                 pd.DataFrame({"current_rank": dataframe["current_rank"]})
-                                 ],
-                                 ignore_index=True)
+        dim_rank_number = pd.concat([dim_rank_number,
+                                     pd.DataFrame({"current_rank": dataframe["current_rank"]})
+                                     ],
+                                     ignore_index=True)
 
     logger.info("Successfully created a new dimension table: 'DIM_RANK_NUMBER'.")
-    return rank_number
+    return dim_rank_number
 
 def create_dim_steam_game(top5_trending_games_stg: pd.DataFrame,
                           top100_games_stg: pd.DataFrame,
