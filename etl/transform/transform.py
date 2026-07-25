@@ -157,6 +157,15 @@ def transform_dim_rank_number(df: pd.DataFrame) -> pd.DataFrame:
     # Type-cast the column 'RANK_NUMBER'
     df["RANK_NUMBER"] = pd.to_numeric(df["RANK_NUMBER"], errors="coerce")
 
+    # Rename the column
+    df = df.rename(columns={"current_rank": "RANK_NUMBER"})
+
+    # Remove duplicate rows
+    df = df.drop_duplicates(keep="first")
+
+    # Sort the dataframe based on the primary key
+    df = df.sort_values(by="RANK_NUMBER", ascending=True)
+
     # Reset the index of the dataframe
     df = df.reset_index(drop=True)
 
