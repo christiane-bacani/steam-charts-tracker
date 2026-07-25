@@ -7,7 +7,6 @@ from utils.database.database import create_snowflake_database
 from utils.database.schema import create_postgres_schema
 from utils.database.schema import create_snowflake_schema
 from utils.database.table import create_postgres_table_for_raw
-from utils.database.table import create_snowflake_table_for_mart
 
 from utils.parse import parse
 from etl.extract.extract import ingest_top5_trending_games
@@ -20,6 +19,7 @@ from etl.transform.validate import validate
 from etl.load.load import load
 
 from utils.dimension import create_dim_rank_number
+from utils.dimension import create_dim_steam_game
 from utils.fact import create_fact_table
 
 
@@ -92,11 +92,12 @@ load(top10_records_raw)
 
 
 
-# Create the dimension table: `DIM_RANK_NUMBER` by integrating
-# the necessary columns of different tables from `stg` data layer
 top5_trending_games_stg = extract("top5_trending_games_stg")
 top100_games_stg = extract("top100_games_stg")
 top10_records_stg = extract("top10_records_stg")
+
+# Create the dimension table: `DIM_RANK_NUMBER` by integrating
+# the necessary columns of different tables from `stg` data layer
 dim_rank_number = create_dim_rank_number(top5_trending_games_stg,
                                          top100_games_stg,
                                          top10_records_stg)
@@ -107,6 +108,9 @@ load(dim_rank_number)
 
 # Create the dimension table: `DIM_STEAM_GAME` by integrating
 # the necessary columns of different tables from `stg` data layer
+dim_steam_game = create_dim_steam_game(top5_trending_games_stg,
+                                       top100_games_stg,
+                                       top10_records_stg)
 """
 # Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
 dim_rank_number = create_dimension_table("current_rank")
