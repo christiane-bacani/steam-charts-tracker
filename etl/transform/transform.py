@@ -154,11 +154,11 @@ def transform_dim_rank_number(df: pd.DataFrame) -> pd.DataFrame:
     """
     logger.info("Transforming the data: 'DIM_RANK_NUMBER'.")
 
-    # Type-cast the column 'RANK_NUMBER'
-    df["RANK_NUMBER"] = pd.to_numeric(df["RANK_NUMBER"], errors="coerce")
-
     # Rename the column
     df = df.rename(columns={"current_rank": "RANK_NUMBER"})
+
+    # Type-cast the column 'RANK_NUMBER'
+    df["RANK_NUMBER"] = pd.to_numeric(df["RANK_NUMBER"], errors="coerce")
 
     # Remove duplicate rows
     df = df.drop_duplicates(keep="first")
@@ -424,7 +424,7 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
                      "timestamp"]:
         return transform_top10_records_raw(df)
 
-    elif columns == ["RANK_NUMBER"]:
+    elif columns == ["current_rank"]:
         return transform_dim_rank_number(df)
 
     else:
