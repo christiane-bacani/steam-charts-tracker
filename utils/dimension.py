@@ -32,7 +32,10 @@ def create_dim_rank_number(top5_trending_games_stg: pd.DataFrame,
     dataframes = [top5_trending_games_stg, top100_games_stg, top10_records_stg]
 
     for dataframe in dataframes:
-        rank_number = pd.concat([rank_number, dataframe["current_rank"]], ignore_index=True)
+        rank_number = pd.concat([rank_number,
+                                 pd.DataFrame({"current_rank": dataframe["current_rank"]})
+                                 ],
+                                 ignore_index=True)
 
     rank_number = rank_number.rename(columns={"current_rank": "RANK_NUMBER"})
     rank_number = rank_number.drop_duplicates(keep="first")
