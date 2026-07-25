@@ -92,7 +92,7 @@ load(top10_records_raw)
 
 
 
-# Create the dimension table: `dim_rank_number` by integrating
+# Create the dimension table: `DIM_RANK_NUMBER` by integrating
 # the necessary columns of different tables from `stg` data layer
 top5_trending_games_stg = extract("top5_trending_games_stg")
 top100_games_stg = extract("top100_games_stg")
@@ -100,9 +100,13 @@ top10_records_stg = extract("top10_records_stg")
 dim_rank_number = create_dim_rank_number(top5_trending_games_stg,
                                          top100_games_stg,
                                          top10_records_stg)
-dim_rank_number = transform(dim_rank_number)
-dim_rank_number = validate(dim_rank_number)
-load(dim_rank_number)
+print(dim_rank_number)
+# dim_rank_number = transform(dim_rank_number)
+# dim_rank_number = validate(dim_rank_number)
+# load(dim_rank_number)
+
+# Create the dimension table: `DIM_STEAM_GAME` by integrating
+# the necessary columns of different tables from `stg` data layer
 """
 # Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
 dim_rank_number = create_dimension_table("current_rank")
