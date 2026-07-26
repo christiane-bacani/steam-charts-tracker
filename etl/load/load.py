@@ -303,6 +303,41 @@ def load_dim_steam_game(df: pd.DataFrame) -> None:
     Args:
         df (DataFrame): The dimension data as a DataFrame.
     """
+    logger.info("Establishing a connection to Snowflake to load the data to a table.")
+    load_dotenv()
+    conn = init_connection_to_snowflake(os.getenv("SNOWFLAKE_USERNAME"),
+                                        os.getenv("SNOWFLAKE_PASSWORD"),
+                                        os.getenv("SNOWFLAKE_ACCOUNT_IDENTIFIER"),
+                                        "steam_charts_warehouse",
+                                        "STEAM_CHARTS",
+                                        "MART")
+
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    CREATE OR REPLACE TABLE STEAM_CHARTS.MART.TEMP_DIM_STEAM_GAME (
+    APPLICATION_ID INTEGER PRIMARY KEY,
+    GAME_NAME VARCHAR(255));
+    """)
+    write_pandas(conn=conn,
+                 df=df,
+                 database="STEAM_CHARTS",
+                 schema="MART",
+                 table_name="TEMP_DIM_STEAM_GAME",
+                 auto_create_table=False,
+                 overwrite=True)
+    cursor.execute("""
+    DROP TABLE IF EXISTS STEAM_CHARTS.MART.DIM_STEAM_GAME;    
+    """)
+    cursor.execute("""
+    ALTER TABLE STEAM_CHARTS.MART.TEMP_DIM_STEAM_GAME
+    RENAME TO STEAM_CHARTS.MART.DIM_STEAM_GAME;
+    """)
+
+    cursor.close()
+    conn.close()
+
+    logger.info(f"Successfully loaded new data to SQL table: 'DIM_STEAM_GAME'.")
 
 def load(data: dict | pd.DataFrame) -> pd.DataFrame:
     """
