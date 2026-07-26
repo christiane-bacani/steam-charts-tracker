@@ -114,6 +114,9 @@ dim_steam_game = create_dim_steam_game(top5_trending_games_stg,
 dim_steam_game = transform(dim_steam_game)
 dim_steam_game = validate(dim_steam_game)
 load(dim_steam_game)
+
+# Create the dimension table: `DIM_TIMESTAMP` by integrating
+# the necessary columns of different tables from `stg` data layer
 """
 # Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
 dim_rank_number = create_dimension_table("current_rank")
