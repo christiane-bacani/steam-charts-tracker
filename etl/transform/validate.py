@@ -1139,5 +1139,9 @@ def validate(df: pd.DataFrame) -> pd.DataFrame:
     elif columns == ["RANK_NUMBER"]:
         return validate_dim_rank_number(df)
 
+    elif columns == ["APPLICATION_ID",
+                     "GAME_NAME"]:
+        return validate_dim_steam_game(df)
+
     else:
         raise Exception("Invalid data to validate!")
