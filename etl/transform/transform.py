@@ -184,14 +184,21 @@ def transform_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
     """
     logger.info("Transforming the data: 'dim_steam_game'.")
 
-    # Data deduplication
+    # Rename the column
+    df = df.rename(columns={"application_id": "APPLICATION_ID",
+                            "game_name": "GAME_NAME"})
+
+    # Type-cast the column 'APPLICATION_ID'
+    df["APPLICATION_ID"] = pd.to_numeric(df["APPLICATION_ID"], errors="raise")
+
+    # Remove duplicate rows
     df.drop_duplicates(keep="first", inplace=True)
 
-    # Type-cast the column 'application_id'
-    df["application_id"] = pd.to_numeric(df["application_id"], errors="raise")
-
-    # Sort the dataframe based on the application ID
-    df.sort_values(by="application_id", inplace=True)
+    # Sort the dataframe based on the primary key
+    df.sort_values(by="APPLICATION_ID", inplace=True)
+    
+    # Reset the index of the dataframe
+    df = df.reset_index(drop=True)
 
     logger.info("Successfully transformed the data: `dim_steam_game`.")
     return df
