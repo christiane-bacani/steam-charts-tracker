@@ -441,7 +441,7 @@ def validate_dim_rank_number(df: pd.DataFrame) -> pd.DataFrame:
 
 def validate_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Validate the data from the DataFrame object 'dim_steam_game'
+    Validate the data from the DataFrame object 'DIM_STEAM_GAME'
     before loading to the stage data layer.
 
     Args:
@@ -450,52 +450,52 @@ def validate_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.
     """
-    logger.info("Validating the data: 'dim_steam_game'.")
+    logger.info("Validating the data: 'DIM_STEAM_GAME'.")
 
-    # Perform validation checks to 'application_id' column
-    if not pd.api.types.is_numeric_dtype(df["application_id"]):
-        logger.info("Column: 'application_id' consist of wrong datatype!")
-        df["application_id"] = pd.to_numeric(df["application_id"], errors="coerce")
-        logger.info("Type-casted the values of 'application_id' column.")
+    # Perform validation checks to 'APPLICATION_ID' column
+    if not pd.api.types.is_numeric_dtype(df["APPLICATION_ID"]):
+        logger.info("Column: 'APPLICATION_ID' consist of wrong datatype!")
+        df["APPLICATION_ID"] = pd.to_numeric(df["APPLICATION_ID"], errors="coerce")
+        logger.info("Type-casted the values of 'APPLICATION_ID' column.")
 
-    if df["application_id"].isnull().sum() > 0:
-        logger.info("Column: 'application_id' consist of null values!")
-        df.dropna(subset=["application_id"], inplace=True)
+    if df["APPLICATION_ID"].isnull().sum() > 0:
+        logger.info("Column: 'APPLICATION_ID' consist of null values!")
+        df.dropna(subset=["APPLICATION_ID"], inplace=True)
         df.reset_index(inplace=True)
-        logger.info("Column: 'application_id' with missing values are removed.")
+        logger.info("Column: 'APPLICATION_ID' with missing values are removed.")
 
-    if (df["application_id"] < 1).any():
-        logger.info("'application_id' column consist of off-range values!")
-        df["application_id"] = df[df["application_id"] > 0]
+    if (df["APPLICATION_ID"] < 1).any():
+        logger.info("'APPLICATION_ID' column consist of off-range values!")
+        df["APPLICATION_ID"] = df[df["APPLICATION_ID"] > 0]
         df.reset_index(inplace=True)
-        logger.info("'application_id' column with off-range values are removed.")
+        logger.info("'APPLICATION_ID' column with off-range values are removed.")
 
-    # Perform validation checks to 'game_name' column
-    if not pd.api.types.is_string_dtype(df["game_name"]):
-        logger.info("Column: 'game_name' consist of wrong datatype!")
-        df["game_name"] = df["game_name"].astype(str)
-        logger.info("Type-casted the values of 'game_name' column.")
+    # Perform validation checks to 'GAME_NAME' column
+    if not pd.api.types.is_string_dtype(df["GAME_NAME"]):
+        logger.info("Column: 'GAME_NAME' consist of wrong datatype!")
+        df["GAME_NAME"] = df["GAME_NAME"].astype(str)
+        logger.info("Type-casted the values of 'GAME_NAME' column.")
 
-    if (df["game_name"].str.len() > 255).any():
-        raise Exception("Column: 'game_name' consist of more than 255 characters!")
+    if (df["GAME_NAME"].str.len() > 255).any():
+        raise Exception("Column: 'GAME_NAME' consist of more than 255 characters!")
 
-    if df["game_name"].isnull().sum() > 0:
-        logger.info("Column: 'game_name' consist of null values!")
-        df.dropna(subset=["game_name"], inplace=True)
+    if df["GAME_NAME"].isnull().sum() > 0:
+        logger.info("Column: 'GAME_NAME' consist of null values!")
+        df.dropna(subset=["GAME_NAME"], inplace=True)
         df.reset_index(inplace=True)
-        logger.info("Column: 'game_name' with missing values are removed.")
+        logger.info("Column: 'GAME_NAME' with missing values are removed.")
 
     # Perform validation check to the whole dataset
     columns = list(df.columns)
     correct_order_of_columns = [
-        "application_id",
-        "game_name"
+        "APPLICATION_ID",
+        "GAME_NAME"
     ]
 
     if columns != correct_order_of_columns:
-        raise Exception("Columns of the table: 'dim_steam_game' are inaccurate!")
+        raise Exception("Columns of the table: 'DIM_STEAM_GAME' are inaccurate!")
 
-    logger.info("Successfully validated the data: 'dim_steam_game'.")
+    logger.info("Successfully validated the data: 'DIM_STEAM_GAME'.")
     return df
 
 def validate_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
