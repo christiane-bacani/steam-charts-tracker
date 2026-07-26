@@ -294,6 +294,16 @@ def load_dim_rank_number(df: pd.DataFrame) -> None:
 
     logger.info(f"Successfully loaded new data to SQL table: 'DIM_RANK_NUMBER'.")
 
+def load_dim_steam_game(df: pd.DataFrame) -> None:
+    """
+    Load the dimension data: `DIM_STEAM_GAME` to the
+    mart data layer (Snowflake Data Warehouse) to
+    perform data analysis.
+
+    Args:
+        df (DataFrame): The dimension data as a DataFrame.
+    """
+
 def load(data: dict | pd.DataFrame) -> pd.DataFrame:
     """
     Load the ingested, extracted, transformed, and
@@ -367,6 +377,10 @@ def load(data: dict | pd.DataFrame) -> pd.DataFrame:
 
     elif columns == ["RANK_NUMBER"]:
         return load_dim_rank_number(data)
+
+    elif columns == ["APPLICATION_ID",
+                     "GAME_NAME"]:
+        return load_dim_steam_game(data)
 
     else:
         raise Exception("Invalid data to load to the target data layer!")
