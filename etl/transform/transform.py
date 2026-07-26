@@ -434,5 +434,9 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
     elif columns == ["current_rank"]:
         return transform_dim_rank_number(df)
 
+    elif columns == ["application_id",
+                     "game_name"]:
+        return transform_dim_steam_game(df)
+
     else:
         raise Exception("Invalid data to transform!")
