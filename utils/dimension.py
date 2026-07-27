@@ -68,3 +68,6 @@ def create_dim_steam_game(top5_trending_games_stg: pd.DataFrame,
 
     logger.info("Successfully created a new dimension table: 'DIM_STEAM_GAME'.")
     return dim_steam_game
+
+def create_dim_timestamp():
+    """"""
