@@ -70,4 +70,15 @@ def create_dim_steam_game(top5_trending_games_stg: pd.DataFrame,
     return dim_steam_game
 
 def create_dim_timestamp():
-    """"""
+    """
+    Create the dimension table: `DIM_TIMESTAMP` using different tables
+    of `stg` database schema.
+
+    Args:
+        top5_trending_games_stg (DataFrame): The top 5 trending games as a DataFrame.
+        top100_games_stg (DataFrame): The top 100 games as a DataFrame.
+        top10_records_stg (DataFrame): The top 10 records as a DataFrame.
+
+    Returns:
+        DataFrame: The created dimension table: `DIM_TIMESTAMP`.
+    """
