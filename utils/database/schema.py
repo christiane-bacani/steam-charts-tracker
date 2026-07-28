@@ -76,8 +76,8 @@ def create_snowflake_schema(schema_name: str) -> None:
         SCHEMA_NAME = %s
     """, (schema_name, ))
     row = cursor.fetchone()
-    exists = row[0] != ""
-
+    exists = row is not None
+    
     if not exists:
         logger.info(f"Creating new Snowflake DB Schema: '{schema_name}'.")
         cursor.execute(f"CREATE SCHEMA IF NOT EXISTS STEAM_CHARTS.{schema_name};")
