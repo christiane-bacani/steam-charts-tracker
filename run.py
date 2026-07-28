@@ -10,7 +10,7 @@ from utils.database.table import create_postgres_table_for_raw
 
 from utils.parse import parse
 from etl.extract.extract import ingest_top5_trending_games
-from etl.extract.extract import ingest_top100_games
+from etl.extract.extract import ingest_top_100_games
 from etl.extract.extract import ingest_top10_records
 
 from etl.extract.extract import extract
@@ -20,6 +20,7 @@ from etl.load.load import load
 
 from utils.dimension import create_dim_rank_number
 from utils.dimension import create_dim_steam_game
+from utils.dimension import create_dim_timestamp
 from utils.fact import create_fact_table
 
 
@@ -117,6 +118,9 @@ load(dim_steam_game)
 
 # Create the dimension table: `DIM_TIMESTAMP` by integrating
 # the necessary columns of different tables from `stg` data layer
+dim_timestamp = create_dim_timestamp(top5_trending_games_stg,
+                     top100_games_stg,
+                     top10_records_stg)
 """
 # Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
 dim_rank_number = create_dimension_table("current_rank")
