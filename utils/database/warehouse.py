@@ -32,8 +32,8 @@ def create_warehouse(warehouse_name: str) -> None:
 
     if not exists:    
         logger.info(f"Creating Snowflake Warehouse: '{warehouse_name}'.")
-        cursor.execute("""
-        CREATE WAREHOUSE steam_charts_warehouse
+        cursor.execute(f"""
+        CREATE WAREHOUSE {warehouse_name}
         WITH WAREHOUSE_SIZE = 'LARGE'
         AUTO_SUSPEND = 60
         AUTO_RESUME = TRUE
