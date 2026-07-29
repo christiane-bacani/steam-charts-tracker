@@ -86,7 +86,7 @@ def create_dim_timestamp(top5_trending_games_stg: pd.DataFrame,
 
     for dataframe in dataframes:
         dim_timestamp = pd.concat([dim_timestamp,
-                                   dataframe["timestamp"]
+                                   dataframe[["timestamp"]]
                                    ],
                                    ignore_index=True)
 
