@@ -220,7 +220,7 @@ def transform_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
 
     # Type-cast the column 'TIMESTAMP' safely and let pandas infer if formats vary
     df["TIMESTAMP"] = pd.to_datetime(df["TIMESTAMP"],
-                                     format="mixed",
+                                     format="%Y-%m-%d %H:%M:%S.%f%z",
                                      errors="coerce")
 
     # Remove duplicate rows from the column 'TIMESTAMP'
@@ -231,14 +231,6 @@ def transform_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
 
     # Create the primary key of the dataframe
     df["ID"] = range(1, len(df) + 1)
-
-    # Only localize/convert to datetime that is timezone aware if there are rows left to convert
-    if df["TIMESTAMP"].isna().any():
-        if df["TIMESTAMP"].dt.tz is None:
-            df["TIMESTAMP"] = df["TIMESTAMP"].dt.tz_localize("Asia/Manila")
-
-        else:
-            df["TIMESTAMP"] = df["TIMESTAMP"].dt.tz_convert("Asia/Manila")
 
     # Reset the index of the dataframe
     df = df.reset_index(drop=True)
