@@ -121,6 +121,7 @@ load(dim_steam_game)
 dim_timestamp = create_dim_timestamp(top5_trending_games_stg,
                      top100_games_stg,
                      top10_records_stg)
+dim_timestamp = transform(dim_timestamp)
 """
 # Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
 dim_rank_number = create_dimension_table("current_rank")
