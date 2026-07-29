@@ -218,9 +218,10 @@ def transform_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
     # Rename the column
     df = df.rename(columns={"timestamp": "TIMESTAMP"})
 
-    # Type-cast the column 'TIMESTAMP' by converting the UTC-aware to PH time
+    # Type-cast the column 'TIMESTAMP' safely and let pandas infer if formats vary
     df["TIMESTAMP"] = pd.to_datetime(df["TIMESTAMP"],
-                                     errors="coerce").dt.tz_convert("Asia/Manila")
+                                     format="mixed",
+                                     errors="coerce")
 
     # Remove duplicate rows from the column 'TIMESTAMP'
     df["TIMESTAMP"] = df["TIMESTAMP"].drop_duplicates(keep="first")
@@ -230,6 +231,9 @@ def transform_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
 
     # Create the primary key of the dataframe
     df["ID"] = range(1, len(df) + 1)
+
+    # Reset the index of the dataframe
+    df = df.reset_index(drop=True)
 
     logger.info("Successfully transformed the data: `DIM_TIMESTAMP`.")
     return df
