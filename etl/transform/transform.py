@@ -174,7 +174,7 @@ def transform_dim_rank_number(df: pd.DataFrame) -> pd.DataFrame:
 
 def transform_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Transform the dimension table: `dim_steam_game`.
+    Transform the dimension table: `DIM_STEAM_GAME`.
 
     Args:
         df (DataFrame): The extracted dimension data as a DataFrame.
@@ -182,7 +182,7 @@ def transform_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The transformed data as a DataFrame.
     """
-    logger.info("Transforming the data: 'dim_steam_game'.")
+    logger.info("Transforming the data: 'DIM_STEAM_GAME'.")
 
     # Rename the column
     df = df.rename(columns={"application_id": "APPLICATION_ID",
@@ -192,20 +192,20 @@ def transform_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
     df["APPLICATION_ID"] = pd.to_numeric(df["APPLICATION_ID"], errors="raise")
 
     # Remove duplicate rows
-    df.drop_duplicates(keep="first", inplace=True)
+    df = df.drop_duplicates(keep="first", inplace=True)
 
     # Sort the dataframe based on the primary key
-    df.sort_values(by="APPLICATION_ID", inplace=True)
-    
+    df = df.sort_values(by="APPLICATION_ID", ascending=True)
+
     # Reset the index of the dataframe
     df = df.reset_index(drop=True)
 
-    logger.info("Successfully transformed the data: `dim_steam_game`.")
+    logger.info("Successfully transformed the data: `DIM_STEAM_GAME`.")
     return df
 
 def transform_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Transform the dimension table: `dim_timestamp`.
+    Transform the dimension table: `DIM_TIMESTAMP`.
 
     Args:
         df (DataFrame): The extracted dimension data as a DataFrame.
@@ -213,21 +213,24 @@ def transform_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The transformed data as a DataFrame.
     """
-    logger.info("Transforming the data: 'dim_timestamp'.")
+    logger.info("Transforming the data: 'DIM_TIMESTAMP'.")
 
-    # Data deduplication
-    df.drop_duplicates(keep="first", inplace=True)
+    # Rename the column
+    df = df.rename(columns={"timestamp": "TIMESTAMP"})
 
-    # Sort the dataframe based on the earliest timestamp
-    df.sort_values(by="timestamp", inplace=True)
+    # Type-cast the column 'TIMESTAMP' by converting the UTC-aware to PH time
+    df["TIMESTAMP"] = pd.to_datetime(df["TIMESTAMP"]).dt.tz_convert("Asia/Manila")
 
-    # Create the primary key
-    df["id"] = range(1, len(df) + 1)
+    # Remove duplicate rows from the column 'TIMESTAMP'
+    df["TIMESTAMP"] = df["TIMESTAMP"].drop_duplicates(keep="first")
 
-    # Reorder the structure of columns
-    df = df[["id", "timestamp"]]
+    # Sort the dataframe based on the 'TIMESTAMP' column
+    df = df.sort_values(by="TIMESTAMP", ascending=True)
 
-    logger.info("Successfully transformed the data: `dim_timestamp`.")
+    # Create the primary key of the dataframe
+    df["ID"] = range(1, len(df) + 1)
+
+    logger.info("Successfully transformed the data: `DIM_TIMESTAMP`.")
     return df
 
 def transform_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
@@ -437,6 +440,9 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
     elif columns == ["application_id",
                      "game_name"]:
         return transform_dim_steam_game(df)
+
+    elif columns == ["timestamp"]:
+        return transform_dim_timestamp(df)
 
     else:
         raise Exception("Invalid data to transform!")
