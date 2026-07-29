@@ -84,3 +84,16 @@ def create_dim_timestamp(top5_trending_games_stg: pd.DataFrame,
     Returns:
         DataFrame: The created dimension table: `DIM_TIMESTAMP`.
     """
+    logger.info("Creating new dimension table: 'DIM_TIMESTAMP'.")
+
+    dim_timestamp = pd.DataFrame(columns=["timestamp"])
+    dataframes = [top5_trending_games_stg, top100_games_stg, top10_records_stg]
+
+    for dataframe in dataframes:
+        dim_timestamp = pd.concat([dim_timestamp,
+                                   dataframe["timestamp"]
+                                   ],
+                                   ignore_index=True)
+
+    logger.info("Successfully created a new dimension table: 'DIM_TIMESTAMP'.")
+    return dim_timestamp
