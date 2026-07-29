@@ -220,7 +220,7 @@ def transform_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
 
     # Type-cast the column 'TIMESTAMP' by converting the UTC-aware to PH time
     df["TIMESTAMP"] = pd.to_datetime(df["TIMESTAMP"],
-                                     errors="coerce").dt.tz_localize("Asia/Manila")
+                                     errors="coerce").dt.tz_convert("Asia/Manila")
 
     # Remove duplicate rows from the column 'TIMESTAMP'
     df["TIMESTAMP"] = df["TIMESTAMP"].drop_duplicates(keep="first")
