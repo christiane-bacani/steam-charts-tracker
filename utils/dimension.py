@@ -4,11 +4,6 @@ data tracked by Steam Charts.
 """
 import pandas as pd
 
-import os
-from dotenv import load_dotenv
-
-from utils.database.connection import init_connection_to_postgres
-
 from logs import logger
 
 def create_dim_rank_number(top5_trending_games_stg: pd.DataFrame,
