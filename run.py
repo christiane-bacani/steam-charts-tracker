@@ -10,7 +10,7 @@ from utils.database.table import create_postgres_table_for_raw
 
 from utils.parse import parse
 from etl.extract.extract import ingest_top5_trending_games
-from etl.extract.extract import ingest_top_100_games
+from etl.extract.extract import ingest_top100_games
 from etl.extract.extract import ingest_top10_records
 
 from etl.extract.extract import extract
