@@ -192,7 +192,7 @@ def transform_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
     df["APPLICATION_ID"] = pd.to_numeric(df["APPLICATION_ID"], errors="raise")
 
     # Remove duplicate rows
-    df = df.drop_duplicates(keep="first", inplace=True)
+    df = df.drop_duplicates(keep="first")
 
     # Sort the dataframe based on the primary key
     df = df.sort_values(by="APPLICATION_ID", ascending=True)
