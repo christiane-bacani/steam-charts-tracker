@@ -223,14 +223,18 @@ def transform_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
                                      format="%Y-%m-%d %H:%M:%S.%f%z",
                                      errors="coerce")
 
-    # Remove duplicate rows from the column 'TIMESTAMP'
-    df["TIMESTAMP"] = df["TIMESTAMP"].drop_duplicates(keep="first")
+    # Remove duplicate rows
+    df = df.drop_duplicates(keep="first")
 
     # Sort the dataframe based on the 'TIMESTAMP' column
     df = df.sort_values(by="TIMESTAMP", ascending=True)
 
     # Create the primary key of the dataframe
     df["ID"] = range(1, len(df) + 1)
+
+    # Reorder the column structure of the dataframe
+    new_order_of_columns = ["ID", "TIMESTAMP"]
+    df = df[new_order_of_columns]
 
     # Reset the index of the dataframe
     df = df.reset_index(drop=True)
