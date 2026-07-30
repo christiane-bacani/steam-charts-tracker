@@ -1143,5 +1143,9 @@ def validate(df: pd.DataFrame) -> pd.DataFrame:
                      "GAME_NAME"]:
         return validate_dim_steam_game(df)
 
+    elif columns == ["ID",
+                     "TIMESTAMP"]:
+        return validate_dim_timestamp(df)
+
     else:
         raise Exception("Invalid data to validate!")
