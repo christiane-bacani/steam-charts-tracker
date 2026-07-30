@@ -500,7 +500,7 @@ def validate_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
 
 def validate_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Validate the data from the DataFrame object 'dim_timestamp'
+    Validate the data from the DataFrame object 'DIM_TIMESTAMP'
     before loading to the stage data layer.
 
     Args:
@@ -509,55 +509,55 @@ def validate_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.
     """
-    logger.info("Validating the data: 'dim_steam_game'.")
+    logger.info("Validating the data: 'DIM_TIMESTAMP'.")
 
-    # Perform validation checks to 'id' column
-    if not pd.api.types.is_numeric_dtype(df["id"]):
-        logger.info("Column: 'id' consist of wrong datatype!")
-        df["id"] = pd.to_numeric(df["id"], errors="coerce")
-        logger.info("Type-casted the values of 'id' column.")
+    # Perform validation checks to 'ID' column
+    if not pd.api.types.is_numeric_dtype(df["ID"]):
+        logger.info("Column: 'ID' consist of wrong datatype!")
+        df["ID"] = pd.to_numeric(df["ID"], errors="coerce")
+        logger.info("Type-casted the values of 'ID' column.")
 
-    if df["id"].isnull().sum() > 0:
-        logger.info("Column: 'id' consist of null values!")
-        df.dropna(subset=["id"], inplace=True)
+    if df["ID"].isnull().sum() > 0:
+        logger.info("Column: 'ID' consist of null values!")
+        df.dropna(subset=["ID"], inplace=True)
         df.reset_index(inplace=True)
-        logger.info("Column: 'id' with missing values are removed.")
+        logger.info("Column: 'ID' with missing values are removed.")
 
-    if df["id"].duplicated().sum() > 0:
-        logger.info("Column: 'id' consist of duplicate values!")
-        df.drop_duplicates(subset=["id"], keep="first", inplace=True)
-        df.sort_values(by="id", inplace=True)
-        logger.info("Column: 'id' with duplicate values are removed.")
+    if df["ID"].duplicated().sum() > 0:
+        logger.info("Column: 'ID' consist of duplicate values!")
+        df.drop_duplicates(subset=["ID"], keep="first", inplace=True)
+        df.sort_values(by="ID", inplace=True)
+        logger.info("Column: 'ID' with duplicate values are removed.")
 
-    # Perform validation checks to 'timestamp' column
-    if not pd.api.types.is_datetime64_any_dtype(df["timestamp"]):
-        logger.info("Column: 'timestamp' consist of wrong datatype!")
-        df["timestamp"] = pd.to_datetime(df["timestamp"], errors="raise", utc=True)
-        logger.info("Column: 'timestamp' with wrong datatype are fixed.")
+    # Perform validation checks to 'TIMESTAMP' column
+    if not pd.api.types.is_datetime64_any_dtype(df["TIMESTAMP"]):
+        logger.info("Column: 'TIMESTAMP' consist of wrong datatype!")
+        df["TIMESTAMP"] = pd.to_datetime(df["TIMESTAMP"], errors="raise", utc=True)
+        logger.info("Column: 'TIMESTAMP' with wrong datatype are fixed.")
 
-    if df["timestamp"].isnull().sum() > 0:
-        logger.info("Column: 'timestamp' consist of null values!")
-        df.dropna(subset=["timestamp"], inplace=True)
+    if df["TIMESTAMP"].isnull().sum() > 0:
+        logger.info("Column: 'TIMESTAMP' consist of null values!")
+        df.dropna(subset=["TIMESTAMP"], inplace=True)
         df.reset_index(inplace=True)
-        logger.info("Column: 'timestamp' with missing values are removed.")
+        logger.info("Column: 'TIMESTAMP' with missing values are removed.")
 
-    if df["timestamp"].duplicated().sum() > 0:
-        logger.info("Column: 'timestamp' consist of duplicate values!")
-        df.drop_duplicates(subset=["timestamp"], keep="last", inplace=True)
-        df.sort_values(by="timestamp", inplace=True)
-        logger.info("Column: 'timestamp' with duplicate values are removed.")
+    if df["TIMESTAMP"].duplicated().sum() > 0:
+        logger.info("Column: 'TIMESTAMP' consist of duplicate values!")
+        df.drop_duplicates(subset=["TIMESTAMP"], keep="last", inplace=True)
+        df.sort_values(by="TIMESTAMP", inplace=True)
+        logger.info("Column: 'TIMESTAMP' with duplicate values are removed.")
 
     # Perform validation check to the whole dataset
     columns = list(df.columns)
     correct_order_of_columns = [
-        "id",
-        "timestamp"
+        "ID",
+        "TIMESTAMP"
     ]
 
     if columns != correct_order_of_columns:
-        raise Exception("Columns of the table: 'dim_timestamp' are inaccurate!")
+        raise Exception("Columns of the table: 'DIM_TIMESTAMP' are inaccurate!")
 
-    logger.info("Successfully validated the data: 'dim_timestamp'.")
+    logger.info("Successfully validated the data: 'DIM_TIMESTAMP'.")
     return df
 
 def validate_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
