@@ -417,5 +417,9 @@ def load(data: dict | pd.DataFrame) -> pd.DataFrame:
                      "GAME_NAME"]:
         return load_dim_steam_game(data)
 
+    elif columns == ["ID",
+                     "TIMESTAMP"]:
+        return load_dim_timestamp(data)
+
     else:
         raise Exception("Invalid data to load to the target data layer!")
