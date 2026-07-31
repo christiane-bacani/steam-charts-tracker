@@ -369,6 +369,7 @@ def load_dim_timestamp(df: pd.DataFrame) -> None:
                  database="STEAM_CHARTS",
                  schema="MART",
                  table_name="TEMP_DIM_TIMESTAMP",
+                 use_logical_type=True,
                  auto_create_table=False,
                  overwrite=True)
     cursor.execute("""
