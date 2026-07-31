@@ -52,14 +52,16 @@ def create_dim_steam_game(top5_trending_games_stg: pd.DataFrame,
     """
     logger.info("Creating new dimension table: 'DIM_STEAM_GAME'.")
 
+    dim_steam_game = pd.DataFrame(columns=["application_id", "game_name"])
     dataframes = [top5_trending_games_stg, top100_games_stg, top10_records_stg]
 
     for dataframe in dataframes:
-        dim_steam_game = pd.concat(
-            [pd.DataFrame({"application_id": dataframe["application_id"],
-                           "game_name":      dataframe["game_name"]})],
-            ignore_index=True
-        )
+        dim_steam_game = pd.concat([
+            dim_steam_game,
+            pd.DataFrame({"application_id": dataframe["application_id"],
+                          "game_name":      dataframe["game_name"]})
+        ],
+        ignore_index=True)
 
     logger.info("Successfully created a new dimension table: 'DIM_STEAM_GAME'.")
     return dim_steam_game
