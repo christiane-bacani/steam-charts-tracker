@@ -364,6 +364,25 @@ def load_dim_timestamp(df: pd.DataFrame) -> None:
     ID INTEGER PRIMARY KEY,
     TIMESTAMP TIMESTAMP_LTZ(6));
     """)
+    write_pandas(conn=conn,
+                 df=df,
+                 database="STEAM_CHARTS",
+                 schema="MART",
+                 table_name="TEMP_DIM_TIMESTAMP",
+                 auto_create_table=False,
+                 overwrite=True)
+    cursor.execute("""
+    DROP TABLE IF EXISTS STEAM_CHARTS.MART.DIM_TIMESTAMP;
+    """)
+    cursor.execute("""
+    ALTER TABLE STEAM_CHARTS.MART.TEMP_DIM_TIMESTAMP
+    RENAME TO STEAM_CHARTS.MART.DIM_TIMESTAMP;
+    """)
+
+    cursor.close()
+    conn.close()
+
+    logger.info("Succesfully loaded new data to SQL table: 'DIM_TIMESTAMP'.")
 
 def load(data: dict | pd.DataFrame) -> pd.DataFrame:
     """
