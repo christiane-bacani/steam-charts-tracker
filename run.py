@@ -98,7 +98,7 @@ top100_games_stg = extract("top100_games_stg")
 top10_records_stg = extract("top10_records_stg")
 
 # Create the dimension table: `DIM_RANK_NUMBER` by integrating
-# the necessary columns of different tables from `stg` data layer
+# the necessary columns from different tables of `stg` data layer
 dim_rank_number = create_dim_rank_number(top5_trending_games_stg,
                                          top100_games_stg,
                                          top10_records_stg)
@@ -108,7 +108,7 @@ dim_rank_number = validate(dim_rank_number)
 load(dim_rank_number)
 
 # Create the dimension table: `DIM_STEAM_GAME` by integrating
-# the necessary columns of different tables from `stg` data layer
+# the necessary columns from different tables of `stg` data layer
 dim_steam_game = create_dim_steam_game(top5_trending_games_stg,
                                        top100_games_stg,
                                        top10_records_stg)
@@ -117,13 +117,16 @@ dim_steam_game = validate(dim_steam_game)
 load(dim_steam_game)
 
 # Create the dimension table: `DIM_TIMESTAMP` by integrating
-# the necessary columns of different tables from `stg` data layer
+# the necessary columns from different tables of `stg` data layer
 dim_timestamp = create_dim_timestamp(top5_trending_games_stg,
                      top100_games_stg,
                      top10_records_stg)
 dim_timestamp = transform(dim_timestamp)
 dim_timestamp = validate(dim_timestamp)
 load(dim_timestamp)
+
+# Create the dimension table: `DIM_PEAK_MONTH` by integrating
+# the necessary columns from different tables of `stg` data layer
 """
 # Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
 dim_rank_number = create_dimension_table("current_rank")
