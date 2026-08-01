@@ -27,10 +27,12 @@ def create_dim_rank_number(top5_trending_games_stg: pd.DataFrame,
     dataframes = [top5_trending_games_stg, top100_games_stg, top10_records_stg]
 
     for dataframe in dataframes:
-        dim_rank_number = pd.concat(
-            [pd.DataFrame({"current_rank": dataframe["current_rank"]})],
-            ignore_index=True
-        )
+        if not dataframe["current_rank"].empty:        
+            dim_rank_number = pd.concat([
+                dim_rank_number,
+                pd.DataFrame({"current_rank": dataframe["current_rank"]})
+            ],
+            ignore_index=True)
 
     logger.info("Successfully created a new dimension table: 'DIM_RANK_NUMBER'.")
     return dim_rank_number
