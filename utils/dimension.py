@@ -56,12 +56,13 @@ def create_dim_steam_game(top5_trending_games_stg: pd.DataFrame,
     dataframes = [top5_trending_games_stg, top100_games_stg, top10_records_stg]
 
     for dataframe in dataframes:
-        dim_steam_game = pd.concat([
-            dim_steam_game,
-            pd.DataFrame({"application_id": dataframe["application_id"],
-                          "game_name":      dataframe["game_name"]})
-        ],
-        ignore_index=True)
+        if not dataframe["application_id"].empty and not dataframe["game_name"].empty:    
+            dim_steam_game = pd.concat([
+                dim_steam_game,
+                pd.DataFrame({"application_id": dataframe["application_id"],
+                              "game_name":      dataframe["game_name"]})
+            ],
+            ignore_index=True)
 
     logger.info("Successfully created a new dimension table: 'DIM_STEAM_GAME'.")
     return dim_steam_game
