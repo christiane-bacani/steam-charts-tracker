@@ -22,17 +22,22 @@ def create_dim_rank_number(top5_trending_games_stg: pd.DataFrame,
         DataFrame: The created dimension table: `DIM_RANK_NUMBER`.
     """
     logger.info("Creating new dimension table: 'DIM_RANK_NUMBER'.")
-    
-    dim_rank_number = pd.DataFrame(columns=["current_rank"])
+
     dataframes = [top5_trending_games_stg, top100_games_stg, top10_records_stg]
 
+    pieces = []
     for dataframe in dataframes:
-        if not dataframe["current_rank"].empty:        
-            dim_rank_number = pd.concat([
-                dim_rank_number,
-                pd.DataFrame({"current_rank": dataframe["current_rank"]})
-            ],
-            ignore_index=True)
+        if not dataframe["current_rank"].empty:
+            piece = pd.DataFrame({
+                "current_rank": dataframe["current_rank"]
+            })
+            pieces.append(piece)
+
+    if len(pieces) > 0:
+        dim_rank_number = pd.concat(pieces, ignore_index=True)
+
+    else:
+        dim_rank_number = pd.DataFrame(columns=["current_rank"])
 
     logger.info("Successfully created a new dimension table: 'DIM_RANK_NUMBER'.")
     return dim_rank_number
@@ -54,9 +59,9 @@ def create_dim_steam_game(top5_trending_games_stg: pd.DataFrame,
     """
     logger.info("Creating new dimension table: 'DIM_STEAM_GAME'.")
 
-    pieces = []
     dataframes = [top5_trending_games_stg, top100_games_stg, top10_records_stg]
 
+    pieces = []
     for dataframe in dataframes:
         if not dataframe["application_id"].empty and not dataframe["game_name"].empty:
             piece = pd.DataFrame({
