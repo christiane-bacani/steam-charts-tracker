@@ -126,3 +126,22 @@ def create_dim_peak_month(top10_records_stg: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The created dimension table: `DIM_PEAK_MONTH`.
     """
+    logger.info("Creating new dimension table: 'DIM_PEAK_MONTH'.")
+
+    dataframe = top10_records_stg
+
+    pieces = []
+    if not dataframe["peak_month"].empty:
+        piece = pd.DataFrame({
+            "peak_month": dataframe["peak_month"]
+        })
+        pieces.append(piece)
+
+    if len(pieces) > 0:
+        dim_peak_month = pd.concat(pieces, ignore_index=True)
+
+    else:
+        dim_peak_month = pd.DataFrame(columns=["peak_month"])
+
+    logger.info("Successfully created a new dimension table: 'DIM_PEAK_MONTH'.")
+    return dim_peak_month
