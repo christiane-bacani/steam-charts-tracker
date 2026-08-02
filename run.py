@@ -21,6 +21,7 @@ from etl.load.load import load
 from utils.dimension import create_dim_rank_number
 from utils.dimension import create_dim_steam_game
 from utils.dimension import create_dim_timestamp
+from utils.dimension import create_dim_peak_month
 from utils.fact import create_fact_table
 
 
@@ -127,6 +128,7 @@ load(dim_timestamp)
 
 # Create the dimension table: `DIM_PEAK_MONTH` by integrating
 # the necessary columns from different tables of `stg` data layer
+create_dim_peak_month(top10_records_stg)
 """
 # Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
 dim_rank_number = create_dimension_table("current_rank")
