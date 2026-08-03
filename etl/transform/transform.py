@@ -263,7 +263,7 @@ def transform_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
     # Remove duplicate rows
     df = df.drop_duplicates(keep="first")
 
-    # Sort the dataframe based on the custom order on the 'PEAK_MONTH' column
+    # Define the custom order on the 'PEAK_MONTH' column
     custom_order = ["January", "February", "March",
                     "April",   "May",      "June",
                     "July",    "August",   "September",
@@ -271,6 +271,8 @@ def transform_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
     df["PEAK_MONTH"] = pd.Categorical(df["PEAK_MONTH"],
                                       categories=custom_order,
                                       ordered=True)
+    # Actually apply the sort based on that custom order
+    df = df.sort_values("PEAK_MONTH").reset_index(drop=True)
 
     # Create the primary key of the dataframe
     df["ID"] = range(1, len(df) + 1)
@@ -278,9 +280,6 @@ def transform_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
     # Reoder the column structure of the dataframe
     new_order_of_columns = ["ID", "PEAK_MONTH"]
     df = df[new_order_of_columns]
-
-    # Reset the index of the dataframe
-    df = df.reset_index(drop=True)
 
     logger.info("Successfully transformed the data: `DIM_PEAK_MONTH`.")
     return df
