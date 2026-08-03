@@ -453,5 +453,8 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
     elif columns == ["timestamp"]:
         return transform_dim_timestamp(df)
 
+    elif columns == ["peak_month"]:
+        return transform_dim_peak_month(df)
+
     else:
         raise Exception("Invalid data to transform!")
