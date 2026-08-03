@@ -272,7 +272,7 @@ def transform_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
                                       categories=custom_order,
                                       ordered=True)
     # Actually apply the sort based on that custom order
-    df = df.sort_values("PEAK_MONTH")
+    df = df.sort_values(by="PEAK_MONTH")
 
     # Create the primary key of the dataframe
     df["ID"] = range(1, len(df) + 1)
