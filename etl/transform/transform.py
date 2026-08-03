@@ -244,7 +244,7 @@ def transform_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
 
 def transform_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Transform the dimension table: `dim_peak_month`.
+    Transform the dimension table: `DIM_PEAK_MONTH`.
 
     Args:
         df (DataFrame): The extracted dimension data as a DataFrame.
@@ -252,15 +252,37 @@ def transform_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The transformed data as a DataFrame.
     """
-    logger.info("Transforming the data: 'dim_peak_month'.")
+    logger.info("Transforming the data: 'DIM_PEAK_MONTH'.")
 
-    # Create the primary key
-    df["id"] = range(1, len(df) + 1)
+    # Rename the column
+    df = df.rename(columns={"peak_month": "PEAK_MONTH"})
 
-    # Reorder the structure of columns
-    df = df[["id", "peak_month"]]
+    # Type-cast the column 'PEAK_MONTH'
+    df["PEAK_MONTH"] = df["PEAK_MONTH"].astype(str)
 
-    logger.info("Successfully transformed the data: `dim_peak_month`.")
+    # Remove duplicate rows
+    df = df.drop_duplicates(keep="first")
+
+    # Sort the dataframe based on the custom order on the 'PEAK_MONTH' column
+    custom_order = ["January", "February", "March",
+                    "April",   "May",      "June",
+                    "July",    "August",   "September",
+                    "October", "November", "December"]
+    df["PEAK_MONTH"] = pd.Categorical(df["PEAK_MONTH"],
+                                      categories=custom_order,
+                                      ordered=True)
+
+    # Create the primary key of the dataframe
+    df["ID"] = range(1, len(df) + 1)
+
+    # Reoder the column structure of the dataframe
+    new_order_of_columns = ["ID", "PEAK_MONTH"]
+    df = df[new_order_of_columns]
+
+    # Reset the index of the dataframe
+    df = df.reset_index(drop=True)
+
+    logger.info("Successfully transformed the data: `DIM_PEAK_MONTH`.")
     return df
 
 def transform_dim_peak_year(df: pd.DataFrame) -> pd.DataFrame:
