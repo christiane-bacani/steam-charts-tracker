@@ -394,6 +394,16 @@ def load_dim_peak_month(df: pd.DataFrame) -> None:
     Args:
         df (DataFrame): The dimension data as a DataFrame.
     """
+    logger.info("Establishing a connection to Snowflake to load the data to a table.")
+    load_dotenv()
+    conn = init_connection_to_snowflake(os.getenv("SNOWFLAKE_USERNAME"),
+                                        os.getenv("SNOWFLAKE_PASSWORD"),
+                                        os.getenv("SNOWFLAKE_ACCOUNT_IDENTIFIER"),
+                                        "steam_charts_warehouse",
+                                        "STEAM_CHARTS",
+                                        "MART")
+
+    cursor = conn.cursor()
 
 def load(data: dict | pd.DataFrame) -> pd.DataFrame:
     """
