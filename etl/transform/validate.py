@@ -1147,5 +1147,9 @@ def validate(df: pd.DataFrame) -> pd.DataFrame:
                      "TIMESTAMP"]:
         return validate_dim_timestamp(df)
 
+    elif columns == ["ID",
+                     "PEAK_MONTH"]:
+        return validate_dim_peak_month(df)
+
     else:
         raise Exception("Invalid data to validate!")
