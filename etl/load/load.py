@@ -512,5 +512,9 @@ def load(data: dict | pd.DataFrame) -> pd.DataFrame:
                      "TIMESTAMP"]:
         return load_dim_timestamp(data)
 
+    elif columns == ["ID",
+                     "PEAK_MONTH"]:
+        return load_dim_peak_month(data)
+
     else:
         raise Exception("Invalid data to load to the target data layer!")
