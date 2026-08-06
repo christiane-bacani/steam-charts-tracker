@@ -405,6 +405,31 @@ def load_dim_peak_month(df: pd.DataFrame) -> None:
 
     cursor = conn.cursor()
 
+    cursor.execute("""
+    CREATE OR REPLACE STEAM_CHARTS.MART.TEMP_DIM_PEAK_MONTH (
+    ID INTEGER PRIMARY KEY,
+    PEAK_MONTH VARCHAR(20));
+    """)
+    write_pandas(conn=conn,
+                 df=df,
+                 database="STEAM_CHARTS",
+                 schema="MART",
+                 table_name="TEMP_DIM_PEAK_MONTH",
+                 auto_create_table=False,
+                 overwrite=True)
+    cursor.execute("""
+    DROP TABLE IF EXISTS STEAM_CHARTS.MART.DIM_PEAK_MONTH;
+    """)
+    cursor.execute("""
+    ALTER TABLE STEAM_CHARTS.MART.TEMP_DIM_PEAK_MONTH
+    RENAME TO STEAM_CHARTS.TEMP_DIM_PEAK_MONTH;
+    """)
+
+    cursor.close()
+    conn.close()
+
+    logger.info(f"Successfully loaded new data to SQL table: 'DIM_STEAM_GAME'.")
+
 def load(data: dict | pd.DataFrame) -> pd.DataFrame:
     """
     Load the ingested, extracted, transformed, and
