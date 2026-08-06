@@ -562,7 +562,7 @@ def validate_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
 
 def validate_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Validate the data from the DataFrame object 'dim_peak_month'
+    Validate the data from the DataFrame object 'DIM_PEAK_MONTH'
     before loading to the stage data layer.
 
     Args:
@@ -571,46 +571,46 @@ def validate_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.
     """
-    logger.info("Validating the data: 'dim_peak_month'.")
+    logger.info("Validating the data: 'DIM_PEAK_MONTH'.")
 
-    # Perform validation checks to 'id' column
-    if not pd.api.types.is_numeric_dtype(df["id"]):
-        logger.info("Column: 'id' consist of wrong datatype!")
-        df["id"] = pd.to_numeric(df["id"], errors="coerce")
-        logger.info("Type-casted the values of 'id' column.")
+    # Perform validation checks to 'ID' column
+    if not pd.api.types.is_numeric_dtype(df["ID"]):
+        logger.info("Column: 'ID' consist of wrong datatype!")
+        df["id"] = pd.to_numeric(df["ID"], errors="coerce")
+        logger.info("Type-casted the values of 'ID' column.")
 
-    if df["id"].isnull().sum() > 0:
-        logger.info("Column: 'id' consist of null values!")
-        df.dropna(subset=["id"], inplace=True)
+    if df["ID"].isnull().sum() > 0:
+        logger.info("Column: 'ID' consist of null values!")
+        df.dropna(subset=["ID"], inplace=True)
         df.reset_index(inplace=True)
-        logger.info("Column: 'id' with missing values are removed.")
+        logger.info("Column: 'ID' with missing values are removed.")
 
-    if df["id"].duplicated().sum() > 0:
-        logger.info("Column: 'id' consist of duplicate values!")
-        df.drop_duplicates(subset=["id"], keep="first", inplace=True)
-        df.sort_values(by="id", inplace=True)
-        logger.info("Column: 'id' with duplicate values are removed.")
+    if df["ID"].duplicated().sum() > 0:
+        logger.info("Column: 'ID' consist of duplicate values!")
+        df.drop_duplicates(subset=["ID"], keep="first", inplace=True)
+        df.sort_values(by="ID", inplace=True)
+        logger.info("Column: 'ID' with duplicate values are removed.")
 
-    # Perform validation checks to 'peak_month' column
-    if not pd.api.types.is_string_dtype(df["peak_month"]):
-        logger.info("Column: 'peak_month' consist of wrong datatype!")
-        df["peak_month"] = df["peak_month"].astype(str)
-        logger.info("Type-casted the values of 'peak_month' column.")
+    # Perform validation checks to 'PEAK_MONTH' column
+    if not pd.api.types.is_string_dtype(df["PEAK_MONTH"]):
+        logger.info("Column: 'PEAK_MONTH' consist of wrong datatype!")
+        df["PEAK_MONTH"] = df["PEAK_MONTH"].astype(str)
+        logger.info("Type-casted the values of 'PEAK_MONTH' column.")
 
-    if (df["peak_month"].str.len() > 255).any():
-        raise Exception("Column: 'peak_month' consist of more than 255 characters!")
+    if (df["PEAK_MONTH"].str.len() > 255).any():
+        raise Exception("Column: 'PEAK_MONTH' consist of more than 255 characters!")
 
-    if df["peak_month"].isnull().sum() > 0:
-        logger.info("Column: 'peak_month' consist of null values!")
-        df.dropna(subset=["peak_month"], inplace=True)
+    if df["PEAK_MONTH"].isnull().sum() > 0:
+        logger.info("Column: 'PEAK_MONTH' consist of null values!")
+        df.dropna(subset=["PEAK_MONTH"], inplace=True)
         df.reset_index(inplace=True)
-        logger.info("Column: 'peak_month' with missing values are removed.")
+        logger.info("Column: 'PEAK_MONTH' with missing values are removed.")
 
-    if df["peak_month"].duplicated().sum() > 0:
-        logger.info("Column: 'peak_month' consist of duplicate values!")
-        df.drop_duplicates(subset=["peak_month"], keep="first", inplace=True)
-        df["peak_month"] = pd.Categorical(
-            df["peak_month"],
+    if df["PEAK_MONTH"].duplicated().sum() > 0:
+        logger.info("Column: 'PEAK_MONTH' consist of duplicate values!")
+        df.drop_duplicates(subset=["PEAK_MONTH"], keep="first", inplace=True)
+        df["PEAK_MONTH"] = pd.Categorical(
+            df["PEAK_MONTH"],
             categories=[
                 "January", "February", "March",
                 "April",   "May",      "June",
@@ -618,20 +618,20 @@ def validate_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
                 "October", "November", "December"
             ]
         )
-        df.sort_values(by="peak_month", inplace=True)
-        logger.info("Column: 'peak_month' with duplicate values are removed.")
+        df.sort_values(by="PEAK_MONTH", inplace=True)
+        logger.info("Column: 'PEAK_MONTH' with duplicate values are removed.")
 
     # Perform validation check to the whole dataset
     columns = list(df.columns)
     correct_order_of_columns = [
-        "id",
-        "peak_month"
+        "ID",
+        "PEAK_MONTH"
     ]
 
     if columns != correct_order_of_columns:
-        raise Exception("Columns of the table: 'dim_peak_month' are inaccurate!")
+        raise Exception("Columns of the table: 'DIM_PEAK_MONTH' are inaccurate!")
 
-    logger.info("Successfully validated the data: 'dim_peak_month'.")
+    logger.info("Successfully validated the data: 'DIM_PEAK_MONTH'.")
     return df
 
 def validate_dim_peak_year(df: pd.DataFrame) -> pd.DataFrame:
