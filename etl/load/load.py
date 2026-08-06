@@ -385,6 +385,16 @@ def load_dim_timestamp(df: pd.DataFrame) -> None:
 
     logger.info("Succesfully loaded new data to SQL table: 'DIM_TIMESTAMP'.")
 
+def load_dim_peak_month(df: pd.DataFrame) -> None:
+    """
+    Load the dimension data: `DIM_PEAK_MONTH` to the
+    mart data layer (Snowflake Data Warehouse) to
+    perform data analysis.
+
+    Args:
+        df (DataFrame): The dimension data as a DataFrame.
+    """
+
 def load(data: dict | pd.DataFrame) -> pd.DataFrame:
     """
     Load the ingested, extracted, transformed, and
