@@ -132,6 +132,9 @@ dim_peak_month = create_dim_peak_month(top10_records_stg)
 dim_peak_month = transform(dim_peak_month)
 dim_peak_month = validate(dim_peak_month)
 load(dim_peak_month)
+
+# Create the dimension table: `DIM_PEAK_YEAR` by integrating
+# the necessary columns from different tables of `stg` data layer
 """
 # Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
 dim_rank_number = create_dimension_table("current_rank")
