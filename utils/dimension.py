@@ -145,3 +145,15 @@ def create_dim_peak_month(top10_records_stg: pd.DataFrame) -> pd.DataFrame:
 
     logger.info("Successfully created a new dimension table: 'DIM_PEAK_MONTH'.")
     return dim_peak_month
+
+def create_dim_peak_year(top10_records_stg: pd.DataFrame) -> pd.DataFrame:
+    """
+    Create the dimension table: `DIM_PEAK_YEAR` using the table
+    `top10_records_stg` of `stg` database schema.
+
+    Args:
+        top10_records_stg (DataFrame): The top 10 records as a DataFrame.
+
+    Returns:
+        DataFrame: The created dimension table: `DIM_PEAK_YEAR`.
+    """
