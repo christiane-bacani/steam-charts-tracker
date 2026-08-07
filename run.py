@@ -127,7 +127,8 @@ dim_timestamp = validate(dim_timestamp)
 load(dim_timestamp)
 
 # Create the dimension table: `DIM_PEAK_MONTH` by integrating
-# the necessary columns from different tables of `stg` data layer
+# the necessary column from the table `top10_records_stg` of
+# `stg` data layer
 dim_peak_month = create_dim_peak_month(top10_records_stg)
 dim_peak_month = transform(dim_peak_month)
 dim_peak_month = validate(dim_peak_month)
