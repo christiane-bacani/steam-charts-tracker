@@ -422,7 +422,7 @@ def load_dim_peak_month(df: pd.DataFrame) -> None:
     """)
     cursor.execute("""
     ALTER TABLE STEAM_CHARTS.MART.TEMP_DIM_PEAK_MONTH
-    RENAME TO STEAM_CHARTS.TEMP_DIM_PEAK_MONTH;
+    RENAME TO STEAM_CHARTS.MART.TEMP_DIM_PEAK_MONTH;
     """)
 
     cursor.close()
