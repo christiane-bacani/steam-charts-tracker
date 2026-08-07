@@ -406,7 +406,7 @@ def load_dim_peak_month(df: pd.DataFrame) -> None:
     cursor = conn.cursor()
 
     cursor.execute("""
-    CREATE OR REPLACE STEAM_CHARTS.MART.TEMP_DIM_PEAK_MONTH (
+    CREATE OR REPLACE TABLE STEAM_CHARTS.MART.TEMP_DIM_PEAK_MONTH (
     ID INTEGER PRIMARY KEY,
     PEAK_MONTH VARCHAR(20));
     """)
