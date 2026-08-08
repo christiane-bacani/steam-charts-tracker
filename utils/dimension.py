@@ -170,3 +170,9 @@ def create_dim_peak_year(top10_records_stg: pd.DataFrame) -> pd.DataFrame:
 
     if len(pieces) > 0:
         dim_peak_year = pd.concat(pieces, ignore_index=True)
+
+    else:
+        dim_peak_year = pd.DataFrame(columns=["peak_year"])
+
+    logger.info("Successfully created a new dimension table : `DIM_PEAK_YEAR`.")
+    return dim_peak_year
