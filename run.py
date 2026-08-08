@@ -22,6 +22,7 @@ from utils.dimension import create_dim_rank_number
 from utils.dimension import create_dim_steam_game
 from utils.dimension import create_dim_timestamp
 from utils.dimension import create_dim_peak_month
+from utils.dimension import create_dim_peak_year
 from utils.fact import create_fact_table
 
 
@@ -135,7 +136,9 @@ dim_peak_month = validate(dim_peak_month)
 load(dim_peak_month)
 
 # Create the dimension table: `DIM_PEAK_YEAR` by integrating
-# the necessary columns from different tables of `stg` data layer
+# the necessary columns from the table `top10_records_stg`  of
+# `stg` data layer
+dim_peak_year = create_dim_peak_year(top10_records_stg)
 """
 # Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
 dim_rank_number = create_dimension_table("current_rank")
