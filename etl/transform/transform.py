@@ -487,5 +487,8 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
     elif columns == ["peak_month"]:
         return transform_dim_peak_month(df)
 
+    elif columns == ["peak_year"]:
+        return transform_dim_peak_year(df)
+
     else:
         raise Exception("Invalid data to transform!")
