@@ -1151,5 +1151,9 @@ def validate(df: pd.DataFrame) -> pd.DataFrame:
                      "PEAK_MONTH"]:
         return validate_dim_peak_month(df)
 
+    elif columns == ["ID",
+                     "PEAK_YEAR"]:
+        return validate_dim_peak_year(df)
+
     else:
         raise Exception("Invalid data to validate!")
