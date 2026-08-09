@@ -561,5 +561,9 @@ def load(data: dict | pd.DataFrame) -> pd.DataFrame:
                      "PEAK_MONTH"]:
         return load_dim_peak_month(data)
 
+    elif columns == ["ID",
+                     "PEAK_YEAR"]:
+        return load_dim_peak_year(data)
+
     else:
         raise Exception("Invalid data to load to the target data layer!")
