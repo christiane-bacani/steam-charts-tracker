@@ -299,21 +299,28 @@ def transform_dim_peak_year(df: pd.DataFrame) -> pd.DataFrame:
     """
     logger.info("Transforming the data: 'dim_peak_year'.")
 
-    # Data deduplication
-    df.drop_duplicates(keep="first", inplace=True)
+    # Rename the column
+    df = df.rename(columns={"peak_year": "PEAK_YEAR"})
 
-    # Type-cast the column 'peak_year'
-    df["peak_year"] = pd.to_numeric(df["peak_year"], errors="raise")
+    # Type-cast the column 'PEAK_YEAR'
+    df["PEAK_YEAR"] = pd.to_numeric(df["PEAK_YEAR"], errors="coerce")
 
-    # Sort the dataframe based on the earliest year
-    df.sort_values(by="peak_year", inplace=True)
+    # Remove duplicate rows
+    df = df.drop_duplicates(keep="first")
 
-    # Create the primary key
-    df["id"] = range(1, len(df) + 1)
+    # Sort the dataframe based on the 'PEAK_YEAR' column
+    df = df.sort_values(by="PEAK_YEAR", ascending=True)
 
-    # Reorder the structure of columns
-    df = df[["id", "peak_year"]]
+    # Create the primary key of the dataframe
+    df["ID"] = range(1, len(df) + 1)
 
+    # Reoder the column structure of the dataframe
+    new_order_of_columns = ["ID", "PEAK_YEAR"]
+    df = df[new_order_of_columns]
+
+    # Reset the index of the dataframe    
+    df = df.reset_index(drop=True)
+    
     logger.info("Successfully transformed the data: `dim_peak_year`.")
     return df
 
