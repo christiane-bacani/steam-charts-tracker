@@ -430,6 +430,51 @@ def load_dim_peak_month(df: pd.DataFrame) -> None:
 
     logger.info(f"Successfully loaded new data to SQL table: 'DIM_STEAM_GAME'.")
 
+def load_dim_peak_year(df: pd.DataFrame) -> None:
+    """
+    Load the dimension data: `DIM_PEAK_YEAR` to the
+    mart data layer (Snowflake Data Warehouse) to
+    perform data analysis.
+
+    Args:
+        df (DataFrame): The dimension data as a DataFrame.
+    """
+    logger.info("Establishing a connection to Snowflake to load the data to a table.")
+    load_dotenv()
+    conn = init_connection_to_snowflake(os.getenv("SNOWFLAKE_USERNAME"),
+                                        os.getenv("SNOWFLAKE_PASSWORD"),
+                                        os.getenv("SNOWFLAKE_ACCOUNT_IDENTIFIER"),
+                                        "steam_charts_warehouse",
+                                        "STEAM_CHARTS",
+                                        "MART")
+
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    CREATE OR REPLACE TABLE STEAM_CHARTS.MART.TEMP_DIM_PEAK_YEAR (
+    ID INTEGER PRIMARY KEY,
+    PEAK_YEAR INTEGER);
+    """)
+    write_pandas(conn=conn,
+                 df=df,
+                 database="STEAM_CHARTS",
+                 schema="MART",
+                 table_name="TEMP_DIM_PEAK_YEAR",
+                 auto_create_table=False,
+                 overwrite=True)
+    cursor.execute("""
+    DROP TABLE IF EXISTS STEAM_CHARTS.MART.DIM_PEAK_YEAR;
+    """)
+    cursor.execute("""
+    ALTER TABLE STEAM_CHARTS.MART.TEMP_DIM_PEAK_YEAR
+    RENAME TO STEAM_CHARTS.MART.DIM_PEAK_YEAR;
+    """)
+
+    cursor.close()
+    conn.close()
+    
+    logger.info(f"Successfully loaded new data to SQL table: 'DIM_PEAK_YEAR'.")
+
 def load(data: dict | pd.DataFrame) -> pd.DataFrame:
     """
     Load the ingested, extracted, transformed, and
