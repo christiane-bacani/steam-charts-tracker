@@ -636,72 +636,72 @@ def validate_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
 
 def validate_dim_peak_year(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Validate the data from the DataFrame object 'dim_peak_year'
+    Validate the data from the DataFrame object 'DIM_PEAK_YEAR'
     before loading to the stage data layer.
 
     Args:
         df (DataFrame): The transformed data as a DataFrame.
 
     Returns:
-        DataFrame: The validated and transformed data as a DataFrame.    
+        DataFrame: The validated and transformed data as a DataFrame.
     """
-    logger.info("Validating the data: 'dim_peak_year'.")
+    logger.info("Validating the data: 'DIM_PEAK_YEAR'.")
 
-    # Perform validation checks to 'id' column
-    if not pd.api.types.is_numeric_dtype(df["id"]):
-        logger.info("Column: 'id' consist of wrong datatype!")
-        df["id"] = pd.to_numeric(df["id"], errors="coerce")
-        logger.info("Type-casted the values of 'id' column.")
+    # Perform validation checks to 'ID' column
+    if not pd.api.types.is_numeric_dtype(df["ID"]):
+        logger.info("Column: 'ID' consist of wrong datatype!")
+        df["ID"] = pd.to_numeric(df["ID"], errors="coerce")
+        logger.info("Type-casted the values of 'ID' column.")
 
-    if df["id"].isnull().sum() > 0:
-        logger.info("Column: 'id' consist of null values!")
-        df.dropna(subset=["id"], inplace=True)
+    if df["ID"].isnull().sum() > 0:
+        logger.info("Column: 'ID' consist of null values!")
+        df.dropna(subset=["ID"], inplace=True)
         df.reset_index(inplace=True)
-        logger.info("Column: 'id' with missing values are removed.")
+        logger.info("Column: 'ID' with missing values are removed.")
 
-    if df["id"].duplicated().sum() > 0:
-        logger.info("Column: 'id' consist of duplicate values!")
-        df.drop_duplicates(subset=["id"], keep="first", inplace=True)
+    if df["ID"].duplicated().sum() > 0:
+        logger.info("Column: 'ID' consist of duplicate values!")
+        df.drop_duplicates(subset=["ID"], keep="first", inplace=True)
         df.sort_values(by="id", inplace=True)
         logger.info("Column: 'id' with duplicate values are removed.")
 
-    # Perform validation checks to 'peak_year' column
-    if not pd.api.types.is_numeric_dtype(df["peak_year"]):
-        logger.info("Column: 'peak_year' consist of wrong datatype!")
-        df["peak_year"] = pd.to_numeric(df["peak_year"], errors="coerce")
-        logger.info("Type-casted the values of 'peak_year' column.")
+    # Perform validation checks to 'PEAK_YEAR' column
+    if not pd.api.types.is_numeric_dtype(df["PEAK_YEAR"]):
+        logger.info("Column: 'PEAK_YEAR' consist of wrong datatype!")
+        df["PEAK_YEAR"] = pd.to_numeric(df["`PEAK_YEAR`"], errors="coerce")
+        logger.info("Type-casted the values of 'PEAK_YEAR' column.")
 
-    if df["peak_year"].isnull().sum() > 0:
-        logger.info("Column: 'peak_year' consist of null values!")
-        df.dropna(subset=["peak_year"], inplace=True)
+    if df["PEAK_YEAR"].isnull().sum() > 0:
+        logger.info("Column: 'PEAK_YEAR' consist of null values!")
+        df.dropna(subset=["PEAK_YEAR"], inplace=True)
         df.reset_index(inplace=True)
-        logger.info("Column: 'peak_year' with missing values are removed.")
+        logger.info("Column: 'PEAK_YEAR' with missing values are removed.")
 
-    if df["peak_year"].duplicated().sum() > 0:
-        logger.info("Column: 'peak_year' consist of duplicate values!")
-        df.drop_duplicates(subset=["peak_year"], keep="first", inplace=True)
-        df.sort_values(by="peak_year", inplace=True)
-        logger.info("Column: 'peak_year' with duplicate values are removed.")
+    if df["PEAK_YEAR"].duplicated().sum() > 0:
+        logger.info("Column: 'PEAK_YEAR' consist of duplicate values!")
+        df.drop_duplicates(subset=["PEAK_YEAR"], keep="first", inplace=True)
+        df.sort_values(by="PEAK_YEAR", inplace=True)
+        logger.info("Column: 'PEAK_YEAR' with duplicate values are removed.")
 
     from datetime import datetime
 
-    if (df["peak_year"] > datetime.now().year).any():
-        logger.info("'peak_year' column consist of off-range values!")
-        df["peak_year"] = df[df["peak_year"] <= datetime.now().year]
-        df["id"] = range(1, len(df) + 1)
-        logger.info("'peak_year' column with off-range values are removed.")
+    if (df["PEAK_YEAR"] > datetime.now().year).any():
+        logger.info("'PEAK_YEAR' column consist of off-range values!")
+        df["PEAK_YEAR"] = df[df["PEAK_YEAR"] <= datetime.now().year]
+        df["ID"] = range(1, len(df) + 1)
+        logger.info("'PEAK_YEAR' column with off-range values are removed.")
 
     # Perform validation check to the whole dataset
     columns = list(df.columns)
     correct_order_of_columns = [
-        "id",
-        "peak_year"
+        "ID",
+        "PEAK_YEAR"
     ]
 
     if columns != correct_order_of_columns:
-        raise Exception("Columns of the table: 'dim_peak_year' are inaccurate!")
+        raise Exception("Columns of the table: 'DIM_PEAK_YEAR' are inaccurate!")
 
-    logger.info("Successfully validated the data: 'dim_peak_year'.")
+    logger.info("Successfully validated the data: 'DIM_PEAK_YEAR'.")
     return df
 
 def validate_fact_trending_games(df: pd.DataFrame) -> pd.DataFrame:
