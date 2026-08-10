@@ -190,14 +190,33 @@ def create_fact_trending_games() -> pd.DataFrame:
 
     logger.info("Establishing a connection to Snowflake to create a new fact table.")
     load_dotenv()
+    engine = init_connection_to_postgres(os.getenv("POSTGRES_DB_USERNAME"),
+                                            os.getenv("POSTGRES_DB_PASSWORD"),
+                                            os.getenv("HOST"),
+                                            os.getenv("PORT"),
+                                            "steam_charts")
+
     conn = init_connection_to_snowflake(os.getenv("SNOWFLAKE_USERNAME"),
                                         os.getenv("SNOWFLAKE_PASSWORD"),
                                         os.getenv("SNOWFLAKE_ACCOUNT_IDENTIFIER"),
                                         "steam_charts_warehouse",
                                         "STEAM_CHARTS",
                                         "MART")
-
     query = """
+    SELECT
+        stg.id,
+        stg.application_id,
+        stg.current_rank,
+
+        stg.top5_trending_games_stg.change_pct_within_24hr,
+        stg.top5_trending_games.no_of_current_players
+    FROM
+        stg.top5_trending_games_stg
+    """
+    top5_trending_games_stg = pd.read_sql(query, engine)
+
+    """
+    query =
     SELECT
         mart.dim_steam_game.application_id AS application_id,
         mart.dim_rank_number.rank_number AS rank_number_id,
@@ -219,9 +238,3 @@ def create_fact_trending_games() -> pd.DataFrame:
     ON
         stg.top5_trending_games_stg.timestamp = mart.dim_timestamp.timestamp;            
     """
-    fact_trending_games = pd.read_sql(query, conn)
-
-    conn.close()
-
-    logger.info(f"Successfully created a new fact table: `FACT_TRENDING_GAMES`.")
-    return fact_trending_games
