@@ -177,14 +177,11 @@ def create_fact_table(df: pd.DataFrame) -> pd.DataFrame:
     else:
         raise Exception("Invalid table to use for creating fact table!")
 
-def create_fact_trending_games(top5_trending_games_stgs) -> pd.DataFrame:
+def create_fact_trending_games() -> pd.DataFrame:
     """
     Create the fact table: `FACT_TRENDING_GAMES` using the table
     `top5_trending_games_stg` of `stg` database schema and reference
     the dimension data using the dimension tables.
-
-    Args:
-        top5_trending_games_stg (DataFrame): The top 5 trending games as a DataFrame.
 
     Returns:
         DataFrame: The created dimension table: `FACT_TRENDING_GAMES`.
@@ -241,24 +238,8 @@ def create_fact_trending_games(top5_trending_games_stgs) -> pd.DataFrame:
     """
     fact_trending_games = pd.read_sql(query, conn)
 
-    write_pandas(conn=conn,
-                 df=fact_trending_games,
-                 database="STEAM_CHARTS",
-                 schema="MART",
-                 table_name="TEMP_FACT_TRENDING_GAMES",
-                 auto_create_table=False,
-                 overwrite=True)
-
-    cursor.execute("""
-    DROP TABLE IF EXISTS STEAM_CHARTS.MART.FACT_TRENDING_GAMES;
-    """)
-
-    cursor.execute("""
-    ALTER TABLE STEAM_CHARTS.MART.TEMP_FACT_TRENDING_GAMES
-    RENAME TO STEAM_CHARTS.MART.FACT_TRENDING_GAMES;
-    """)
-
     cursor.close()
     conn.close()
 
     logger.info(f"Successfully created a new fact table: `FACT_TRENDING_GAMES`.")
+    return fact_trending_games
