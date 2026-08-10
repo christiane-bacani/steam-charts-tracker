@@ -142,6 +142,10 @@ dim_peak_year = create_dim_peak_year(top10_records_stg)
 dim_peak_year = transform(dim_peak_year)
 dim_peak_year = validate(dim_peak_year)
 load(dim_peak_year)
+
+# Create the fact table: `FACT_TRENDING_GAMES` by using
+# the necessary columns from dimension tables of `mart`
+# data layer (Snowflake Data Warehouse)
 """
 # Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
 dim_rank_number = create_dimension_table("current_rank")
