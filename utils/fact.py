@@ -197,26 +197,6 @@ def create_fact_trending_games() -> pd.DataFrame:
                                         "STEAM_CHARTS",
                                         "MART")
 
-    cursor = conn.cursor()
-
-    cursor.execute("""
-    CREATE OR REPLACE TABLE STEAM_CHARTS.MART.TEMP_FACT_TRENDING_GAMES (
-    APPLICATION_ID INTEGER,
-    RANK_NUMBER_ID INTEGER,
-    CHANGE_PCT_WITHIN_24HR DECIMAL(5, 1),
-    NO_OF_CURRENT_PLAYERS INTEGER,
-    TIMESTAMP_ID INTEGER,
-    CONSTRAINT fk_trending_gms_app_id
-        FOREIGN KEY (APPLICATION_ID)
-        REFERENCES STEAM_CHARTS.MART.DIM_STEAM_GAME(APPLICATION_ID),
-    CONSTRAINT fk_trending_gms_rank_no_id
-        FOREIGN KEY (RANK_NUMBER_ID)
-        REFERENCES STEAM_CHARTS.MART.RANK_NUMBER(RANK_NUMBER),
-    CONSTRAINT fk_trending_gms_timestmp_id
-        FOREIGN KEY (TIMESTAMP_ID)
-        REFERENCES STEAM_CHARTS.MART.DIM_TIMESTAMP(ID));
-    """)
-
     query = """
     SELECT
         mart.dim_steam_game.application_id AS application_id,
@@ -241,7 +221,6 @@ def create_fact_trending_games() -> pd.DataFrame:
     """
     fact_trending_games = pd.read_sql(query, conn)
 
-    cursor.close()
     conn.close()
 
     logger.info(f"Successfully created a new fact table: `FACT_TRENDING_GAMES`.")
