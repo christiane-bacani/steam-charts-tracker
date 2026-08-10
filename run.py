@@ -148,6 +148,23 @@ load(dim_peak_year)
 # data layer (Snowflake Data Warehouse)
 fact_trending_games = create_fact_trending_games()
 """
+CREATE OR REPLACE TABLE STEAM_CHARTS.MART.TEMP_FACT_TRENDING_GAMES (
+APPLICATION_ID INTEGER,
+RANK_NUMBER_ID INTEGER,
+CHANGE_PCT_WITHIN_24HR DECIMAL(5, 1),
+NO_OF_CURRENT_PLAYERS INTEGER,
+TIMESTAMP_ID INTEGER,
+CONSTRAINT fk_trending_gms_app_id
+    FOREIGN KEY (APPLICATION_ID)
+    REFERENCES STEAM_CHARTS.MART.DIM_STEAM_GAME(APPLICATION_ID),
+CONSTRAINT fk_trending_gms_rank_no_id
+    FOREIGN KEY (RANK_NUMBER_ID)
+    REFERENCES STEAM_CHARTS.MART.RANK_NUMBER(RANK_NUMBER),
+CONSTRAINT fk_trending_gms_timestmp_id
+    FOREIGN KEY (TIMESTAMP_ID)
+    REFERENCES STEAM_CHARTS.MART.DIM_TIMESTAMP(ID));
+"""
+"""
 # Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
 dim_rank_number = create_dimension_table("current_rank")
 dim_rank_number = transform_dim_rank_number(dim_rank_number)
