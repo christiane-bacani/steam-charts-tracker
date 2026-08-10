@@ -23,7 +23,7 @@ from utils.dimension import create_dim_steam_game
 from utils.dimension import create_dim_timestamp
 from utils.dimension import create_dim_peak_month
 from utils.dimension import create_dim_peak_year
-from utils.fact import create_fact_table
+from utils.fact import create_fact_trending_games
 
 
 
@@ -146,6 +146,7 @@ load(dim_peak_year)
 # Create the fact table: `FACT_TRENDING_GAMES` by using
 # the necessary columns from dimension tables of `mart`
 # data layer (Snowflake Data Warehouse)
+fact_trending_games = create_fact_trending_games()
 """
 # Integrate 'current_rank' dimension from 'stg' data layer and save to 'mart' data layer
 dim_rank_number = create_dimension_table("current_rank")
