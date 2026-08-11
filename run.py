@@ -146,9 +146,7 @@ load(dim_peak_year)
 # Create the fact table: `FACT_TRENDING_GAMES` by using
 # the necessary columns from dimension tables of `mart`
 # data layer (Snowflake Data Warehouse)
-# fact_trending_games = create_fact_trending_games()
-print(top5_trending_games_stg)
-print(list(top5_trending_games_stg.columns))
+fact_trending_games = create_fact_trending_games()
 """
 CREATE OR REPLACE TABLE STEAM_CHARTS.MART.TEMP_FACT_TRENDING_GAMES (
 APPLICATION_ID INTEGER,
