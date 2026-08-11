@@ -188,33 +188,38 @@ def create_fact_trending_games() -> pd.DataFrame:
     """
     logger.info("Creating new fact table: `FACT_TRENDING_GAMES`.")
 
-    logger.info("Establishing a connection to Snowflake to create a new fact table.")
     load_dotenv()
-    engine = init_connection_to_postgres(os.getenv("POSTGRES_DB_USERNAME"),
-                                            os.getenv("POSTGRES_DB_PASSWORD"),
-                                            os.getenv("HOST"),
-                                            os.getenv("PORT"),
-                                            "steam_charts")
 
+    logger.info("Establishing a connection to PostgreSQL to create a new fact table.")
+    engine = init_connection_to_postgres(os.getenv("POSTGRES_DB_USERNAME"),
+                                         os.getenv("POSTGRES_DB_PASSWORD"),
+                                         os.getenv("HOST"),
+                                         os.getenv("PORT"),
+                                         "steam_charts")
+
+    logger.info("Establishing a connection to Snowflake to create a new fact table.")
     conn = init_connection_to_snowflake(os.getenv("SNOWFLAKE_USERNAME"),
                                         os.getenv("SNOWFLAKE_PASSWORD"),
                                         os.getenv("SNOWFLAKE_ACCOUNT_IDENTIFIER"),
                                         "steam_charts_warehouse",
                                         "STEAM_CHARTS",
                                         "MART")
+
     query = """
     SELECT
-        stg.id,
-        stg.application_id,
-        stg.current_rank,
-
+        stg.top5_trending_games_stg.id,
+        stg.top5_trending_games_stg.application_id,
+        stg.top5_trending_games_stg.current_rank,
+        stg.top5_trending_games_stg.game_name,
         stg.top5_trending_games_stg.change_pct_within_24hr,
-        stg.top5_trending_games.no_of_current_players
+        stg.top5_trending_games_stg.no_of_current_players,
+        stg.top5_trending_games_stg.timestamp
     FROM
         stg.top5_trending_games_stg
     """
     top5_trending_games_stg = pd.read_sql(query, engine)
 
+    
     """
     query =
     SELECT
