@@ -3,7 +3,6 @@ Python module to create fact tables from silver data layer that consist of all
 data tracked by Steam Charts.
 """
 import pandas as pd
-from snowflake.connector.pandas_tools import write_pandas
 
 import os
 from dotenv import load_dotenv
