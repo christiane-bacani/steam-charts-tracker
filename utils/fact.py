@@ -281,5 +281,8 @@ def create_fact_trending_games() -> pd.DataFrame:
         "timestamp_id"
     ]]
 
+    cursor.close()
+    conn.close()
+
     logger.info("Sucessfully created a new fact table: `FACT_TRENDING_GAMES`.")
     return fact_trending_games
