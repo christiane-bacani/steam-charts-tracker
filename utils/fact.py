@@ -281,27 +281,5 @@ def create_fact_trending_games() -> pd.DataFrame:
         "timestamp_id"
     ]]
 
-    print(fact_trending_games)
-    """
-    query =
-    SELECT
-        mart.dim_steam_game.application_id AS application_id,
-        mart.dim_rank_number.rank_number AS rank_number_id,
-        stg.top5_trending_games_stg.change_pct_within_24hr AS change_pct_within_24hr,
-        stg.top5_trending_games_stg.no_of_current_players AS no_of_current_players,
-        mart.dim_timestamp.id AS timestamp_id
-    FROM
-        stg.top5_trending_games_stg
-    INNER JOIN
-        mart.dim_steam_game
-    ON
-        stg.top5_trending_games_stg.application_id = mart.dim_steam_game.application_id
-    INNER JOIN
-        mart.dim_rank_number
-    ON
-        stg.top5_trending_games_stg.current_rank = mart.dim_rank_number.rank_number
-    INNER JOIN
-        mart.dim_timestamp
-    ON
-        stg.top5_trending_games_stg.timestamp = mart.dim_timestamp.timestamp;            
-    """
+    logger.info("Sucessfully created a new fact table: `FACT_TRENDING_GAMES`.")
+    return fact_trending_games
