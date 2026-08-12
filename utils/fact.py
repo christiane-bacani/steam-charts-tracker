@@ -204,13 +204,13 @@ def create_fact_trending_games() -> pd.DataFrame:
                                         "steam_charts_warehouse",
                                         "STEAM_CHARTS",
                                         "MART")
+    cursor = conn.cursor()
 
     query = """
     SELECT
         stg.top5_trending_games_stg.id,
         stg.top5_trending_games_stg.application_id,
         stg.top5_trending_games_stg.current_rank,
-        stg.top5_trending_games_stg.game_name,
         stg.top5_trending_games_stg.change_pct_within_24hr,
         stg.top5_trending_games_stg.no_of_current_players,
         stg.top5_trending_games_stg.timestamp
@@ -219,7 +219,70 @@ def create_fact_trending_games() -> pd.DataFrame:
     """
     top5_trending_games_stg = pd.read_sql(query, engine)
 
-    
+    cursor.execute("""
+    SELECT
+        APPLICATION_ID,
+        GAME_NAME
+    FROM
+        STEAM_CHARTS.MART.DIM_STEAM_GAME;
+    """)
+    dim_steam_game = cursor.fetch_pandas_all()
+
+    cursor.execute("""
+    SELECT
+        RANK_NUMBER
+    FROM
+        STEAM_CHARTS.MART.DIM_RANK_NUMBER;
+    """)
+    dim_rank_number = cursor.fetch_pandas_all()
+
+    cursor.execute("""
+    SELECT
+        ID,
+        TIMESTAMP
+    FROM
+        STEAM_CHARTS.MART.DIM_TIMESTAMP;
+    """)
+    dim_timestamp = cursor.fetch_pandas_all()
+
+    # Normalize column names to lowercase so the merges line up cleanly,
+    # since Snowflake returns uppercase column names by default
+    dim_steam_game.columns = [column.lower() for column in dim_steam_game.columns]
+    dim_rank_number.columns = [column.lower() for column in dim_rank_number.columns]
+    dim_timestamp.columns = [column.lower() for column in dim_timestamp.columns]
+
+    dim_timestamp = dim_timestamp.rename(columns={"id": "timestamp_id"})
+
+    fact_trending_games = top5_trending_games_stg.merge(
+        dim_steam_game,
+        on="application_id",
+        how="inner"
+    )
+
+    fact_trending_games = fact_trending_games.merge(
+        dim_rank_number,
+        left_on="current_rank",
+        right_on="rank_number",
+        how="inner"
+    )
+
+    fact_trending_games = fact_trending_games.merge(
+        dim_timestamp,
+        on="timestamp",
+        how="inner"
+    )
+
+    fact_trending_games = fact_trending_games.rename(columns={"rank_number": "rank_number_id"})
+
+    fact_trending_games = fact_trending_games[[
+        "application_id",
+        "rank_number_id",
+        "change_pct_within_24hr",
+        "no_of_current_players",
+        "timestamp_id"
+    ]]
+
+    print(fact_trending_games)
     """
     query =
     SELECT
