@@ -495,7 +495,7 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
                      "change_pct_within_24hr",
                      "no_of_current_players",
                      "timestamp_id"]:
-        return df
+        return transform_fact_trending_games(df)
 
     else:
         raise Exception("Invalid data to transform!")
