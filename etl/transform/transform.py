@@ -490,5 +490,12 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
     elif columns == ["peak_year"]:
         return transform_dim_peak_year(df)
 
+    elif columns == ["application_id",
+                     "rank_number_id",
+                     "change_pct_within_24hr",
+                     "no_of_current_players",
+                     "timestamp_id"]:
+        return df
+
     else:
         raise Exception("Invalid data to transform!")
