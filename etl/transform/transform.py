@@ -326,7 +326,7 @@ def transform_dim_peak_year(df: pd.DataFrame) -> pd.DataFrame:
 
 def transform_fact_trending_games(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Transform the fact table: `fact_trending_games`.
+    Transform the fact table: `FACT_TRENDING_GAMES`.
 
     Args:
         df (DataFrame): The extracted fact data as a DataFrame.
@@ -334,7 +334,7 @@ def transform_fact_trending_games(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The transformed data as a DataFrame.
     """
-    logger.info("Transforming the data: `fact_trending_games`.")
+    logger.info("Transforming the data: `FACT_TRENDING_GAMES`.")
 
     # Remove rows with any missing values from any columns
     df.dropna(how="all", inplace=True, ignore_index=True)
