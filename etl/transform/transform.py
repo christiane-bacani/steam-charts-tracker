@@ -336,6 +336,13 @@ def transform_fact_trending_games(df: pd.DataFrame) -> pd.DataFrame:
     """
     logger.info("Transforming the data: `FACT_TRENDING_GAMES`.")
 
+    # Rename the column names
+    df = df.rename(columns={"application_id":         "APPLICATION_ID",
+                            "rank_number_id":         "RANK_NUMBER_ID",
+                            "change_pct_within_24hr": "CHANGE_PCT_WITHIN_24HR",
+                            "no_of_current_players":  "NO_OF_CURRENT_PLAYERS",
+                            "timestamp_id":           "TIMESTAMP_ID"})
+
     # Remove rows with any missing values from any columns
     df.dropna(how="all", inplace=True, ignore_index=True)
 
