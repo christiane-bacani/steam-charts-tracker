@@ -357,7 +357,7 @@ def transform_fact_trending_games(df: pd.DataFrame) -> pd.DataFrame:
     df["timestamp_id"] = pd.to_numeric(df["timestamp_id"],
                                        errors="raise")
 
-    logger.info("Successfully transformed the data: `fact_trending_games`.")
+    logger.info("Successfully transformed the data: `FACT_TRENDING_GAMES`.")
     return df
 
 def transform_fact_top_games(df: pd.DataFrame) -> pd.DataFrame:
