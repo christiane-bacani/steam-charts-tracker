@@ -154,7 +154,7 @@ def transform_dim_rank_number(df: pd.DataFrame) -> pd.DataFrame:
     """
     logger.info("Transforming the data: 'DIM_RANK_NUMBER'.")
 
-    # Rename the column
+    # Rename the name of the column
     df = df.rename(columns={"current_rank": "RANK_NUMBER"})
     
     # Type-cast the column 'RANK_NUMBER'
@@ -184,9 +184,9 @@ def transform_dim_steam_game(df: pd.DataFrame) -> pd.DataFrame:
     """
     logger.info("Transforming the data: 'DIM_STEAM_GAME'.")
 
-    # Rename the column
+    # Rename the column names
     df = df.rename(columns={"application_id": "APPLICATION_ID",
-                            "game_name": "GAME_NAME"})
+                            "game_name":      "GAME_NAME"})
 
     # Type-cast the column 'APPLICATION_ID'
     df["APPLICATION_ID"] = pd.to_numeric(df["APPLICATION_ID"], errors="raise")
@@ -215,7 +215,7 @@ def transform_dim_timestamp(df: pd.DataFrame) -> pd.DataFrame:
     """
     logger.info("Transforming the data: 'DIM_TIMESTAMP'.")
 
-    # Rename the column
+    # Rename the name of the column
     df = df.rename(columns={"timestamp": "TIMESTAMP"})
 
     # Type-cast the column 'TIMESTAMP' safely and let pandas infer if formats vary
@@ -254,7 +254,7 @@ def transform_dim_peak_month(df: pd.DataFrame) -> pd.DataFrame:
     """
     logger.info("Transforming the data: 'DIM_PEAK_MONTH'.")
 
-    # Rename the column
+    # Rename the name of the column
     df = df.rename(columns={"peak_month": "PEAK_MONTH"})
 
     # Type-cast the column 'PEAK_MONTH'
@@ -299,7 +299,7 @@ def transform_dim_peak_year(df: pd.DataFrame) -> pd.DataFrame:
     """
     logger.info("Transforming the data: 'dim_peak_year'.")
 
-    # Rename the column
+    # Rename the name of the column
     df = df.rename(columns={"peak_year": "PEAK_YEAR"})
 
     # Type-cast the column 'PEAK_YEAR'
