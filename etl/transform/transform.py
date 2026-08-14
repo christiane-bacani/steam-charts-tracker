@@ -346,22 +346,22 @@ def transform_fact_trending_games(df: pd.DataFrame) -> pd.DataFrame:
     # Remove rows with any missing values from any columns
     df.dropna(how="all", inplace=True, ignore_index=True)
 
-    # Type-cast the column 'application_id'
-    df["application_id"] = pd.to_numeric(df["application_id"], errors="raise")
+    # Type-cast the column 'APPLICATION_ID'
+    df["APPLICATION_ID"] = pd.to_numeric(df["APPLICATION_ID"], errors="raise")
 
-    # Type-cast the column 'rank_number_id'
-    df["rank_number_id"] = pd.to_numeric(df["rank_number_id"], errors="raise")
+    # Type-cast the column 'RANK_NUMBER_ID'
+    df["RANK_NUMBER_ID"] = pd.to_numeric(df["RANK_NUMBER_ID"], errors="raise")
 
-    # Type-cast the column 'change_pct_within_24hr'
-    df["change_pct_within_24hr"] = pd.to_numeric(df["change_pct_within_24hr"],
-                                                  errors="coerce")
+    # Type-cast the column 'CHANGE_PCT_WITHIN_24HR'
+    df["CHANGE_PCT_WITHIN_24HR"] = pd.to_numeric(df["CHANGE_PCT_WITHIN_24HR"],
+                                                 errors="coerce")
     
-    # Type-cast the column 'no_of_current_players'
-    df["no_of_current_players"] = pd.to_numeric(df["no_of_current_players"],
+    # Type-cast the column 'NO_OF_CURRENT_PLAYERS'
+    df["NO_OF_CURRENT_PLAYERS"] = pd.to_numeric(df["NO_OF_CURRENT_PLAYERS"],
                                                 errors="coerce")
 
-    # Type-cast the column 'timestamp_id'
-    df["timestamp_id"] = pd.to_numeric(df["timestamp_id"],
+    # Type-cast the column 'TIMESTAMP_ID'
+    df["TIMESTAMP_ID"] = pd.to_numeric(df["TIMESTAMP_ID"],
                                        errors="raise")
 
     logger.info("Successfully transformed the data: `FACT_TRENDING_GAMES`.")
