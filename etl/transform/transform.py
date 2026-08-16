@@ -349,6 +349,8 @@ def transform_fact_trending_games(df: pd.DataFrame) -> pd.DataFrame:
     # Type-cast the column 'APPLICATION_ID'
     df["APPLICATION_ID"] = pd.to_numeric(df["APPLICATION_ID"], errors="raise")
 
+    # Sort the dataframe based on the `APPLICATION_ID` column
+
     # Type-cast the column 'RANK_NUMBER_ID'
     df["RANK_NUMBER_ID"] = pd.to_numeric(df["RANK_NUMBER_ID"], errors="raise")
 
