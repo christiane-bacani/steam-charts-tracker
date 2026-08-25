@@ -706,7 +706,7 @@ def validate_dim_peak_year(df: pd.DataFrame) -> pd.DataFrame:
 
 def validate_fact_trending_games(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Validate the data from the DataFrame object 'fact_trending_games'
+    Validate the data from the DataFrame object 'FACT_TRENDING_GAMES'
     before loading to the stage data layer.
 
     Args:
@@ -715,111 +715,111 @@ def validate_fact_trending_games(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame: The validated and transformed data as a DataFrame.    
     """
-    logger.info("Validating the data: 'fact_trending_games'.")
+    logger.info("Validating the data: 'FACT_TRENDING_GAMES'.")
 
-    # Perform validation checks to 'application_id' column
-    if not pd.api.types.is_numeric_dtype(df["application_id"]):
-        logger.info("Column: 'application_id' consist of wrong datatype!")
-        df["application_id"] = pd.to_numeric(df["application_id"],
+    # Perform validation checks to 'APPLICATION_ID' column
+    if not pd.api.types.is_numeric_dtype(df["APPLICATION_ID"]):
+        logger.info("Column: 'APPLICATION_ID' consist of wrong datatype!")
+        df["APPLICATION_ID"] = pd.to_numeric(df["APPLICATION_ID"],
                                                   errors="coerce")
-        logger.info("Type-casted the values of 'application_id' column.")
+        logger.info("Type-casted the values of 'APPLICATION_ID' column.")
 
-    if df["application_id"].isnull().sum() > 0:
-        logger.info("Column: 'application_id' consist of null values!")
-        df.dropna(subset=["application_id"], inplace=True)
+    if df["APPLICATION_ID"].isnull().sum() > 0:
+        logger.info("Column: 'APPLICATION_ID' consist of null values!")
+        df.dropna(subset=["APPLICATION_ID"], inplace=True)
         df.reset_index(inplace=True)
-        logger.info("Column: 'application_id' with missing values are removed.")
+        logger.info("Column: 'APPLICATION_ID' with missing values are removed.")
 
-    if (df["application_id"] < 1).any():
-        logger.info("'application_id' column consist of off-range values!")
-        df["application_id"] = df[df["application_id"] > 0]
+    if (df["APPLICATION_ID"] < 1).any():
+        logger.info("'APPLICATION_ID' column consist of off-range values!")
+        df["APPLICATION_ID"] = df[df["APPLICATION_ID"] > 0]
         df.reset_index(inplace=True)
-        logger.info("'application_id' column with off-range values are removed.")
+        logger.info("'APPLICATION_ID' column with off-range values are removed.")
 
-    # Perform validation checks to 'rank_number_id' column
-    if not pd.api.types.is_numeric_dtype(df["rank_number_id"]):
-        logger.info("Column: 'rank_number_id' consist of wrong datatype!")
-        df["rank_number_id"] = pd.to_numeric(df["rank_number_id"],
+    # Perform validation checks to 'RANK_NUMBER_ID' column
+    if not pd.api.types.is_numeric_dtype(df["RANK_NUMBER_ID"]):
+        logger.info("Column: 'RANK_NUMBER_ID' consist of wrong datatype!")
+        df["RANK_NUMBER_ID"] = pd.to_numeric(df["RANK_NUMBER_ID"],
                                                   errors="coerce")
-        logger.info("Type-casted the values of 'rank_number_id' column.")
+        logger.info("Type-casted the values of 'RANK_NUMBER_ID' column.")
 
-    if df["rank_number_id"].isnull().sum() > 0:
-        logger.info("Column: 'rank_number_id' consist of null values!")
-        df.dropna(subset=["rank_number_id"], inplace=True)
+    if df["RANK_NUMBER_ID"].isnull().sum() > 0:
+        logger.info("Column: 'RANK_NUMBER_ID' consist of null values!")
+        df.dropna(subset=["RANK_NUMBER_ID"], inplace=True)
         df.reset_index(inplace=True)
-        logger.info("Column: 'rank_number_id' with missing values are removed.")
+        logger.info("Column: 'RANK_NUMBER_ID' with missing values are removed.")
 
-    if (df["rank_number_id"] > 100).any() or (df["rank_number_id"] < 1).any():
-        logger.info("'rank_number_id' column consist of off-range values!")
+    if (df["RANK_NUMBER_ID"] > 100).any() or (df["RANK_NUMBER_ID"] < 1).any():
+        logger.info("'RANK_NUMBER_ID' column consist of off-range values!")
         df["rank_number"] = df[(df["rank_number"] >= 1) & (df["rank_number" <= 100])]
         df.reset_index(inplace=True)
-        logger.info("'rank_number_id' column with off-range values are removed.")
+        logger.info("'RANK_NUMBER_ID' column with off-range values are removed.")
 
-    # Perform validation checks to 'change_pct_within_24hr' column
-    if not pd.api.types.is_numeric_dtype(df["change_pct_within_24hr"]):
-        logger.info("Column: 'change_pct_within_24hr' consist of wrong datatype!")
-        df["change_pct_within_24hr"] = pd.to_numeric(df["change_pct_within_24hr"],
+    # Perform validation checks to 'CHANGE_PCT_WITHIN_24HR' column
+    if not pd.api.types.is_numeric_dtype(df["CHANGE_PCT_WITHIN_24HR"]):
+        logger.info("Column: 'CHANGE_PCT_WITHIN_24HR' consist of wrong datatype!")
+        df["CHANGE_PCT_WITHIN_24HR"] = pd.to_numeric(df["CHANGE_PCT_WITHIN_24HR"],
                                                   errors="coerce")
-        logger.info("Type-casted the values of 'change_pct_within_24hr' column.")
+        logger.info("Type-casted the values of 'CHANGE_PCT_WITHIN_24HR' column.")
 
-    if df["change_pct_within_24hr"].isnull().sum() > 0:
-        logger.info("Column: 'change_pct_within_24hr' consist of null values!")
-        df.dropna(subset=["change_pct_within_24hr"], inplace=True)
+    if df["CHANGE_PCT_WITHIN_24HR"].isnull().sum() > 0:
+        logger.info("Column: 'CHANGE_PCT_WITHIN_24HR' consist of null values!")
+        df.dropna(subset=["CHANGE_PCT_WITHIN_24HR"], inplace=True)
         df.reset_index(inplace=True)
-        logger.info("Column: 'change_pct_within_24hr' with missing values are removed.")
+        logger.info("Column: 'CHANGE_PCT_WITHIN_24HR' with missing values are removed.")
 
-    # Perform validation checks to 'no_of_current_players' column
-    if not pd.api.types.is_numeric_dtype(df["no_of_current_players"]):
-        logger.info("Column: 'no_of_current_players' consist of wrong datatype!")
-        df["no_of_current_players"] = pd.to_numeric(df["no_of_current_players"],
+    # Perform validation checks to 'NO_OF_CURRENT_PLAYERS' column
+    if not pd.api.types.is_numeric_dtype(df["NO_OF_CURRENT_PLAYERS"]):
+        logger.info("Column: 'NO_OF_CURRENT_PLAYERS' consist of wrong datatype!")
+        df["NO_OF_CURRENT_PLAYERS"] = pd.to_numeric(df["NO_OF_CxURRENT_PLAYERS"],
                                                   errors="coerce")
-        logger.info("Type-casted the values of 'no_of_current_players' column.")
+        logger.info("Type-casted the values of 'NO_OF_CURRENT_PLAYERS' column.")
 
-    if df["no_of_current_players"].isnull().sum() > 0:
-        logger.info("Column: 'no_of_current_players' consist of null values!")
-        df.dropna(subset=["no_of_current_players"], inplace=True)
+    if df["NO_OF_CURRENT_PLAYERS"].isnull().sum() > 0:
+        logger.info("Column: 'NO_OF_CURRENT_PLAYERS' consist of null values!")
+        df.dropna(subset=["NO_OF_CURRENT_PLAYERS"], inplace=True)
         df.reset_index(inplace=True)
-        logger.info("Column: 'no_of_current_players' with missing values are removed.")
+        logger.info("Column: 'NO_OF_CURRENT_PLAYERS' with missing values are removed.")
 
-    if (df["no_of_current_players"] < 0).any():
-        logger.info("'no_of_current_players' column consist of off-range values!")
-        df["no_of_current_players"] = df[df["no_of_current_players"] >= 0]
+    if (df["NO_OF_CURRENT_PLAYERS"] < 0).any():
+        logger.info("'NO_OF_CURRENT_PLAYERS' column consist of off-range values!")
+        df["NO_OF_CURRENT_PLAYERS"] = df[df["NO_OF_CURRENT_PLAYERS"] >= 0]
         df.reset_index(inplace=True)
-        logger.info("'no_of_current_players' column with off-range values are removed.")
+        logger.info("'NO_OF_CURRENT_PLAYERS' column with off-range values are removed.")
 
-    # Perform validation checks to 'timestamp_id' column
-    if not pd.api.types.is_numeric_dtype(df["timestamp_id"]):
-        logger.info("Column: 'timestamp_id' consist of wrong datatype!")
-        df["timestamp_id"] = pd.to_numeric(df["timestamp_id"],
+    # Perform validation checks to 'TIMESTAMP_ID' column
+    if not pd.api.types.is_numeric_dtype(df["TIMESTAMP_ID"]):
+        logger.info("Column: 'TIMESTAMP_ID' consist of wrong datatype!")
+        df["TIMESTAMP_ID"] = pd.to_numeric(df["TIMESTAMP_ID"],
                                                   errors="coerce")
-        logger.info("Type-casted the values of 'timestamp_id' column.")
+        logger.info("Type-casted the values of 'TIMESTAMP_ID' column.")
 
-    if df["timestamp_id"].isnull().sum() > 0:
-        logger.info("Column: 'timestamp_id' consist of null values!")
-        df.dropna(subset=["timestamp_id"], inplace=True)
+    if df["TIMESTAMP_ID"].isnull().sum() > 0:
+        logger.info("Column: 'TIMESTAMP_ID' consist of null values!")
+        df.dropna(subset=["TIMESTAMP_ID"], inplace=True)
         df.reset_index(inplace=True)
-        logger.info("Column: 'timestamp_id' with missing values are removed.")
+        logger.info("Column: 'TIMESTAMP_ID' with missing values are removed.")
 
-    if (df["timestamp_id"] < 1).any():
-        logger.info("'timestamp_id' column consist of off-range values!")
-        df["timestamp_id"] = df[df["timestamp_id"] > 0]
+    if (df["TIMESTAMP_ID"] < 1).any():
+        logger.info("'TIMESTAMP_ID' column consist of off-range values!")
+        df["TIMESTAMP_ID"] = df[df["TIMESTAMP_ID"] > 0]
         df.reset_index(inplace=True)
         logger.info("'timestaml_id' column with off-range values are removed.")
 
     # Perform validation check to the whole dataset
     columns = list(df.columns)
     correct_order_of_columns = [
-        "application_id",
-        "rank_number_id",
-        "change_pct_within_24hr",
-        "no_of_current_players",
-        "timestamp_id"
+        "APPLICATION_ID",
+        "RANK_NUMBER_ID",
+        "CHANGE_PCT_WITHIN_24HR",
+        "NO_OF_CURRENT_PLAYERS",
+        "TIMESTAMP_ID"
     ]
 
     if columns != correct_order_of_columns:
-        raise Exception("Columns of the table: 'fact_trending_games' are inaccurate!")
+        raise Exception("Columns of the table: 'FACT_TRENDING_GAMES' are inaccurate!")
 
-    logger.info("Successfully validated the data: 'fact_trending_games'.")
+    logger.info("Successfully validated the data: 'FACT_TRENDING_GAMES'.")
     return df
 
 def validate_fact_top_games(df: pd.DataFrame) -> pd.DataFrame:
