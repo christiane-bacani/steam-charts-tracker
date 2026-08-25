@@ -148,6 +148,7 @@ load(dim_peak_year)
 # data layer (Snowflake Data Warehouse)
 fact_trending_games = create_fact_trending_games()
 fact_trending_games = transform(fact_trending_games)
+validate(fact_trending_games)
 """
 CREATE OR REPLACE TABLE STEAM_CHARTS.MART.TEMP_FACT_TRENDING_GAMES (
 APPLICATION_ID INTEGER,
