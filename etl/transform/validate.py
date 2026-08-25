@@ -1155,5 +1155,12 @@ def validate(df: pd.DataFrame) -> pd.DataFrame:
                      "PEAK_YEAR"]:
         return validate_dim_peak_year(df)
 
+    elif columns == ['APPLICATION_ID', 
+                     'RANK_NUMBER_ID',
+                     'CHANGE_PCT_WITHIN_24HR',
+                     'NO_OF_CURRENT_PLAYERS',
+                     'TIMESTAMP_ID']:
+        return validate_fact_trending_games(df)
+
     else:
         raise Exception("Invalid data to validate!")
